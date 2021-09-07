@@ -1,4 +1,4 @@
-## Business platform
+## EZFORM
 
 ### 프로젝트 소개
 * MVC패턴을 적용하여 비즈니스 플랫폼을 구현한다.
@@ -10,8 +10,7 @@
 * 8명
 
 ### 기술 스택
-* JAVA
-* JSP
+* Spring
 * JavaScript
 * HTML
 * CSS
