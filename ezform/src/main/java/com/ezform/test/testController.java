@@ -21,6 +21,7 @@ public class testController {
 
 	
 	//http://localhost:8088/test/tp1.do
+	// 테스트 맵핑
 	@RequestMapping(value = "/tp1.do", method = RequestMethod.GET)
 	public String testMethod() throws Exception {
 		logger.info("테스트 메소드 실행!");
@@ -29,11 +30,12 @@ public class testController {
 	}
 	
 	//http://localhost:8088/test/tp2.do
-		@RequestMapping(value = "/tp2.do", method = RequestMethod.GET)
-		public String testMethod2() throws Exception {
-			logger.info("테스트 메소드 실행!");
-			
-			return "tp2";
-		}
+	// 탬플릿1 맵핑
+	@RequestMapping(value = "/tp2.do", method = RequestMethod.GET)
+	public String testMethod2() throws Exception {
+		logger.info("테스트 메소드 실행!");
+		
+		return "tp2";
+	}
 	
 }
