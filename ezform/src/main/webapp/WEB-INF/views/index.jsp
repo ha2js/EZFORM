@@ -3,19 +3,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
-      
-      <!-- Favicon -->
-      <link rel="shortcut icon" href="resources/images/favicon.ico" />
-      
-      <!-- Library / Plugin Css Build -->
-      <link rel="stylesheet" href="resources/css/libs.min.css">
-      
-      <!-- Custom Css -->
-      <link rel="stylesheet" href="resources/css/hope-ui.css?v=1.0.2">  </head>
-  <body class="  ">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+<!-- Favicon -->
+<link rel="shortcut icon" href="resources/images/favicon.ico" />
+<!-- Library / Plugin Css Build -->
+<link rel="stylesheet" href="resources/css/libs.min.css">
+<!-- Custom Css -->
+<link rel="stylesheet" href="resources/css/hope-ui.css?v=1.0.2">  
+<!-- Backend Bundle JavaScript -->
+<script src="resources/js/libs.min.js"></script>
+<!-- widgetchart JavaScript -->
+<script src="resources/js/charts/widgetcharts.js"></script>
+<!-- mapchart JavaScript -->
+<script src="resources/js/charts/vectore-chart.js"></script>
+<script src="resources/js/charts/dashboard.js"></script>
+<!-- fslightbox JavaScript -->
+<script src="resources/js/fslightbox.js"></script>
+<!-- settings JavaScript -->
+<script src="resources/js/setting.js"></script>
+<!-- Form Wizard Script -->
+<script src="resources/js/form-wizard.js"></script>
+<!-- app JavaScript -->
+<script src="resources/js/app.js"></script>
+</head>
+<body class="  ">
     <!-- loader Start -->
     <div id="loading">
       <div class="loader simple-loader">
@@ -33,7 +46,7 @@
                     <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
                     <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
                 </svg>
-                <!--logo End-->            <h4 class="logo-title">Hope UI</h4>
+                <!--logo End-->            <h4 class="logo-title">EZ FORM</h4>
             </a>
             <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
                 <i class="icon">
@@ -62,13 +75,12 @@
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z" fill="currentColor"></path>
                                 </svg>
                             </i>
-                            <span class="item-name">Dashboard</span>
+                            <span class="item-name">HOME</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
                             <i class="icon">
-                                
                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.4" d="M10.0833 15.958H3.50777C2.67555 15.958 2 16.6217 2 17.4393C2 18.2559 2.67555 18.9207 3.50777 18.9207H10.0833C10.9155 18.9207 11.5911 18.2559 11.5911 17.4393C11.5911 16.6217 10.9155 15.958 10.0833 15.958Z" fill="currentColor"></path>
                                     <path opacity="0.4" d="M22.0001 6.37867C22.0001 5.56214 21.3246 4.89844 20.4934 4.89844H13.9179C13.0857 4.89844 12.4102 5.56214 12.4102 6.37867C12.4102 7.1963 13.0857 7.86 13.9179 7.86H20.4934C21.3246 7.86 22.0001 7.1963 22.0001 6.37867Z" fill="currentColor"></path>
@@ -757,7 +769,8 @@
                     <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
                     <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
                 </svg>
-                <!--logo End-->        <h4 class="logo-title">Hope UI</h4>
+                <!--logo End-->        
+                <h4 class="logo-title">EZ FORM</h4>
             </a>
             <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
                 <i class="icon">
@@ -1757,26 +1770,5 @@
         </div>
       </div>
     </div>
-    <!-- Backend Bundle JavaScript -->
-    <script src="resources/js/libs.min.js"></script>
-    
-    <!-- widgetchart JavaScript -->
-    <script src="resources/js/charts/widgetcharts.js"></script>
-    
-    <!-- mapchart JavaScript -->
-    <script src="resources/js/charts/vectore-chart.js"></script>
-    <script src="resources/js/charts/dashboard.js"></script>
-    
-    <!-- fslightbox JavaScript -->
-    <script src="resources/js/fslightbox.js"></script>
-    
-    <!-- settings JavaScript -->
-    <script src="resources/js/setting.js"></script>
-    
-    <!-- Form Wizard Script -->
-    <script src="resources/js/form-wizard.js"></script>
-    
-    <!-- app JavaScript -->
-    <script src="resources/js/app.js"></script>
-  </body>
+</body>
 </html>
