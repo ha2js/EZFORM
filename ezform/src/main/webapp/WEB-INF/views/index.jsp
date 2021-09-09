@@ -7,26 +7,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
 <!-- Favicon -->
-<link rel="shortcut icon" href="resources/images/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/favicon.ico" />
 <!-- Library / Plugin Css Build -->
-<link rel="stylesheet" href="resources/css/libs.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/libs.min.css">
 <!-- Custom Css -->
-<link rel="stylesheet" href="resources/css/hope-ui.css?v=1.0.2">  
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/hope-ui.css?v=1.0.2">  
 <!-- Backend Bundle JavaScript -->
-<script src="resources/js/libs.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/libs.min.js"></script>
 <!-- widgetchart JavaScript -->
-<script src="resources/js/charts/widgetcharts.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/charts/widgetcharts.js"></script>
 <!-- mapchart JavaScript -->
-<script src="resources/js/charts/vectore-chart.js"></script>
-<script src="resources/js/charts/dashboard.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/charts/vectore-chart.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/charts/dashboard.js"></script>
 <!-- fslightbox JavaScript -->
-<script src="resources/js/fslightbox.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/fslightbox.js"></script>
 <!-- settings JavaScript -->
-<script src="resources/js/setting.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/setting.js"></script>
 <!-- Form Wizard Script -->
-<script src="resources/js/form-wizard.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/form-wizard.js"></script>
 <!-- app JavaScript -->
-<script src="resources/js/app.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/app.js"></script>
 </head>
 <body class="  ">
     <!-- loader Start -->
