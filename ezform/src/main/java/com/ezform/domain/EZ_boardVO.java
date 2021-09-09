@@ -1,4 +1,4 @@
-package com.ezform.dto;
+package com.ezform.domain;
 
 public class EZ_boardVO {
 
