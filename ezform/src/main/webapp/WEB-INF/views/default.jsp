@@ -4,26 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title></title>
+<title> </title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="resources/images/favicon.ico" />
 <!-- Library / Plugin Css Build -->
 <link rel="stylesheet" href="resources/css/libs.min.css">
 <!-- Custom Css -->
 <link rel="stylesheet" href="resources/css/hope-ui.css?v=1.0.2">
-<!-- Fullcalender CSS -->
-<link rel='stylesheet'
-	href='resources/vendor/fullcalendar/core/main.css' />
-<link rel='stylesheet'
-	href='resources/vendor/fullcalendar/daygrid/main.css' />
-<link rel='stylesheet'
-	href='resources/vendor/fullcalendar/timegrid/main.css' />
-<link rel='stylesheet'
-	href='resources/vendor/fullcalendar/list/main.css' />
 </head>
 
-<body class="  ">
-	<!-- dark/light/auto mode -->
+<body class="  "> <!-- dark/light/auto mode -->
 	<!-- loader Start -->
 	<div id="loading">
 		<div class="loader simple-loader">
@@ -35,7 +25,9 @@
 	<aside class="sidebar sidebar-default navs-rounded-all ">
 		<div
 			class="sidebar-header d-flex align-items-center justify-content-start">
-			<a href="../dashboard/index.html" class="navbar-brand"> <!--Logo start-->
+			<a href="../dashboard/index.html" class="navbar-brand"> 
+			
+			<!--Logo start-->
 				<svg width="30" class="" viewBox="0 0 30 30" fill="none"
 					xmlns="http://www.w3.org/2000/svg">
                     <rect x="-0.757324" y="19.2427" width="28"
@@ -51,7 +43,7 @@
                 </svg> <!--logo End-->
 				<h4 class="logo-title">EZFORM</h4>
 			</a>
-
+			
 			<div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
 				<i class="icon"> <svg width="20" height="20" viewBox="0 0 24 24"
 						fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -794,7 +786,7 @@
 		</div>
 		<div class="sidebar-footer"></div>
 	</aside>
-
+	
 	<main class="main-content">
 		<div class="position-relative">
 			<!--Nav Start-->
@@ -956,42 +948,8 @@
 					</div>
 				</div>
 			</nav>
-
-			<!-- Nav Header Component Start -->
-			<div class="iq-navbar-header" style="height: 105px;">
-				<div class="container-fluid iq-container">
-					<div class="row">
-						<div class="col-md-12"></div>
-					</div>
-				</div>
-				<div class="iq-header-img">
-					<img src="resources/images/dashboard/top-header.png" alt="header"
-						class="img-fluid w-100 h-100 animated-scaleX">
-				</div>
-			</div>
-			<!-- Nav Header Component End -->
-			<!--Nav End-->
 		</div>
-		<!-- FullCalendar -->
-		<div class="conatiner-fluid content-inner mt-n5 py-0">
-			<div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="card  ">
-									<div class="card-body">
-										<div id="calendar1" class="calendar-s fc fc-ltr fc-unthemed"
-											style=""></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- FullCalendar -->
+	
 		<!-- Footer Section Start -->
 		<!-- <footer class="footer">
 			<div class="footer-body">
@@ -1013,7 +971,7 @@
 		</footer> -->
 		<!-- Footer Section End -->
 	</main>
-
+	
 	<!-- Wrapper End-->
 
 	<!-- Backend Bundle JavaScript -->
@@ -1031,13 +989,5 @@
 	<script src="resources/js/form-wizard.js"></script>
 	<!-- app JavaScript -->
 	<script src="resources/js/app.js"></script>
-	<!-- Fullcalender Javascript -->
-	<script src='resources/vendor/fullcalendar/core/main.js'></script>
-	<script src='resources/vendor/fullcalendar/daygrid/main.js'></script>
-	<script src='resources/vendor/fullcalendar/timegrid/main.js'></script>
-	<script src='resources/vendor/fullcalendar/list/main.js'></script>
-	<script src='resources/vendor/fullcalendar/interaction/main.js'></script>
-	<script src='resources/vendor/moment.min.js'></script>
-	<script src='resources/js/calender.js'></script>
 </body>
 </html>
