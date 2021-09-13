@@ -1,5 +1,13 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: ITWILL
+=======
+<<<<<<< HEAD
+Built-By: JoSeongHa
+=======
+Built-By: user
+>>>>>>> d6835eb8713fc5b79c0873c8639182733cef4dc5
+>>>>>>> 3b5677dea747152a65a6eedde8d2f8e0e2786ee9
 Build-Jdk: 16.0.2
 Created-By: Maven Integration for Eclipse
 
