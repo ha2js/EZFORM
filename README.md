@@ -21,8 +21,8 @@
 * Github
     
 ### 팀 구성
- - Frontend - 3
- - Backend - 5
+ Frontend - 3
+ Backend - 5
 
 ### 산출물
 - [프로젝트 PPT]()
