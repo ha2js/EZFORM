@@ -1,82 +1,81 @@
 package com.ezform.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class EZ_empVO {
 	
-	private String id;
-	private String pass; // default => 1
-	private String name;
-	private String email;
-	private String dept;
-	private String rank;
-	private int phone;
-	private Date e_regdate;
-	private String file;
+	private int em_id;
+	private String em_email;
+	private String em_pw;
+	private String em_name;
+	private String em_dept;
+	private String em_posi;
+	private Timestamp em_regdate;
+	private int em_extension;
+	private String em_image;
 	
 	
-	public String getId() {
-		return id;
+	public int getEm_id() {
+		return em_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setEm_id(int em_id) {
+		this.em_id = em_id;
 	}
-	public String getPass() {
-		return pass;
+	public String getEm_email() {
+		return em_email;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setEm_email(String em_email) {
+		this.em_email = em_email;
 	}
-	public String getName() {
-		return name;
+	public String getEm_pw() {
+		return em_pw;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setEm_pw(String em_pw) {
+		this.em_pw = em_pw;
 	}
-	public String getEmail() {
-		return email;
+	public String getEm_name() {
+		return em_name;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEm_name(String em_name) {
+		this.em_name = em_name;
 	}
-	public String getDept() {
-		return dept;
+	public String getEm_dept() {
+		return em_dept;
 	}
-	public void setDept(String dept) {
-		this.dept = dept;
+	public void setEm_dept(String em_dept) {
+		this.em_dept = em_dept;
 	}
-	public String getRank() {
-		return rank;
+	public String getEm_posi() {
+		return em_posi;
 	}
-	public void setRank(String rank) {
-		this.rank = rank;
+	public void setEm_posi(String em_posi) {
+		this.em_posi = em_posi;
 	}
-	public int getPhone() {
-		return phone;
+	public Timestamp getEm_regdate() {
+		return em_regdate;
 	}
-	public void setPhone(int phone) {
-		this.phone = phone;
+	public void setEm_regdate(Timestamp em_regdate) {
+		this.em_regdate = em_regdate;
 	}
-	public Date getE_regdate() {
-		return e_regdate;
+	public int getEm_extension() {
+		return em_extension;
 	}
-	public void setE_regdate(Date e_regdate) {
-		this.e_regdate = e_regdate;
+	public void setEm_extension(int em_extension) {
+		this.em_extension = em_extension;
 	}
-	public String getFile() {
-		return file;
+	public String getEm_image() {
+		return em_image;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setEm_image(String em_image) {
+		this.em_image = em_image;
 	}
-	
 	
 	@Override
 	public String toString() {
-		return "EZ_empVO [id=" + id + ", pass=" + pass + ", name=" + name + ", email=" + email + ", dept=" + dept
-				+ ", rank=" + rank + ", phone=" + phone + ", e_regdate=" + e_regdate + ", file=" + file + "]";
+		return "EZ_empVO [em_id=" + em_id + ", em_email=" + em_email + ", em_pw=" + em_pw + ", em_name=" + em_name
+				+ ", em_dept=" + em_dept + ", em_posi=" + em_posi + ", em_regdate=" + em_regdate + ", em_extension="
+				+ em_extension + ", em_image=" + em_image + "]";
 	}
-	
-	
+		
 
 }
