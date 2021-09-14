@@ -23,4 +23,4 @@
 ### 산출물
 - [프로젝트 PPT]()
 - [화면설계]()
-- [DB설계]()
+- [DB설계](document/database/ezform_erd.pdf)
