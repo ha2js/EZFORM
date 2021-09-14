@@ -15,7 +15,7 @@ public class EZ_emp_Controller {
 	
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 
-	// http://localhost:8088/controller/main
+	// http://localhost:8088/ezform/main
 	// 메인페이지
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String getMainPage(HttpSession session) throws Exception {
