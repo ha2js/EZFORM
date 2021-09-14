@@ -1,5 +1,7 @@
 package com.ezform.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +64,16 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info(vo+"");
 		
 		return null;
+	}
+
+	@Override
+	public List<EZ_boardVO> listALL() throws Exception {
+		
+		System.out.println(" DAO : listALL() -> mapper 호출");
+		
+		System.out.println(" DAP : mapper-sql구문 실행완료! 서비스로 정보 전달!!");
+		
+		return sqlSession.selectList(namespace+".listALL");
 	}
 	
 }
