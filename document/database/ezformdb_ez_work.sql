@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: ezformdb
+-- Host: localhost    Database: ezformdb
 -- ------------------------------------------------------
 -- Server version	5.7.34-log
 
@@ -26,7 +26,8 @@ CREATE TABLE `ez_work` (
   `work_id` int(11) NOT NULL,
   `work_regdate` timestamp NULL DEFAULT NULL,
   `work_clock` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`work_id`)
+  PRIMARY KEY (`work_id`),
+  CONSTRAINT `FK_ez_em_TO_ez_work_1` FOREIGN KEY (`work_id`) REFERENCES `ez_em` (`em_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-13 19:52:13
+-- Dump completed on 2021-09-14 11:29:28

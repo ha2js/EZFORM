@@ -16,34 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ez_em`
+-- Table structure for table `ez_cal`
 --
 
-DROP TABLE IF EXISTS `ez_em`;
+DROP TABLE IF EXISTS `ez_cal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ez_em` (
-  `em_id` int(11) NOT NULL,
-  `em_email` varchar(100) NOT NULL,
-  `em_pw` varchar(100) DEFAULT NULL,
-  `em_name` varchar(100) DEFAULT NULL,
-  `em_dept` varchar(100) DEFAULT NULL,
-  `em_posi` varchar(100) DEFAULT NULL,
-  `em_regdate` timestamp NULL DEFAULT NULL,
-  `em_extension` int(11) DEFAULT NULL,
-  `em_image` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`em_id`),
-  UNIQUE KEY `em_email_UNIQUE` (`em_email`)
+CREATE TABLE `ez_cal` (
+  `cal_cnum` int(11) NOT NULL,
+  `cal_id` int(11) NOT NULL,
+  `cal_regdate` varchar(100) DEFAULT NULL,
+  `cal_color` varchar(100) DEFAULT NULL,
+  `cal_sche` varchar(1000) DEFAULT NULL,
+  `cal_ck` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`cal_cnum`),
+  KEY `FK_ez_em_TO_ez_cal_1` (`cal_id`),
+  CONSTRAINT `FK_ez_em_TO_ez_cal_1` FOREIGN KEY (`cal_id`) REFERENCES `ez_em` (`em_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ez_em`
+-- Dumping data for table `ez_cal`
 --
 
-LOCK TABLES `ez_em` WRITE;
-/*!40000 ALTER TABLE `ez_em` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ez_em` ENABLE KEYS */;
+LOCK TABLES `ez_cal` WRITE;
+/*!40000 ALTER TABLE `ez_cal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ez_cal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

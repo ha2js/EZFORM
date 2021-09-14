@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: ezformdb
+-- Host: localhost    Database: ezformdb
 -- ------------------------------------------------------
 -- Server version	5.7.34-log
 
@@ -33,7 +33,9 @@ CREATE TABLE `ez_cm` (
   `cm_hits` int(11) DEFAULT NULL,
   `cm_like` int(11) DEFAULT NULL,
   `cm_file` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`cm_bnum`)
+  PRIMARY KEY (`cm_bnum`),
+  KEY `FK_ez_em_TO_ez_cm_1` (`cm_id`),
+  CONSTRAINT `FK_ez_em_TO_ez_cm_1` FOREIGN KEY (`cm_id`) REFERENCES `ez_em` (`em_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-13 19:52:13
+-- Dump completed on 2021-09-14 11:29:27
