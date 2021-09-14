@@ -25,7 +25,6 @@ public class EZ_emp_Controller {
 		// 세션 제어
 		String em_id = (String)session.getAttribute("em_id");
 	    
-		
     	if(em_id == null) {
     		logger.info("em_id 값 : " + em_id);
     		
@@ -42,6 +41,13 @@ public class EZ_emp_Controller {
 		logger.info(" C : 로그인 페이지 이동!");
 		
 		return "/ez_emp/loginPage";
+	}
+	
+	// 회원가입
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String joinPageGET() throws Exception {
+		
+		return "/ez_emp/joinPage";
 	}
 	
 	

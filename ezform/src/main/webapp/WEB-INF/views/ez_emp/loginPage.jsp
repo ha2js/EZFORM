@@ -100,7 +100,7 @@
                                  </ul>
                               </div>
                               <p class="mt-3 text-center">
-                                 Don’t have an account? <a href="sign-up.html" class="text-underline">Click here to sign up.</a>
+                                 Don’t have an account? <a href="./join" class="text-underline">Click here to sign up.</a>
                               </p>
                            </form>
                         </div>
