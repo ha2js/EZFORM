@@ -12,7 +12,7 @@ public class EZ_noticeVO {
 	private Timestamp not_regdate;
 	private String not_file;
 	private int not_hits;
-	
+	 
 	public int getNot_num() {
 		return not_num;
 	}
