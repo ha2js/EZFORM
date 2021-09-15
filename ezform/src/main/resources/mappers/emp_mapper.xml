@@ -6,9 +6,9 @@
 <mapper namespace="com.ezform.mapper.emp_Mapper">
 
 	<!-- insert --> <!-- 최초 아이디 부여시, 비밀번호 1로 설정해서 부여 -->
-	<insert id="">
-		insert into 테이블명 (id,pass,name,email,dept,rank,phone,e_regdate,file) 
-		values(#{id},1,#{name},#{dept},#{rank},#{phone},#{e_regdate},#{file})
+	<insert id="joinEmp">
+		insert into ez_em (em_id,em_email,em_pw,em_name,em_dept,em_posi,em_regdate,em_extension,em_image) 
+		values (#{em_id},#{em_email},#{em_pw},#{em_name},#{em_dept},#{em_posi},now(),#{em_extension},#{em_image})
 	</insert>
 	
 	<!-- 수정 --> <!-- @@@@@정보 수정시 필요한 내역이 추가로 필요? -->

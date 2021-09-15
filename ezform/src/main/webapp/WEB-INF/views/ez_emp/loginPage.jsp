@@ -26,7 +26,10 @@
 <!-- Form Wizard Script -->
 <script src="${pageContext.request.contextPath }/resources/js/form-wizard.js"></script>
 <!-- app JavaScript -->
-<script src="${pageContext.request.contextPath }/resources/js/app.js"></script>  
+<script src="${pageContext.request.contextPath }/resources/js/app.js"></script>
+
+<!-- emp 스크립트 처리용 -->  
+<script src="${pageContext.request.contextPath }/resources/js/empScript.js"></script> 
 </head>
 <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
     <!-- loader Start -->
@@ -57,18 +60,21 @@
                            </a>
                            <h2 class="mb-2 text-center">Sign In</h2>
                            <p class="text-center">Login to stay connected.</p>
-                           <form action="./login" method="post">
+                           
+<!-- -----------------------------------------------------로그인 form ---------------------------------------------------------- --> 
+                         
+                           <form action="./login" method="post" onsubmit="return empLogin_validation();">
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="form-group">
-                                       <label for="text" class="form-label">ID</label>
-                                       <input type="text" class="form-control" id="em_id" name="em_id" aria-describedby="email" placeholder=" ">
+                                       <label for="text" class="form-label">Email</label><br>
+                                       <input type="email" class="form-control" id="em_id" name="em_id" aria-describedby="email" placeholder=""> 
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" id="password" name="em_pw" aria-describedby="password" placeholder=" ">
+                                       <input type="password" class="form-control" id="em_pw" name="em_pw" aria-describedby="password" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-12 d-flex justify-content-between">
@@ -80,7 +86,7 @@
                                  </div>
                               </div>
                               <div class="d-flex justify-content-center">
-                                 <button type="submit" class="btn btn-primary">로그인</button>
+                                 <button type="submit" class="btn btn-primary" id="ezLoginBtn">로그인</button>
                               </div>
                               <p class="text-center my-3">or sign in with other accounts?</p>
                               <div class="d-flex justify-content-center">
@@ -103,6 +109,10 @@
                                  Don’t have an account? <a href="./join" class="text-underline">Click here to sign up.</a>
                               </p>
                            </form>
+                           
+<!-- -----------------------------------------------------로그인 form ---------------------------------------------------------- --> 
+                           
+                           
                         </div>
                      </div>
                   </div>

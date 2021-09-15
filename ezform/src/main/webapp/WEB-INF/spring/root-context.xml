@@ -26,7 +26,7 @@
 		
 		
 		<property name="url" 
-				  value="jdbc:log4jdbc:mysql://localhost:3306/springdb?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
+				  value="jdbc:log4jdbc:mysql://localhost:3306/ezformdb?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
 		
 		<property name="username" value="root"/>
 		

@@ -80,40 +80,40 @@
                            
 <!---------------------------------------------------------- form ----------------------------------------------------------------->
 
-                           <form action="./join" method="post" enctype="multipart/form-data">
+                           <form action="./join" method="post">
                               <div class="row">
                               	 <div class="col-lg-6">
                                     <div class="form-group">
                                        <div id="editor" style="width:120px; height:160px; border:1px solid #eee;"></div>
-                                       <input type="file" id="file" name="gal_file" accept="image/gif, image/jpeg, image/png" onchange="fileCh(this);"/>
+                                       <input type="file" id="file" name="em_image" accept="image/gif, image/jpeg, image/png" onchange="fileCh(this);"/>
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label for="em_id" class="form-label">이메일</label>
-                                       <input type="text" class="form-control" id="em_email" name="em_email	" placeholder=" "> @ ezform.com
+                                       <label class="form-label">이메일</label>
+                                       <input type="email" class="form-control" name="em_email" placeholder=" ">
                                     </div>    
                                     <div class="form-group">
-                                       <label for="em_name" class="form-label">이름</label>
-                                       <input type="text" class="form-control" id="em_name" name="em_name" placeholder=" ">
+                                       <label class="form-label">이름</label>
+                                       <input type="text" class="form-control" name="em_name" placeholder=" ">
                                     </div>    
                                  </div>                       
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label for="em_pw" class="form-label">비밀번호</label>
-                                       <input type="password" class="form-control" id="em_pw" name="em_pw" placeholder=" ">
+                                       <label class="form-label">비밀번호</label>
+                                       <input type="password" class="form-control" name="em_pw" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label for="em_repw" class="form-label">비밀번호 확인</label>
-                                       <input type="password" class="form-control" id="em_repw" name="em_repw" placeholder=" ">
+                                       <label class="form-label">내선번호</label>
+                                       <input type="text" class="form-control" name="em_extension" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label for="em_dept" class="form-label">부서</label>
-                                       <select class="form-control" id="em_dept" name="em_dept">
+                                       <label class="form-label">부서</label>
+                                       <select class="form-control" name="em_dept">
                                        	 <option>-부서-</option>
                                        	 <option>개발팀</option>
                                        	 <option>기술지원팀</option>
@@ -123,8 +123,8 @@
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label for="em_posi" class="form-label">직급</label>
-                                       <select class="form-control" id="em_posi" name="em_posi">
+                                       <label class="form-label">직급</label>
+                                       <select class="form-control" name="em_posi">
                                        	 <option>-직급-</option>
                                        	 <option>인턴</option>
                                        	 <option>사원</option>
@@ -136,23 +136,16 @@
                                        </select>
                                     </div>
                                  </div>
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                       <label for="confirm-password" class="form-label">내선번호</label>
-                                       <input type="text" class="form-control" id="em_extension" name="em_extension" placeholder=" ">
-                                    </div>
-                                 </div>
                               </div>
                               <div class="d-flex justify-content-center">
-                                 <button type="submit" class="btn btn-primary">회원가입</button>
+                              	 <input type="submit" class="btn btn-primary" value="회원가입"/>
                               </div>
-                              <p class="mt-3 text-center">
-                                 Already have an Account <a href="sign-in.html" class="text-underline">Sign In</a>
-                              </p>
                            </form>
-                           
+
 <!---------------------------------------------------------- form ----------------------------------------------------------------->
-                           
+                          <p class="mt-3 text-center">
+                             Already have an Account <a href="./login" class="text-underline">Sign In</a>
+                          </p>
                         </div>
                      </div>    
                   </div>

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,9 +51,26 @@ public class EZ_emp_Controller {
 		return "/ez_emp/loginPage";
 	}
 	
+	// 로그인 - 로그인 처리
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPagePOST() throws Exception {
+		
+		logger.info(" C : loginPagePOST() 실행!");
+		
+		// DB에 이메일이 존재하는지 확인
+		
+		// 존재하면 비밀번호 체크 후 로그인
+		// 존재하지 않는다면 회원가입페이지로 이동
+		
+		return "";
+	}
+
+	
 	// 회원가입 - 페이지 이동
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String joinPageGET() throws Exception {
+		
+		logger.info(" C : 회원가입 페이지 이동!");
 		
 		return "/ez_emp/joinPage";
 	}
@@ -64,6 +83,10 @@ public class EZ_emp_Controller {
 		logger.info(" C : joinPagePOST(evo) 실행");	 
 		logger.info(" C : empVO 값 : " + evo);
 	  
+		//emp_service.empJoin(evo);
+		
+		logger.info(" C : 회원가입 완료 - login 페이지로 이동");
+		
 	 	return ""; 
 	}
 	

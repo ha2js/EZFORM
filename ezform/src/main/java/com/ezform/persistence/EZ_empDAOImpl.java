@@ -19,8 +19,12 @@ public class EZ_empDAOImpl implements EZ_empDAO {
 	
 	@Override
 	public void insertEmp(EZ_empVO vo) {
-		// TODO Auto-generated method stub
 		
+		System.out.println(" DAO : insertEmp(vo) 실행");
+		
+		sqlSession.insert(namespace + ".joinEmp", vo);
+		
+		System.out.println(" DAO : 회원가입 완료 - service로 이동");
 	}
 
 	@Override
