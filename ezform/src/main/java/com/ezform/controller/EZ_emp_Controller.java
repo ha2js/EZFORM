@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -67,4 +68,17 @@ public class EZ_emp_Controller {
 	 	return ""; 
 	}
 	
+	// 회원정보 조회 (/ezform/info)
+	@RequestMapping(value = "info", method = RequestMethod.GET)
+	public String infoPageGET(HttpSession session, Model model) throws Exception {
+		logger.info(" C : infoPageGET() 실행 ");
+		
+		int em_id = (int) session.getAttribute("em_id");	
+		EZ_empVO evo = emp_service.getEmp(em_id);
+		
+		model.addAttribute("evo", evo);
+		
+		return "/ezform/info";
+		
+	}
 }
