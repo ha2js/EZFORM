@@ -27,6 +27,7 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		bdao.create(vo);
 	}
 
+
 	@Override
 	public List<EZ_boardVO> listALL() throws Exception {
 		return bdao.listALL();
@@ -38,6 +39,16 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		
 		
 		return vo;
+	}
+
+	@Override
+	public void modify(EZ_boardVO vo) throws Exception {
+		bdao.modify(vo);
+	}
+
+	@Override
+	public void remove(Integer cm_bnum) throws Exception {
+		bdao.delete(cm_bnum);
 	}
 	
 	

@@ -43,7 +43,18 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	}
 	
 	@Override
-	public EZ_boardVO delete(int cm_bnum) throws Exception {
+	public void update(EZ_boardVO vo) throws Exception {
+		
+		logger.info(" update - mapper 이동 후 해당 sql구문 실행 ");
+		
+		int result = sqlSession.update(namespace+".update",vo);
+		
+		logger.info(vo+"");
+		
+	}
+
+	@Override
+	public void delete(int cm_bnum) throws Exception {
 		
 		logger.info(" delete - mapper이동 후 해당 sql구문 실행  ");
 		
@@ -51,20 +62,8 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		logger.info(vo+"");
 		
-		return null;
 	}
 	
-	@Override
-	public EZ_boardVO update(int cm_bnum) throws Exception {
-		
-		logger.info(" update - mapper 이동 후 해당 sql구문 실행 ");
-		
-		int vo = sqlSession.update(namespace+".update",cm_bnum);
-		
-		logger.info(vo+"");
-		
-		return null;
-	}
 
 	@Override
 	public List<EZ_boardVO> listALL() throws Exception {
@@ -74,6 +73,19 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		System.out.println(" DAP : mapper-sql구문 실행완료! 서비스로 정보 전달!!");
 		
 		return sqlSession.selectList(namespace+".listALL");
+	}
+
+
+	@Override
+	public void modify(EZ_boardVO vo) throws Exception {
+		logger.info(" modify(EZ_boardVO vo)호출 - 정보수정");
+		
+		sqlSession.update(namespace+"+modify",vo);
+	
+		logger.info("정보수정 완료");
+	
+	
+	
 	}
 	
 }
