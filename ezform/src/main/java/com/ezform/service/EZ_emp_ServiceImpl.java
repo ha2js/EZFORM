@@ -16,35 +16,37 @@ public class EZ_emp_ServiceImpl implements EZ_emp_Service {
 	private EZ_empDAO edao;
 	
 	@Override
-	public void empJoin(EZ_empVO vo) {
-		
-		System.out.println(" S : empJoin(vo) 실행");
-		
-		edao.insertEmp(vo);
-		
-		System.out.println(" S : controller 이동");
-		
-	}
-
-	@Override
-	public int updateEmp(EZ_empVO uvo) {
-		
-		return 0;
-	}
-
-	@Override
-	public void deleteEmp(EZ_empVO dvo) {
-		
-		edao.deleteEmp(dvo.getEm_id(), dvo.getEm_name());
-		
-	}
-
-	@Override
 	public List<EZ_empVO> getEmpList(int id) {
 		
 		List<EZ_empVO> empList = edao.getEmpList(id);
 		
 		return null;
 	}
+
+	@Override
+	public void empJoin(EZ_empVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int updateEmp(EZ_empVO uvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void deleteEmp(EZ_empVO dvo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public EZ_empVO getEmp(String em_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

@@ -24,9 +24,9 @@
 	</delete>
 	
 	<!-- 조회 -->
-		<select id="empList" resultType="com.ezform.domain.EZ_empVO">
-			select * from 테이블명
-			where id != #{id}
-		</select>
+	<select id="empList" resultType="com.ezform.domain.EZ_empVO">
+		select * from 테이블명
+		where id != #{id}
+	</select>
 
 </mapper>

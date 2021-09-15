@@ -3,15 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ezform.mapper.emp_Mapper">
+<mapper namespace="com.ezform.mapper.mem_Mapper">
 
-	<!-- insert --> <!-- 최초 아이디 부여시, 비밀번호 1로 설정해서 부여 -->
-	<insert id="joinEmp">
+	<!-- 회원가입 --> 
+	<insert id="joinMem">
 		insert into ez_em (em_id,em_email,em_pw,em_name,em_dept,em_posi,em_regdate,em_extension,em_image) 
 		values (#{em_id},#{em_email},#{em_pw},#{em_name},#{em_dept},#{em_posi},now(),#{em_extension},#{em_image})
 	</insert>
 	
-	<!-- 수정 --> <!-- @@@@@정보 수정시 필요한 내역이 추가로 필요? -->
+	<!-- 수정 --> 
 	<update id="updateEmp">
 		update 테이블명 set pass=#{pass},dept=#{dept},rank={rank},phone=#{phone} 
 		where id=#{id} 
@@ -23,10 +23,4 @@
 		where id=#{id} and name=#{name}
 	</delete>
 	
-	<!-- 조회 -->
-	<select id="empList" resultType="com.ezform.domain.EZ_empVO">
-		select * from 테이블명
-		where id != #{id}
-	</select>
-
 </mapper>

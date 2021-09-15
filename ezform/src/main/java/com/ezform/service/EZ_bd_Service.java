@@ -14,5 +14,10 @@ public interface EZ_bd_Service {
 	
 	//특정 글 정보 조회
 	public EZ_boardVO read(int cm_bnum) throws Exception;
+
+	//글 정보 수정
+	public void modify(EZ_boardVO vo) throws Exception;
 	
+	//글 정보 삭제
+	public void remove(Integer cm_bnum) throws  Exception;
 }
