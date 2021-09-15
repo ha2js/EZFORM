@@ -30,13 +30,13 @@ public class EZ_empDAOImpl implements EZ_empDAO {
 	}
 
 	@Override
-	public void deleteEmp(String id, String name) {
+	public void deleteEmp(int id, String name) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List getEmpList(String id) {
+	public List getEmpList(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

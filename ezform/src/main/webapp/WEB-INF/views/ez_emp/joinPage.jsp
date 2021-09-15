@@ -37,7 +37,8 @@
 	    	//파일을 읽기 위한 FileReader객체 생성
 	        var reader = new FileReader();
 	        reader.onload = function(event) {
-	            $('#editor').attr('src', event.target.result);
+	        	$('#editor').append("<img src='' width='120' height='160'/>");
+	        	$('#editor>img').attr('src', event.target.result);
 	        }                   
 	        reader.readAsDataURL(f.files[0]);
 	
@@ -57,9 +58,9 @@
       <div class="wrapper">
       <section class="login-content">
          <div class="row m-0 align-items-center bg-white vh-100">            
-               <div class="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
-               <img src="${pageContext.request.contextPath }/resources/images/auth/05.png" class="img-fluid gradient-main animated-scaleX" alt="images">
-            </div>
+            <div class="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
+            <img src="${pageContext.request.contextPath }/resources/images/auth/05.png" class="img-fluid gradient-main animated-scaleX" alt="images">
+         </div>
             <div class="col-md-6">               
                <div class="row justify-content-center">
                   <div class="col-md-10">
@@ -76,35 +77,27 @@
                               <!--logo End-->                              
                               <h4 class="logo-title ms-3">EZFORM</h4>
                            </a>
-                           <h2 class="mb-2 text-center">Sign Up</h2>
-                           <p class="text-center">Create your Hope UI account.</p>
-                           <form action="" method="post" enctype="multipart/form-data">
+                           
+<!---------------------------------------------------------- form ----------------------------------------------------------------->
+
+                           <form action="./join" method="post" enctype="multipart/form-data">
                               <div class="row">
                               	 <div class="col-lg-6">
                                     <div class="form-group">
-                                       <iframe width="150" height="200" id="editor" scrolling="no" style="border:1px solid #eee;"></iframe>
+                                       <div id="editor" style="width:120px; height:160px; border:1px solid #eee;"></div>
                                        <input type="file" id="file" name="gal_file" accept="image/gif, image/jpeg, image/png" onchange="fileCh(this);"/>
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                  		
-                                    </div>
-                                 </div>
-                              	
-                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                       <label for="em_id" class="form-label">ID</label>
-                                       <input type="text" class="form-control" id="em_id" name="em_id" placeholder=" ">
-                                    </div>               
-                                 </div>
-                                 <div class="col-lg-6">
+                                       <label for="em_id" class="form-label">이메일</label>
+                                       <input type="text" class="form-control" id="em_email" name="em_email	" placeholder=" "> @ ezform.com
+                                    </div>    
                                     <div class="form-group">
                                        <label for="em_name" class="form-label">이름</label>
                                        <input type="text" class="form-control" id="em_name" name="em_name" placeholder=" ">
-                                    </div>
-                                 </div>
-                       
+                                    </div>    
+                                 </div>                       
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label for="em_pw" class="form-label">비밀번호</label>
@@ -146,40 +139,20 @@
                                   <div class="col-lg-6">
                                     <div class="form-group">
                                        <label for="confirm-password" class="form-label">내선번호</label>
-                                       <input type="text" class="form-control" id="confirm-password" placeholder=" ">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-12 d-flex justify-content-center">
-                                    <div class="form-check mb-3">
-                                       <input type="checkbox" class="form-check-input" id="customCheck1">
-                                       <label class="form-check-label" for="customCheck1">I agree with the terms of use</label>
+                                       <input type="text" class="form-control" id="em_extension" name="em_extension" placeholder=" ">
                                     </div>
                                  </div>
                               </div>
                               <div class="d-flex justify-content-center">
                                  <button type="submit" class="btn btn-primary">회원가입</button>
                               </div>
-                              <p class="text-center my-3">or sign in with other accounts?</p>
-                              <div class="d-flex justify-content-center">
-                                 <ul class="list-group list-group-horizontal list-group-flush">
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/fb.svg" alt="fb"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/gm.svg" alt="gm"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/im.svg" alt="im"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/li.svg" alt="li"></a>
-                                    </li>
-                                 </ul>
-                              </div>
                               <p class="mt-3 text-center">
                                  Already have an Account <a href="sign-in.html" class="text-underline">Sign In</a>
                               </p>
                            </form>
+                           
+<!---------------------------------------------------------- form ----------------------------------------------------------------->
+                           
                         </div>
                      </div>    
                   </div>

@@ -31,12 +31,12 @@ public class EZ_emp_ServiceImpl implements EZ_emp_Service {
 	@Override
 	public void deleteEmp(EZ_empVO dvo) {
 		
-		edao.deleteEmp(dvo.getId(), dvo.getName());
+		edao.deleteEmp(dvo.getEm_id(), dvo.getEm_name());
 		
 	}
 
 	@Override
-	public List<EZ_empVO> getEmpList(String id) {
+	public List<EZ_empVO> getEmpList(int id) {
 		
 		List<EZ_empVO> empList = edao.getEmpList(id);
 		

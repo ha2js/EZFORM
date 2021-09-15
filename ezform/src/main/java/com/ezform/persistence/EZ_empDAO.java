@@ -13,9 +13,9 @@ public interface EZ_empDAO {
 	public void updateEmp(EZ_empVO updateVO);
 	
 	// 직원 삭제하기
-	public void deleteEmp(String id, String name);
+	public void deleteEmp(int id, String name);
 	
 	// 직원 조회하기(관리자/직원)
-	public List getEmpList(String id);
+	public List getEmpList(int id);
 
 }
