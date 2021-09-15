@@ -25,7 +25,7 @@ public class EZ_emp_Controller {
 	@Inject
 	EZ_emp_Service emp_service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(EZ_emp_Controller.class);
+	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 
 	
 	// 회원정보 조회 (/ezform/info)

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.service.EZ_mem_Service;
+import com.ezform.test.testController;
 
 
 @Controller
@@ -19,7 +20,7 @@ public class EZ_mem_Controller {
 	@Inject
 	EZ_mem_Service mem_service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(EZ_mem_Controller.class);
+	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 
 	// http://localhost:8088/test/main
 	// 메인페이지
@@ -87,5 +88,6 @@ public class EZ_mem_Controller {
 		
 	 	return ""; 
 	}
-		
+	
+	
 }
