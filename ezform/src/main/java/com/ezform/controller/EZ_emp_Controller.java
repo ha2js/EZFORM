@@ -75,7 +75,8 @@ public class EZ_emp_Controller {
 	public String infoPageGET(HttpSession session, Model model) throws Exception {
 		logger.info(" C : infoPageGET() 실행 ");
 		
-		int em_id = (int) session.getAttribute("em_id");	
+		String em_id = (String)session.getAttribute("em_id");
+		
 		EZ_empVO evo = emp_service.getEmp(em_id);
 		
 		model.addAttribute("evo", evo);
@@ -88,8 +89,9 @@ public class EZ_emp_Controller {
 	public String listPageGET(HttpSession session, Model model) throws Exception {
 		logger.info(" C : listPageGET() 실행 ");
 		
-		int em_id = (int) session.getAttribute("em_id");
-		if(em_id != 20210420) { // 관리자 아이디 확인하기
+		String em_id = (String)session.getAttribute("em_id");
+		session.setMaxInactiveInterval(7200); // 자리비움시 세션삭제
+		if(em_id != "20210420") { // 관리자 아이디 확인하기
 			return "redirect:./login";
 		}
 		List empList = emp_service.getEmpList(em_id);

@@ -16,9 +16,9 @@ public interface EZ_emp_Service {
 	public void deleteEmp(EZ_empVO dvo);
 	
 	// 직원 조회
-	public EZ_empVO getEmp(int em_id);
+	public EZ_empVO getEmp(String em_id);
 	
 	// 직원 목록 
-	public List<EZ_empVO> getEmpList(int em_id);
+	public List<EZ_empVO> getEmpList(String em_id);
 
 }
