@@ -29,7 +29,7 @@ public class EZ_emp_Controller {
 
 	
 	// 회원정보 조회 (/ezform/info)
-	@RequestMapping(value = "info", method = RequestMethod.GET)
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String infoPageGET(HttpSession session, Model model) throws Exception {
 		logger.info(" C : infoPageGET() 실행 ");
 		
