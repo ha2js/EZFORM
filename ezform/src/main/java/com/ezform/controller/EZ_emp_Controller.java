@@ -28,7 +28,7 @@ public class EZ_emp_Controller {
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 
 	
-	// 회원정보 조회 (/ezform/info)
+	// 회원정보 조회 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String infoPageGET(HttpSession session, Model model) throws Exception {
 		logger.info(" C : infoPageGET() 실행 ");
@@ -42,7 +42,7 @@ public class EZ_emp_Controller {
 		
 	}
 	
-	// 회원 목록
+	// 회원 목록 (http://localhost:8088/list)
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listPageGET(HttpSession session, Model model) throws Exception {
 		logger.info(" C : listPageGET() 실행 ");
@@ -55,8 +55,7 @@ public class EZ_emp_Controller {
 		List empList = emp_service.getEmpList(Integer.parseInt(em_id));
 		model.addAttribute("empList", empList);
 		
-		return "ez_emp/listPage";	
+		return "/ez_emp/listPage";			
 	}
-	
 	
 }
