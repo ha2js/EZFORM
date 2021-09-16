@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ezform.domain.EZ_mailVO;
 import com.ezform.service.EZ_mail_Service;
+import com.ezform.test.testController;
 
 
 @Controller
@@ -18,7 +20,7 @@ public class EZ_mail_Controller {
 	@Inject
 	private EZ_mail_Service service;
 	
-	private static final Logger log = LoggerFactory.getLogger(EZ_mail_Controller.class);
+	private static final Logger log = LoggerFactory.getLogger(testController.class);
 	
 	@RequestMapping(value="/recMail", method = RequestMethod.GET)
 	public void read_RecMailGET() throws Exception {
