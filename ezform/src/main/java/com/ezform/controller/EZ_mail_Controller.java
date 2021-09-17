@@ -20,11 +20,14 @@ public class EZ_mail_Controller {
 	@Inject
 	private EZ_mail_Service service;
 	
-	private static final Logger log = LoggerFactory.getLogger(testController.class);
+	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 	
 	@RequestMapping(value="/recMail", method = RequestMethod.GET)
 	public void read_RecMailGET() throws Exception {
 		//  받은 메일
+		logger.info("read_RecMailGET()");
+		
+		// service -> dao
 	}
 	
 	@RequestMapping(value="/sendMail", method = RequestMethod.GET)

@@ -1,5 +1,11 @@
 package com.ezform.persistence;
 
-public interface EZ_mailDAO {
+import java.util.List;
 
+import com.ezform.domain.EZ_mailVO;
+
+public interface EZ_mailDAO {
+	
+	// 메일 목록
+	public List<EZ_mailVO> mailList() throws Exception;
 }
