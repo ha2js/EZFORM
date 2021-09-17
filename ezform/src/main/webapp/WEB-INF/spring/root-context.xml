@@ -41,7 +41,7 @@
 	
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	
-		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+		<property name="mapperLocations" value="classpath:mappers/**/*mapper.xml"></property>
 	
 	</bean>
 	<!-- sqlSessionFactory 객체 : 디비연결, mybatis설정, mapper설정 -->
