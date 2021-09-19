@@ -1,5 +1,7 @@
 package com.ezform.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -75,7 +77,19 @@ public class EZ_bd_Controller {
 	model.addAttribute("vo", vo);
 	}
 	
-	// * 글수정 (modify) *
+	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
+	@RequestMapping(value="/modify", method= {RequestMethod.GET})
+	public void modifyGET(int cm_bnum, Model model) throws Exception {
+		logger.info("modifyGET() 호출");
+		logger.info("수정할 글 번호 : "+cm_bnum);
+		
+		model.addAttribute("vo", service.read(cm_bnum));
+		
+	}
+	
+	
+	
+	// * 글수정 POST (modify) *
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modifyPOST(EZ_boardVO vo) throws Exception{
 		logger.info("modifyPOST(EZ_boardVO vo) 호출");
@@ -101,4 +115,9 @@ public class EZ_bd_Controller {
 	
 	}
 
+	
+
+	
+	
+	
 }
