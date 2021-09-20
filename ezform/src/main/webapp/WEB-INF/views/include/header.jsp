@@ -24,26 +24,31 @@
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/list/main.css' />
 </head>
 
-	<!-- 로그인 세션 검사  -->
 	<script type="text/javascript">
-
-	var em_id = "${resultVO.em_id}";
-	var result = "${result}"; 
 	
-	if(result == -1) {
-		alert("이메일이 존재하지 않습니다. 회원가입 페이지로 이동합니다.");
-		location.href = "join";
-	} else if(result == 0) {
-		alert("패스워드가 틀립니다. 다시 입력해주세요.");
-		location.href = "login";
-	} else if(result == 1) {
-		//alert("로그인 성공");
-	} else {
-		
-	}
-			
-	</script>
+		// 세션 제어
+		var result = "${result}"; 
+		var resultVO = "${resultVO}";
+		var sessionID = "${resultVO.em_id}";
 
+		if(sessionID == "" && result == "") {
+			location.href ="login";
+		}
+		
+		// 로그인 처리
+		if (result == -2) {
+			alert("이메일이 존재하지 않습니다. 회원가입 페이지로 이동합니다.");
+			location.href = "join";
+		} else if (result == -1) {
+			alert("패스워드가 틀립니다. 다시 입력해주세요.");
+			location.href = "login";
+		} else if (result == 1) {
+		
+		} else {
+
+		}
+		
+	</script>
 
 
 <body class="  ">
@@ -411,7 +416,7 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="./update">회원정보</a></li>
+										href="./updateMember">회원정보</a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
 										href="./logout">로그아웃</a></li>

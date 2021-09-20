@@ -57,7 +57,7 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 		
 		System.out.println(" DAO : loginEmp() 실행");
 		
-		int result = -1;
+		int result = -2;
 		
 		// 아이디 존재여부 확인
 		EZ_empVO resultVO = sqlSession.selectOne(namespace + ".loginIncludeID", evo);
@@ -65,7 +65,7 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 		
 		// 이메일 유효성 검사
 		if(resultVO != null) {
-			result = 0;
+			result = -1;
 			resultVO = sqlSession.selectOne(namespace + ".loginEmp", evo);
 			// 패스워드 유효성 검사
 			if(resultVO != null) {

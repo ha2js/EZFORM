@@ -37,12 +37,6 @@ public class EZ_mem_Controller {
 	public String mainPageGET(HttpSession session) throws Exception {
 
 		System.out.println(" C : 메인페이지 이동(get)!");
-		
-		String em_id = (String)session.getAttribute("em_id");
-		
-		if(em_id == null) {
-			return "redirect:./login";
-		}
 
 		return "index";
 	}
@@ -86,19 +80,20 @@ public class EZ_mem_Controller {
 		EZ_empVO resultVO = (EZ_empVO) loginList.get(0);
 		int result = (int) loginList.get(1);
 
+		// result 결과 = (-2 : 이메일존재X) / (-1 : 패스워드 오류) / (0 : null) / (1 : 로그인 성공)
+		
 		System.out.println(" C : 결과 값(resultVO) = " + resultVO);
 		System.out.println(" C : 결과 값(result) = " + result);
 
-		model.addAttribute("result", result);
+		// 로그인 결과값
+		session.setAttribute("result", result);
 
 		if (resultVO != null) {
-
-			session.setAttribute("em_id", String.valueOf(resultVO.getEm_id()));
-			model.addAttribute("resultVO", resultVO);
-
+			// 회원정보 세션처리
+			session.setAttribute("resultVO", resultVO);
 		}
 
-		return "index";
+		return "redirect:./main";
 	}
 
 	// 회원가입 - 페이지 이동
@@ -157,6 +152,15 @@ public class EZ_mem_Controller {
 		return "redirect:./login";
 	}
 	
+	
+	// 회원정보 수정
+	@RequestMapping(value = "/updateMember", method = RequestMethod.GET)
+	public String mem_updateGET(HttpSession session) throws Exception {
+		
+		System.out.println(" C : mem_updateGET() 실행");
+		
+		return "/ez_mem/mem_update";
+	}
 	
 	
 
