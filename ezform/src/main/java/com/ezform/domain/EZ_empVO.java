@@ -11,7 +11,7 @@ public class EZ_empVO {
 	private String em_dept;
 	private String em_posi;
 	private Timestamp em_regdate;
-	private int em_extension;
+	private String em_extension;
 	private String em_image;
 	
 	
@@ -57,10 +57,10 @@ public class EZ_empVO {
 	public void setEm_regdate(Timestamp em_regdate) {
 		this.em_regdate = em_regdate;
 	}
-	public int getEm_extension() {
+	public String getEm_extension() {
 		return em_extension;
 	}
-	public void setEm_extension(int em_extension) {
+	public void setEm_extension(String em_extension) {
 		this.em_extension = em_extension;
 	}
 	public String getEm_image() {

@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/libs.min.css">
 <!-- Custom Css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/hope-ui.css?v=1.0.2">  
+<!-- jquery -->
+<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 <!-- Backend Bundle JavaScript -->
 <script src="${pageContext.request.contextPath }/resources/js/libs.min.js"></script>
 <!-- widgetchart JavaScript -->
@@ -27,8 +29,10 @@
 <script src="${pageContext.request.contextPath }/resources/js/form-wizard.js"></script>
 <!-- app JavaScript -->
 <script src="${pageContext.request.contextPath }/resources/js/app.js"></script>
+<!-- emp event -->
+<script src="${pageContext.request.contextPath }/resources/js/emp_event.js"></script>
 <script type="text/javascript">
-
+	
 	//파일 이벤트 처리
 	function fileCh(f) {
 	
@@ -44,7 +48,7 @@
 	
 	    }
 	}
-	
+
 </script>
 </head>
 <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
@@ -80,7 +84,7 @@
                            
 <!---------------------------------------------------------- form ----------------------------------------------------------------->
 
-                           <form action="./join" method="post">
+                           <form action="./join" method="post" enctype="multipart/form-data" onsubmit="return emp_join_avail();">
                               <div class="row">
                               	 <div class="col-lg-6">
                                     <div class="form-group">
@@ -91,29 +95,29 @@
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label class="form-label">이메일</label>
-                                       <input type="email" class="form-control" name="em_email" placeholder=" ">
+                                       <input type="email" class="form-control" id="emp_email" name="em_email">
                                     </div>    
                                     <div class="form-group">
                                        <label class="form-label">이름</label>
-                                       <input type="text" class="form-control" name="em_name" placeholder=" ">
+                                       <input type="text" class="form-control" id="emp_name" name="em_name">
                                     </div>    
                                  </div>                       
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label class="form-label">비밀번호</label>
-                                       <input type="password" class="form-control" name="em_pw" placeholder=" ">
+                                       <input type="password" class="form-control" id="emp_pw" name="em_pw" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label class="form-label">내선번호</label>
-                                       <input type="text" class="form-control" name="em_extension" placeholder=" ">
+                                       <label class="form-label">내선번호</label><br>
+                                       <input type="text" class="form-control" id="emp_exten" name="em_extension" maxlength="12" >
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label class="form-label">부서</label>
-                                       <select class="form-control" name="em_dept">
+                                       <select class="form-control" id="emp_dept"  name="em_dept" >
                                        	 <option>-부서-</option>
                                        	 <option>개발팀</option>
                                        	 <option>기술지원팀</option>
@@ -124,7 +128,7 @@
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label class="form-label">직급</label>
-                                       <select class="form-control" name="em_posi">
+                                       <select class="form-control" id="emp_posi" name="em_posi">
                                        	 <option>-직급-</option>
                                        	 <option>인턴</option>
                                        	 <option>사원</option>

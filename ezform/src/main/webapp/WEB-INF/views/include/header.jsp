@@ -24,6 +24,28 @@
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/list/main.css' />
 </head>
 
+	<!-- 로그인 세션 검사  -->
+	<script type="text/javascript">
+
+	var em_id = "${resultVO.em_id}";
+	var result = "${result}"; 
+	
+	if(result == -1) {
+		alert("이메일이 존재하지 않습니다. 회원가입 페이지로 이동합니다.");
+		location.href = "join";
+	} else if(result == 0) {
+		alert("패스워드가 틀립니다. 다시 입력해주세요.");
+		location.href = "login";
+	} else if(result == 1) {
+		//alert("로그인 성공");
+	} else {
+		
+	}
+			
+	</script>
+
+
+
 <body class="  ">
 	<!-- dark/light/auto mode -->
 	<!-- loader Start -->
@@ -376,21 +398,22 @@
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false"> <img
-									src="${pageContext.request.contextPath }/resources/images/avatars/01.png" alt="User-Profile"
+									src="${pageContext.request.contextPath }/resources/upload/emp_files/${resultVO.em_image}" alt="User-Profile"
 									class="img-fluid avatar avatar-50 avatar-rounded">
 									<div class="caption ms-3 d-none d-md-block ">
-										<h6 class="mb-0 caption-title">Austin Robertson</h6>
-										<p class="mb-0 caption-sub-title">Marketing Administrator</p>
+										<h6 class="mb-0 caption-title">${resultVO.em_name}</h6>
+										<p class="mb-0 caption-sub-title">${resultVO.em_email}</p>
 									</div>
 							</a>
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="../dashboard/app/user-profile.html">회원정보</a></li>
+										href="./update">회원정보</a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
-										href="../dashboard/auth/sign-in.html">로그아웃</a></li>
-								</ul></li>
+										href="./logout">로그아웃</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 				</div>

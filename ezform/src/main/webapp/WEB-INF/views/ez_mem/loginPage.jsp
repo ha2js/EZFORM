@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/libs.min.css"/>
 <!-- Custom Css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/hope-ui.css?v=1.0.2"/>
+<!-- jquery -->
+<script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Backend Bundle JavaScript -->
 <script src="${pageContext.request.contextPath }/resources/js/libs.min.js"></script>
 <!-- widgetchart JavaScript -->
@@ -28,8 +30,33 @@
 <!-- app JavaScript -->
 <script src="${pageContext.request.contextPath }/resources/js/app.js"></script>
 
-<!-- emp 스크립트 처리용 -->  
-<script src="${pageContext.request.contextPath }/resources/js/empScript.js"></script> 
+<script>
+	$(document).ready(function() {
+		$("#ezLoginBtn").click(function() {
+			var emp_email = $("#emp_email").val();
+			var emp_pw = $("#emp_pw").val();
+			
+			if(emp_email == "") {
+				alert("이메일을 입력해주세요");
+				
+				return false;
+			}
+			
+			if(emp_pw == "") {
+				alert("패스워드을 입력해주세요");
+				
+				return false;
+			}
+			
+			if(emp_email != "" && emp_pw != "") {
+				
+				return "/login";
+			}
+		});
+		
+	});
+</script>
+
 </head>
 <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
     <!-- loader Start -->
@@ -58,61 +85,39 @@
                               <!--logo End-->                              
                               <h4 class="logo-title ms-3">EZFORM</h4>
                            </a>
-                           <h2 class="mb-2 text-center">Sign In</h2>
+                           <h2 class="mb-2 text-center">LOGIN</h2>
                            <p class="text-center">Login to stay connected.</p>
                            
 <!-- -----------------------------------------------------로그인 form ---------------------------------------------------------- --> 
                          
-                           <form action="./login" method="post" onsubmit="return empLogin_validation();">
+                           <form action="./login" method="post">
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="text" class="form-label">Email</label><br>
-                                       <input type="email" class="form-control" id="em_id" name="em_id" aria-describedby="email" placeholder=""> 
+                                       <input type="email" class="form-control" id="emp_email" name="em_email" aria-describedby="email" placeholder=""> 
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" id="em_pw" name="em_pw" aria-describedby="password" placeholder=" ">
+                                       <input type="password" class="form-control" id="emp_pw" name="em_pw" aria-describedby="password" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-12 d-flex justify-content-between">
-                                    <div class="form-check mb-3">
-                                       <input type="checkbox" class="form-check-input" id="customCheck1">
-                                       <label class="form-check-label" for="customCheck1">Remember Me</label>
-                                    </div>
-                                    <a href="recoverpw.html">Forgot Password?</a>
+
                                  </div>
                               </div>
                               <div class="d-flex justify-content-center">
                                  <button type="submit" class="btn btn-primary" id="ezLoginBtn">로그인</button>
                               </div>
-                              <p class="text-center my-3">or sign in with other accounts?</p>
-                              <div class="d-flex justify-content-center">
-                                 <ul class="list-group list-group-horizontal list-group-flush">
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/fb.svg" alt="fb"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/gm.svg" alt="gm"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/im.svg" alt="im"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="${pageContext.request.contextPath }/resources/images/brands/li.svg" alt="li"></a>
-                                    </li>
-                                 </ul>
-                              </div>
                               <p class="mt-3 text-center">
                                  Don’t have an account? <a href="./join" class="text-underline">Click here to sign up.</a>
                               </p>
                            </form>
-                           
+
 <!-- -----------------------------------------------------로그인 form ---------------------------------------------------------- --> 
-                           
-                           
+
                         </div>
                      </div>
                   </div>

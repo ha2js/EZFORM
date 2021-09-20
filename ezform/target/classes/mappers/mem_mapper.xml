@@ -3,24 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ezform.mapper.mem_Mapper">
+<mapper namespace="com.testform.mapper.mem_Mapper">
 
+	<!-- 직원아이디 생성 -->
+	<select id="count" resultType="int">
+		select count(*)+1
+		from ez_em
+	</select>
+	
+	<!-- 로그인 : ID 존재여부 -->
+	<select id ="loginIncludeID" resultType="EZ_empVO">
+		select * from ez_em
+		where em_email = #{em_email}
+	</select>
+	
+	<!-- 로그인 확인 -->
+	<select id ="loginEmp" resultType="EZ_empVO">
+		select * from ez_em
+		where em_email = #{em_email} and em_pw = #{em_pw}
+	</select>
+	
 	<!-- 회원가입 --> 
-	<insert id="joinMem">
+	<insert id="joinEmp">
 		insert into ez_em (em_id,em_email,em_pw,em_name,em_dept,em_posi,em_regdate,em_extension,em_image) 
 		values (#{em_id},#{em_email},#{em_pw},#{em_name},#{em_dept},#{em_posi},now(),#{em_extension},#{em_image})
 	</insert>
-	
-	<!-- 수정 --> 
-	<update id="updateEmp">
-		update 테이블명 set pass=#{pass},dept=#{dept},rank={rank},phone=#{phone} 
-		where id=#{id} 
-	</update>
-	
-	<!-- 삭제 -->
-	<delete id="deleteEmp">
-		delete from 테이블명 
-		where id=#{id} and name=#{name}
-	</delete>
-	
+
 </mapper>
