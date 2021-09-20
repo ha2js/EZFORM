@@ -5,5 +5,39 @@
 
 <mapper namespace="com.ezform.mapper.bd_Mapper">
 
+	<!-- 게시판 글쓰기 -->
+	<insert id="create">
+		insert into ez_cm(cm_title,cm_content,cm_name) 
+		values(#{cm_title},#{cm_content},#{cm_name})
+	
+	</insert>
 
-</mapper>
+	<!-- 게시판 글조회(특정글) -->
+	<select id="read" resultType="EZ_boardVO">
+		select 
+		* 
+		from 
+		ez_cm 
+		where cm_bnum = #{cm_bnum}
+	</select>
+
+	<!-- 게시판 글수정(특정글) -->
+	<update id="update">
+		update ez_cm set cm_title = #{cm_title}, cm_content = #{cm_content} 
+		where cm_bnum = #{cm_bnum)
+	</update>
+
+	<!-- 게시판 글수정(글제목,이름,내용) -->
+	<update id="modify">
+		update ez_cm set cm_title=#{cm_title}, cm_name=#{cm_name}, cm_content=#{cm_content} 
+		where cm_bnum = #{cm_bnum} 
+	</update>
+
+	<!-- 게시판 글삭제 -->
+	<delete id="delete">
+		delete from ez_cm 
+		where cm_bnum = #{cm_bnum}
+	</delete>
+
+ 
+ </mapper>

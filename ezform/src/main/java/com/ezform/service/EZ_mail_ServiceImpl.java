@@ -16,15 +16,13 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 
 	private static final Logger logger = LoggerFactory.getLogger(EZ_mail_Service.class);
 	
-	@Inject
-	private EZ_mailDAO mdao;
 	
 	@Override
 	public List<EZ_mailVO> mailList() throws Exception {
 		
 		logger.info("Service : mailList 호출");
 		
-		return mdao.mailList();
+		return null;
 	}
 
 }

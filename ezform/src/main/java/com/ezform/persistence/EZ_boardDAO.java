@@ -23,4 +23,12 @@ public interface EZ_boardDAO {
 	
 	//게시판 글 수정
 	public void modify(EZ_boardVO vo) throws Exception;
+	
+	//게시판 글목록(페이징 처리) - 득정페이지에 해당하는 글 10개씩
+	//public List<EZ_boardVO> listPage(int page) throws Exception;
+	
+	//게시판 글목록(페이징 처리) - 특정페이지에 해당하는 글 원하는 만큼씩  
+	//public List<EZ_boardVO> listCri(Criteria cri) throws Exception;
+
+
 }

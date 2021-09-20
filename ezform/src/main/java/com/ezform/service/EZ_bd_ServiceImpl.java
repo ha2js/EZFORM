@@ -50,6 +50,11 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	public void remove(Integer cm_bnum) throws Exception {
 		bdao.delete(cm_bnum);
 	}
-	
+
+
+	/*
+	 * @Override public List<EZ_boardVO> listCri(Criteria cri) throws Exception { //
+	 * TODO Auto-generated method stub return null; }
+	 */
 	
 }

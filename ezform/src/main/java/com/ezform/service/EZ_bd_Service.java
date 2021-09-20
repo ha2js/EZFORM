@@ -20,4 +20,8 @@ public interface EZ_bd_Service {
 	
 	//글 정보 삭제
 	public void remove(Integer cm_bnum) throws  Exception;
+	
+	//글 목록조회(Cri)
+	//public List<EZ_boardVO> listCri(Criteria cri) throws Exception;
+	
 }
