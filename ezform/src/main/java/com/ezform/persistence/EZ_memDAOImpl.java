@@ -29,7 +29,7 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 		System.out.println(" DAO : 직원 ID 생성하기");
 		
 		// 임시 ID 만들기
-		int result = sqlSession.selectOne(namespace + ".count");
+		int result = sqlSession.selectOne(namespace + ".mem_count");
 				
 		System.out.println(" DAO : 직원ID 생성 결과 : " + result);
 		

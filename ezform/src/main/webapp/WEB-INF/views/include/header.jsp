@@ -394,6 +394,9 @@
 										</div>
 									</div>
 								</div></li>
+								
+	<!------------------------------------ 로그인/로그아웃/회원정보 조회 영역 ------------------------------------------>	
+	
 							<li class="nav-item dropdown"><a
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -414,6 +417,8 @@
 										href="./logout">로그아웃</a></li>
 								</ul>
 							</li>
+							
+	<!------------------------------------ 로그인/로그아웃/회원정보 조회 영역 ------------------------------------------>						
 						</ul>
 					</div>
 				</div>

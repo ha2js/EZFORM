@@ -6,8 +6,8 @@
 <mapper namespace="com.testform.mapper.mem_Mapper">
 
 	<!-- 직원아이디 생성 -->
-	<select id="count" resultType="int">
-		select count(*)+1
+	<select id="mem_count" resultType="int">
+		select count(*)
 		from ez_em
 	</select>
 	
