@@ -15,6 +15,7 @@
 * HTML
 * CSS
 * jQuery
+* JSTL
 * Bootstrap5.0
 * MySQL
     
