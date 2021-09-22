@@ -5,5 +5,12 @@
 
 <mapper namespace="com.ezform.mapper.mail_Mapper">
 
-
+	<!-- 수신 메일 -->
+	<select id="rec_mailList" resultType="EZ_mailVO">
+		select * from ez_mail
+		where mail_id = #{mail_id}
+		order by mail_num desc, mail_regdate desc
+		limit #{pageStart}, #{pageSize}
+	</select>
+	
 </mapper>

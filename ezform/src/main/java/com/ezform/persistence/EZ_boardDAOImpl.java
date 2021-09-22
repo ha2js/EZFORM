@@ -89,20 +89,17 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	
 	
 	}
-
-	@Override
-	public List<EZ_boardVO> listPage(int page) throws Exception {
-		logger.info("listPage(int page) 호출!");
-		
-		// page 정보가 음수가 들어왔을경우 항상 1페이지
-		if(page <= 0) {
-			page = 1;
-		}
-		
-		page = (page - 1) * 10;
-		// mapper 동작호출
-		
-		return sqlSession.selectList(namespace+".listPage",page);
-	}
-
+	
+	/*
+	 * // DAO에서 listPage 주석 하셨길래 주석 해놓겠습니다
+	 * 
+	 * @Override public List<EZ_boardVO> listPage(int page) throws Exception {
+	 * logger.info("listPage(int page) 호출!");
+	 * 
+	 * // page 정보가 음수가 들어왔을경우 항상 1페이지 if(page <= 0) { page = 1; }
+	 * 
+	 * page = (page - 1) * 10; // mapper 동작호출
+	 * 
+	 * return sqlSession.selectList(namespace+".listPage",page); }
+	 */
 }

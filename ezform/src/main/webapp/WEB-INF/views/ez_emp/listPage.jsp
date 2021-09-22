@@ -70,8 +70,7 @@
 							      <td>내선번호</td>
 							   </tr>
 							   
-							   <c:forEach items="${ }">
-							   </c:forEach>
+							   
 							</table>
 
 
