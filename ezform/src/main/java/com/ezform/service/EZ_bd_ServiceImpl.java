@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.persistence.EZ_boardDAO;
+import com.ezform.test.testController;
 
 @Service
 public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 
 	private static final Logger logger = 
-			LoggerFactory.getLogger(EZ_bd_Service.class);
+			LoggerFactory.getLogger(testController.class);
 	
 	
 	@Inject
@@ -24,6 +25,8 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	
 	@Override
 	public void regist(EZ_boardVO vo) throws Exception {
+		
+		logger.info("boardService : regist() 호출");
 		bdao.create(vo);
 	}
 

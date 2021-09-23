@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.test.testController;
 
 @Repository
 public class EZ_boardDAOImpl implements EZ_boardDAO {
@@ -16,9 +17,9 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private static final Logger logger = LoggerFactory.getLogger(EZ_boardDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 	
-	private static final String namespace = "com.ezform.mapper.bd_mapper";
+	private static final String namespace = "com.ezform.mapper.bd_Mapper";
 	
 	@Override
 	public void create(EZ_boardVO vo) throws Exception {
@@ -31,9 +32,9 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		if (tmp != null) result = Integer.parseInt(tmp);
 		vo.setCm_bnum(++result);
 		
-		logger.info(" 생성 구문 : " +result+"개");
+		logger.info("작성하려는 게시글 정보 : "+vo);
 		
-		sqlSession.insert(namespace + ".boardnumCnt",vo);
+		sqlSession.insert(namespace + ".create",vo);
 	}
 	
 	@Override

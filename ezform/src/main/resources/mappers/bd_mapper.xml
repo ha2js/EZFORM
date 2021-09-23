@@ -12,8 +12,8 @@
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-		insert into ez_cm(cm_bnum,cm_id,cm_title,cm_content,cm_name) 
-		values(#{cm_bnum},#{cm_id},#{cm_title},#{cm_content},#{cm_name})
+		insert into ez_cm(cm_bnum,cm_title,cm_content) 
+		values(#{cm_bnum},#{cm_title},#{cm_content})
 	</insert>
 
 	<!-- 게시판 글조회(특정글) -->

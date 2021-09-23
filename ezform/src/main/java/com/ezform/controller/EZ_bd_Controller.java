@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.service.EZ_bd_Service;
+import com.ezform.test.testController;
 
 @Controller
 @RequestMapping("/board/*")
@@ -25,11 +26,11 @@ public class EZ_bd_Controller {
 	private EZ_bd_Service service;
 	
 	private static final Logger logger = 
-			LoggerFactory.getLogger(EZ_bd_Controller.class);
+			LoggerFactory.getLogger(testController.class);
 	
 	// * 글쓰기 *
-	// http://localhost:8088/main
-	// http://localhost:8088/board/register
+	
+	// http://localhost:8088/test/board/register
 	// 글쓰기 (GET)
 	@RequestMapping(value ="/register", method= RequestMethod.GET)
 	public void registerGET() throws Exception{
@@ -38,7 +39,7 @@ public class EZ_bd_Controller {
 	
 	// 글쓰기 (POST)
 	@RequestMapping(value= "/register", method = RequestMethod.POST)
-	public void registerPOST(EZ_boardVO vo, Model model, HttpServletResponse response) throws Exception {
+	public void registerPOST(EZ_boardVO vo) throws Exception {
 		logger.info("registerPOST() 호출");
 		logger.info(vo+"");
 		// 테스트
