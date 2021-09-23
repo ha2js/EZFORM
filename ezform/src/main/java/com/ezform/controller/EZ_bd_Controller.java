@@ -1,6 +1,5 @@
 package com.ezform.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import javax.inject.Inject;
 
@@ -28,6 +27,8 @@ public class EZ_bd_Controller {
 			LoggerFactory.getLogger(EZ_bd_Controller.class);
 	
 	// * 글쓰기 *
+	// http://localhost:8088/main
+	// http://localhost:8088/test/main
 	// http://localhost:8088/board/register
 	// 글쓰기 (GET)
 	@RequestMapping(value ="/register", method= RequestMethod.GET)
@@ -39,12 +40,19 @@ public class EZ_bd_Controller {
 	@RequestMapping(value= "/register", method = RequestMethod.POST)
 	public String registerPOST(EZ_boardVO vo,RedirectAttributes rttr) throws Exception {
 		logger.info("registerPOST() 호출");
-	
+		vo.setCm_bnum(4);
+//		vo.setCm_id(1234);
+		logger.info(""+vo);
+		
+		
+
+		
+		
 	// 서비스 객체를 주입 -> 동작 호출
 	service.regist(vo);
 	
 	// 정보 저장 -> 전달
-	rttr.addFlashAttribute("","");
+	rttr.addFlashAttribute("result","success");
 	
 	// 페이지 이동
 	return "redirect:/board/listAll";
@@ -55,7 +63,7 @@ public class EZ_bd_Controller {
 	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
 	public void listAllGET(Model model,@ModelAttribute("result") String result)throws Exception{
 		logger.info("listGET() 호출");
-
+		logger.info(" 페이지 처리 결과 : "+result);
 	// DB정보 -> view페이지	
 	model.addAttribute("boardList", service.listALL());
 	

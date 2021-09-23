@@ -4,12 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezform.mapper.bd_Mapper">
+	
+	<!-- db 최대값  -->
+	<select id="boardnumCnt" resultType="int">
+	select max(cm_bnum) from ez_cm
+	</select>
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-		insert into ez_cm(cm_title,cm_content,cm_name) 
-		values(#{cm_title},#{cm_content},#{cm_name})
-	
+		insert into ez_cm(cm_bnum,cm_id,cm_title,cm_content,cm_name) 
+		values(#{cm_bnum},#{cm_id},#{cm_title},#{cm_content},#{cm_name})
 	</insert>
 
 	<!-- 게시판 글조회(특정글) -->
@@ -39,5 +43,16 @@
 		where cm_bnum = #{cm_bnum}
 	</delete>
 
+	<!-- 게시판 글 전체 목록 -->
+	<select id="listALL" resultType="EZ_boardVO">
+	<![CDATA[
+	select 
+	* 
+	from 
+	ez_cm 
+	where cm_bnum > 0 
+	order by cm_bnum desc, cm_regdate desc 
+	]]>
+	</select>
  
  </mapper>

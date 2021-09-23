@@ -1,34 +1,131 @@
-package com.ezform.persistence;
+package com.ezform.controller;
 
-import java.util.List;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.service.EZ_bd_Service;
 
-public interface EZ_boardDAO {
+@Controller
+@RequestMapping("/board/*")
+public class EZ_bd_Controller {
 	
-	//게시판 글쓰기
-	public void create(EZ_boardVO vo) throws Exception;
+	@Inject
+	private EZ_bd_Service service;
 	
-	//게시판 특정글 조회
-	public EZ_boardVO read(int cm_bnum) throws Exception;
+	private static final Logger logger = 
+			LoggerFactory.getLogger(EZ_bd_Controller.class);
 	
-	//게시판 특정글 업데이트
-	public void update(EZ_boardVO vo) throws Exception;
+	// * 글쓰기 *
+	// http://localhost:8088/main
+	// http://localhost:8088/test/main
+	// http://localhost:8088/board/register
+	// 글쓰기 (GET)
+	@RequestMapping(value ="/register", method= RequestMethod.GET)
+	public void registerGET() throws Exception{
+		logger.info("registerGET() 호출"); 
+	}
+	
+	// 글쓰기 (POST)
+	@RequestMapping(value= "/register", method = RequestMethod.POST)
+	public String registerPOST(EZ_boardVO vo,RedirectAttributes rttr) throws Exception {
+		logger.info("registerPOST() 호출");
+		vo.setCm_bnum(4);
+//		vo.setCm_id(1234);
+		logger.info(""+vo);
+		
+		
 
-	//게시판 특정글 삭제
-	public void delete(int cm_bnum) throws Exception;
+		
+		
+	// 서비스 객체를 주입 -> 동작 호출
+	service.regist(vo);
 	
-	//게시판 글전체 목록
-	public List<EZ_boardVO> listALL() throws Exception;
+	// 정보 저장 -> 전달
+	rttr.addFlashAttribute("result","success");
 	
-	//게시판 글 수정
-	public void modify(EZ_boardVO vo) throws Exception;
+	// 페이지 이동
+	return "redirect:/board/listAll";
+	}
 	
-	//게시판 글목록(페이징 처리) - 득정페이지에 해당하는 글 10개씩
-	//public List<EZ_boardVO> listPage(int page) throws Exception;
+	// http://localhost:8088/board/listAll
+	// * 글 전체 조회* 
+	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
+	public void listAllGET(Model model,@ModelAttribute("result") String result)throws Exception{
+		logger.info("listGET() 호출");
+		logger.info(" 페이지 처리 결과 : "+result);
+	// DB정보 -> view페이지	
+	model.addAttribute("boardList", service.listALL());
 	
-	//게시판 글목록(페이징 처리) - 특정페이지에 해당하는 글 원하는 만큼씩  
-	//public List<EZ_boardVO> listCri(Criteria cri) throws Exception;
+	}
+	
+	//http://localhost:8088/board/read
+	// * 글읽기(read) *
+	@RequestMapping(value ="/read",method = RequestMethod.GET)
+	public void readGET(@RequestParam("cm_bnum")int cm_bnum,Model model) throws Exception{
+		logger.info("readGET() 호출");
+	
+		// 전달된 정보저장
+		logger.info(" 전달된 정보(cm_bum) : "+cm_bnum);
+	
+	// 서비스 객체
+	EZ_boardVO vo = service.read(cm_bnum);
+	
+	// DB정보 -> 저장
+	model.addAttribute("vo", vo);
+	}
+	
+	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
+	@RequestMapping(value="/modify", method= {RequestMethod.GET})
+	public void modifyGET(int cm_bnum, Model model) throws Exception {
+		logger.info("modifyGET() 호출");
+		logger.info("수정할 글 번호 : "+cm_bnum);
+		
+		model.addAttribute("vo", service.read(cm_bnum));
+		
+	}
+	
+	
+	
+	// * 글수정 POST (modify) *
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modifyPOST(EZ_boardVO vo) throws Exception{
+		logger.info("modifyPOST(EZ_boardVO vo) 호출");
+	
+	// 서비스
+	service.modify(vo);
 
+	// 페이지 이동
+	return "redirect:/listAll";
+		
+	}
 
+	// * 글삭제 (remove) *
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String removePOST(Integer cm_bnum) throws Exception{
+		logger.info("removePOST(Integer cm_bnum) 호출");
+		
+	// 서비스
+	service.remove(cm_bnum);
+
+	// 페이지 이동
+	return "redirect:/listAll";
+	
+	}
+
+	
+
+	
+	
+	
 }

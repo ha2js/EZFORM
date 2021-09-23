@@ -26,7 +26,8 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info(" create(EZ_boardVO vo) 호출 ");
 		logger.info(" mapper 이동 후 해당 SQL 구문을 실행! ");
 		
-		int result = sqlSession.insert(namespace+".create",vo);
+		int result = sqlSession.insert(namespace+".boardnumCnt");
+		vo.setCm_bnum(++result);
 		
 		logger.info(" 생성 구문 : " +result+"개");
 		
@@ -74,7 +75,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		System.out.println(" DAP : mapper-sql구문 실행완료! 서비스로 정보 전달!!");
 		
-		return sqlSession.selectList(namespace+".listALL");
+		return sqlSession.selectList(namespace+".listAll");
 	}
 
 
@@ -88,18 +89,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	
 	
 	
-	}
 	
-	/*
-	 * // DAO에서 listPage 주석 하셨길래 주석 해놓겠습니다
-	 * 
-	 * @Override public List<EZ_boardVO> listPage(int page) throws Exception {
-	 * logger.info("listPage(int page) 호출!");
-	 * 
-	 * // page 정보가 음수가 들어왔을경우 항상 1페이지 if(page <= 0) { page = 1; }
-	 * 
-	 * page = (page - 1) * 10; // mapper 동작호출
-	 * 
-	 * return sqlSession.selectList(namespace+".listPage",page); }
-	 */
+
 }
+	}
