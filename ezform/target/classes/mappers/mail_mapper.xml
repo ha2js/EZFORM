@@ -20,7 +20,7 @@
 	</select>
 	
 	<!-- 현재 db에 있는 mail_num 최대 값 -->
-	<select id="mailnumCnt" resultType="int">
+	<select id="mailnumCnt" resultType="String">
 		select max(mail_num) from ez_mail
 	</select>
 	
@@ -32,7 +32,7 @@
 	
 	<select id="mailWrite">
 		insert into ez_mail
-		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file})
+		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file}, '0')
 	</select>
 
 </mapper>

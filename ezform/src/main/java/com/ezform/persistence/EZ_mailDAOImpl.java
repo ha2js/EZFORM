@@ -58,8 +58,11 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		logger.info("mailDAO : mailWrite() 호출");
 		
 		// db에 있는 제일 마지막에 쓴 mail_num 불러오기
-		int tmp = sqlSession.selectOne(namespace + ".mailnumCnt");
-		vo.setMail_num(++tmp);
+		String tmp = sqlSession.selectOne(namespace + ".mailnumCnt");
+		int num = 0;
+		if (tmp != null) num = Integer.parseInt(tmp);
+		
+		vo.setMail_num(++num);
 		
 		logger.info("mailDAO : 메일 정보 : "+vo);
 		
