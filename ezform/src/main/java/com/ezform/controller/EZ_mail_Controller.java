@@ -57,8 +57,10 @@ public class EZ_mail_Controller {
 	}
 	
 	@RequestMapping(value="/emp_select", method = RequestMethod.GET)
-	public void emp_selectGET() throws Exception {
+	public void emp_selectGET(Model model) throws Exception {
 		logger.info("emp_selectGET() 호출");
+		
+		model.addAttribute("empList",service.empSelect());
 	}
 	
 	@RequestMapping(value="/writeMail", method = RequestMethod.GET)

@@ -2,6 +2,7 @@ package com.ezform.service;
 
 import java.util.List;
 
+import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
 
@@ -18,5 +19,8 @@ public interface EZ_mail_Service {
 		
 	// 메일 쓰기
 	public void mailWrite(EZ_mailVO vo) throws Exception;
+	
+	// 직원 정보 조회 (메일 쓰기)
+	public List<EZ_empVO> empSelect() throws Exception;
 
 }

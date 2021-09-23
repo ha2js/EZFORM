@@ -41,7 +41,7 @@
 		<c:choose>
 			<c:when test="${mailList == null or fn:length(mailList) == 0 }">
 				<tr>
-					<th colspan="4">수신된 메일이 없습니다.</th>
+					<td colspan="4">수신된 메일이 없습니다.</td>
 				</tr>
 			</c:when>
 			
