@@ -9,4 +9,7 @@ public interface EZ_mail_Service {
 
 	// 메일 목록 조회
 	public List<EZ_mailVO> mailList(EZ_mailCri cri) throws Exception;
+	
+	// 수신 메일 개수
+	public int recMailCnt(String mail_id) throws Exception;
 }

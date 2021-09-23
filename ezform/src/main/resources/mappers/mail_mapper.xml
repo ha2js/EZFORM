@@ -13,4 +13,8 @@
 		limit #{pageStart}, #{pageSize}
 	</select>
 	
+	<select id="rec_mailCnt" resultType="int">
+		select count(*) from ez_mail
+		where mail_id = #{mail_id}
+	</select>
 </mapper>

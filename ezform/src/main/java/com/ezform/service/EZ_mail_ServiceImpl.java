@@ -24,9 +24,17 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 	@Override
 	public List<EZ_mailVO> mailList(EZ_mailCri cri) throws Exception {
 		
-		logger.info("mailService : mailList 호출");
+		logger.info("mailService : mailList() 호출");
 		
 		return mdao.mailList(cri);
+	}
+
+	@Override
+	public int recMailCnt(String mail_id) throws Exception {
+		
+		logger.info("mailService : recMailCnt() 호출");
+		
+		return mdao.recMailCnt(mail_id);
 	}
 
 }

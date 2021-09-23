@@ -32,15 +32,17 @@ public class EZ_mail_Controller {
 		logger.info("read_RecMailGET() 호출");
 		
 		// 임시로 -> 세션 값 불러와서 테스트 (EZ_empVO resultVO)
-		cri.setMail_id("test@ezform.com");
+		String mail_id = "test@ezform.com";
+		cri.setMail_id(mail_id);
 		
-		// service -> dao
-		
+		// 수신 메일 list
 		model.addAttribute("mailList",service.mailList(cri));
+		
+		int mail_cnt = service.recMailCnt(mail_id);		
 		
 		EZ_mail_pageMarker mpm = new EZ_mail_pageMarker();
 		mpm.setCri(cri);
-		mpm.setTotalCount(3); // 임시로 3 -> db 접근 -> count(*)
+		mpm.setTotalCount(mail_cnt);
 		
 		model.addAttribute("mpm",mpm);
 		

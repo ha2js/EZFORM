@@ -31,4 +31,15 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		return mailList;
 	}
 
+	@Override
+	public int recMailCnt(String mail_id) throws Exception {
+		
+		logger.info("mailDAO : recMailCnt() 호출");
+		
+		int tmp = sqlSession.selectOne(namespace + ".rec_mailCnt",mail_id);
+		logger.info("mailDAO : select mailCnt : "+tmp);
+		return tmp;
+		
+	}
+
 }
