@@ -12,19 +12,17 @@
 			
 		<div>	
 			<label> 제목 </label>
-			<input type="text" name="title" placeholder="제목을 입력하세요">
-		</div>
-		
-		
-		<div>
-			<label>글쓴이</label>
-			<input type="text" name="name" placeholder="글쓴이를 입력하세요">
+			<input type="text" name="cm_title" placeholder="제목을 입력하세요">
 		</div>
 		
 		<div>
 			<label>내용</label>
-			<textarea name="content" rows="3" placeholder="내용을 입력하세요"></textarea>
+			<textarea name="cm_content" rows="3" placeholder="내용을 입력하세요"></textarea>
 		</div>		
+
+		<div>
+			<input type="file" name="cm_file">
+		</div>
 
 		<div>
 			<button type="submit">글쓰기</button>

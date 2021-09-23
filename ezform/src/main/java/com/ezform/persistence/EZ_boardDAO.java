@@ -27,6 +27,7 @@ public interface EZ_boardDAO {
 	// 게시판 글 목록(페이징처리) - 특정페이지의 해당하는 글 10개씩
 	public List<EZ_boardVO> listPage(int Page) throws Exception;
 	
+	
 	// 게시판 글 목록(페이징처리) - 특정페이지의 해당하는 글 원하는 만큼씩
 	//public List<EZ_boardVO> listCri(Criteria cri) throws Exception;
 }

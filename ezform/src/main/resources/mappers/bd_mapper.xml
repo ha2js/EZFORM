@@ -6,7 +6,7 @@
 <mapper namespace="com.ezform.mapper.bd_Mapper">
 	
 	<!-- db 최대값  -->
-	<select id="boardnumCnt" resultType="int">
+	<select id="boardnumCnt" resultType="String">
 	select max(cm_bnum) from ez_cm
 	</select>
 

@@ -26,7 +26,9 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info(" create(EZ_boardVO vo) 호출 ");
 		logger.info(" mapper 이동 후 해당 SQL 구문을 실행! ");
 		
-		int result = sqlSession.selectOne(namespace+".boardnumCnt");
+		String tmp = sqlSession.selectOne(namespace+".boardnumCnt");
+		int result= 0;
+		if (tmp != null) result = Integer.parseInt(tmp);
 		vo.setCm_bnum(++result);
 		
 		logger.info(" 생성 구문 : " +result+"개");
