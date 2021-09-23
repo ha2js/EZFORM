@@ -12,4 +12,12 @@ public interface EZ_mailDAO {
 	
 	// 수신 메일 개수
 	public int recMailCnt(String mail_id) throws Exception;
+	
+	// 메일 쓰기 - 해당 이메일 주소가 존재하는지 체크
+	public boolean sendEmailCk(String em_email) throws Exception;
+	
+	// 메일 쓰기
+	public void mailWrite(EZ_mailVO vo) throws Exception;
+	
+	
 }

@@ -36,5 +36,21 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		
 		return mdao.recMailCnt(mail_id);
 	}
+	
+	@Override
+	public boolean sendEmailCk(String em_email) throws Exception {
+		
+		logger.info("mailService : 해당 메일 주소가 있는지 확인");
+		
+		return mdao.sendEmailCk(em_email);
+	}
+
+	@Override
+	public void mailWrite(EZ_mailVO vo) throws Exception {
+		
+		logger.info("mailService : mailWrite() 호출");
+		
+		mdao.mailWrite(vo);
+	}
 
 }

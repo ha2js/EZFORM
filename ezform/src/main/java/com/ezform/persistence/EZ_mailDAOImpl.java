@@ -41,5 +41,32 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		return tmp;
 		
 	}
+	
+	@Override
+	public boolean sendEmailCk(String em_email) throws Exception {
+		
+		// 해당 메일 주소가 있는지 체크
+		boolean check = sqlSession.selectOne(namespace + ".emailCk", em_email);
+		logger.info("mailDAO : sendEmailCk 반환 값 : "+check);
+		
+		return check;
+	}
+
+	@Override
+	public void mailWrite(EZ_mailVO vo) throws Exception {
+		
+		logger.info("mailDAO : mailWrite() 호출");
+		
+		// db에 있는 제일 마지막에 쓴 mail_num 불러오기
+		int tmp = sqlSession.selectOne(namespace + ".mailnumCnt");
+		vo.setMail_num(++tmp);
+		
+		logger.info("mailDAO : 메일 정보 : "+vo);
+		
+		sqlSession.insert(namespace + ".mailWrite",vo);
+		
+	}
+
+	
 
 }

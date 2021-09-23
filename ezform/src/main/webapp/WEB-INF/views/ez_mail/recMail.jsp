@@ -22,7 +22,7 @@
 	<!-- 수신 메일 -->
 	<!-- 임시로 해놓은 거라 디자인은 마음대로 수정하셔도 됩니다 -->
 	<div>
-		<button type="submit" class="">메일쓰기</button>
+		<button type="submit" class="" onclick="location.href='/test/ez_mail/writeMail'">메일쓰기</button>
 	</div>
 	<div>
 		<button type="submit" class="">읽음</button>
@@ -48,7 +48,7 @@
 			<c:otherwise>
 				<c:forEach var="mail" items="${mailList }">
 					<tr>
-						<td><input type="checkbox"/></td>
+						<td><input type="checkbox" value="${mail.mail_num }"/></td>
 						<td>${mail.mail_email }</td>
 						<td><a href="#">${mail.mail_title }</a></td>
 						<td>${mail_regdate }</td>
@@ -58,7 +58,7 @@
 		</c:choose>
 		</table>
 		<hr>
-		
+
 		<!-- 페이징 처리 -->
 		<c:if test="${fn:length(mailList) > 0}">
 			<div>
