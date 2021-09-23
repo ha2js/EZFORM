@@ -15,7 +15,8 @@
 		var y = event.screenY;
 		var url = "/test/ez_mail/emp_select"
 		
-		window.open(url,"_blank","width=400, height=300,left="+x+",top="+y);
+		// width/height 값 디자인 하시다가 원하시는 값으로 변경하셔도 됩니다 
+		window.open(url,"_blank","width=1020, height=500,left="+x+",top="+y);
 	}
 	function writeCk() {
 		if (document.writeMail_fr.mail_id.value == "") {

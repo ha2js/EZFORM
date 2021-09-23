@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
 import com.ezform.test.testController;
@@ -68,6 +69,18 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		
 		sqlSession.insert(namespace + ".mailWrite",vo);
 		
+	}
+
+	@Override
+	public List<EZ_empVO> empSelect() throws Exception {
+		
+		logger.info("mailDAO : empSelect() 호출");
+		
+		// 직원 정보 가져오기 (부서명, 직급, 이름, 메일주소)
+		
+		List<EZ_empVO> empList = sqlSession.selectList(namespace+".empSelect");
+		logger.info("mailDAO : select empList : "+empList);
+		return empList;
 	}
 
 	

@@ -34,5 +34,11 @@
 		insert into ez_mail
 		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file}, '0')
 	</select>
+	
+	<select id="empSelect" resultType="EZ_empVO">
+		select em_email, em_name, em_dept, em_posi
+		from ez_em
+		order by em_dept asc, em_posi asc, em_name asc, em_email asc
+	</select>
 
 </mapper>
