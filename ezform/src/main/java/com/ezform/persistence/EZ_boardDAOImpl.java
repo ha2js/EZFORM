@@ -26,11 +26,12 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info(" create(EZ_boardVO vo) 호출 ");
 		logger.info(" mapper 이동 후 해당 SQL 구문을 실행! ");
 		
-		int result = sqlSession.insert(namespace+".boardnumCnt");
+		int result = sqlSession.selectOne(namespace+".boardnumCnt");
 		vo.setCm_bnum(++result);
 		
 		logger.info(" 생성 구문 : " +result+"개");
 		
+		sqlSession.insert(namespace + ".boardnumCnt",vo);
 	}
 	
 	@Override
@@ -57,7 +58,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	}
 
 	@Override
-	public void delete(int cm_bnum) throws Exception {
+	public void delete(Integer cm_bnum) throws Exception {
 		
 		logger.info(" delete - mapper이동 후 해당 sql구문 실행  ");
 		
@@ -86,10 +87,20 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		sqlSession.update(namespace+"+modify",vo);
 	
 		logger.info("정보수정 완료");
-	
-	
-	
-	
-
-}
 	}
+
+	@Override
+	public List<EZ_boardVO> listPage(int page) throws Exception {
+		logger.info(" listPage(int page) 호출! ");
+		
+		// page 정보가 음수가 들어왔을경우 항상 1페이지
+		if(page <=0 ) {
+			page = 1;
+		}
+		page = (page - 1) * 10;
+		
+		
+		return sqlSession.selectList(namespace+".listPage",page);
+	}
+	
+}

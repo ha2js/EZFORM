@@ -2,6 +2,7 @@ package com.ezform.controller;
 
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,6 @@ public class EZ_bd_Controller {
 	
 	// * 글쓰기 *
 	// http://localhost:8088/main
-	// http://localhost:8088/test/main
 	// http://localhost:8088/board/register
 	// 글쓰기 (GET)
 	@RequestMapping(value ="/register", method= RequestMethod.GET)
@@ -38,24 +38,22 @@ public class EZ_bd_Controller {
 	
 	// 글쓰기 (POST)
 	@RequestMapping(value= "/register", method = RequestMethod.POST)
-	public String registerPOST(EZ_boardVO vo,RedirectAttributes rttr) throws Exception {
+	public void registerPOST(EZ_boardVO vo, Model model, HttpServletResponse response) throws Exception {
 		logger.info("registerPOST() 호출");
-		vo.setCm_bnum(4);
-//		vo.setCm_id(1234);
-		logger.info(""+vo);
-		
-		
-
-		
+		logger.info(vo+"");
+		// 테스트
+		String cm_name = "admin";
+		vo.setCm_name(cm_name);
 		
 	// 서비스 객체를 주입 -> 동작 호출
-	service.regist(vo);
 	
-	// 정보 저장 -> 전달
-	rttr.addFlashAttribute("result","success");
+		
+		service.regist(vo);
+	
 	
 	// 페이지 이동
-	return "redirect:/board/listAll";
+	//return "redirect:/board/listAll";
+	
 	}
 	
 	// http://localhost:8088/board/listAll
