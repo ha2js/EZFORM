@@ -12,6 +12,8 @@ public class EZ_mailVO {
 	private String mail_title;
 	private String mail_content;
 	private String mail_file;
+	private String mail_readCheck;
+	
 	
 	public int getMail_num() {
 		return mail_num;
@@ -61,13 +63,18 @@ public class EZ_mailVO {
 	public void setMail_file(String mail_file) {
 		this.mail_file = mail_file;
 	}
-	
+	public String getMail_readCheck() {
+		return mail_readCheck;
+	}
+	public void setMail_readCheck(String mail_readCheck) {
+		this.mail_readCheck = mail_readCheck;
+	}
 	@Override
 	public String toString() {
 		return "EZ_mailVO [mail_num=" + mail_num + ", mail_id=" + mail_id + ", mail_email=" + mail_email
 				+ ", mail_keep=" + mail_keep + ", mail_regdate=" + mail_regdate + ", mail_title=" + mail_title
-				+ ", mail_content=" + mail_content + ", mail_file=" + mail_file + "]";
+				+ ", mail_content=" + mail_content + ", mail_file=" + mail_file + ", mail_readCheck=" + mail_readCheck
+				+ "]";
 	}
-	
 	
 }
