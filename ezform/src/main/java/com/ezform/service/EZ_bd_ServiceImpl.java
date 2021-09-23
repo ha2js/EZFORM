@@ -24,16 +24,10 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	
 	
 	@Override
-	public void regist(EZ_boardVO vo) throws Exception {
+	public void create(EZ_boardVO vo) throws Exception {
 		
 		logger.info("boardService : regist() 호출");
 		bdao.create(vo);
-	}
-
-
-	@Override
-	public List<EZ_boardVO> listALL() throws Exception {
-		return bdao.listALL();
 	}
 
 	@Override
@@ -45,14 +39,31 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	}
 
 	@Override
-	public void modify(EZ_boardVO vo) throws Exception {
-		bdao.modify(vo);
+	public void update(EZ_boardVO vo) throws Exception {
+		
 	}
 
 	@Override
-	public void remove(Integer cm_bnum) throws Exception {
+	public void delete(Integer cm_bnum) throws Exception {
 		bdao.delete(cm_bnum);
 	}
+
+	@Override
+	public List<EZ_boardVO> listALL(String result) throws Exception {
+		return bdao.listALL(result);
+	}
+
+	@Override
+	public void modify(EZ_boardVO vo) throws Exception {
+		bdao.modify(vo);
+	}
+	
+
+
+
+
+
+
 
 
 	/*

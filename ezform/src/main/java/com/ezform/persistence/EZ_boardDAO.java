@@ -19,7 +19,7 @@ public interface EZ_boardDAO {
 	public void delete(Integer cm_bnum) throws Exception;
 	
 	// 게시판 글 전체 목록
-	public List<EZ_boardVO> listALL() throws Exception;
+	public List<EZ_boardVO> listALL(String result) throws Exception;
 
 	// 게시판 글 수정(제목,이름,내용)
 	public void modify(EZ_boardVO vo) throws Exception;

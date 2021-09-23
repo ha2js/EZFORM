@@ -49,26 +49,25 @@ public class EZ_bd_Controller {
 	// 서비스 객체를 주입 -> 동작 호출
 	
 		
-		service.regist(vo);
+		service.create(vo);
 	
 	
 	// 페이지 이동
-	//return "redirect:/board/listAll";
-	
+	//return redirect:/board/listAll;
 	}
 	
-	// http://localhost:8088/board/listAll
+	// http://localhost:8088/test/board/listAll
 	// * 글 전체 조회* 
 	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
-	public void listAllGET(Model model,@ModelAttribute("result") String result)throws Exception{
+	public void listALLGET(Model model,@ModelAttribute("result") String result)throws Exception{
 		logger.info("listGET() 호출");
 		logger.info(" 페이지 처리 결과 : "+result);
 	// DB정보 -> view페이지	
-	model.addAttribute("boardList", service.listALL());
+	model.addAttribute("boardList", service.listALL(result));
 	
 	}
 	
-	//http://localhost:8088/board/read
+	//http://localhost:8088/test/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value ="/read",method = RequestMethod.GET)
 	public void readGET(@RequestParam("cm_bnum")int cm_bnum,Model model) throws Exception{
@@ -115,7 +114,7 @@ public class EZ_bd_Controller {
 		logger.info("removePOST(Integer cm_bnum) 호출");
 		
 	// 서비스
-	service.remove(cm_bnum);
+	service.delete(cm_bnum);
 
 	// 페이지 이동
 	return "redirect:/listAll";

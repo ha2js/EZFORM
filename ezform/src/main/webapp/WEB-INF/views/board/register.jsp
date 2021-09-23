@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1> 게시판 글쓰기 </h1>
-		<form role="form" action="/test/board/register" method="post">
+		<form role="form" action="/board/listAll" method="post">
 			
 		<div>	
 			<label> 제목 </label>

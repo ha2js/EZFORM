@@ -73,13 +73,13 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	
 
 	@Override
-	public List<EZ_boardVO> listALL() throws Exception {
+	public List<EZ_boardVO> listALL(String result) throws Exception {
 		
 		System.out.println(" DAO : listALL() -> mapper 호출");
 		
-		System.out.println(" DAP : mapper-sql구문 실행완료! 서비스로 정보 전달!!");
+		System.out.println(" DAO : mapper-sql구문 실행완료! 서비스로 정보 전달!!");
 		
-		return sqlSession.selectList(namespace+".listAll");
+		return sqlSession.selectList(namespace+".listALL");
 	}
 
 
@@ -87,7 +87,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	public void modify(EZ_boardVO vo) throws Exception {
 		logger.info(" modify(EZ_boardVO vo)호출 - 정보수정");
 		
-		sqlSession.update(namespace+"+modify",vo);
+		sqlSession.update(namespace+".modify",vo);
 	
 		logger.info("정보수정 완료");
 	}
