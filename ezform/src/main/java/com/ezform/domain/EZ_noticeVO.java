@@ -3,21 +3,30 @@ package com.ezform.domain;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EZ_noticeVO {
 
-	private int not_num;
-	private int not_id;
-	private String not_title;
-	private String not_content;
-	private Timestamp not_regdate;
-	private String not_file;
-	private int not_hits;
-	 
+	private int not_num;               // 글번호
+	private int not_id;				   // 작성자
+	private String not_title;		   // 제목
+	private String not_content;		   // 내용
+	private Timestamp not_regdate;	   // 작성일
+	private String not_file;		   // 파일
+	private int not_hits;			   // 조회수
+	private MultipartFile uploadFile;
+		
 	public int getNot_num() {
 		return not_num;
 	}
 	public void setNot_num(int not_num) {
 		this.not_num = not_num;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	public int getNot_id() {
 		return not_id;
@@ -55,13 +64,15 @@ public class EZ_noticeVO {
 	public void setNot_hits(int not_hits) {
 		this.not_hits = not_hits;
 	}
-	
 	@Override
 	public String toString() {
 		return "EZ_noticeVO [not_num=" + not_num + ", not_id=" + not_id + ", not_title=" + not_title + ", not_content="
 				+ not_content + ", not_regdate=" + not_regdate + ", not_file=" + not_file + ", not_hits=" + not_hits
-				+ "]";
+				+ ", uploadFile=" + uploadFile + "]";
 	}
+	
+	
+	
 		
 	
 }
