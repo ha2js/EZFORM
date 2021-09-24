@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%-- <%@ include file="../include/header.jsp" %> --%>
     <h3> 게시판 본문페이지 </h3>
     
     				<!-- 수정/삭제 처리 -->
@@ -64,4 +63,3 @@
 		});
 		
 	</script> 
-<%-- <%@ include file="../include/footer.jsp" %> --%>
