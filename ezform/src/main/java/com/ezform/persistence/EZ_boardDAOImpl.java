@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.test.testController;
 
@@ -104,6 +105,14 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		
 		return sqlSession.selectList(namespace+".listPage",page);
+	}
+
+	@Override
+	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
+		logger.info("listCri(EZ_boardCri cri) 호출!");
+		
+		
+		return sqlSession.selectList(namespace+".listCri",cri);
 	}
 	
 }

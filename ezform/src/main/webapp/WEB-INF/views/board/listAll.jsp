@@ -9,17 +9,26 @@
 	 <table>
 		<tbody>
 			<tr>
-			<th>글번호</th>
+			<th style="width:10px">글번호</th>
 			<th>제목</th>
+			<th>이름</th>
+			<th>날짜</th>
+			<th style="width:40px">조회수</th>
 			</tr>
 			
-	<c:forEach var="vo" items="${boardList }">
+	<c:forEach var="vo" items="${boardList}">
 		<tr>
 			<td>${vo.cm_bnum}</td>
 			<td>
-				<a href="/../board/read?cm_bnum=${vo.cm_bnum}">${vo.cm_title }</a>
+				<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
 			</td>
 			<td>${vo.cm_name}</td>
+			<td>
+				<fmt:formatDate pattern="yy-MM-dd" value="${vo.cm_regdate}"/>
+			</td>
+			<td style="width:40px">
+			<span>${vo.cm_hits}</span>
+			</td>
 		</tr>
 	
 	</c:forEach>
@@ -28,11 +37,12 @@
 	
 	<script type="text/javascript">
 	
-		var result = '${result}';
+	
 		
-		if(result == 'success'){
+		if(result == true){
 			alert("글쓰기 정상처리 완료!");
 		}
 	
 	
 	</script>
+

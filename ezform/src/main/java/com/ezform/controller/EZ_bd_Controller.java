@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.service.EZ_bd_Service;
 import com.ezform.test.testController;
 
@@ -32,40 +34,29 @@ public class EZ_bd_Controller {
 	
 	// http://localhost:8088/test/board/register
 	// 글쓰기 (GET)
-	@RequestMapping(value ="/register", method= RequestMethod.GET)
-	public void registerGET() throws Exception{
-		logger.info("registerGET() 호출"); 
-	}
 	
-	// 글쓰기 (POST)
-	@RequestMapping(value= "/register", method = RequestMethod.POST)
-	public void registerPOST(EZ_boardVO vo) throws Exception {
-		logger.info("registerPOST() 호출");
-		logger.info(vo+"");
-		// 테스트
-		String cm_name = "admin";
-		vo.setCm_name(cm_name);
+	  @RequestMapping(value ="/register", method= RequestMethod.GET) public void
+	  registerGET() throws Exception{ logger.info("registerGET() 호출"); }
+		
+		  // 글쓰기 (POST)
+		 
+		  @RequestMapping(value= "/register", method = RequestMethod.POST) 
+		  public void registerPOST(EZ_boardVO vo) throws Exception {
+		  logger.info("registerPOST() 호출"); 
+		  logger.info(vo+""); 
+			
+		  //String cm_name = "admin";
+		  //vo.setCm_name(cm_name);
 		
 	// 서비스 객체를 주입 -> 동작 호출
-	
 		
 		service.create(vo);
-	
+		
 	
 	// 페이지 이동
 	//return redirect:/board/listAll;
 	}
 	
-	// http://localhost:8088/test/board/listAll
-	// * 글 전체 조회* 
-	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
-	public void listALLGET(Model model,@ModelAttribute("result") String result)throws Exception{
-		logger.info("listGET() 호출");
-		logger.info(" 페이지 처리 결과 : "+result);
-	// DB정보 -> view페이지	
-	model.addAttribute("boardList", service.listALL(result));
-	
-	}
 	
 	//http://localhost:8088/test/board/read
 	// * 글읽기(read) *
@@ -82,6 +73,9 @@ public class EZ_bd_Controller {
 	// DB정보 -> 저장
 	model.addAttribute("vo", vo);
 	}
+	
+
+	
 	
 	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
 	@RequestMapping(value="/modify", method= {RequestMethod.GET})
@@ -121,8 +115,43 @@ public class EZ_bd_Controller {
 	
 	}
 
+	// http://localhost:8088/test/board/listAll
+	// * 글 전체 조회* 
+	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
+	public void listALLGET(Model model,@ModelAttribute("result") String result)throws Exception{
+		logger.info("listGET() 호출");
+		logger.info(" 페이지 처리 결과 : "+result);
+		// DB정보 -> view페이지	
+		model.addAttribute("boardList", service.listALL(result));
+		
+	}
 	
-
+	// http://localhost:8088/test/board/listCri
+	@RequestMapping(value = "/listCri" , method = RequestMethod.GET)
+	public void listCri(EZ_boardCri cri, Model model) throws Exception {
+		logger.info("listCri()호출");
+		// 페이징 처리에 필요한 정보
+		logger.info("페이징 처리에 필요한 정보 : "+cri);
+	
+		model.addAttribute("boardList", service.listCri(cri));
+	}
+	
+	
+	// http://localhost:8088/test/board/listPage
+	@RequestMapping(value= "/listPage", method= RequestMethod.GET)
+	public void listPageGET(EZ_boardCri cri,Model model) throws Exception {
+	
+		//Criteria 객체정보 저장(pageStart/pageSize)
+		model.addAttribute("boardList", service.listCri(cri));
+		
+		// 페이징처리 정보생성(하단부)
+		EZ_board_PageMaker ezbpm = new EZ_board_PageMaker();
+		ezbpm.setCri(cri);
+		ezbpm.setTotalCount(150);
+		
+		model.addAttribute("ezbpm", ezbpm);
+	}
+	
 	
 	
 	

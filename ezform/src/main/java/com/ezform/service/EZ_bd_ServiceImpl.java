@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.persistence.EZ_boardDAO;
 import com.ezform.test.testController;
@@ -56,6 +57,14 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
 		bdao.modify(vo);
+	}
+
+	@Override
+	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
+		logger.info("listCri(EZ_boardCri cri)호출!");
+		
+		
+		return bdao.listCri(cri);
 	}
 	
 

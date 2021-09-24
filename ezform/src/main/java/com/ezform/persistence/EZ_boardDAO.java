@@ -2,6 +2,7 @@ package com.ezform.persistence;
 
 import java.util.List;
 
+import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 
 public interface EZ_boardDAO {
@@ -29,5 +30,5 @@ public interface EZ_boardDAO {
 	
 	
 	// 게시판 글 목록(페이징처리) - 특정페이지의 해당하는 글 원하는 만큼씩
-	//public List<EZ_boardVO> listCri(Criteria cri) throws Exception;
+	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
 }
