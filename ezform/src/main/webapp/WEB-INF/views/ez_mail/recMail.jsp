@@ -22,7 +22,7 @@
 	<!-- 수신 메일 -->
 	<!-- 임시로 해놓은 거라 디자인은 마음대로 수정하셔도 됩니다 -->
 	<div>
-		<button type="submit" class="">메일쓰기</button>
+		<button type="submit" class="" onclick="location.href='/test/ez_mail/writeMail'">메일쓰기</button>
 	</div>
 	<div>
 		<button type="submit" class="">읽음</button>
@@ -41,24 +41,25 @@
 		<c:choose>
 			<c:when test="${mailList == null or fn:length(mailList) == 0 }">
 				<tr>
-					<th colspan="4">수신된 메일이 없습니다.</th>
+					<td colspan="4">수신된 메일이 없습니다.</td>
 				</tr>
 			</c:when>
 			
 			<c:otherwise>
 				<c:forEach var="mail" items="${mailList }">
-					<tr>
-						<td><input type="checkbox"/></td>
-						<td>${mail.mail_email }</td>
+					<!-- 읽지 않은 메일은 color 값을 줬습니다 -->
+					<tr ${mail.mail_readCheck == '0' ? 'style = color:rgb(70,161,222)':'' }>
+						<td><input type="checkbox" value="${mail.mail_num }"/></td>
+						<td>${mail.mail_email }</td> <!-- 임시로 email 주소 login 파트 완성되면 사원이름으로 바꾸기 -->
 						<td><a href="#">${mail.mail_title }</a></td>
-						<td>${mail_regdate }</td>
+						<td><fmt:formatDate value="${mail.mail_regdate }" pattern="yyyy-MM-dd HH:mm"/></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 		</table>
 		<hr>
-		
+
 		<!-- 페이징 처리 -->
 		<c:if test="${fn:length(mailList) > 0}">
 			<div>

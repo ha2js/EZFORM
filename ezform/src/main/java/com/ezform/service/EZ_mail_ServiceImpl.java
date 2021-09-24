@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
 import com.ezform.persistence.EZ_mailDAO;
@@ -35,6 +36,30 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		logger.info("mailService : recMailCnt() 호출");
 		
 		return mdao.recMailCnt(mail_id);
+	}
+	
+	@Override
+	public boolean sendEmailCk(String em_email) throws Exception {
+		
+		logger.info("mailService : 해당 메일 주소가 있는지 확인");
+		
+		return mdao.sendEmailCk(em_email);
+	}
+
+	@Override
+	public void mailWrite(EZ_mailVO vo) throws Exception {
+		
+		logger.info("mailService : mailWrite() 호출");
+		
+		mdao.mailWrite(vo);
+	}
+
+	@Override
+	public List<EZ_empVO> empSelect() throws Exception {
+		
+		logger.info("mailService : empSelect() 호출");
+		
+		return mdao.empSelect();
 	}
 
 }

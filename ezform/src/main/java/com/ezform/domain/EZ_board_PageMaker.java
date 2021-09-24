@@ -28,7 +28,7 @@ public class EZ_board_PageMaker {
 	}
 	
 	public void CalcData() {
-		System.out.println("----- 페이징 처리에 필요한 정보 계산-----");
+		System.out.println("페이징 처리에 필요한 계산--------------------");
 		endPage = (int)Math.ceil(Cri.getPageStart()/(double)displaypageNum) * displaypageNum;
 		
 		startPage = (endPage - displaypageNum)+1;
@@ -39,12 +39,13 @@ public class EZ_board_PageMaker {
 			endPage = tmpEndPage;
 		}
 		
-		prev = (startPage == 1? false : true );
+		prev = (startPage == 1? false : true);
 		
 		next = endPage * Cri.getPageSize() >= totalCount? false : true;
-		System.out.println("----- 페이징 처리에 필요한 정보 계산-----");
+		System.out.println("페이징 처리에 필요한 계산--------------------");
 	}
-
+	
+	
 	// get,set
 	public int getStartPage() {
 		return startPage;

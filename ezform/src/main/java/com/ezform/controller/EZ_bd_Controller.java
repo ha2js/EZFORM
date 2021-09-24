@@ -2,6 +2,7 @@ package com.ezform.controller;
 
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.service.EZ_bd_Service;
+import com.ezform.test.testController;
 
 @Controller
 @RequestMapping("/board/*")
@@ -24,52 +28,37 @@ public class EZ_bd_Controller {
 	private EZ_bd_Service service;
 	
 	private static final Logger logger = 
-			LoggerFactory.getLogger(EZ_bd_Controller.class);
+			LoggerFactory.getLogger(testController.class);
 	
 	// * 글쓰기 *
-	// http://localhost:8088/main
-	// http://localhost:8088/test/main
-	// http://localhost:8088/board/register
-	// 글쓰기 (GET)
-	@RequestMapping(value ="/register", method= RequestMethod.GET)
-	public void registerGET() throws Exception{
-		logger.info("registerGET() 호출"); 
-	}
 	
-	// 글쓰기 (POST)
-	@RequestMapping(value= "/register", method = RequestMethod.POST)
-	public String registerPOST(EZ_boardVO vo,RedirectAttributes rttr) throws Exception {
-		logger.info("registerPOST() 호출");
-		vo.setCm_bnum(4);
-//		vo.setCm_id(1234);
-		logger.info(""+vo);
+	// http://localhost:8088/test/board/register
+	// 글쓰기 (GET)
+	
+	  @RequestMapping(value ="/register", method= RequestMethod.GET) public void
+	  registerGET() throws Exception{ logger.info("registerGET() 호출"); }
 		
-		
-
-		
+		  // 글쓰기 (POST)
+		 
+		  @RequestMapping(value= "/register", method = RequestMethod.POST) 
+		  public void registerPOST(EZ_boardVO vo) throws Exception {
+		  logger.info("registerPOST() 호출"); 
+		  logger.info(vo+""); 
+			
+		  //String cm_name = "admin";
+		  //vo.setCm_name(cm_name);
 		
 	// 서비스 객체를 주입 -> 동작 호출
-	service.regist(vo);
-	
-	// 정보 저장 -> 전달
-	rttr.addFlashAttribute("result","success");
+		
+		service.create(vo);
+		
 	
 	// 페이지 이동
-	return "redirect:/board/listAll";
+	//return redirect:/board/listAll;
 	}
 	
-	// http://localhost:8088/board/listAll
-	// * 글 전체 조회* 
-	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
-	public void listAllGET(Model model,@ModelAttribute("result") String result)throws Exception{
-		logger.info("listGET() 호출");
-		logger.info(" 페이지 처리 결과 : "+result);
-	// DB정보 -> view페이지	
-	model.addAttribute("boardList", service.listALL());
 	
-	}
-	
-	//http://localhost:8088/board/read
+	//http://localhost:8088/test/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value ="/read",method = RequestMethod.GET)
 	public void readGET(@RequestParam("cm_bnum")int cm_bnum,Model model) throws Exception{
@@ -84,6 +73,9 @@ public class EZ_bd_Controller {
 	// DB정보 -> 저장
 	model.addAttribute("vo", vo);
 	}
+	
+
+	
 	
 	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
 	@RequestMapping(value="/modify", method= {RequestMethod.GET})
@@ -116,15 +108,50 @@ public class EZ_bd_Controller {
 		logger.info("removePOST(Integer cm_bnum) 호출");
 		
 	// 서비스
-	service.remove(cm_bnum);
+	service.delete(cm_bnum);
 
 	// 페이지 이동
 	return "redirect:/listAll";
 	
 	}
 
+	// http://localhost:8088/test/board/listAll
+	// * 글 전체 조회* 
+	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
+	public void listALLGET(Model model,@ModelAttribute("result") String result)throws Exception{
+		logger.info("listGET() 호출");
+		logger.info(" 페이지 처리 결과 : "+result);
+		// DB정보 -> view페이지	
+		model.addAttribute("boardList", service.listALL(result));
+		
+	}
 	
-
+	// http://localhost:8088/test/board/listCri
+	@RequestMapping(value = "/listCri" , method = RequestMethod.GET)
+	public void listCri(EZ_boardCri cri, Model model) throws Exception {
+		logger.info("listCri()호출");
+		// 페이징 처리에 필요한 정보
+		logger.info("페이징 처리에 필요한 정보 : "+cri);
+	
+		model.addAttribute("boardList", service.listCri(cri));
+	}
+	
+	
+	// http://localhost:8088/test/board/listPage
+	@RequestMapping(value= "/listPage", method= RequestMethod.GET)
+	public void listPageGET(EZ_boardCri cri,Model model) throws Exception {
+	
+		//Criteria 객체정보 저장(pageStart/pageSize)
+		model.addAttribute("boardList", service.listCri(cri));
+		
+		// 페이징처리 정보생성(하단부)
+		EZ_board_PageMaker pm = new EZ_board_PageMaker();
+		pm.setCri(cri);
+		pm.setTotalCount(150);
+		
+		model.addAttribute("pm", pm);
+	}
+	
 	
 	
 	

@@ -8,14 +8,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.persistence.EZ_boardDAO;
+import com.ezform.test.testController;
 
 @Service
 public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 
 	private static final Logger logger = 
-			LoggerFactory.getLogger(EZ_bd_Service.class);
+			LoggerFactory.getLogger(testController.class);
 	
 	
 	@Inject
@@ -23,14 +25,10 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	
 	
 	@Override
-	public void regist(EZ_boardVO vo) throws Exception {
+	public void create(EZ_boardVO vo) throws Exception {
+		
+		logger.info("boardService : regist() 호출");
 		bdao.create(vo);
-	}
-
-
-	@Override
-	public List<EZ_boardVO> listALL() throws Exception {
-		return bdao.listALL();
 	}
 
 	@Override
@@ -42,14 +40,39 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	}
 
 	@Override
+	public void update(EZ_boardVO vo) throws Exception {
+		
+	}
+
+	@Override
+	public void delete(Integer cm_bnum) throws Exception {
+		bdao.delete(cm_bnum);
+	}
+
+	@Override
+	public List<EZ_boardVO> listALL(String result) throws Exception {
+		return bdao.listALL(result);
+	}
+
+	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
 		bdao.modify(vo);
 	}
 
 	@Override
-	public void remove(Integer cm_bnum) throws Exception {
-		bdao.delete(cm_bnum);
+	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
+		logger.info("listCri(EZ_boardCri cri)호출!");
+		
+		
+		return bdao.listCri(cri);
 	}
+	
+
+
+
+
+
+
 
 
 	/*

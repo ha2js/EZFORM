@@ -10,11 +10,35 @@
 		select * from ez_mail
 		where mail_id = #{mail_id}
 		order by mail_num desc, mail_regdate desc
-		limit #{pageStart}, #{pageSize}
+		limit #{page}, #{pageSize}
 	</select>
 	
+	<!-- 해당 mail_id의 메일 개수 -->
 	<select id="rec_mailCnt" resultType="int">
 		select count(*) from ez_mail
 		where mail_id = #{mail_id}
 	</select>
+	
+	<!-- 현재 db에 있는 mail_num 최대 값 -->
+	<select id="mailnumCnt" resultType="String">
+		select max(mail_num) from ez_mail
+	</select>
+	
+	<!-- 메일 쓰기 - 해당 이메일 주소가 존재하는지 체크  -->
+	<select id="emailCk" resultType="Boolean">
+		select count(*) from ez_em
+		where em_email = #{em_email}
+	</select>
+	
+	<select id="mailWrite">
+		insert into ez_mail
+		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file}, '0')
+	</select>
+	
+	<select id="empSelect" resultType="EZ_empVO">
+		select em_email, em_name, em_dept, em_posi
+		from ez_em
+		order by em_dept asc, em_posi asc, em_name asc, em_email asc
+	</select>
+
 </mapper>
