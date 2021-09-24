@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%-- <%@ include file="../include/header.jsp" %> --%>
 	<h1> 게시판 글쓰기 </h1>
-		<form role="form" action="listAll" method="get">
+		<form role="form" action="listPage" method="GET">
 			
 		<div>	
 			<label> 제목 </label>
@@ -33,5 +27,5 @@
 	
 	
 		
-</body>
-</html>
+
+<%-- <%@ include file="../include/footer.jsp" %> --%>
