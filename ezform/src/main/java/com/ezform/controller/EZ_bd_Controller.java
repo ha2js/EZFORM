@@ -145,11 +145,11 @@ public class EZ_bd_Controller {
 		model.addAttribute("boardList", service.listCri(cri));
 		
 		// 페이징처리 정보생성(하단부)
-		EZ_board_PageMaker ezbpm = new EZ_board_PageMaker();
-		ezbpm.setCri(cri);
-		ezbpm.setTotalCount(150);
+		EZ_board_PageMaker pm = new EZ_board_PageMaker();
+		pm.setCri(cri);
+		pm.setTotalCount(150);
 		
-		model.addAttribute("ezbpm", ezbpm);
+		model.addAttribute("pm", pm);
 	}
 	
 	

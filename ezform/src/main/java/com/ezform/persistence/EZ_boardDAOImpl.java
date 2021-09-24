@@ -98,7 +98,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info(" listPage(int page) 호출! ");
 		
 		// page 정보가 음수가 들어왔을경우 항상 1페이지
-		if(page <=0 ) {
+		if(page <= 0 ) {
 			page = 1;
 		}
 		page = (page - 1) * 10;

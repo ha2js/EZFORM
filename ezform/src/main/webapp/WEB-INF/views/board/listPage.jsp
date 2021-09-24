@@ -38,28 +38,26 @@
 			
 		<div>
 			<ul>
+			<!-- 이전 -->
 				<c:if test="${pm.prev}">
 					<li>
-						<a href="listpage?pageStart=${ezbpm.startPage-1}"> &laquo;</a>
+						<a href="listpage?pageStart=${pm.startPage-1}"> &laquo;</a>
 					</li>
 				</c:if>
 			
 		
-				<!-- 페이지 번호 -->
-		
-			<c:forEach begin="${ezbpm.startPage}" end="${ezbpm.endPage}" var="idx">
-		
-				<li ${ezbpm.cri.pageStart == idx? 'class = active' :'' }>
-					<a href="listPage?pageStart=${idx}">${idx}</a>					
+			<!-- 페이지 번호 -->
+			<c:forEach begin="${pm.startPage}" end="${pm.endPage }" var="idx">
+				<li ${pm.cri.pageStart == idx? 'class = active' :  ''}>
+					<a href="listpage?pageStart=${idx}">${idx}</a>
 				</li>
-			</c:forEach>
-		
+			</c:forEach>		
+			
 			<!-- 다음 -->
-		
-			<c:if test="${ezbpm.next}">
+			<c:if test="${pm.next}">
 			
 				<li>
-					<a href="listpage?pageStart=${ezbpm.endPage+1}"> &raquo;</a>
+					<a href="listpage?pageStart=${pm.endPage+1}"> &raquo;</a>
 				</li>
 			</c:if>
 			</ul>

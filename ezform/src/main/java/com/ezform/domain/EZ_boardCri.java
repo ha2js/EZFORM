@@ -30,7 +30,7 @@ public class EZ_boardCri {
 		this.pageSize = pageSize;
 	}
 
-
+	// mapper에 사용하는 메서드
 	public int getPageStart() {
 		return pageStart;
 	}
