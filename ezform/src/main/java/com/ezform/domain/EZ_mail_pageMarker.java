@@ -1,57 +1,51 @@
 package com.ezform.domain;
 
-public class EZ_mail_pageMarker {
+public class EZ_board_PageMaker {
 
-	private EZ_mailCri cri;
+	// 페이징 처리 동작 수행
+	private EZ_boardCri Cri; // 페이지에 출력되는 게시판 글의 개수 페이징 처리
 	
+	// 페이지 하단부 페이징 처리
 	private int totalCount;
 	private int startPage;
 	private int endPage;
 	private boolean prev;
 	private boolean next;
 	
-	private int displayPageNum = 10;
+	// 페이지 블럭
+	private int displaypageNum = 10;
 
-	
+	public void setCri(EZ_boardCri Cri) {
+		this.Cri = Cri;
+	}
+
+	// 총 개수 계산
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
-		
-		pagingCalc();
+
+		//페이징에  필요한 정보처리
+		CalcData();
 	}
 	
-	public void pagingCalc() {
-		System.out.println("pagingCalc() 호출");
+	public void CalcData() {
+		System.out.println("----- 페이징 처리에 필요한 정보 계산-----");
+		endPage = (int)Math.ceil(Cri.getPageStart()/(double)displaypageNum) * displaypageNum;
 		
-		endPage = (int)Math.ceil(cri.getPageStart()/(double)displayPageNum) * displayPageNum;
+		startPage = (endPage - displaypageNum)+1;
 		
-		startPage = (endPage - displayPageNum) + 1;
+		int tmpEndPage = (int) Math.ceil(totalCount/(double)Cri.getPageSize());
 		
-		int tmp = (int)Math.ceil(totalCount/(double)cri.getPageSize());
-		
-		if (endPage > tmp) {
-			endPage = tmp;
+		if(endPage > tmpEndPage) {
+			endPage = tmpEndPage;
 		}
 		
-		// 이전, 다음 T/F 처리
-		if (startPage == 1) prev = false;
-		else prev = true;
+		prev = (startPage == 1? false : true );
 		
-		if ((endPage * cri.getPageSize()) >= totalCount) next = false;
-		else next = true;
-	} 
-	
-	public EZ_mailCri getCri() {
-		return cri;
+		next = endPage * Cri.getPageSize() >= totalCount? false : true;
+		System.out.println("----- 페이징 처리에 필요한 정보 계산-----");
 	}
 
-	public void setCri(EZ_mailCri cri) {
-		this.cri = cri;
-	}
-
-	public int getTotalCount() {
-		return totalCount;
-	}
-
+	// get,set
 	public int getStartPage() {
 		return startPage;
 	}
@@ -84,12 +78,29 @@ public class EZ_mail_pageMarker {
 		this.next = next;
 	}
 
-	public int getDisplayPageNum() {
-		return displayPageNum;
+	public int getDisplaypageNum() {
+		return displaypageNum;
 	}
 
-	public void setDisplayPageNum(int displayPageNum) {
-		this.displayPageNum = displayPageNum;
+	public void setDisplaypageNum(int displaypageNum) {
+		this.displaypageNum = displaypageNum;
+	} 
+	
+	public EZ_boardCri getCri() {
+		return Cri;
 	}
 	
+	public int getTotalCout() {
+		return totalCount;
+	}
+
+	//ToString
+	@Override
+	public String toString() {
+		return "EZ_board_PageMaker [Cri=" + Cri + ", totalCount=" + totalCount + ", startPage=" + startPage
+				+ ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + ", displaypageNum=" + displaypageNum
+				+ "]";
+	}
+	
+
 }
