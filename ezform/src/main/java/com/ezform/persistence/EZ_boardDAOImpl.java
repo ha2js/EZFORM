@@ -71,18 +71,6 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info(vo+"");
 		
 	}
-	
-
-	@Override
-	public List<EZ_boardVO> listALL(String result) throws Exception {
-		
-		System.out.println(" DAO : listALL() -> mapper 호출");
-		
-		System.out.println(" DAO : mapper-sql구문 실행완료! 서비스로 정보 전달!!");
-		
-		return sqlSession.selectList(namespace+".listALL");
-	}
-
 
 	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
@@ -93,26 +81,10 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		logger.info("정보수정 완료");
 	}
 
-	@Override
-	public List<EZ_boardVO> listPage(int page) throws Exception {
-		logger.info(" listPage(int page) 호출! ");
-		
-		// page 정보가 음수가 들어왔을경우 항상 1페이지
-		if(page <= 0 ) {
-			page = 1;
-		}
-		page = (page - 1) * 10;
-		
-		
-		return sqlSession.selectList(namespace+".listPage",page);
-	}
 
 	@Override
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
-		logger.info("listCri(EZ_boardCri cri) 호출!");
-		
-		
+		logger.info("boardDAO : listCri() 호출");
 		return sqlSession.selectList(namespace+".listCri",cri);
-	}
-	
+	}	
 }

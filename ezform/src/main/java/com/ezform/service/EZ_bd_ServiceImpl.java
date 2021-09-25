@@ -50,34 +50,16 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	}
 
 	@Override
-	public List<EZ_boardVO> listALL(String result) throws Exception {
-		return bdao.listALL(result);
-	}
-
-	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
 		bdao.modify(vo);
 	}
 
 	@Override
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
-		logger.info("listCri(EZ_boardCri cri)호출!");
 		
+		logger.info("listcri() 호출");
 		
 		return bdao.listCri(cri);
 	}
-	
-
-
-
-
-
-
-
-
-	/*
-	 * @Override public List<EZ_boardVO> listCri(Criteria cri) throws Exception { //
-	 * TODO Auto-generated method stub return null; }
-	 */
 	
 }

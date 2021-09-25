@@ -43,30 +43,11 @@
 	where cm_bnum = #{cm_bnum}
 	</delete>
 
-	<!-- 게시판 글 전체 목록 -->
-	<select id="listALL" resultType="EZ_boardVO">
-	<![CDATA[
-	select 
-	* 
-	from 
-	ez_cm 
-	where cm_bnum > 0 
-	order by cm_bnum desc, cm_regdate desc 
-	]]>
-	</select>
- 
- 	<!-- 페이징 처리 list -->
- 	<select id="listPage" resultType="EZ_boardVO">
-	select * from ez_cm 
-	order by cm_bnum desc ,cm_regate desc 
-	limit #{page},20
- 	</select>
- 	
  	<!-- 페이징 처리 list -->
  	<select id="listCri" resultType="EZ_boardVO">
 	select * from ez_cm 
 	order by cm_bnum desc, cm_regdate desc 
-	limit #{pageStart},#{pageSize}
+	limit #{page},#{pageSize}
  	</select>
  
  </mapper>
