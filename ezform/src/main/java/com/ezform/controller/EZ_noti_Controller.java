@@ -32,7 +32,7 @@ public class EZ_noti_Controller {
 			LoggerFactory.getLogger(EZ_noti_Controller.class);
 	
 	//공지사항 글쓰기(GET)
-	//http://localhost:8088/notice/register
+	//http://localhost:8088/test/notice/register
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
 	public void registerGET() throws Exception{
 		logger.info("registerGET() 호출 -> view 페이지 이동");
