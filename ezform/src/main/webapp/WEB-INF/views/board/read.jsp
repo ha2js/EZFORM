@@ -5,7 +5,7 @@
     <h3> 게시판 본문페이지 </h3>
     
     				<!-- 수정/삭제 처리 -->
-    <form role="form" action="listAll" method="post">
+    <form role="form" action="listPage" method="post">
     				<!-- 글 번호 저장  -->
     	<input type="hidden" name="cm_bnum" value="${vo.cm_bnum}" readonly>
     </form>

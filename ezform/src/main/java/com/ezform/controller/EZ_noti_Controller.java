@@ -68,7 +68,7 @@ public class EZ_noti_Controller {
 	
 	
 	// 공지사항 글 조회
-	//http://localhost:8088/notice/listAll
+	//http://localhost:8088/test/notice/listAll
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
 	public void listALLGET(Model model, @ModelAttribute("result") String result) throws Exception {
 		logger.info(" listALLGET() 호출 -> view 페이지 이동 ");
