@@ -284,7 +284,7 @@ function filtering(event) {
     }
   }
 
-  return show_username && show_type;
+  return true/*show_username && show_type*/;
 }
 
 function calDateWhenResize(event) {

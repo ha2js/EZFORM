@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class EZ_calendarVO {
 		
+		private int cal_id;
 		private String title;
 		private Date start;
 		private Date end;
@@ -14,6 +15,13 @@ public class EZ_calendarVO {
 		private String textColor;
 		private String borderColor;
 		private boolean allDay = false;
+		
+		public int getId() {
+			return cal_id;
+		}
+		public void setId(int cal_id) {
+			this.cal_id = cal_id;
+		}
 		public String getTitle() {
 			return title;
 		}
@@ -76,9 +84,10 @@ public class EZ_calendarVO {
 		}
 		@Override
 		public String toString() {
-			return "EZ_calendarVO [title=" + title + ", start=" + start + ", end=" + end + ", description="
-					+ description + ", type=" + type + ", userid=" + userid + ", backgroundColor=" + backgroundColor
-					+ ", textColor=" + textColor + ", borderColor=" + borderColor + ", allDay=" + allDay + "]";
+			return "EZ_calendarVO [cal_id=" + cal_id + ", title=" + title + ", start=" + start + ", end=" + end
+					+ ", description=" + description + ", type=" + type + ", userid=" + userid + ", backgroundColor="
+					+ backgroundColor + ", textColor=" + textColor + ", borderColor=" + borderColor + ", allDay="
+					+ allDay + "]";
 		}
 		
 		

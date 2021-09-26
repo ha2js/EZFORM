@@ -29,8 +29,10 @@ var editEvent = function (event, element, view) {
     editStart.val(event.start.format('YYYY-MM-DD HH:mm'));
     editType.val(event.type);
     editDesc.val(event.description);
-    editColor.val(event.backgroundColor).css('color', event.backgroundColor);
-
+    editColor.val(event.backgroundColor).replace('1)', ', 0.2)').css('background-color', event.backgroundColor);
+   /* editColor.val(event.textColor).css('color', event.textColor);
+    editColor.val(event.borderColor).css('border-color', event.borderColor);
+*/
     addBtnContainer.hide();
     modifyBtnContainer.show();
     eventModal.modal('show');
@@ -73,8 +75,10 @@ var editEvent = function (event, element, view) {
         event.start = startDate;
         event.end = displayDate;
         event.type = editType.val();
-        event.backgroundColor = editColor.val();
-        event.description = editDesc.val();
+        /*event.backgroundColor = editColor.val().replace('1)', ', 0.2)');
+        event.borderColor = editColor.val();
+        event.textColor = editColor.val();
+        event.description = editDesc.val();*/
 
         $("#calendar").fullCalendar('updateEvent', event);
 
