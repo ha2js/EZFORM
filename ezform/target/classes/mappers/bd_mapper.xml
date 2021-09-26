@@ -50,4 +50,9 @@
 	limit #{page},#{pageSize}
  	</select>
  
+ 	<!-- 페이징 테스트 -->
+ 	<select id="listPageCnt" resultType="int">
+ 		select count(*) from ez_cm 
+ 		where cm_name=#{cm_name} 
+ 	</select>
  </mapper>
