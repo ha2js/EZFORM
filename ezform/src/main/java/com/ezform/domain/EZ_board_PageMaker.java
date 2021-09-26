@@ -12,16 +12,15 @@ public class EZ_board_PageMaker {
 	private boolean prev;
 	private boolean next;
 	
-	// 페이지 블럭
 	private int displaypageNum = 10;
-
-	public void setCri(EZ_boardCri Cri) {
-		this.Cri = Cri;
-	}
 
 	// 총 개수 계산
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
+
+	// 페이지 블럭
+
+
 
 		//페이징에  필요한 정보처리
 		CalcData();
@@ -33,23 +32,49 @@ public class EZ_board_PageMaker {
 		
 		startPage = (endPage - displaypageNum)+1;
 		
-		int tmpEndPage = (int) Math.ceil(totalCount/(double)Cri.getPageSize());
+		int tmp = (int) Math.ceil(totalCount/(double)Cri.getPageSize());
 		
-		if(endPage > tmpEndPage) {
-			endPage = tmpEndPage;
+		if(endPage > tmp) {
+			endPage = tmp;
 		}
 		
-		prev = (startPage == 1? false : true);
+		if( startPage == 1) prev = false;
+		else prev = true;
 		
-		next = endPage * Cri.getPageSize() >= totalCount? false : true;
+		if ((endPage * Cri.getPageSize()) >= totalCount) next = false;
+		else next = true;
 		System.out.println("페이징 처리에 필요한 계산--------------------");
 	}
 	
-	
 	// get,set
+
+	public EZ_boardCri getCri() {
+		return Cri;
+	}
+
+	public void setCri(EZ_boardCri Cri) {
+		this.Cri = Cri;
+	}
+
+	public int getTotalCout() {
+		return totalCount;
+	}
+
 	public int getStartPage() {
 		return startPage;
 	}
+
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+
+	public int getDisplaypageNum() {
+		return displaypageNum;
+	}
+
+	public void setDisplaypageNum(int displaypageNum) {
+		this.displaypageNum = displaypageNum;
+	} 
 
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
@@ -75,25 +100,10 @@ public class EZ_board_PageMaker {
 		return next;
 	}
 
-	public void setNext(boolean next) {
-		this.next = next;
-	}
 
-	public int getDisplaypageNum() {
-		return displaypageNum;
-	}
+	
+	
 
-	public void setDisplaypageNum(int displaypageNum) {
-		this.displaypageNum = displaypageNum;
-	} 
-	
-	public EZ_boardCri getCri() {
-		return Cri;
-	}
-	
-	public int getTotalCout() {
-		return totalCount;
-	}
 
 	//ToString
 	@Override

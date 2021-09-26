@@ -29,6 +29,31 @@ public class EZ_bd_Controller {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(testController.class);
 	
+	// http://localhost:8088/test/board/listPage
+	@RequestMapping(value= "/listPage", method= RequestMethod.GET)
+	public void listPageGET(EZ_boardCri cri,Model model) throws Exception {
+		
+		//Criteria 객체정보 저장(pageStart/pageSize)
+		logger.info("listPageGET() 호출");
+		
+		// 임시값 테스트
+		String cm_name = "admin";
+		cri.setCm_name(cm_name);
+		
+		//list
+		model.addAttribute("boardList", service.listCri(cri));
+		
+		int cm_name_cnt = service.listPageCnt(cm_name);
+		
+		// 페이징처리 정보생성(하단부)
+		EZ_board_PageMaker pm = new EZ_board_PageMaker();
+		pm.setCri(cri);
+		pm.setTotalCount(cm_name_cnt); // 이 부분 150에서 현재 cm 테이블에 있는 데이터 개수를 불러오는 동작으로 바꾸셔야 돼요
+		
+		model.addAttribute("pm", pm);
+	}
+
+	
 	// * 글쓰기 *
 	
 	// http://localhost:8088/test/board/register
@@ -47,8 +72,8 @@ public class EZ_bd_Controller {
 		  logger.info("registerPOST() 호출"); 
 		  logger.info(vo+""); 
 			
-		  //String cm_name = "admin";
-		  //vo.setCm_name(cm_name);
+		  String cm_name = "admin";
+		  vo.setCm_name(cm_name);
 		
 		  // 서비스 객체를 주입 -> 동작 호출
 		
@@ -108,23 +133,9 @@ public class EZ_bd_Controller {
 		service.delete(cm_bnum);
 	
 		// 페이지 이동
-		return "redirect:/listAll";
+		return "redirect:/listPage";
 	
 	}
 	
-	// http://localhost:8088/test/board/listPage
-	@RequestMapping(value= "/listPage", method= RequestMethod.GET)
-	public void listPageGET(EZ_boardCri cri,Model model) throws Exception {
-	
-		//Criteria 객체정보 저장(pageStart/pageSize)
-		model.addAttribute("boardList", service.listCri(cri));
-		
-		// 페이징처리 정보생성(하단부)
-		EZ_board_PageMaker pm = new EZ_board_PageMaker();
-		pm.setCri(cri);
-		pm.setTotalCount(150); // 이 부분 150에서 현재 cm 테이블에 있는 데이터 개수를 불러오는 동작으로 바꾸셔야 돼요
-		
-		model.addAttribute("pm", pm);
-	}
 	
 }

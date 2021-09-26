@@ -4,10 +4,11 @@ public class EZ_boardCri {
 	
 	private int pageStart;
 	private int pageSize;
+	private String cm_name;
 	
 	public EZ_boardCri() { // 기본값은 항상 1페이지, 10개씩 
-		this.pageStart = 1;
 		this.pageSize = 10;
+		this.pageStart = 1;
 	}
 	
 	public void setPageStart(int pageStart) {
@@ -41,8 +42,18 @@ public class EZ_boardCri {
 		return (this.pageStart-1) * pageSize;
 	}
 
+	public String getCm_name() {
+		return cm_name;
+	}
+
+	public void setCm_name(String cm_name) {
+		this.cm_name = cm_name;
+	}
+
 	@Override
 	public String toString() {
-		return "EZ_boardCri [pageStart=" + pageStart + ", pageSize=" + pageSize + "]";
+		return "EZ_boardCri [pageStart=" + pageStart + ", pageSize=" + pageSize + ", cm_name=" + cm_name + "]";
 	}
+
+	
 }

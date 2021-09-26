@@ -2,8 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
 	<h1> 게시판 전체 목록 </h1>
 	
 	 <table>
@@ -32,7 +37,35 @@
 		</tr>
 	
 	</c:forEach>
+		
+	
+			<!-- 이전 -->
+	<c:if test="${pm.prev }">
+				<li>
+					<a href="listPage?pageStart=${pm.startPage-1}">이전</a>
+				</li>
+			
+			</c:if>
+		
+			<!-- 페이지 번호 -->
+			<c:forEach var="idx" begin="${pm.startPage }" end="${pm.endPage }">
+				<li>
+					<a href="listPage?pageStart=${idx }">${idx }</a>
+				</li>
+			</c:forEach>			
+		
+			<!-- 다음 -->
+			<c:if test="${pm.next }">
+				<li>
+					<a href="listPage?pageStart=${pm.endPage+1 }">다음</a>
+				</li>
+	</c:if>
+				
+		
+		
 		</tbody>
 	</table>
 	
 
+</body>
+</html>

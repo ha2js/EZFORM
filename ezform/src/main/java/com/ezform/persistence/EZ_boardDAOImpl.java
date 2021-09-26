@@ -86,5 +86,15 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
 		logger.info("boardDAO : listCri() 호출");
 		return sqlSession.selectList(namespace+".listCri",cri);
+	}
+
+	@Override
+	public int listPageCnt(String cm_name) throws Exception {
+		
+		logger.info("listPageCnt(String cm_name) 호출");
+		
+		int tmp = sqlSession.selectOne(namespace + ".rec.boardCnt",cm_name);
+		
+		return tmp;
 	}	
 }

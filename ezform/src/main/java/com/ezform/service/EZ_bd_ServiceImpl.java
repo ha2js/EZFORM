@@ -61,5 +61,16 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		
 		return bdao.listCri(cri);
 	}
+
+	@Override
+	public int listPageCnt(String cm_name) throws Exception {
+		
+		logger.info("listPageCnt(String cm_name) 호출");
+		
+		return bdao.listPageCnt(cm_name);
+	}
+	
+	
+	
 	
 }

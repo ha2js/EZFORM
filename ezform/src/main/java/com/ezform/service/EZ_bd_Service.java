@@ -24,4 +24,10 @@ public interface EZ_bd_Service {
 
 	// 글 목록 조회(Cri)	
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
+
+	// 페이징
+	public int listPageCnt(String cm_name) throws Exception;
+
+
+
 }

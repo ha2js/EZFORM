@@ -3,7 +3,6 @@ package com.ezform.persistence;
 import java.util.List;
 
 import com.ezform.domain.EZ_boardCri;
-// import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 
 public interface EZ_boardDAO {
@@ -25,4 +24,7 @@ public interface EZ_boardDAO {
 	
 	// 글 목록 조회(Cri)	
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
+	
+	// 페이징 테스트
+	public int listPageCnt(String cm_name) throws Exception;
 }
