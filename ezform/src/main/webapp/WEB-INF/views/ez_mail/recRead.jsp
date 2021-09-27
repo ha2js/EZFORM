@@ -15,6 +15,9 @@
 	<span>보낸사람</span> ${sendName} <${recReadDetail.mail_id }><br>
 	<span>받는사람</span> ${recName } <${recReadDetail.mail_email }><br>
 	<hr>
+	<!-- 첨부파일 -->
+	<!-- 파일 업로드 기능 후 추가해야 함 -->
+	<hr>
 	<!-- 메일 내용 -->
 	${recReadDetail.mail_content }
 	

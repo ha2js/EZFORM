@@ -27,9 +27,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 	
 		logger.info("mailDAO : mailList() 호출");
 		
-		List<EZ_mailVO> mailList = sqlSession.selectList(namespace+".rec_mailList",cri);
-		logger.info("mailDAO : select mailList : "+mailList);
-		return mailList;
+		return sqlSession.selectList(namespace+".rec_mailList",cri);
 	}
 
 	@Override
@@ -38,7 +36,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		logger.info("mailDAO : recMailCnt() 호출");
 		
 		int tmp = sqlSession.selectOne(namespace + ".rec_mailCnt",mail_id);
-		logger.info("mailDAO : select mailCnt : "+tmp);
+		logger.info("mailDAO : 현재 저장된 메일 개수 : "+tmp);
 		return tmp;
 		
 	}
@@ -65,7 +63,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		
 		vo.setMail_num(++num);
 		
-		logger.info("mailDAO : 메일 정보 : "+vo);
+		logger.info("mailDAO : 전송하려는 메일 정보 : "+vo);
 		
 		sqlSession.insert(namespace + ".mailWrite",vo);
 		
@@ -78,9 +76,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		
 		// 직원 정보 가져오기 (부서명, 직급, 이름, 메일주소)
 		
-		List<EZ_empVO> empList = sqlSession.selectList(namespace+".empSelect");
-		logger.info("mailDAO : select empList : "+empList);
-		return empList;
+		return sqlSession.selectList(namespace+".empSelect");
 	}
 
 	@Override
@@ -95,7 +91,6 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 			mvo.setMail_readCheck("1");
 			sqlSession.update(namespace+".rec_readCheck_update",mail_num);
 		}
-		
 		return mvo;
 	}
 
@@ -106,8 +101,5 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		
 		return sqlSession.selectOne(namespace+".recAndSend",mailName);
 	}
-
-
-	
 
 }

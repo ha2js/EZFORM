@@ -8,6 +8,16 @@
 <script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript">
 
+	$(document).ready(function() {
+		$("#writeToMe").click(function() {
+			if($(this).is(":checked")) {
+				$("#recText").val("세션에서 받아온 mail_id");
+			}
+			else {
+				$("#recText").val("");
+			}
+		});
+	});
 	function emp_select() {
 		// 새 창으로 직원 메일 정보 조회하기
 		var event = window.event;
@@ -60,7 +70,7 @@
 			<button type="button" class="" name="" onclick="emp_select()">직원 메일 주소</button>
 		</div>
 		<div>
-			받는 사람 <input type="text" name="mail_id"/> <input type="checkbox" > 내게쓰기 <br>
+			받는 사람 <input type="text" name="mail_id" id="recText"/> <input type="checkbox" id="writeToMe"> 내게쓰기 <br>
 			제목 <input type="text" name="mail_title"/><br>
 			첨부파일 <input type="file" name="mail_file"/><br>
 			<textarea name="mail_content"></textarea>
