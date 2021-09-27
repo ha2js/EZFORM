@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%-- <%@ include file="../include/header.jsp" %> --%>
 	<h1> 게시판 글쓰기 </h1>
-		<form role="form" action="/test/board/register" method="post">
+		<form role="form" action="/test/board/listPage" method="post">
 		
 		<!-- <div>
 			<label>이름</label>

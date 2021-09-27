@@ -1,20 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%-- <%@ include file="../include/header.jsp" %> --%>
 <script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
 </head>
 <body>
     <h3> 게시판 본문페이지 </h3>
 	<div>
 		<section>
-			<form role="form" action="" method="post">
+			<form role="form" action="/test/board/read" method="post">
 				<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
 			</form>
+		
+			<div>
+				<label>아이디</label>
+				<tr>
+				<td>${vo.cm_id}</td>
+				</tr>
+				<input type="text" name="cm_id" value="${vo.cm_id}" readonly>
+			</div>
 		
 			<div>
 				<label>이름</label>
@@ -27,6 +35,7 @@
 			</div>
 
 			<div>
+				<td><c:out value="${vo.cm_content}"/></td>
 				<label>내용</label>
 				<textarea rows="30" cols="50" readonly>${vo.cm_content }</textarea>
 			</div>
@@ -48,21 +57,21 @@
 			var name = $("[name='cm_name']");
 			
 			//수정하기
-			$('.modify').click(function(){
-				fr.attr("action","/board/modify");
+			$('#modify').click(function(){
+				fr.attr("action","/test/board/modify");
 				fr.attr("method","get");
 				fr.submit();
 			});
 			
 			//삭제하기
-			$(".remove").click(function(){
-				fr.attr("action","/board/remove");
+			$("#remove").click(function(){
+				fr.attr("action","/test/board/remove");
 				fr.submit();
 			});
 
 			//목록으로
-			$(".listPage").click(function(){
-				location.href="/board/listPage";
+			$("#listPage").click(function(){
+				location.href="/test/board/listPage";
 				
 			});
 			
@@ -72,7 +81,6 @@
 	
 	
     
-<%-- <%@ include file="../include/footer.jsp" %> --%>
 
 </body>
 </html>

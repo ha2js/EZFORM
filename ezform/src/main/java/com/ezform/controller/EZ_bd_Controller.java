@@ -99,6 +99,7 @@ public class EZ_bd_Controller {
 		
 		// DB정보 -> 저장
 		model.addAttribute("vo", vo);
+		
 	}
 	
 	// 글수정 GET - DB에서 가져온 정보를 화면에 출력

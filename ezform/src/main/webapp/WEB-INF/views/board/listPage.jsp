@@ -9,9 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
 </head>
 	<h1> 게시판 전체 목록 </h1>
-	
+	<h2><a href="/test/board/register">글쓰기</a></h2>
 	 <table>
 		<tbody>
 			<tr>
@@ -26,9 +27,11 @@
 			
 	<c:forEach var="vo" items="${boardList}">
 		<tr>
-			<td>${vo.cm_bnum}</td>
 			<td>
-				<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
+				<a href="/test/board/read?cm_bnum=${vo.cm_bnum}">${vo.cm_bnum}</a>
+			</td>
+			<td>
+				<a href="/test/board/read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
 			</td>
 			<td>${vo.cm_content}</td>
 			<td>${vo.cm_name}</td>
