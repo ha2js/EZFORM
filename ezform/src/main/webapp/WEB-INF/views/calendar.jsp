@@ -95,15 +95,15 @@
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-color">색상</label>
                                 <select class="inputModal" name="color" id="edit-color">
-                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
-                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
-                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
-                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
-                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
-                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
-                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
-                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
-                                    <option value="#495057" style="color:#495057;">검정색</option>
+                                     <option value="rgba(210, 85, 101, 1)" style="color:rgba(210, 85, 101, 1);">빨간색</option>
+                                    <option value="rgba(151, 117, 250, 1)" style="color:rgba(151, 117, 250, 1);">보라색</option>
+                                    <option value="rgba(255, 169, 77, 1)" style="color:rgba(255, 169, 77, 1);">주황색</option>
+                                    <option value="rgba(116, 192, 252, 1)" style="color:rgba(116, 192, 252, 1);">파란색</option>
+                                    <option value="rgba(240, 101, 149, 1)" style="color:rgba(240, 101, 149, 1);">핑크색</option>
+                                    <option value="rgba(99, 230, 190, 1)" style="color:rgba(99, 230, 190, 1);">연두색</option>
+                                    <option value="rgba(169, 227, 75, 1)" style="color:rgba(169, 227, 75, 1);">초록색</option>
+                                    <option value="rgba(77, 99, 140, 1)" style="color:rgba(77, 99, 140, 1);">남색</option>
+                                    <option value="rgba(73, 80, 87, 1)" style="color:rgba(73, 80, 87, 1);">검정색</option>
                                 </select>
                             </div>
                         </div>

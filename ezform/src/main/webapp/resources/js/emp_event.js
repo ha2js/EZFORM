@@ -35,7 +35,7 @@
 		}
 		
 		if($("#emp_pw").val() == "") {
-			alert("비밀번호을 입력해주세요");
+			alert("패스워드를 입력해주세요");
 			return false;
 		}
 		

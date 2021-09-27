@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,6 @@
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/timegrid/main.css' />
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/list/main.css' />
-</head>
 
 	<script type="text/javascript">
 	
@@ -50,7 +50,8 @@
 		
 	</script>
 
-
+	
+</head>
 <body class="  ">
 	<!-- dark/light/auto mode -->
 	<!-- loader Start -->
@@ -64,7 +65,7 @@
 	<aside class="sidebar sidebar-default navs-rounded-all ">
 		<div
 			class="sidebar-header d-flex align-items-center justify-content-start">
-			<a href="./testForm" class="navbar-brand"> <!--Logo start-->
+			<a href="./main" class="navbar-brand"> <!--Logo start-->
 				<svg width="30" class="" viewBox="0 0 30 30" fill="none"
 					xmlns="http://www.w3.org/2000/svg">
                     <rect x="-0.757324" y="19.2427" width="28"
@@ -107,7 +108,7 @@
 							<span class="default-icon">Home</span> <span class="mini-icon">-</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="./testForm"> <i
+						aria-current="page" href="./main"> <i
 							class="icon"><svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M9.14373 20.7821V17.7152C9.14372 16.9381 9.77567
 								 16.3067 10.5584 16.3018H13.4326C14.2189 16.3018 14.8563 
@@ -173,17 +174,64 @@
 					<!---------------------------------- 사이드메뉴 : 사원목록 ---------------------------------------------->
 					
 					<!---------------------------------- 사이드메뉴 : 메일 ---------------------------------------------->
-					<li class="nav-item">
-						<a class="nav-link " href="./dashboard/table/table-data.html"> 
-							<i class="icon"> 
+					
+					<li class="nav-item"><a class="nav-link"
+						data-bs-toggle="collapse" href="#sidebar-user" role="button"
+						aria-expanded="false" aria-controls="sidebar-user"><i class="icon"> 
                             	<svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             		<path opacity="0.4" d="M22 15.94C22 18.73 19.76 20.99 16.97 21H16.96H7.05C4.27 21 2 18.75 2 15.96V15.95C2 15.95 2.006 11.524 2.014 9.298C2.015 8.88 2.495 8.646 2.822 8.906C5.198 10.791 9.447 14.228 9.5 14.273C10.21 14.842 11.11 15.163 12.03 15.163C12.95 15.163 13.85 14.842 14.56 14.262C14.613 14.227 18.767 10.893 21.179 8.977C21.507 8.716 21.989 8.95 21.99 9.367C22 11.576 22 15.94 22 15.94Z" fill="currentColor"></path>
                             		<path d="M21.4759 5.67351C20.6099 4.04151 18.9059 2.99951 17.0299 2.99951H7.04988C5.17388 2.99951 3.46988 4.04151 2.60388 5.67351C2.40988 6.03851 2.50188 6.49351 2.82488 6.75151L10.2499 12.6905C10.7699 13.1105 11.3999 13.3195 12.0299 13.3195C12.0339 13.3195 12.0369 13.3195 12.0399 13.3195C12.0429 13.3195 12.0469 13.3195 12.0499 13.3195C12.6799 13.3195 13.3099 13.1105 13.8299 12.6905L21.2549 6.75151C21.5779 6.49351 21.6699 6.03851 21.4759 5.67351Z" fill="currentColor"></path>                               
                             	</svg>                                                                                  
 							</i>
-							<span class="item-name">메일</span>
-						</a>
+							<span class="item-name">메일</span><i class="right-icon"> <svg
+									xmlns="http://www.w3.org/2000/svg" width="18" fill="none"
+									viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round"
+										stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+						</i>
+					</a>
+						<ul class="sub-nav collapse" id="sidebar-user"
+							data-bs-parent="#sidebar">
+							<li class="nav-item"><a class="nav-link "
+								href="./ez_mail/recMail"> <i class="icon">
+										<svg xmlns="http://www.w3.org/2000/svg" width="10"
+											viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                            <circle cx="12" cy="12"
+												r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+								</i> <i class="sidenav-mini-icon"> U </i> 
+								<span class="item-name">받은 메일함</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link "
+								href="../dashboard/app/user-add.html"> <i class="icon">
+										<svg xmlns="http://www.w3.org/2000/svg" width="10"
+											viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                            <circle cx="12" cy="12"
+												r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+								</i> <i class="sidenav-mini-icon"> A </i> 
+								<span class="item-name">보낸 메일함</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link "
+								href="../dashboard/app/user-list.html"> <i class="icon">
+										<svg xmlns="http://www.w3.org/2000/svg" width="10"
+											viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                            <circle cx="12" cy="12"
+												r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+								</i> <i class="sidenav-mini-icon"> U </i>
+								 <span class="item-name">중요 보관함</span>
+							</a></li>
+						</ul>
 					</li>
+					
 					
 					<!---------------------------------- 사이드메뉴 : 메일 ---------------------------------------------->
 					
@@ -400,13 +448,12 @@
 									</div>
 								</div></li>
 								
-	<!------------------------------------ 로그인/로그아웃/회원정보 조회 영역 ------------------------------------------>	
-	
+<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->								
 							<li class="nav-item dropdown"><a
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false"> <img
-									src="${pageContext.request.contextPath }/resources/upload/emp_files/${resultVO.em_image}" alt="User-Profile"
+									src="${pageContext.request.contextPath }/resources/upload/mem_Image/${resultVO.em_image}" alt="User-Profile"
 									class="img-fluid avatar avatar-50 avatar-rounded">
 									<div class="caption ms-3 d-none d-md-block ">
 										<h6 class="mb-0 caption-title">${resultVO.em_name}</h6>
@@ -416,14 +463,14 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="./updateMember">회원정보</a></li>
+										href="./infoMember">회원정보</a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
 										href="./logout">로그아웃</a></li>
 								</ul>
 							</li>
+<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->						
 							
-	<!------------------------------------ 로그인/로그아웃/회원정보 조회 영역 ------------------------------------------>						
 						</ul>
 					</div>
 				</div>
@@ -433,7 +480,7 @@
 			<div class="iq-navbar-header" style="height: 105px;">
 				<div class="container-fluid iq-container">
 					<div class="row">
-						<div class="col-md-12"></div>
+						<div class="col-md-12" id="main-menu-label"></div>
 					</div>
 				</div>
 				<div class="iq-header-img">

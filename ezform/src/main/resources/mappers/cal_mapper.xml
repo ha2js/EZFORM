@@ -5,6 +5,12 @@
 
 <mapper namespace="com.ezform.mapper.cal_Mapper">
 
-	
- 
- </mapper>
+	<select id="selectEventList" resultType="EZ_calendarVO">
+		select * 
+		from ez_cal
+		<!-- where 1=1
+		<if test="userid!=null and userid!=''"> and userid = 1#{em_id}</if>
+		order by start desc -->
+	</select>
+
+</mapper>

@@ -1,3 +1,4 @@
+<%@page import="com.ezform.domain.EZ_empVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>		
     

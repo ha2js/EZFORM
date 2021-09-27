@@ -29,11 +29,11 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 		System.out.println(" DAO : 직원 ID 생성하기");
 		
 		// 임시 ID 만들기
-		int result = sqlSession.selectOne(namespace + ".mem_count");
+		int count = sqlSession.selectOne(namespace + ".count");
 				
-		System.out.println(" DAO : 직원ID 생성 결과 : " + result);
+		System.out.println(" DAO : 직원ID 생성 결과 : " + count);
 		
-		return result;
+		return count;
 	}
 
 
@@ -86,6 +86,44 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 	}
 
 
-	
+	// 직원 회원정보
+	@Override
+	public EZ_empVO infoEmp(int em_id) throws Exception {
+		
+		System.out.println(" DAO : 직원 회원정보 조회(infoEmp(em_id) 실행)");
+		
+		EZ_empVO resultVO = sqlSession.selectOne(namespace + ".infoEmp", em_id);
+		
+		System.out.println(" DAO : 회원정보 조회 완료!");
+		
+		return resultVO;
+	}
+
+
+	// 직원 회원수정
+	@Override
+	public int updateEmp(EZ_empVO evo) throws Exception {
+		
+		System.out.println(" DAO : updateEmp(evo) 실행");
+		
+		int result = sqlSession.update(namespace + ".updateEmp", evo);
+		
+		System.out.println("결과 : " + result);
+		
+		return result;
+	}
+
+	// 직원 회원탈퇴
+	@Override
+	public int deleteEmp(EZ_empVO evo) throws Exception {
+		
+		System.out.println(" DAO : deleteEmp(evo) 실행");
+		
+		int result = sqlSession.delete(namespace + ".deleteEmp", evo);
+		
+		return result;
+	}
+
+
 	
 }
