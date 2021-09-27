@@ -120,7 +120,7 @@ public class EZ_bd_Controller {
 		service.modify(vo);
 	
 		// 페이지 이동
-		return "redirect:/listAll";
+		return "redirect:/listPage";
 		
 	}
 

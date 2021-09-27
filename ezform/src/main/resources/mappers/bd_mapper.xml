@@ -18,11 +18,7 @@
 
 	<!-- 게시판 글조회(특정글) -->
 	<select id="read" resultType="EZ_boardVO">
-	select 
-	* 
-	from 
-	ez_cm 
-	where cm_bnum = #{cm_bnum}
+	select * from ez_cm where cm_bnum="25"
 	</select>
 
 	<!-- 게시판 글수정(특정글) -->
@@ -50,9 +46,16 @@
 	limit #{page},#{pageSize}
  	</select>
  
- 	<!-- 페이징 테스트 -->
+  	<!-- 페이징 테스트 -->
  	<select id="listPageCnt" resultType="int">
  		select count(*) from ez_cm 
  		where cm_name=#{cm_name} 
- 	</select>
+ 	</select> 
+ 	
+ 	<!-- 게시판 조회수 -->
+ 	<!-- <update id="boardHits" parameterType="int">
+ 	update ez_cm set 
+ 	cm_hits = cm_hits+1 
+ 	where cm_bnum = #{cm_bnum}
+ 	</update> -->
  </mapper>

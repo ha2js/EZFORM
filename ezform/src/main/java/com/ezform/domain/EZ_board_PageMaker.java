@@ -12,7 +12,7 @@ public class EZ_board_PageMaker {
 	private boolean prev;
 	private boolean next;
 	
-	private int displaypageNum = 10;
+	private int displaypageNum = 15;
 
 	// 총 개수 계산
 	public void setTotalCount(int totalCount) {
