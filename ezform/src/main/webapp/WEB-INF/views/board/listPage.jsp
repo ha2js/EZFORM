@@ -27,9 +27,7 @@
 			
 	<c:forEach var="vo" items="${boardList}">
 		<tr>
-			<td>
-				<a href="/test/board/read?cm_bnum=${vo.cm_bnum}">${vo.cm_bnum}</a>
-			</td>
+			<td>${vo.cm_bnum}</td>
 			<td>
 				<a href="/test/board/read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
 			</td>
@@ -38,9 +36,9 @@
 			<td>
 				<fmt:formatDate pattern="yy-MM-dd" value="${vo.cm_regdate}"/>
 			</td>
-			<td style="width:40px">
+			 <td style="width:40px">
 			<span>${vo.cm_hits}</span>
-			</td>
+			</td> 
 			<td>
 		</tr>
 	</c:forEach>

@@ -6,21 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
-</head>
+<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script></head>
 <body>
     <h3> 게시판 본문페이지 </h3>
 	<div>
 		<section>
-			<form role="form" action="/test/board/read" method="post">
+			<form role="form" action="" method="post">
 				<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
 			</form>
 		
 			<div>
 				<label>아이디</label>
-				<tr>
-				<td>${vo.cm_id}</td>
-				</tr>
 				<input type="text" name="cm_id" value="${vo.cm_id}" readonly>
 			</div>
 		
@@ -35,7 +31,6 @@
 			</div>
 
 			<div>
-				<td><c:out value="${vo.cm_content}"/></td>
 				<label>내용</label>
 				<textarea rows="30" cols="50" readonly>${vo.cm_content }</textarea>
 			</div>
@@ -53,25 +48,24 @@
 			
 			// form태그 정보가져오기
 			var fr = $("form[role='form']");
-			var cm_name = ${vo.cm_name}
 			var name = $("[name='cm_name']");
 			
 			//수정하기
-			$('#modify').click(function(){
+			$('.modify').click(function(){
 				fr.attr("action","/test/board/modify");
 				fr.attr("method","get");
 				fr.submit();
 			});
 			
 			//삭제하기
-			$("#remove").click(function(){
+			$(".remove").click(function(){
 				fr.attr("action","/test/board/remove");
 				fr.submit();
 			});
 
 			//목록으로
-			$("#listPage").click(function(){
-				location.href="/test/board/listPage";
+			$(".listPage").click(function(){
+				location.href="listPage";
 				
 			});
 			

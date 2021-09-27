@@ -114,14 +114,15 @@ public class EZ_bd_Controller {
 	
 	// * 글수정 POST (modify) *
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String modifyPOST(EZ_boardVO vo) throws Exception{
+	public String modifyPOST(EZ_boardVO vo,RedirectAttributes rttr) throws Exception{
 		logger.info("modifyPOST(EZ_boardVO vo) 호출");
 	
 		// 서비스
 		service.modify(vo);
 	
+		logger.info("수정처리 완료!");
 		// 페이지 이동
-		return "redirect:/listPage";
+		return "redirect:/board/listPage";
 		
 	}
 
@@ -131,10 +132,10 @@ public class EZ_bd_Controller {
 		logger.info("removePOST(Integer cm_bnum) 호출");
 		
 		// 서비스
-		service.delete(cm_bnum);
+		service.remove(cm_bnum);
 	
 		// 페이지 이동
-		return "redirect:/listPage";
+		return "redirect:/board/listPage";
 	
 	}
 	

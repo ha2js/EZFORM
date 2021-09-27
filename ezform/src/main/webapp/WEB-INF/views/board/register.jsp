@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%-- <%@ include file="../include/header.jsp" %> --%>
 	<h1> 게시판 글쓰기 </h1>
-		<form role="form" action="/test/board/listPage" method="post">
+		<form role="form" action="/test/board/register" method="post">
 		
-		<!-- <div>
+		 <!-- <div>
 			<label>이름</label>
-			<input name="cm_name" placeholder="아이디를 입력하세요">
+			<input name="cm_name" placeholder="이름을 입력하세요">
 		</div> -->
 			
 		<div>	
@@ -16,7 +16,7 @@
 		
 		<div>
 			<label>내용</label>
-			<textarea name="cm_content" rows="3" placeholder="내용을 입력하세요"></textarea>
+			<textarea name="cm_content" cols="50" rows="30" placeholder="내용을 입력하세요"></textarea>
 		</div>		
 
 		<div>

@@ -12,8 +12,8 @@
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-	insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content) 
-	values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content})
+	insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits) 
+	values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},#{cm_hits})
 	</insert>
 
 	<!-- 게시판 글조회(특정글) -->
@@ -21,21 +21,15 @@
 		select cm_bnum,	
 			   cm_title, 
 			   cm_name, 
-			   cm_content, 
-			   cm_hits  
+			   cm_content,
+			   cm_hits   
 			   from ez_cm
 			   where cm_bnum = #{cm_bnum}
 	</select>
 
-	<!-- 게시판 글수정(특정글) -->
-	<update id="update">
-	update ez_cm set cm_title = #{cm_title}, cm_content = #{cm_content} ,cm_bnum=#{cm_bnum}
-	where cm_bnum = #{cm_bnum)
-	</update>
-
 	<!-- 게시판 글수정(글제목,이름,내용) -->
 	<update id="modify">
-	update ez_cm set cm_title=#{cm_title}, cm_name=#{cm_name}, cm_content=#{cm_content} 
+	update ez_cm set cm_bnum=#{cm_bnum},cm_title=#{cm_title}, cm_content=#{cm_content} ,cm_name=#{cm_name} 
 	where cm_bnum = #{cm_bnum} 
 	</update>
 
