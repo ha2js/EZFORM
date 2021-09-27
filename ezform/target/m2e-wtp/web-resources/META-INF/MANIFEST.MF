@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: JoSeongHa
 Build-Jdk: 16.0.2
-=======
-Built-By: jong
-Build-Jdk: 16.0.1
->>>>>>> df4db6c54272d249fa9d3839d439991f1d039231
 Created-By: Maven Integration for Eclipse
 

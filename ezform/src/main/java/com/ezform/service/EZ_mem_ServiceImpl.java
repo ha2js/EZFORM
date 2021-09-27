@@ -15,16 +15,31 @@ public class EZ_mem_ServiceImpl implements EZ_mem_Service {
 	@Inject
 	private EZ_memDAO mDAO;
 	
-	// 회원 아이디 생성
+	/*
+	 * // 회원 아이디 생성
+	 * 
+	 * @Override public int madeEmpID() throws Exception {
+	 * 
+	 * System.out.println(" S : madeEmpID() 실행");
+	 * 
+	 * int count = mDAO.madeEmpID();
+	 * 
+	 * return count; }
+	 */
+	
+	// 사원ID 중복체크
 	@Override
-	public int madeEmpID() throws Exception {
+	public int checkEmpId(int em_id) throws Exception {
 		
-		System.out.println(" S : madeEmpID() 실행");
+		System.out.println(" S : checkEmpID(checkID) 실행");
 		
-		int count = mDAO.madeEmpID();
+		int result = mDAO.checkEmpID(em_id);
 		
-		return count;
+		System.out.println(" S : controller 이동");
+		
+		return result;
 	}
+	
 
 	// 회원가입
 	@Override
@@ -83,6 +98,17 @@ public class EZ_mem_ServiceImpl implements EZ_mem_Service {
 		int result = mDAO.deleteEmp(evo);
 		
 		return result;
+	}
+
+	// 회원 리스트
+	@Override
+	public List<EZ_empVO> memList() throws Exception {
+		
+		System.out.println(" S : memList() 실행");
+		
+		List<EZ_empVO> listEmp = mDAO.listEmp();
+		
+		return listEmp;
 	}
 
 	

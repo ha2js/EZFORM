@@ -1,28 +1,16 @@
 /**
- * 	emp 이벤트처리
+ * 	사원생성 이벤트처리
  
  */
  
- 
- 
- 	$(document).ready(function() {
-	
-		// 내선번호 이벤트
-		$("#emp_exten").keypress(function() {
-
-			var exten_length = $(this).val().length;
-			if(exten_length == 3 || exten_length == 7) {
-				$(this).val($(this).val() + "-");
-			}
-			
-		});
-
-		
-	});
-	
-	
 	// 회원가입 유효성 검사
 	function emp_join_avail() {
+		
+		if($("#emp_id").val() == "") {
+			alert("사원ID을 입력해주세요");
+			return false;
+		}
+		
 		
 		if($("#emp_email").val() == "") {
 			alert("이메일을 입력해주세요");
@@ -53,4 +41,17 @@
 			alert("직급을 입력해주세요");
 			return false;
 		}
+		
 	}
+	
+	
+	// 내선번호 생성
+	function emp_join_extension() {
+		// 내선번호 이벤트
+		var exten_length = $("#emp_exten").val().length;
+		if(exten_length == 3 || exten_length == 7) {
+			$("#emp_exten").val($("#emp_exten").val() + "-");
+		}
+
+	}
+	
