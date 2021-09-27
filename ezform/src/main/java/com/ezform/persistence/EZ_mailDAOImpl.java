@@ -83,6 +83,31 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		return empList;
 	}
 
+	@Override
+	public EZ_mailVO recRead(int mail_num) throws Exception {
+		
+		logger.info("mailDAO : recRead() 호출");
+		
+		EZ_mailVO mvo = new EZ_mailVO();
+		
+		mvo = sqlSession.selectOne(namespace+".rec_read",mail_num);
+		if (mvo.getMail_readCheck().equals("0")) { // 읽음 처리 (색상)
+			mvo.setMail_readCheck("1");
+			sqlSession.update(namespace+".rec_readCheck_update",mail_num);
+		}
+		
+		return mvo;
+	}
+
+	@Override
+	public String mailName(String mailName) throws Exception {
+		
+		logger.info("mailDAO : mailName() 호출");
+		
+		return sqlSession.selectOne(namespace+".recAndSend",mailName);
+	}
+
+
 	
 
 }

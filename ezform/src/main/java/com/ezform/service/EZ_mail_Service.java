@@ -8,7 +8,7 @@ import com.ezform.domain.EZ_mailVO;
 
 public interface EZ_mail_Service {
 
-	// 메일 목록 조회
+	// 수신 메일 목록 조회
 	public List<EZ_mailVO> mailList(EZ_mailCri cri) throws Exception;
 	
 	// 수신 메일 개수
@@ -22,5 +22,11 @@ public interface EZ_mail_Service {
 	
 	// 직원 정보 조회 (메일 쓰기)
 	public List<EZ_empVO> empSelect() throws Exception;
-
+	
+	// 수신 메일 읽기
+	public EZ_mailVO recRead(int mail_num) throws Exception;
+	
+	// 수신자/발신자 이름
+	public String mailName(String mailName) throws Exception;
+	
 }

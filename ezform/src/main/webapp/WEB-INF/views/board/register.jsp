@@ -3,6 +3,11 @@
 <%-- <%@ include file="../include/header.jsp" %> --%>
 	<h1> 게시판 글쓰기 </h1>
 		<form role="form" action="/test/board/register" method="post">
+		
+		<!-- <div>
+			<label>이름</label>
+			<input name="cm_name" placeholder="아이디를 입력하세요">
+		</div> -->
 			
 		<div>	
 			<label> 제목 </label>

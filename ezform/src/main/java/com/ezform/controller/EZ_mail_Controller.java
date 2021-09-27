@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
@@ -51,11 +52,21 @@ public class EZ_mail_Controller {
 		
 	}
 	
-	@RequestMapping(value="/sendMail", method = RequestMethod.GET)
-	public void read_SendMailGET() throws Exception {
-		//  보낸 메일
+	@RequestMapping(value="/recRead", method=RequestMethod.GET)
+	public void readDetail_RecMailGET(@RequestParam("mail_num") int mail_num, Model model) throws Exception {
+		logger.info("readDetail_RecMailGET() 호출");
+		
+		EZ_mailVO mvo = service.recRead(mail_num);
+		String recName = service.mailName(mvo.getMail_id());
+		String sendName = service.mailName(mvo.getMail_email());
+		
+		model.addAttribute("recReadDetail",mvo);
+		model.addAttribute("recName",recName);
+		model.addAttribute("sendName",sendName);
+		
+		
 	}
-	
+		
 	@RequestMapping(value="/emp_select", method = RequestMethod.GET)
 	public void emp_selectGET(Model model) throws Exception {
 		logger.info("emp_selectGET() 호출");
@@ -96,6 +107,11 @@ public class EZ_mail_Controller {
 			out.println("<script>alert('전송 완료'); location.href='/test/ez_mail/recMail'</script>");
 			out.flush();
 		}
+	}
+	
+	@RequestMapping(value="/sendMail", method = RequestMethod.GET)
+	public void read_SendMailGET() throws Exception {
+		//  보낸 메일
 	}
 	
 }

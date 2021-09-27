@@ -93,7 +93,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		logger.info("listPageCnt(String cm_name) 호출");
 		
-		int tmp = sqlSession.selectOne(namespace + ".rec.boardCnt",cm_name);
+		int tmp = sqlSession.selectOne(namespace + ".listPageCnt",cm_name);
 		
 		return tmp;
 	}	

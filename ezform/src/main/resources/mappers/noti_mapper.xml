@@ -4,6 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezform.mapper.noti_Mapper">
-
-
+	
+	<!-- 공지사항 글쓰기 -->
+	<insert id="create">
+		insert into ez_not(not_id,not_title,not_content,not_file)
+		values(#{not_id},#{not_title},#{not_content},#{not_file})
+	</insert>
+	
+	<select id="listALL" resultType="EZ_noticeVO">
+		<![CDATA[
+			select * 
+			from ez_not 
+			where not_num > 0 
+			order by not_num desc, not_regdate desc
+		]]>
+	</select>
+	
+	<!-- 공지사항 글 조회 -->
+	<select id="read" resultType="EZ_noticeVO">
+		select * 
+		from ez_not 
+		where not_num = #{not_num}
+	</select>
+	
+	<!-- 게시판 글 수정 -->
+	<update id="modify">
+		update ez_not set not_num=#{not_num},not_id=#{not_id},not_title=#{not_title},not_content=#{not_content} 
+		where not_num=#{not_num}
+	</update>
+	
+	<!-- 게시판 글 삭제 -->
+	<delete id="delete">
+		delete from ez_not 
+		where not_num = #{not_num}
+	</delete>
+	
+	<!-- 조회수 수정 -->
+	<update id="hits" parameterType="int">
+		update ez_not set not_hits=not_hits+1 
+		where not_num=#{not_num} 
+	</update>
+	
+	
 </mapper>
