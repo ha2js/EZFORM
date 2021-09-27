@@ -47,7 +47,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		logger.info(vo+"");
 		
-		return null;
+		return vo;
 	}
 	
 	@Override
