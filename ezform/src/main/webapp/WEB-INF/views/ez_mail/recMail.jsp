@@ -51,7 +51,7 @@
 					<tr ${mail.mail_readCheck == '0' ? 'style = color:rgb(70,161,222)':'' }>
 						<td><input type="checkbox" value="${mail.mail_num }"/></td>
 						<td>${mail.mail_email }</td> <!-- 임시로 email 주소 login 파트 완성되면 사원이름으로 바꾸기 -->
-						<td><a href="#">${mail.mail_title }</a></td>
+						<td><a href="/test/ez_mail/recRead?mail_num=${mail.mail_num }">${mail.mail_title }</a></td>
 						<td><fmt:formatDate value="${mail.mail_regdate }" pattern="yyyy-MM-dd HH:mm"/></td>
 					</tr>
 				</c:forEach>

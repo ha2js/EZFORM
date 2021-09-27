@@ -62,4 +62,22 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		return mdao.empSelect();
 	}
 
+	@Override
+	public EZ_mailVO recRead(int mail_num) throws Exception {
+		
+		logger.info("mailService : recRead() 호출");
+		
+		return mdao.recRead(mail_num);
+	}
+
+	@Override
+	public String mailName(String mailName) throws Exception {
+		
+		logger.info("mailService : mailName() 호출");
+		
+		return mdao.mailName(mailName);
+	}
+
+
+
 }

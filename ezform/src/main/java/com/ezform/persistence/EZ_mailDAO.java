@@ -22,4 +22,10 @@ public interface EZ_mailDAO {
 	
 	// 직원 정보 조회 (메일 쓰기)
 	public List<EZ_empVO> empSelect() throws Exception;
+	
+	// 수신 메일 읽기
+	public EZ_mailVO recRead(int mail_num) throws Exception;
+	
+	// 수신자/발신자 이름
+	public String mailName(String mailName) throws Exception;
 }
