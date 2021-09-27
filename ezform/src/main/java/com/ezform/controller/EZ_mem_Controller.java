@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -99,7 +100,7 @@ public class EZ_mem_Controller {
 		return "redirect:./main";
 	}
 
-	// 회원가입 - 페이지 이동
+	// 사원생성 - 페이지 이동
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String joinPageGET() throws Exception {
 
@@ -108,54 +109,66 @@ public class EZ_mem_Controller {
 		return "/ez_mem/joinPage";
 	}
 
-	// 회원가입 - 처리
+	// 사원생성 - 처리
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinPagePOST(MultipartHttpServletRequest multiRequest) throws Exception {
+	public String joinPagePOST(MultipartHttpServletRequest multiRequest, Model model) throws Exception {
 
 		System.out.println(" C : joinPagePOST(evo) 실행");
-
-		// 회원ID 만들기(임시 : 카운트값으로 그냥 1~ 올리는 식으로 사용)
-		int count = mem_service.madeEmpID();
-		// 회원ID
-		int em_id = 1000 + count;
 		
-		System.out.println(" C : 회원ID 값 - " + em_id);
-
-		// 해당 파일 가져오기
-		MultipartFile file = multiRequest.getFile("em_image");
-
-		// 절대경로 설정
-		String file_path = multiRequest.getSession().getServletContext().getRealPath("/resources/upload/mem_Image");
-
-		// 중복 파일명 방지
-		String uuid = UUID.randomUUID().toString();
-
-		// 파일 업로드
-		String file_newName = uuid + "_" + file.getOriginalFilename();
+		System.out.println(" CC : em_id 값 : " + Integer.parseInt(multiRequest.getParameter("em_id")));
 		
-		file.transferTo(new File(file_path + "/" + file_newName));
+		// 사원ID 중복체크 확인
+		int checkID = mem_service.checkEmpId(Integer.parseInt(multiRequest.getParameter("em_id")));
+		
+		System.out.println(" C: 사원ID 중복체크 확인 결과 = " + checkID);
+		if(checkID == 1) {
+			model.addAttribute("checkID", checkID);
+		} else {
+			model.addAttribute("checkID", checkID);
+			
+			// 해당 파일 가져오기
+			MultipartFile file = multiRequest.getFile("em_image");
+			
+			System.out.println("파일값 : " + file.getOriginalFilename());
+			 
+			// 절대경로 설정
+			String file_path = multiRequest.getSession().getServletContext().getRealPath("/resources/upload/mem_Image");
 
-		System.out.println("파일 업로드 완료!");
+			EZ_empVO evo = new EZ_empVO();
+			
+			evo.setEm_id(Integer.parseInt(multiRequest.getParameter("em_id")));
+			evo.setEm_email((String) multiRequest.getParameter("em_email"));
+			evo.setEm_name((String) multiRequest.getParameter("em_name"));
+			evo.setEm_pw((String) multiRequest.getParameter("em_pw"));
+			evo.setEm_extension(multiRequest.getParameter("em_extension"));
+			evo.setEm_dept((String) multiRequest.getParameter("em_dept"));
+			evo.setEm_posi((String) multiRequest.getParameter("em_posi"));
 
-		EZ_empVO evo = new EZ_empVO();
+			// 파일 업로드
+			if(file.getOriginalFilename() != "") {
+				
+				// 중복 파일명 방지
+				String uuid = UUID.randomUUID().toString();
+				
+				String file_newName = uuid + "_" + file.getOriginalFilename();
+				file.transferTo(new File(file_path + "/" + file_newName));
+				
+				System.out.println("파일 업로드 완료!");
+				
+				evo.setEm_image(file_newName);
+			}
 
-		evo.setEm_id(em_id);
-		evo.setEm_email((String) multiRequest.getParameter("em_email"));
-		evo.setEm_name((String) multiRequest.getParameter("em_name"));
-		evo.setEm_pw((String) multiRequest.getParameter("em_pw"));
-		evo.setEm_extension(multiRequest.getParameter("em_extension"));
-		evo.setEm_dept((String) multiRequest.getParameter("em_dept"));
-		evo.setEm_posi((String) multiRequest.getParameter("em_posi"));
-		evo.setEm_image(file_newName);
+			System.out.println(" C : 파라미터 값" + evo);
 
-		System.out.println(" C : 파라미터 값" + evo);
+			// 회원가입하기
+			mem_service.memJoin(evo);
 
-		// 회원가입하기
-		mem_service.memJoin(evo);
+			System.out.println(" C : 회원가입 완료 - login 페이지로 이동");
+		}
+		
+	
 
-		System.out.println(" C : 회원가입 완료 - login 페이지로 이동");
-
-		return "redirect:./login";
+		return "redirect:./join";
 	}
 	
 	
@@ -249,10 +262,14 @@ public class EZ_mem_Controller {
 	
 	// 회원탈퇴 GET
 	@RequestMapping(value = "/deleteMember", method = RequestMethod.GET)
-	public String mem_deleteGET() throws Exception {
+	public String mem_deleteGET(Model model) throws Exception {
 		
 		System.out.println(" C : mem_deleteGET() 실행");
 		
+		// 가입된 모든 회원 리스트 가져오기
+		List<EZ_empVO> listEmp = mem_service.memList();
+		
+		model.addAttribute("listEmp", listEmp);
 		
 		return "/ez_mem/deleteMember";
 	}
@@ -265,7 +282,7 @@ public class EZ_mem_Controller {
 		System.out.println(" C : mem_deletePOST() 실행");
 		
 		EZ_empVO evo = new EZ_empVO();
-
+		
 		evo.setEm_id(Integer.parseInt((String)multiRequest.getParameter("em_id")));
 		evo.setEm_email((String) multiRequest.getParameter("em_email"));
 		evo.setEm_pw((String) multiRequest.getParameter("em_pw"));

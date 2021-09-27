@@ -21,22 +21,43 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 	
 	private static final String namespace = "com.testform.mapper.mem_Mapper";
 	
-	// 직원ID 생성
+	/*
+	 * // 직원ID 생성
+	 * 
+	 * @Override public int madeEmpID() throws Exception {
+	 * 
+	 * System.out.println(" DAO : madeEmpID() 실행");
+	 * System.out.println(" DAO : 직원 ID 생성하기");
+	 * 
+	 * // 임시 ID 만들기 int count = sqlSession.selectOne(namespace + ".count");
+	 * 
+	 * System.out.println(" DAO : 직원ID 생성 결과 : " + count);
+	 * 
+	 * return count; }
+	 */
+
+	
+	// 사원ID 중복체크
 	@Override
-	public int madeEmpID() throws Exception {
+	public int checkEmpID(int em_id) throws Exception {
+
+		System.out.println(" DAO : 사원ID 중복체크(checkEmpID(em_id) 실행)");
 		
-		System.out.println(" DAO : madeEmpID() 실행");	
-		System.out.println(" DAO : 직원 ID 생성하기");
+		System.out.println(" DAO : 체크아이디 = " + em_id);
 		
-		// 임시 ID 만들기
-		int count = sqlSession.selectOne(namespace + ".count");
-				
-		System.out.println(" DAO : 직원ID 생성 결과 : " + count);
+		EZ_empVO resultVO = sqlSession.selectOne(namespace + ".checkID", em_id);
 		
-		return count;
+		int result = 0;
+		
+		if(resultVO != null) {
+			result = 1;
+		} 
+
+		return result;
 	}
 
-
+	
+	
 	// 직원 회원가입
 	@Override
 	public void joinMem(EZ_empVO evo) throws Exception {
@@ -50,7 +71,7 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 		System.out.println(" DAO : 회원가입 완료 - service로 이동");
 	}
 
-	
+
 	// 직원 로그인
 	@Override
 	public List loginEmp(EZ_empVO evo) throws Exception {
@@ -123,6 +144,20 @@ public class EZ_memDAOImpl implements EZ_memDAO {
 		
 		return result;
 	}
+
+	// 직원 리스트
+	@Override
+	public List<EZ_empVO> listEmp() throws Exception {
+
+		System.out.println(" DAO : listEmp() 실행");
+		
+		List<EZ_empVO> empList = sqlSession.selectList(namespace + ".listEmp");
+		
+		return empList;
+	}
+	
+	
+	
 
 
 	

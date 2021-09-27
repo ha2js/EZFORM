@@ -55,6 +55,7 @@
 		});
 		
 	});
+	
 </script>
 
 </head>
@@ -112,7 +113,8 @@
                                  <button type="submit" class="btn btn-primary" id="ezLoginBtn">로그인</button>
                               </div>
                               <p class="mt-3 text-center">
-                                 Don’t have an account? <a href="./join" class="text-underline">Click here to sign up.</a>
+                                 <!-- Don’t have an account? <a href="./join" class="text-underline">Click here to sign up.</a> -->
+                                 Nice to meet you ezform. Please log in here.
                               </p>
                            </form>
 

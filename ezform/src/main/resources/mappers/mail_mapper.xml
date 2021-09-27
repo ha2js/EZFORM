@@ -30,15 +30,36 @@
 		where em_email = #{em_email}
 	</select>
 	
+	<!-- 메일 쓰기 -->
 	<select id="mailWrite">
 		insert into ez_mail
 		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file}, '0')
 	</select>
 	
+	<!-- 직원 목록 조회 -->
 	<select id="empSelect" resultType="EZ_empVO">
 		select em_email, em_name, em_dept, em_posi
 		from ez_em
 		order by em_dept asc, em_posi asc, em_name asc, em_email asc
+	</select>
+	
+	<!-- 메일 읽기 -->
+	<select id="rec_read" resultType="EZ_mailVO">
+		select * from ez_mail 
+		where mail_num = #{mail_num}
+	</select>
+	
+	<!-- 수신자가 해당 읽음 처리 -->
+	<update id="rec_readCheck_update">
+		update ez_mail
+		set mail_readCheck = '1'
+		where mail_num = #{mail_num}
+	</update>
+	
+	<!-- 수신자 발신자 이름 가져오기 -->
+	<select id="recAndSend" resultType="String">
+		select em_name from ez_em
+		where em_email = #{mail}
 	</select>
 
 </mapper>

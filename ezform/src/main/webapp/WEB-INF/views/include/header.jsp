@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,15 +30,15 @@
 		var result = "${result}"; 
 		var resultVO = "${resultVO}";
 		var sessionID = "${resultVO.em_id}";
-
+		
 		if(sessionID == "" && result == "") {
 			location.href ="login";
 		}
 		
 		// 로그인 처리
 		if (result == -2) {
-			alert("이메일이 존재하지 않습니다. 회원가입 페이지로 이동합니다.");
-			location.href = "join";
+			alert("이메일이 존재하지 않습니다");
+			location.href = "login";
 		} else if (result == -1) {
 			alert("패스워드가 틀립니다. 다시 입력해주세요.");
 			location.href = "login";
@@ -448,13 +448,14 @@
 									</div>
 								</div></li>
 								
-<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->								
+<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->	
+							
 							<li class="nav-item dropdown"><a
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false"> <img
 									src="${pageContext.request.contextPath }/resources/upload/mem_Image/${resultVO.em_image}" alt="User-Profile"
-									class="img-fluid avatar avatar-50 avatar-rounded">
+									class="img-fluid avatar avatar-50 avatar-rounded" onerror="this.src='${pageContext.request.contextPath }/resources/images/silhouette.png'">
 									<div class="caption ms-3 d-none d-md-block ">
 										<h6 class="mb-0 caption-title">${resultVO.em_name}</h6>
 										<p class="mb-0 caption-sub-title">${resultVO.em_email}</p>
@@ -462,13 +463,30 @@
 							</a>
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
+									<%
+									Integer em_id = 0;
+									String menu_name = "";
+									
+									if(session.getAttribute("em_id") != null) {
+										em_id = (Integer)session.getAttribute("em_id");
+									}
+									
+									// 권한의 따른 메뉴변경
+									if(em_id == 9999) {
+										menu_name = "사원관리";
+									} else {
+										menu_name = "My프로필";
+									}
+									%>
+									
 									<li><a class="dropdown-item"
-										href="./infoMember">회원정보</a></li>
+										href="./infoMember"><%=menu_name %></a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
 										href="./logout">로그아웃</a></li>
 								</ul>
 							</li>
+							
 <!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->						
 							
 						</ul>
