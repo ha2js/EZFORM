@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,6 @@
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/timegrid/main.css' />
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/list/main.css' />
-</head>
 
 	<script type="text/javascript">
 	
@@ -50,7 +50,8 @@
 		
 	</script>
 
-
+	
+</head>
 <body class="  ">
 	<!-- dark/light/auto mode -->
 	<!-- loader Start -->
@@ -64,7 +65,7 @@
 	<aside class="sidebar sidebar-default navs-rounded-all ">
 		<div
 			class="sidebar-header d-flex align-items-center justify-content-start">
-			<a href="./testForm" class="navbar-brand"> <!--Logo start-->
+			<a href="./main" class="navbar-brand"> <!--Logo start-->
 				<svg width="30" class="" viewBox="0 0 30 30" fill="none"
 					xmlns="http://www.w3.org/2000/svg">
                     <rect x="-0.757324" y="19.2427" width="28"
@@ -107,7 +108,7 @@
 							<span class="default-icon">Home</span> <span class="mini-icon">-</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="./testForm"> <i
+						aria-current="page" href="./main"> <i
 							class="icon"><svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M9.14373 20.7821V17.7152C9.14372 16.9381 9.77567
 								 16.3067 10.5584 16.3018H13.4326C14.2189 16.3018 14.8563 
@@ -400,13 +401,12 @@
 									</div>
 								</div></li>
 								
-	<!------------------------------------ 로그인/로그아웃/회원정보 조회 영역 ------------------------------------------>	
-	
+<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->								
 							<li class="nav-item dropdown"><a
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false"> <img
-									src="${pageContext.request.contextPath }/resources/upload/emp_files/${resultVO.em_image}" alt="User-Profile"
+									src="${pageContext.request.contextPath }/resources/upload/mem_Image/${resultVO.em_image}" alt="User-Profile"
 									class="img-fluid avatar avatar-50 avatar-rounded">
 									<div class="caption ms-3 d-none d-md-block ">
 										<h6 class="mb-0 caption-title">${resultVO.em_name}</h6>
@@ -416,14 +416,14 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="./updateMember">회원정보</a></li>
+										href="./infoMember">회원정보</a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
 										href="./logout">로그아웃</a></li>
 								</ul>
 							</li>
+<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->						
 							
-	<!------------------------------------ 로그인/로그아웃/회원정보 조회 영역 ------------------------------------------>						
 						</ul>
 					</div>
 				</div>
@@ -433,7 +433,7 @@
 			<div class="iq-navbar-header" style="height: 105px;">
 				<div class="container-fluid iq-container">
 					<div class="row">
-						<div class="col-md-12"></div>
+						<div class="col-md-12" id="main-menu-label"></div>
 					</div>
 				</div>
 				<div class="iq-header-img">

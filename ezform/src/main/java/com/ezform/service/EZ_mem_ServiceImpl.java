@@ -15,17 +15,15 @@ public class EZ_mem_ServiceImpl implements EZ_mem_Service {
 	@Inject
 	private EZ_memDAO mDAO;
 	
-	
-	
 	// 회원 아이디 생성
 	@Override
 	public int madeEmpID() throws Exception {
 		
 		System.out.println(" S : madeEmpID() 실행");
 		
-		int result = mDAO.madeEmpID();
+		int count = mDAO.madeEmpID();
 		
-		return result;
+		return count;
 	}
 
 	// 회원가입
@@ -50,6 +48,41 @@ public class EZ_mem_ServiceImpl implements EZ_mem_Service {
 		System.out.println(" S : 컨트롤러로 이동");
 		
 		return loginList;
+	}
+
+	// 회원정보 조회
+	@Override
+	public EZ_empVO memInfo(int em_id) throws Exception {
+	
+		System.out.println(" S : meminfo(em_id) 실행");
+		
+		EZ_empVO resultVO = mDAO.infoEmp(em_id);
+		
+		System.out.println(" S : meminfo 실행 완료");
+		
+		return resultVO;
+	}
+	
+	// 회원정보 수정
+	@Override
+	public int memUpdate(EZ_empVO evo) throws Exception {
+		
+		System.out.println(" S : memUpdate(evo) 실행");
+		
+		int result = mDAO.updateEmp(evo);
+		
+		return result;
+	}
+
+	// 회원정보 탈퇴
+	@Override
+	public int memDelete(EZ_empVO evo) throws Exception {
+		
+		System.out.println(" S : memDelete(evo) 실행");
+		
+		int result = mDAO.deleteEmp(evo);
+		
+		return result;
 	}
 
 	
