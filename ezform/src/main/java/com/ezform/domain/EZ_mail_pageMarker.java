@@ -11,7 +11,7 @@ public class EZ_mail_pageMarker {
 	private boolean next;
 
 	private int displayPageNum = 10;
-
+	
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
@@ -67,4 +67,28 @@ public class EZ_mail_pageMarker {
 		this.displayPageNum = displayPageNum;
 	}
 
+	public boolean isPrev() {
+		return prev;
+	}
+
+	public void setPrev(boolean prev) {
+		this.prev = prev;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+	
 }
