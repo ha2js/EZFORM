@@ -2,6 +2,8 @@ package com.ezform.domain;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EZ_mailVO {
 	
 	private int mail_num;
@@ -13,6 +15,7 @@ public class EZ_mailVO {
 	private String mail_content;
 	private String mail_file;
 	private String mail_readCheck;
+	private MultipartFile uploadFile;
 	
 	
 	public int getMail_num() {
@@ -69,12 +72,20 @@ public class EZ_mailVO {
 	public void setMail_readCheck(String mail_readCheck) {
 		this.mail_readCheck = mail_readCheck;
 	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	
 	@Override
 	public String toString() {
 		return "EZ_mailVO [mail_num=" + mail_num + ", mail_id=" + mail_id + ", mail_email=" + mail_email
 				+ ", mail_keep=" + mail_keep + ", mail_regdate=" + mail_regdate + ", mail_title=" + mail_title
 				+ ", mail_content=" + mail_content + ", mail_file=" + mail_file + ", mail_readCheck=" + mail_readCheck
-				+ "]";
+				+ ", uploadFile=" + uploadFile + "]";
 	}
+	
 	
 }

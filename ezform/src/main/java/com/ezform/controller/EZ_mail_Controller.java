@@ -1,11 +1,15 @@
 package com.ezform.controller;
 
+import java.io.File;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailCri;
@@ -91,7 +96,7 @@ public class EZ_mail_Controller {
 	}
 	
 	@RequestMapping(value="/writeMail", method = RequestMethod.POST)
-	public void mailWritePOST(EZ_mailVO vo, Model model, HttpServletResponse response, HttpSession session) throws Exception {
+	public void mailWritePOST(EZ_mailVO vo, Model model, HttpServletResponse response, HttpSession session, HttpServletRequest request) throws Exception {
 		// 메일 쓰기		
 		logger.info("mailWritePOST() 호출");
 		
@@ -111,7 +116,29 @@ public class EZ_mail_Controller {
 			out.flush();
 		}
 		else {
+			// 파일 업로드
+			String fileName = null;
+			MultipartFile uploadFile = vo.getUploadFile();
+			
+			
+			if (!uploadFile.isEmpty()) {
+				String originalFileName = uploadFile.getOriginalFilename();
+				String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+				UUID uuid = UUID.randomUUID(); //uuid
+				fileName = uuid+"."+ext;
+				
+				String path = request.getSession().getServletContext().getRealPath("/"); // 절대 경로
+				path += "upload\\mailUpload\\";
+				
+				String temp_path = path+fileName;
+				logger.info("파일명 : "+fileName);
+				logger.info("path : "+temp_path);
+				uploadFile.transferTo(new File(path+fileName));
+				
+			}			
+			
 			// 메일 보내기
+			vo.setMail_file(fileName);
 			service.mailWrite(vo);
 			
 			// alert
