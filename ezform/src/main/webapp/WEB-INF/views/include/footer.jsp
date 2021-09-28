@@ -47,7 +47,5 @@
 	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/interaction/main.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/vendor/moment.min.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/js/calender.js'></script>
-	<!-- jQuery -->
-	<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 </body>
 </html>

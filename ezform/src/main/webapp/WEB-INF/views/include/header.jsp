@@ -23,6 +23,8 @@
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/timegrid/main.css' />
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath }/resources/vendor/fullcalendar/list/main.css' />
+<!-- jQuery -->
+<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 
 	<script type="text/javascript">
 	

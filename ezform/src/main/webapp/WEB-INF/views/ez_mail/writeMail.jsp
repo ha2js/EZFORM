@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
+
+<%@ include file="../include/header.jsp"%>
+
 <script type="text/javascript">
 
 	function emp_select() {
@@ -18,6 +15,7 @@
 		// width/height 값 디자인 하시다가 원하시는 값으로 변경하셔도 됩니다 
 		window.open(url,"_blank","width=1020, height=500,left="+x+",top="+y);
 	}
+	
 	function writeCk() {
 		if (document.writeMail_fr.mail_id.value == "") {
 			alert("받는 사람의 이메일을 작성해 주세요");
@@ -52,19 +50,45 @@
 		}
 	}
 </script>
-</head>
-<body>
-	<form method="post" name="writeMail_fr" action="/test/ez_mail/writeMail" onsubmit="return writeCk()">
-		<div>
-			<button type="submit" class="">보내기</button>
-			<button type="button" class="" name="" onclick="emp_select()">직원 메일 주소</button>
-		</div>
-		<div>
-			받는 사람 <input type="text" name="mail_id"/> <input type="checkbox" > 내게쓰기 <br>
-			제목 <input type="text" name="mail_title"/><br>
-			첨부파일 <input type="file" name="mail_file"/><br>
-			<textarea name="mail_content"></textarea>
-		</div>
-	</form>
-</body>
-</html>
+
+
+<div class="conatiner-fluid content-inner mt-n5 py-0">
+   <div class="row">
+      <div class="col-xl-9 col-lg-8">
+         <div class="card">
+            <div class="card-header d-flex justify-content-between">
+               <div class="header-title">
+                  <h4 class="card-title">메일 쓰기</h4>
+               </div>    
+            </div>
+            <div class="card-body">
+            	<form action="./writeMail" method="post" enctype="multipart/form-data" onsubmit="return writeCk();">
+	               	<div style="margin-bottom:5px;">
+						<input type="submit" class="btn btn-primary" value="보내기"/>
+						<button type="button" class="btn btn-link btn-xs mr-2" onclick="emp_select()">주소록</button>
+					</div>	
+					<div class="mb-3">
+		                <label for="exampleInputEmail1" class="form-label">받는사람</label>
+		                <input type="email" class="form-control form-control-sm" id="mails_id" name="mail_id">
+		              	<input type="checkbox"/> <label for="exampleInputEmail1" class="form-label">내게 쓰기</label>
+            		</div>
+            		<div class="mb-3">
+		                <label for="exampleInputEmail1" class="form-label">제목</label>
+		                <input type="text" class="form-control form-control-sm" id="mails_title" name="mail_title">
+            		</div>
+            		<div class="mb-3">
+                    	<label class="form-label" for="disabledCustomFile">첨부파일</label>
+                    	 <input type="file" class="form-control form-control-sm" id="mails_file" name="mail_files">
+                	</div>
+                	<div class="mb-3">
+                    	<label class="form-label" for="disabledCustomFile">내용</label>
+                    	<textarea class="form-control" rows="10" id="mails_content" name="mail_content"></textarea>
+                	</div>
+				</form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<%@ include file="../include/footer.jsp"%>
