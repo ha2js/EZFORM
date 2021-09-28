@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
 import com.ezform.domain.EZ_mail_pageMarker;
@@ -31,12 +33,13 @@ public class EZ_mail_Controller {
 	
 	// http://localhost:8088/test/ez_mail/recMail
 	@RequestMapping(value="/recMail", method = RequestMethod.GET)
-	public void read_RecMailGET(EZ_mailCri cri, Model model) throws Exception {
+	public void read_RecMailGET(EZ_mailCri cri, Model model, HttpSession session) throws Exception {
 		//  받은 메일
 		logger.info("read_RecMailGET() 호출");
 		
-		// 임시로 -> 세션 값 불러와서 테스트 (EZ_empVO resultVO)
-		String mail_id = "test@ezform.com";
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		String mail_id = evo.getEm_email();
 		cri.setMail_id(mail_id);
 		
 		// 수신 메일 list
@@ -54,6 +57,8 @@ public class EZ_mail_Controller {
 	
 	@RequestMapping(value="/recRead", method=RequestMethod.GET)
 	public void readDetail_RecMailGET(@RequestParam("mail_num") int mail_num, Model model) throws Exception {
+		
+		// 메일 읽기
 		logger.info("readDetail_RecMailGET() 호출");
 		
 		EZ_mailVO mvo = service.recRead(mail_num);
@@ -75,19 +80,25 @@ public class EZ_mail_Controller {
 	}
 	
 	@RequestMapping(value="/writeMail", method = RequestMethod.GET)
-	public void mailWriteGET() throws Exception {
+	public void mailWriteGET(Model model, HttpSession session) throws Exception {
 		// 메일 쓰기
 		logger.info("mailWriteGET() 호출");
+		
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		
+		model.addAttribute("write_mail_id",evo.getEm_email());
 	}
 	
 	@RequestMapping(value="/writeMail", method = RequestMethod.POST)
-	public void mailWritePOST(EZ_mailVO vo, Model model, HttpServletResponse response) throws Exception {
+	public void mailWritePOST(EZ_mailVO vo, Model model, HttpServletResponse response, HttpSession session) throws Exception {
 		// 메일 쓰기		
 		logger.info("mailWritePOST() 호출");
 		
-		// 임시로 -> 세션 값 불러와서 테스트 (EZ_empVO resultVO)
+		// 세션
 		// 보내는 사람
-		String mail_email = "ha2js@ezform.com";
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		String mail_email = evo.getEm_email();
 		vo.setMail_email(mail_email);
 		
 		// 보내는 이메일 주소가 em 테이블에 있는지 검사
