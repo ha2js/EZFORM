@@ -14,12 +14,8 @@
 		margin-right:25px;	
 	}
 	
-	#star_img {
+	.star_img {
 		cursor:pointer;
-	}
-	
-	#datatable {
-		
 	}
 	
 	#datatable>thead>tr {
@@ -35,20 +31,37 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		var star_stat = "off";
-
 		
 		// 별버튼 이벤트
-		$("#star_img").on('click', function() {
+		$(".star_img").on('click', function() {
 			
-			if(star_stat == "on") {
-				star_stat = "off";
+			var star_stat = $(this).attr('src').split('/')[4].split('star_')[1];
+			
+			if(star_stat == "on.png") {
+				star_stat = "off.png";
 			} else {
-				star_stat = "on";
+				star_stat = "on.png";
 			}
 			
-			$(this).attr('src', "${pageContext.request.contextPath }/resources/images/star_" + star_stat + ".png");
+			$(this).attr('src', "${pageContext.request.contextPath }/resources/images/star_" + star_stat);
 		});
+		
+		
+		// 읽음체크 버튼 이벤트
+		$("#readAllChk").change(function(){
+		   if($("input[id=readAllChk]:checkbox").is(":checked") == false){
+		     $("input[class=readChk]:checkbox").prop("checked", false);
+		   }else{
+		     $("input[class=readChk]:checkbox").prop("checked", true);
+		   }
+	    });
+		
+		$("input:checkbox[class='readChk']").click(function(){
+			  if($(this).is(":checked") == false){
+			    $("input:checkbox[id='readAllChk']").prop("checked", false);
+			  };
+		});
+		
 	});
 </script>
 <div class="conatiner-fluid content-inner mt-n5 py-0">
@@ -73,36 +86,39 @@
                   <table id="datatable" class="table table-striped">
                      <thead>
                         <tr>
-                           <th width="1%">번호</th>
-                           <th width="1%">체크</th>
-                           <th width="1%">중요</th>
-                           <th width="34%">보낸사람</th>
-                           <th width="39%">내용</th>
-                           <th width="24%">날짜</th>
+                           <th width="5%">번호</th>
+                           <th width="5%"><input type="checkbox" id="readAllChk"/></th>
+                           <th width="5%"></th>
+                           <th width="30%">보낸사람</th>
+                           <th width="30%">내용</th>
+                           <th width="25%">날짜</th>
                         </tr>
                      </thead>
-                     <tbody>  
-                     	<tr>
-                           <th>
-                           	 1
-                           </th>
-                           <th>
-                             <input type="checkbox"/>                       
-                           </th>
-                           <th>
-                             <img id="star_img" src="${pageContext.request.contextPath }/resources/images/star_off.png" width="18" height="18" style="margin-bottom:4px;"/>
-                        
-                           </th>
-                           <th>
-                             <a href="./recRead">admin@ezform.com</a>
-                           </th>
-                           <th>
-                             가입축하드립니다~
-                           </th>
-                           <th>
-                             2021/09/28 09:53:00
-                           </th>
-                        </tr>                   
+                     <tbody>
+                     	<c:forEach var="mailList" items="${mailList }">
+                     	   <tr>
+	                           <th>
+	                           	 ${mailList.mail_num }
+	                           </th>
+	                           <th>
+	                             <input type="checkbox" class="readChk"/>                       
+	                           </th>
+	                           <th>
+	                             <img class="star_img" src="${pageContext.request.contextPath }/resources/images/star_off.png" width="18" height="18" style="margin-bottom:4px;"/>
+	                           </th>
+	                           <th>
+	                             <a href="./recRead?">
+	                             	${mailList.mail_email }
+	                             </a>
+	                           </th>
+	                           <th>
+	                             ${mailList.mail_content }
+	                           </th>
+	                           <th>
+	                             ${mailList.mail_regdate }
+	                           </th>
+                           </tr>    
+                     	</c:forEach>         
                      </tbody>
                   </table>
                </div>

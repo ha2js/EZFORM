@@ -36,7 +36,7 @@ public class EZ_mail_Controller {
 		logger.info("read_RecMailGET() 호출");
 		
 		// 임시로 -> 세션 값 불러와서 테스트 (EZ_empVO resultVO)
-		String mail_id = "test@ezform.com";
+		String mail_id = "admin@ezform.com";
 		cri.setMail_id(mail_id);
 		
 		// 수신 메일 list
