@@ -87,7 +87,7 @@
                	<div style="margin-bottom:5px;">
 					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='writeMail';"/>
 				</div>
-				<div style="margin-bottom:5px;">
+				<div style="margin-bottom:15px;">
 					<input type="button" class="btn btn-primary btn-sm" id="readBtn" value="읽음"/>
 					<input type="button" class="btn btn-primary btn-sm" id="delBtn" value="삭제"/>
 				</div>    	

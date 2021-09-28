@@ -18,6 +18,8 @@
 		});
 	});
 
+	
+	// 주소록 팝업 이벤트
 	function emp_select() {
 		// 새 창으로 직원 메일 정보 조회하기
 		var event = window.event;
@@ -26,9 +28,12 @@
 		var url = "/test/ez_mail/emp_select"
 		
 		// width/height 값 디자인 하시다가 원하시는 값으로 변경하셔도 됩니다 
-		window.open(url,"_blank","width=1020, height=500,left="+x+",top="+y);
+		window.open(url,"_blank","width=800, height=500,left="+x+",top="+y);
 	}
 	
+	
+	
+	// 메일쓰기 유효성 검사
 	function writeCk() {
 		if (document.writeMail_fr.mail_id.value == "") {
 			alert("받는 사람의 이메일을 작성해 주세요");
@@ -96,6 +101,9 @@
                 	<div class="mb-3">
                     	<label class="form-label" for="disabledCustomFile">내용</label>
                     	<textarea class="form-control" rows="10" id="mails_content" name="mail_content"></textarea>
+                	</div>
+                	<div style="text-align:right;">
+                		<button type="button" class="btn btn-primary btn-sm" onclick="location.href='recMail'">취소</button>
                 	</div>
 				</form>
             </div>
