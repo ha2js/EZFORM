@@ -5,6 +5,19 @@
 
 <script type="text/javascript">
 
+	$(document).ready(function() {
+		$("#writeToMe").click(function() {
+			var mail_id = "<c:out value='${write_mail_id}'/>";
+			
+			if($(this).is(":checked")) {
+				$("#mails_id").val(mail_id);
+			}
+			else {
+				$("#mails_id").val("");
+			}
+		});
+	});
+
 	function emp_select() {
 		// 새 창으로 직원 메일 정보 조회하기
 		var event = window.event;
@@ -70,7 +83,7 @@
 					<div class="mb-3">
 		                <label for="exampleInputEmail1" class="form-label">받는사람</label>
 		                <input type="email" class="form-control form-control-sm" id="mails_id" name="mail_id">
-		              	<input type="checkbox"/> <label for="exampleInputEmail1" class="form-label">내게 쓰기</label>
+		              	<input type="checkbox" id="writeToMe"/> <label for="exampleInputEmail1" class="form-label">내게 쓰기</label>
             		</div>
             		<div class="mb-3">
 		                <label for="exampleInputEmail1" class="form-label">제목</label>
@@ -78,7 +91,7 @@
             		</div>
             		<div class="mb-3">
                     	<label class="form-label" for="disabledCustomFile">첨부파일</label>
-                    	 <input type="file" class="form-control form-control-sm" id="mails_file" name="mail_files">
+                    	 <input type="file" class="form-control form-control-sm" id="mails_file" name="uploadFile">
                 	</div>
                 	<div class="mb-3">
                     	<label class="form-label" for="disabledCustomFile">내용</label>
