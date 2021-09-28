@@ -15,6 +15,9 @@
 	<span>보낸사람</span> ${sendName} <${recReadDetail.mail_id }><br>
 	<span>받는사람</span> ${recName } <${recReadDetail.mail_email }><br>
 	<hr>
+	<!-- 첨부파일 -->
+	첨부파일 : <a href="/test/ez_mail/filedown?fileName=${recReadDetail.mail_file }">${recReadDetail.mail_file}</a>
+	<hr>
 	<!-- 메일 내용 -->
 	${recReadDetail.mail_content }
 	

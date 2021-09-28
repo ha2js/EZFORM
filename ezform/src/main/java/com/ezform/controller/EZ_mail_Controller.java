@@ -1,7 +1,11 @@
 package com.ezform.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -144,6 +148,66 @@ public class EZ_mail_Controller {
 			// alert
 			out.println("<script>alert('전송 완료'); location.href='/test/ez_mail/recMail'</script>");
 			out.flush();
+		}
+	}
+	
+	@RequestMapping(value="/filedown", method=RequestMethod.GET)
+	public void mail_fileDown(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// 파일 다운로드
+		
+		logger.info("mail_fileDown() 호출");
+		
+		String fileName = request.getParameter("fileName");
+		String realFileName = "";
+		
+		logger.info("파일명 : "+fileName);
+		
+		try {
+			String browser = request.getHeader("User-Agent");
+			// 파일 인코딩
+			if (browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")) {
+				fileName = URLEncoder.encode(fileName,"UTF-8").replaceAll("\\+", "%20");
+			}
+			else {
+				fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+			}
+			
+		} catch(UnsupportedEncodingException ex) {
+			logger.info("UnsupportedEncodingException");
+		}
+		
+		String path = request.getSession().getServletContext().getRealPath("/"); // 절대 경로
+		path += "upload\\mailUpload\\";
+		
+		realFileName = path+fileName;
+		logger.info("절대 경로 : "+realFileName);
+		
+		File tmpFile = new File(realFileName);
+		
+		if (!tmpFile.exists())
+			return;
+		
+		// 파일명 지정
+		response.setContentType("application/octer-stream");
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		
+		try {
+			OutputStream os = response.getOutputStream();
+			FileInputStream fis = new FileInputStream(realFileName);
+			
+			int Ncnt = 0;
+			byte[] bytes = new byte[512];
+			
+			while ((Ncnt = fis.read(bytes)) != -1) {
+				os.write(bytes,0,Ncnt);
+			}
+			
+			fis.close();
+			os.close();
+			
+		} catch (Exception e) {
+			logger.info("FileNotFoundException : "+e);
 		}
 	}
 	
