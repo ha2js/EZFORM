@@ -12,9 +12,6 @@ public interface EZ_boardDAO {
 	
 	// 게시판 조회 (특정글)
 	public EZ_boardVO read(int cm_bnum) throws Exception;
-	
-	// 게시판 글 삭제(제목,내용)
-	public void update(EZ_boardVO vo) throws Exception;
 
 	// 게시판 글 수정(제목,내용)
 	public void delete(Integer cm_bnum) throws Exception;
@@ -27,4 +24,7 @@ public interface EZ_boardDAO {
 	
 	// 페이징 테스트
 	public int listPageCnt(String cm_name) throws Exception;
+	
+	// 글 조회수
+	public void hits(int cm_bnum) throws Exception;
 }

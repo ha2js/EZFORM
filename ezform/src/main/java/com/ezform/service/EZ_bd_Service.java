@@ -13,11 +13,8 @@ public interface EZ_bd_Service {
 	//특정 글 정보 조회
 	public EZ_boardVO read(int cm_bnum) throws Exception;
 
-	// 게시판 글 수정(제목,내용)
-	public void update(EZ_boardVO vo) throws Exception;
-	
 	//글 정보 삭제
-	public void delete(Integer cm_bnum) throws  Exception;
+	public void remove(Integer cm_bnum) throws  Exception;
 
 	//게시판 글 수정(제목,이름,내용)
 	public void modify(EZ_boardVO vo) throws Exception;

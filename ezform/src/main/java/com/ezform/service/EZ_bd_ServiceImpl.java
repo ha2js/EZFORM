@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
@@ -31,27 +33,37 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		bdao.create(vo);
 	}
 
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public EZ_boardVO read(int cm_bnum) throws Exception {
+		
+		System.out.println(" S : read(int cm_bnum) 호출 -> DAO : read(int cm_bnum) 호출"+cm_bnum);
+		
+		bdao.hits(cm_bnum);
+		
 		EZ_boardVO vo = bdao.read(cm_bnum);
 		
-		
+		System.out.println(" ----- S : DAO 처리 후 컨트롤러로 이동 -----"+vo.getCm_hits());
 		return vo;
 	}
 
-	@Override
-	public void update(EZ_boardVO vo) throws Exception {
-		
-	}
 
 	@Override
-	public void delete(Integer cm_bnum) throws Exception {
+	public void remove(Integer cm_bnum) throws Exception {
+		logger.info("remove(Integer cm_bnum) 호출 -> DAO : delete(int cm_bnum)호출 "+cm_bnum);
+		
 		bdao.delete(cm_bnum);
+		
+		logger.info(" S : DAO 처리후 컨트롤러로 이동");
 	}
 
 	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
+		System.out.println(" S : modify(EZ_boardVO vo) 호출 - DAO:modify(EZ_boardVO vo)호출 "+vo);
+		
 		bdao.modify(vo);
+		
+		System.out.println(" S : DAO 처리 후 컨트롤러로 이동 ");
 	}
 
 	@Override
