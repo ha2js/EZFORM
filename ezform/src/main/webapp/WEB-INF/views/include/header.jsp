@@ -67,7 +67,7 @@
 	<aside class="sidebar sidebar-default navs-rounded-all ">
 		<div
 			class="sidebar-header d-flex align-items-center justify-content-start">
-			<a href="./main" class="navbar-brand"> <!--Logo start-->
+			<a href="/test/main" class="navbar-brand"> <!--Logo start-->
 				<svg width="30" class="" viewBox="0 0 30 30" fill="none"
 					xmlns="http://www.w3.org/2000/svg">
                     <rect x="-0.757324" y="19.2427" width="28"
@@ -482,10 +482,10 @@
 									%>
 									
 									<li><a class="dropdown-item"
-										href="./infoMember"><%=menu_name %></a></li>
+										href="/test/infoMember"><%=menu_name %></a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item"
-										href="./logout">로그아웃</a></li>
+										href="/test/logout">로그아웃</a></li>
 								</ul>
 							</li>
 							
