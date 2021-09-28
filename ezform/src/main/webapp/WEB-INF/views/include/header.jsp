@@ -110,7 +110,7 @@
 							<span class="default-icon">Home</span> <span class="mini-icon">-</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="./main"> <i
+						aria-current="page" href="/test/main"> <i
 							class="icon"><svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M9.14373 20.7821V17.7152C9.14372 16.9381 9.77567
 								 16.3067 10.5584 16.3018H13.4326C14.2189 16.3018 14.8563 
@@ -196,7 +196,7 @@
 						<ul class="sub-nav collapse" id="sidebar-user"
 							data-bs-parent="#sidebar">
 							<li class="nav-item"><a class="nav-link "
-								href="./ez_mail/recMail"> <i class="icon">
+								href="/test/ez_mail/recMail"> <i class="icon">
 										<svg xmlns="http://www.w3.org/2000/svg" width="10"
 											viewBox="0 0 24 24" fill="currentColor">
                                             <g>
