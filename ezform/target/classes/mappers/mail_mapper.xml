@@ -10,13 +10,6 @@
 		select * from ez_mail
 		where mail_id = #{mail_id}
 		order by mail_num desc, mail_regdate desc
-		limit #{page}, #{pageSize}
-	</select>
-	
-	<!-- 해당 mail_id의 메일 개수 -->
-	<select id="rec_mailCnt" resultType="int">
-		select count(*) from ez_mail
-		where mail_id = #{mail_id}
 	</select>
 	
 	<!-- 현재 db에 있는 mail_num 최대 값 -->

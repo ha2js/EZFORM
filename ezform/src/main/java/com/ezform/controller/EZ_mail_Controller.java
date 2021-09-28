@@ -24,9 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ezform.domain.EZ_empVO;
-import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
-import com.ezform.domain.EZ_mail_pageMarker;
 import com.ezform.service.EZ_mail_Service;
 import com.ezform.test.testController;
 
@@ -42,26 +40,15 @@ public class EZ_mail_Controller {
 	
 	// http://localhost:8088/test/ez_mail/recMail
 	@RequestMapping(value="/recMail", method = RequestMethod.GET)
-	public void read_RecMailGET(EZ_mailCri cri, Model model, HttpSession session) throws Exception {
+	public void read_RecMailGET(Model model, HttpSession session) throws Exception {
 		//  받은 메일
 		logger.info("read_RecMailGET() 호출");
 		
 		// 세션
 		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
-		String mail_id = evo.getEm_email();
-		cri.setMail_id(mail_id);
 		
 		// 수신 메일 list
-		model.addAttribute("mailList",service.mailList(cri));
-		
-		int mail_cnt = service.recMailCnt(mail_id);		
-		
-		EZ_mail_pageMarker mpm = new EZ_mail_pageMarker();
-		mpm.setCri(cri);
-		mpm.setTotalCount(mail_cnt);
-		
-		model.addAttribute("mpm",mpm);
-		
+		model.addAttribute("mailList",service.mailList(evo.getEm_email()));
 	}
 	
 	@RequestMapping(value="/recRead", method=RequestMethod.GET)
@@ -223,7 +210,7 @@ public class EZ_mail_Controller {
 	}
 	*/
 	
-	
+	// ------------------------------보낸 메일----------------------------------------//
 	@RequestMapping(value="/sendMail", method = RequestMethod.GET)
 	public void read_SendMailGET() throws Exception {
 		//  보낸 메일

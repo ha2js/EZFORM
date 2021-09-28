@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezform.domain.EZ_empVO;
-import com.ezform.domain.EZ_mailCri;
 import com.ezform.domain.EZ_mailVO;
 import com.ezform.test.testController;
 
@@ -23,22 +22,11 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 	private static final String namespace = "com.ezform.mapper.mail_Mapper";
 	
 	@Override
-	public List<EZ_mailVO> mailList(EZ_mailCri cri) throws Exception {
+	public List<EZ_mailVO> mailList(String mail_id) throws Exception {
 	
 		logger.info("mailDAO : mailList() 호출");
 		
-		return sqlSession.selectList(namespace+".rec_mailList",cri);
-	}
-
-	@Override
-	public int recMailCnt(String mail_id) throws Exception {
-		
-		logger.info("mailDAO : recMailCnt() 호출");
-		
-		int tmp = sqlSession.selectOne(namespace + ".rec_mailCnt",mail_id);
-		logger.info("mailDAO : 저장된 메일 개수 : "+tmp);
-		return tmp;
-		
+		return sqlSession.selectList(namespace+".rec_mailList",mail_id);
 	}
 	
 	@Override
