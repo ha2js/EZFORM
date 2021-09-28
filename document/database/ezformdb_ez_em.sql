@@ -30,7 +30,7 @@ CREATE TABLE `ez_em` (
   `em_dept` varchar(100) DEFAULT NULL,
   `em_posi` varchar(100) DEFAULT NULL,
   `em_regdate` timestamp NULL DEFAULT NULL,
-  `em_extension` int(11) DEFAULT NULL,
+  `em_extension` varchar(45) DEFAULT NULL,
   `em_image` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`em_id`),
   UNIQUE KEY `em_email_UNIQUE` (`em_email`)
