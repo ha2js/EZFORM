@@ -191,9 +191,9 @@ body {
   height: 100%;
 }
 
-.fc-event {
-  border: none !important;
-}
+/* .fc-event {
+  border: 1px !important;
+} */
 
 .fc-day-grid-event .fc-time {
   font-weight: 700;

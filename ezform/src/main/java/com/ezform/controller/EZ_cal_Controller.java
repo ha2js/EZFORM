@@ -37,4 +37,6 @@ public class EZ_cal_Controller {
 		
 		return service.selectEventList(param);
 	}
+	
+	
 }
