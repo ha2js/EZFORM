@@ -1,4 +1,6 @@
 
+<%@page import="com.ezform.domain.EZ_mailVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -47,7 +49,7 @@
 		});
 		
 		
-		// 읽음체크 버튼 이벤트
+		// 읽음체크 이벤트
 		$("#readAllChk").change(function(){
 		   if($("input[id=readAllChk]:checkbox").is(":checked") == false){
 		     $("input[class=readChk]:checkbox").prop("checked", false);
@@ -62,6 +64,14 @@
 			  };
 		});
 		
+		
+		
+		//읽음 버튼
+		$("#readBtn").on('click', function() {
+			alert("!@");
+		});
+		
+		//삭제 버튼
 	});
 </script>
 <div class="conatiner-fluid content-inner mt-n5 py-0">
@@ -78,12 +88,12 @@
 					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='writeMail';"/>
 				</div>
 				<div style="margin-bottom:5px;">
-					<input type="button" class="btn btn-primary btn-sm" value="읽음"/>
-					<input type="button" class="btn btn-primary btn-sm" value="삭제"/>
+					<input type="button" class="btn btn-primary btn-sm" id="readBtn" value="읽음"/>
+					<input type="button" class="btn btn-primary btn-sm" id="delBtn" value="삭제"/>
 				</div>    	
-               <div class="table-responsive">
-               	  <!-- <table id="datatable" class="table table-striped" data-toggle="data-table"> -->
-                  <table id="datatable" class="table table-striped">
+                <div class="table-responsive">
+                <!-- data-toggle="data-table" -->
+                  <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
                            <th width="5%">번호</th>
@@ -98,7 +108,7 @@
                      	<c:forEach var="mailList" items="${mailList }">
                      	   <tr>
 	                           <th>
-	                           	 ${mailList.mail_num }
+	                             ${mailList.mail_num }
 	                           </th>
 	                           <th>
 	                             <input type="checkbox" class="readChk"/>                       
@@ -120,6 +130,7 @@
                            </tr>    
                      	</c:forEach>         
                      </tbody>
+                     
                   </table>
                </div>
             </div>
