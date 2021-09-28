@@ -25,4 +25,6 @@ public interface EZ_mail_Service {
 	// 수신자/발신자 이름
 	public String mailName(String mailName) throws Exception;
 	
+	// 메일 삭제하기
+	public void mailDelete(int mail_num) throws Exception;
 }

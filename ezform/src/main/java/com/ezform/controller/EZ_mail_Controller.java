@@ -198,17 +198,16 @@ public class EZ_mail_Controller {
 		}
 	}
 	
-	/*
 	public void delete_mail(@RequestParam("delete_mail_num") int[] delete_mail_num) throws Exception {
 		
 		// 체크박스 메일 삭제
 		logger.info("delete_mail() 호출");
 		logger.info("삭제할 메일번호 : "+delete_mail_num);
 		for (int mail_num : delete_mail_num) {
-			
+			// delete 구문 실행해주기
 		}
 	}
-	*/
+	
 	
 	// ------------------------------보낸 메일----------------------------------------//
 	@RequestMapping(value="/sendMail", method = RequestMethod.GET)

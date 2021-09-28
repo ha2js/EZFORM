@@ -24,10 +24,16 @@
 	</select>
 	
 	<!-- 메일 쓰기 -->
-	<select id="mailWrite">
+	<insert id="mailWrite">
 		insert into ez_mail
 		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file}, '0')
-	</select>
+	</insert>
+	
+	<!-- 메일 쓰기 - sendmail 테이블도 추가 -->
+	<insert id="mailWriteCopy">
+		insert into ez_sendmail
+		values(${mail_num}, #{mail_id}, #{mail_email}, now(), #{mail_title}, #{mail_content}, #{mail_file})
+	</insert>
 	
 	<!-- 직원 목록 조회 -->
 	<select id="empSelect" resultType="EZ_empVO">
@@ -54,5 +60,11 @@
 		select em_name from ez_em
 		where em_email = #{mail}
 	</select>
+	
+	<!-- 체크 목록 삭제하기 -->
+	<delete id="deleteMail">
+		delete from ez_mail
+		where mail_num = #{mail_num}
+	</delete>
 
 </mapper>

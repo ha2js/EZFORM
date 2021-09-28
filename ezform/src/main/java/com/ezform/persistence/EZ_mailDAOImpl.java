@@ -54,7 +54,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		logger.info("mailDAO : 전송하려는 메일 정보 : "+vo);
 		
 		sqlSession.insert(namespace + ".mailWrite",vo);
-		
+		sqlSession.insert(namespace + ".mailWriteCopy",vo);
 	}
 
 	@Override
@@ -91,7 +91,12 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		return sqlSession.selectOne(namespace+".recAndSend",mailName);
 	}
 
-
-	
+	@Override
+	public void mailDelete(int mail_num) throws Exception {
+		
+		logger.info("mailDAO : mailDelete() 호출");
+		
+		sqlSession.delete(namespace+".deleteMail",mail_num);
+	}
 
 }

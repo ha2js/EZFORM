@@ -69,6 +69,14 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		return mdao.mailName(mailName);
 	}
 
+	@Override
+	public void mailDelete(int mail_num) throws Exception {
+		
+		logger.info("mailService : mailDelete() 호출");
+		
+		mdao.mailDelete(mail_num);
+	}
+
 
 
 }
