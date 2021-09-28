@@ -23,16 +23,16 @@ DROP TABLE IF EXISTS `ez_sendmail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ez_sendmail` (
-  `sendmail_num` int(11) NOT NULL,
-  `sendmail_id` varchar(100) DEFAULT NULL,
-  `sendmail_email` varchar(100) DEFAULT NULL,
-  `sendmail_regdate` timestamp NULL DEFAULT NULL,
-  `sendmail_title` varchar(100) DEFAULT NULL,
-  `sendmail_content` varchar(1000) DEFAULT NULL,
-  `sendmail_file` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`sendmail_num`),
-  KEY `FK_ez_em_TO_ez_mail_2_idx` (`sendmail_email`),
-  CONSTRAINT `FK_ez_em_TO_ez_mail_2` FOREIGN KEY (`sendmail_email`) REFERENCES `ez_em` (`em_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `mail_num` int(11) NOT NULL,
+  `mail_id` varchar(100) DEFAULT NULL,
+  `mail_email` varchar(100) DEFAULT NULL,
+  `mail_regdate` timestamp NULL DEFAULT NULL,
+  `mail_title` varchar(100) DEFAULT NULL,
+  `mail_content` varchar(1000) DEFAULT NULL,
+  `mail_file` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`mail_num`),
+  KEY `FK_ez_em_TO_ez_mail_2_idx` (`mail_email`),
+  CONSTRAINT `FK_ez_em_TO_ez_mail_2` FOREIGN KEY (`mail_email`) REFERENCES `ez_em` (`em_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-28 16:24:48
+-- Dump completed on 2021-09-28 16:37:55
