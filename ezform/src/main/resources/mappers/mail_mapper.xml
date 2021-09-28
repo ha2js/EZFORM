@@ -66,5 +66,12 @@
 		delete from ez_mail
 		where mail_num = #{mail_num}
 	</delete>
+	
+	<!-- 체크 목록 읽음 처리 -->
+	<update id="updateReadCk">
+		update ez_mail
+		set mail_readCheck = '1'
+		where mail_num = #{mail_num}
+	</update>
 
 </mapper>

@@ -77,6 +77,14 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		mdao.mailDelete(mail_num);
 	}
 
+	@Override
+	public void mailReadUpdate(int mail_num) throws Exception {
+		
+		logger.info("mailService : mailReadUpdate() 호출");
+		
+		mdao.mailReadUpdate(mail_num);
+	}
+
 
 
 }

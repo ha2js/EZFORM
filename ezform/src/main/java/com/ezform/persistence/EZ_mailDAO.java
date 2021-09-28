@@ -27,4 +27,7 @@ public interface EZ_mailDAO {
 	
 	// 메일 삭제하기
 	public void mailDelete(int mail_num) throws Exception;
+	
+	// 메일 읽음 처리
+	public void mailReadUpdate(int mail_num) throws Exception;
 }

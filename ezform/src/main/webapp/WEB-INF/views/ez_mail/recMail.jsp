@@ -64,16 +64,21 @@
 			  };
 		});
 		
-		
-		
+		var fr = $("#btn_fr");
 		//읽음 버튼
 		$("#readBtn").on('click', function() {
-			alert("!@");
+			fr.attr("action","/test/ez_mail/readUpdate")
+			fr.submit();
 		});
 		
 		//삭제 버튼
+		$("#delBtn").on('click', function() {
+			fr.attr("action","/test/ez_mail/deleteMail")
+			fr.submit();
+		});
 	});
 </script>
+<form method="post" id="btn_fr" action="">
 <div class="conatiner-fluid content-inner mt-n5 py-0">
    <div class="row">
       <div class="col-sm-12">
@@ -88,8 +93,8 @@
 					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='writeMail';"/>
 				</div>
 				<div style="margin-bottom:15px;">
-					<input type="button" class="btn btn-primary btn-sm" id="readBtn" value="읽음"/>
-					<input type="button" class="btn btn-primary btn-sm" id="delBtn" value="삭제"/>
+					<input type="submit" class="btn btn-primary btn-sm" id="readBtn" value="읽음"/>
+					<input type="submit" class="btn btn-primary btn-sm" id="delBtn" value="삭제"/>
 				</div>    	
                 <div class="table-responsive">
                 <!-- data-toggle="data-table" -->
@@ -106,12 +111,12 @@
                      </thead>
                      <tbody>
                      	<c:forEach var="mailList" items="${mailList }">
-                     	   <tr>
+                     	   <tr ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                           <th>
 	                             ${mailList.mail_num }
 	                           </th>
 	                           <th>
-	                             <input type="checkbox" class="readChk"/>                       
+	                             <input type="checkbox" class="readChk" name="mail_num_cb" value="${mailList.mail_num }"/>                       
 	                           </th>
 	                           <th>
 	                             <img class="star_img" src="${pageContext.request.contextPath }/resources/images/star_off.png" width="18" height="18" style="margin-bottom:4px;"/>
@@ -125,7 +130,7 @@
 	                             ${mailList.mail_content }
 	                           </th>
 	                           <th>
-	                             ${mailList.mail_regdate }
+	                             <fmt:formatDate value="${mailList.mail_regdate }" pattern="yyyy-MM-dd HH:mm"/>
 	                           </th>
                            </tr>    
                      	</c:forEach>         
@@ -138,6 +143,6 @@
       </div>
    </div>
 </div>
-
+</form>
 
 <%@ include file="../include/footer.jsp"%>

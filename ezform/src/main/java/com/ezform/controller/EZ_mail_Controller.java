@@ -198,14 +198,28 @@ public class EZ_mail_Controller {
 		}
 	}
 	
-	public void delete_mail(@RequestParam("delete_mail_num") int[] delete_mail_num) throws Exception {
-		
+	@RequestMapping(value="/deleteMail", method=RequestMethod.POST)
+	public String delete_mail(@RequestParam("mail_num_cb") int[] delete_mail_num) throws Exception {
 		// 체크박스 메일 삭제
 		logger.info("delete_mail() 호출");
-		logger.info("삭제할 메일번호 : "+delete_mail_num);
+		
 		for (int mail_num : delete_mail_num) {
-			// delete 구문 실행해주기
+			service.mailDelete(mail_num);
 		}
+		
+		return "redirect:/ez_mail/recMail";
+	}
+	
+	@RequestMapping(value="/readUpdate", method=RequestMethod.POST)
+	public String update_readCk(@RequestParam("mail_num_cb") int[] update_read_num) throws Exception {
+		// 체크박스 메일 읽음 처리
+		logger.info("update_readCk() 호출");
+		
+		for (int mail_num : update_read_num) {
+			service.mailReadUpdate(mail_num);
+		}
+		
+		return "redirect:/ez_mail/recMail";
 	}
 	
 	

@@ -99,4 +99,12 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		sqlSession.delete(namespace+".deleteMail",mail_num);
 	}
 
+	@Override
+	public void mailReadUpdate(int mail_num) throws Exception {
+		
+		logger.info("mailDAO : mailReadUpdate() 호출");
+		
+		sqlSession.update(namespace+".updateReadCk",mail_num);
+	}
+
 }
