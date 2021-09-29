@@ -5,5 +5,12 @@
 
 <mapper namespace="com.ezform.mapper.board_com_Mapper">
 
+	<!-- 댓글조회 -->
+	<select id="readReply" resultType="com.ezform.domain.EZ_board_comVO">
+	select 
+	com_cnum, com_content, com_name, com_regdate 
+	from ez_com 
+	where com_bnum =#{com_bnum}
+	</select>
 
 </mapper>

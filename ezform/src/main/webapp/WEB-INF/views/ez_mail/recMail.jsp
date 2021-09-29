@@ -101,11 +101,10 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                           <th width="5%">번호</th>
                            <th width="5%"><input type="checkbox" id="readAllChk"/></th>
                            <th width="5%"></th>
-                           <th width="30%">보낸사람</th>
-                           <th width="30%">내용</th>
+                           <th width="5%">보낸사람</th>
+                           <th width="55%">내용</th>
                            <th width="25%">날짜</th>
                         </tr>
                      </thead>
@@ -113,21 +112,18 @@
                      	<c:forEach var="mailList" items="${mailList }">
                      	   <tr ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                           <th>
-	                             ${mailList.mail_num }
-	                           </th>
-	                           <th>
 	                             <input type="checkbox" class="readChk" name="mail_num_cb" value="${mailList.mail_num }"/>                       
 	                           </th>
 	                           <th>
 	                             <img class="star_img" src="${pageContext.request.contextPath }/resources/images/star_off.png" width="18" height="18" style="margin-bottom:4px;"/>
 	                           </th>
 	                           <th>
-	                             <a href="./recRead?">
-	                             	${mailList.mail_email }
-	                             </a>
+	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                             ${mailList.mail_content }
+	                           	 <a href="#" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                             	${mailList.mail_content }
+	                             </a>
 	                           </th>
 	                           <th>
 	                             <fmt:formatDate value="${mailList.mail_regdate }" pattern="yyyy-MM-dd HH:mm"/>

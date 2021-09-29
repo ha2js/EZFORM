@@ -19,8 +19,9 @@ public class EZ_bd_com_ServiceImpl implements EZ_bd_com_Service {
 	@Override
 	public List<EZ_board_comVO> readReply(int com_bnum) throws Exception {
 		
-		return dao.readReply(com_bnum);
+		List<EZ_board_comVO> test = dao.readReply(com_bnum);
 		
+		return null;
 	}
 
 }
