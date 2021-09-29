@@ -39,7 +39,7 @@
                	</div>
                	<div class="mb-3">
                    	<label class="form-label" for="disabledCustomFile">내용</label>
-                   	<textarea class="form-control" rows="10" id="mails_content" name="mail_content" style="resize: none; background-color:white;" " readonly>${recReadDetail.mail_content }</textarea>
+                   	<textarea class="form-control" rows="10" id="mails_content" name="mail_content" style="resize: none; background-color:white;" readonly>${recReadDetail.mail_content }</textarea>
                	</div>
                	<div style="text-align:right;">
                		<button type="button" class="btn btn-primary btn-sm" onclick="location.href='recMail'">취소</button>
