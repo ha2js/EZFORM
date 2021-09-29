@@ -109,7 +109,7 @@
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">내선번호</label>
-                                 <input type="text" class="form-control" id="emp_exten"  name="em_extension" value="${resultVO.em_extension }" maxlength="12" >
+                                 <input type="text" class="form-control" id="emp_exten"  name="em_extension" value="${resultVO.em_extension }" maxlength="10" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                               </div>
 
                            </div>
