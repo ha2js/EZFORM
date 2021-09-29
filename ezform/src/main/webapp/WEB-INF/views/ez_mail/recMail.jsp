@@ -37,15 +37,24 @@
 		// 별버튼 이벤트
 		$(".star_img").on('click', function() {
 			
+			var mail_num = $(this).attr('value');
+
+			location.href="/test/ez_mail/updateStar?mail_num="+mail_num;
+			
+			/*
 			var star_stat = $(this).attr('src').split('/')[4].split('star_')[1];
 			
 			if(star_stat == "on.png") {
 				star_stat = "off.png";
-			} else {
+				location.href="/test/ez_mail/updateStar?mail_keep=0&mail_num="+mail_num;
+			} 
+			else {
 				star_stat = "on.png";
+				location.href="/test/ez_mail/updateStar?mail_keep=1&mail_num="+mail_num;
 			}
 			
 			$(this).attr('src', "${pageContext.request.contextPath }/resources/images/star_" + star_stat);
+			*/
 		});
 		
 		
@@ -65,26 +74,18 @@
 		});
 		
 		var fr = $("#btn_fr");
+		
 		//읽음 버튼
 		$("#readBtn").on('click', function() {
 			fr.attr("action","/test/ez_mail/readUpdate")
 			fr.submit();
 		});
 		
-		//제목 클릭 시(읽음 처리)
-		$("#readHref").on('click', function() {
-			fr.attr("action","/test/ez_mail/readUpdate")
-			fr.submit();
-		});
-		
-		
 		//삭제 버튼
 		$("#delBtn").on('click', function() {
 			fr.attr("action","/test/ez_mail/deleteMail")
 			fr.submit();
 		});
-		
-		
 	});
 </script>
 <form method="post" id="btn_fr" action="">
@@ -124,13 +125,14 @@
 	                             <input type="checkbox" class="readChk" name="mail_num_cb" value="${mailList.mail_num }"/>                       
 	                           </th>
 	                           <th>
-	                             <img class="star_img" src="${pageContext.request.contextPath }/resources/images/star_off.png" width="18" height="18" style="margin-bottom:4px;"/>
+	                             <img class="star_img" value="${mailList.mail_num }" src="${pageContext.request.contextPath }/resources/images/star${mailList.mail_keep == '0' ? '_off.png':'_on.png'}" 
+	                             width="18" height="18" style="margin-bottom:4px;"/>
 	                           </th>
 	                           <th>
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a id="readHref" href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>

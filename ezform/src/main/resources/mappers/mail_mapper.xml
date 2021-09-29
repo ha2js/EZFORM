@@ -79,6 +79,13 @@
 		where mail_num = #{mail_num}
 	</update>
 	
+	<!-- 중요 보관함 처리 -->
+	<update id="updateKeep">
+		update ez_mail
+		set mail_keep = if(mail_keep = '1','0','1')
+		where mail_num = #{mail_num}
+	</update>
+	
 	<!-- 발신 메일 -->
 	<select id="sendMailList" resultType="EZ_sendmailVO">
 		select * from ez_sendmail

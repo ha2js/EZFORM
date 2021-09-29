@@ -32,6 +32,9 @@ public interface EZ_mailDAO {
 	// 메일 읽음 처리
 	public void mailReadUpdate(int mail_num) throws Exception;
 	
+	// 중요 보관함 처리
+	public void mailKeepUpdate(int mail_num) throws Exception;
+	
 	// 발신 메일 목록 조회
 	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception;
 	

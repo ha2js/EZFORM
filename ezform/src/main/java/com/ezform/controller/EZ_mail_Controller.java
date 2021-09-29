@@ -221,6 +221,15 @@ public class EZ_mail_Controller {
 		return "redirect:/ez_mail/recMail";
 	}
 	
+	@RequestMapping(value="/updateStar", method=RequestMethod.GET)
+	public String update_star(@RequestParam("mail_num") int mail_num, Model model) throws Exception {
+		
+		logger.info("update_star() 호출 ");
+		
+		service.mailKeepUpdate(mail_num);
+		
+		return "redirect:/ez_mail/recMail";
+	}
 	
 	// ------------------------------보낸 메일----------------------------------------//
 	@RequestMapping(value="/sendMail", method = RequestMethod.GET)
@@ -244,7 +253,7 @@ public class EZ_mail_Controller {
 		
 		EZ_sendmailVO smvo = service.sendRead(mail_num);
 		
-		model.addAttribute("recReadDetail",smvo);
+		model.addAttribute("sendReadDetail",smvo);
 		model.addAttribute("recName",service.mailName(smvo.getMail_id()));
 		model.addAttribute("sendName",service.mailName(smvo.getMail_email()));	
 	}

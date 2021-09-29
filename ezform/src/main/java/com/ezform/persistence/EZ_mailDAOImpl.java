@@ -113,6 +113,12 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		
 		sqlSession.update(namespace+".updateReadCk",mail_num);
 	}
+	
+	@Override
+	public void mailKeepUpdate(int mail_num) throws Exception {
+		
+		sqlSession.update(namespace+".updateKeep",mail_num);
+	}
 
 	@Override
 	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception {
