@@ -85,6 +85,14 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		
 		mdao.mailReadUpdate(mail_num);
 	}
+	
+	@Override
+	public void mailKeepUpdate(int mail_num) throws Exception {
+		
+		logger.info("mailService : mailKeepUpdate() 호출");
+		
+		mdao.mailKeepUpdate(mail_num);
+	}
 
 	@Override
 	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception {
