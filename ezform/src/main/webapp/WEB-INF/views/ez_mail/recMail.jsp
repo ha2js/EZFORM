@@ -90,7 +90,7 @@
             </div>
             <div class="card-body">
                	<div style="margin-bottom:5px;">
-					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='writeMail';"/>
+					<input type="button" class="btn btn-outline-primary" value="메일쓰기" onclick="location.href='writeMail';"/>
 				</div>
 				<div style="margin-bottom:15px;">
 					<input type="submit" class="btn btn-primary btn-sm" id="readBtn" value="읽음"/>
@@ -121,7 +121,7 @@
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a href="recRead" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>

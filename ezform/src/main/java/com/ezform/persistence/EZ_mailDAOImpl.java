@@ -55,6 +55,12 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		logger.info("mailDAO : 전송하려는 메일 정보 : "+vo);
 		
 		sqlSession.insert(namespace + ".mailWrite",vo);
+		
+		tmp = sqlSession.selectOne(namespace + ".sendmailnumCnt");
+		num = 0;
+		if (tmp != null) num = Integer.parseInt(tmp);
+		
+		vo.setMail_num(++num);
 		sqlSession.insert(namespace + ".mailWriteCopy",vo);
 	}
 

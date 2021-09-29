@@ -17,6 +17,11 @@
 		select max(mail_num) from ez_mail
 	</select>
 	
+	<!-- 현재 db에 있는 mail_num 최대 값 -->
+	<select id="sendmailnumCnt" resultType="String">
+		select max(mail_num) from ez_sendmail
+	</select>
+	
 	<!-- 메일 쓰기 - 해당 이메일 주소가 존재하는지 체크  -->
 	<select id="emailCk" resultType="Boolean">
 		select count(*) from ez_em
