@@ -33,44 +33,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-		// 별버튼 이벤트
-		$(".star_img").on('click', function() {
-			
-			var star_stat = $(this).attr('src').split('/')[4].split('star_')[1];
-			
-			if(star_stat == "on.png") {
-				star_stat = "off.png";
-			} else {
-				star_stat = "on.png";
-			}
-			
-			$(this).attr('src', "${pageContext.request.contextPath }/resources/images/star_" + star_stat);
-		});
-		
-		
-		// 읽음체크 이벤트
-		$("#readAllChk").change(function(){
-		   if($("input[id=readAllChk]:checkbox").is(":checked") == false){
-		     $("input[class=readChk]:checkbox").prop("checked", false);
-		   }else{
-		     $("input[class=readChk]:checkbox").prop("checked", true);
-		   }
-	    });
-		
-		$("input:checkbox[class='readChk']").click(function(){
-			  if($(this).is(":checked") == false){
-			    $("input:checkbox[id='readAllChk']").prop("checked", false);
-			  };
-		});
-		
-		var fr = $("#btn_fr");
-		//읽음 버튼
-		$("#readBtn").on('click', function() {
-			fr.attr("action","/test/ez_mail/readUpdate")
-			fr.submit();
-		});
-		
 		//삭제 버튼
 		$("#delBtn").on('click', function() {
 			fr.attr("action","/test/ez_mail/deleteMail")
@@ -85,15 +47,11 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                  <h4 class="card-title">중요 메일함</h4>
+                  <h4 class="card-title">중요 보관함</h4>
                </div>    
             </div>
             <div class="card-body">
-               	<div style="margin-bottom:5px;">
-					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='writeMail';"/>
-				</div>
 				<div style="margin-bottom:15px;">
-					<input type="submit" class="btn btn-primary btn-sm" id="readBtn" value="읽음"/>
 					<input type="submit" class="btn btn-primary btn-sm" id="delBtn" value="삭제"/>
 				</div>    	
                 <div class="table-responsive">
@@ -102,9 +60,8 @@
                      <thead>
                         <tr>
                            <th width="5%"><input type="checkbox" id="readAllChk"/></th>
-                           <th width="5%"></th>
-                           <th width="5%">보낸사람</th>
-                           <th width="55%">제목</th>
+                           <th width="20%">보낸사람</th>
+                           <th width="50%">제목</th>
                            <th width="25%">날짜</th>
                         </tr>
                      </thead>
@@ -113,9 +70,6 @@
                      	   <tr ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                           <th>
 	                             <input type="checkbox" class="readChk" name="mail_num_cb" value="${mailList.mail_num }"/>                       
-	                           </th>
-	                           <th>
-	                             <img class="star_img" src="${pageContext.request.contextPath }/resources/images/star_off.png" width="18" height="18" style="margin-bottom:4px;"/>
 	                           </th>
 	                           <th>
 	                             ${mailList.mail_email }
@@ -131,7 +85,6 @@
                            </tr>    
                      	</c:forEach>         
                      </tbody>
-                     
                   </table>
                </div>
             </div>

@@ -63,7 +63,7 @@
 											<td class="text-center">
 												<img class="bg-soft-primary rounded img-fluid avatar-40 me-3" 
 												     src="${pageContext.request.contextPath }/resources/upload/mem_Image/${emp.em_image }" 
-												     alt="profile">
+												     alt="profile" onerror="this.src='${pageContext.request.contextPath }/resources/images/silhouette.png'">
 											</td>
 											<td>${emp.em_dept }</td>
 											<td>${emp.em_posi }</td>
