@@ -80,5 +80,11 @@
 		where mail_email = #{mail_email}
 		order by mail_num desc, mail_regdate desc
 	</select>
+	
+	<!-- 발신 메일 -->
+	<select id="send_read" resultType="EZ_sendmailVO">
+		select * from ez_sendmail 
+		where mail_num = #{mail_num}
+	</select>
 
 </mapper>

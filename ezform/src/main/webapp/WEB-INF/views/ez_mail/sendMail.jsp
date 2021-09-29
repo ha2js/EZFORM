@@ -92,7 +92,7 @@
 	                             ${sendmailList.mail_email }
 	                           </th>
 	                           <th>
-		                           <a href="#">
+		                           <a href="/test/ez_mail/sendRead?mail_num=${sendmailList.mail_num }">
 		                             ${sendmailList.mail_title }
 		                           </a>
 	                           </th>

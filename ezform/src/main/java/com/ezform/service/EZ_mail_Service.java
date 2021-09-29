@@ -34,4 +34,7 @@ public interface EZ_mail_Service {
 	
 	// 발신 메일 목록 조회
 	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception;
+	
+	// 발신 메일 읽기
+	public EZ_sendmailVO sendRead(int mail_num) throws Exception;
 }

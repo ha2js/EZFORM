@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailVO;
+import com.ezform.domain.EZ_sendmailVO;
 import com.ezform.service.EZ_mail_Service;
 import com.ezform.test.testController;
 
@@ -63,9 +64,7 @@ public class EZ_mail_Controller {
 		
 		model.addAttribute("recReadDetail",mvo);
 		model.addAttribute("recName",recName);
-		model.addAttribute("sendName",sendName);
-		
-		
+		model.addAttribute("sendName",sendName);	
 	}
 		
 	@RequestMapping(value="/emp_select", method = RequestMethod.GET)
@@ -237,4 +236,16 @@ public class EZ_mail_Controller {
 		model.addAttribute("sendmailList",service.sendMailList(evo.getEm_email()));
 	}
 	
+	@RequestMapping(value="/sendRead", method=RequestMethod.GET)
+	public void readDetail_SendMailGET(@RequestParam("mail_num") int mail_num, Model model) throws Exception {
+		
+		// 발신 메일 읽기
+		logger.info("readDetail_SendMailGET() 호출");
+		
+		EZ_sendmailVO smvo = service.sendRead(mail_num);
+		
+		model.addAttribute("recReadDetail",smvo);
+		model.addAttribute("recName",service.mailName(smvo.getMail_id()));
+		model.addAttribute("sendName",service.mailName(smvo.getMail_email()));	
+	}
 }

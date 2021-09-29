@@ -116,4 +116,12 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		return sqlSession.selectList(namespace + ".sendMailList", mail_email);
 	}
 
+	@Override
+	public EZ_sendmailVO sendRead(int mail_num) throws Exception {
+		
+		logger.info("mailDAO : sendRead() 호출");
+		
+		return sqlSession.selectOne(namespace+".send_read",mail_num);
+	}
+
 }

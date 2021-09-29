@@ -94,6 +94,14 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		return mdao.sendMailList(mail_email);
 	}
 
+	@Override
+	public EZ_sendmailVO sendRead(int mail_num) throws Exception {
+		
+		logger.info("mailService : sendRead() 호출");
+		
+		return mdao.sendRead(mail_num);
+	}
+
 
 
 }
