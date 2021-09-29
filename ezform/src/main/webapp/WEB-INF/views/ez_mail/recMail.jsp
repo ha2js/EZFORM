@@ -71,11 +71,20 @@
 			fr.submit();
 		});
 		
+		//제목 클릭 시(읽음 처리)
+		$("#readHref").on('click', function() {
+			fr.attr("action","/test/ez_mail/readUpdate")
+			fr.submit();
+		});
+		
+		
 		//삭제 버튼
 		$("#delBtn").on('click', function() {
 			fr.attr("action","/test/ez_mail/deleteMail")
 			fr.submit();
 		});
+		
+		
 	});
 </script>
 <form method="post" id="btn_fr" action="">
@@ -121,7 +130,7 @@
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a id="readHref" href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>

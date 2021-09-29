@@ -59,8 +59,8 @@ public class EZ_mail_Controller {
 		logger.info("readDetail_RecMailGET() 호출");
 		
 		EZ_mailVO mvo = service.recRead(mail_num);
-		String recName = service.mailName(mvo.getMail_id());
-		String sendName = service.mailName(mvo.getMail_email());
+		String recName = service.mailName(mvo.getMail_email());
+		String sendName = service.mailName(mvo.getMail_id());
 		
 		model.addAttribute("recReadDetail",mvo);
 		model.addAttribute("recName",recName);
