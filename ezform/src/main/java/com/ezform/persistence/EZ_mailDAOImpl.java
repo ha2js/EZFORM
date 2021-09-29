@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailVO;
+import com.ezform.domain.EZ_sendmailVO;
 import com.ezform.test.testController;
 
 @Repository
@@ -105,6 +106,14 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		logger.info("mailDAO : mailReadUpdate() 호출");
 		
 		sqlSession.update(namespace+".updateReadCk",mail_num);
+	}
+
+	@Override
+	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception {
+		
+		logger.info("mailDAO : sendMailList() 호출");
+		
+		return sqlSession.selectList(namespace + ".sendMailList", mail_email);
 	}
 
 }
