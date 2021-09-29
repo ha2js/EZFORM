@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.EZ_board_comVO;
+import com.ezform.service.EZ_bd_Service;
 import com.ezform.service.EZ_bdcom_Service;
 import com.ezform.test.testController;
 
@@ -23,9 +25,12 @@ public class EZ_bdcom_Controller {
 	@Inject
 	public EZ_bdcom_Service ReplyService;
 	
+	@Inject
+	private EZ_bd_Service service;
+
 	// 댓글 작성
 	@RequestMapping(value= "/write", method= RequestMethod.POST)
-	public String postWrite(EZ_board_comVO vo) throws Exception{
+	public String postWritePOST(EZ_board_comVO vo) throws Exception{
 		
 		ReplyService.write(vo);
 		
@@ -33,4 +38,5 @@ public class EZ_bdcom_Controller {
 		
 		
 	}
+
 }

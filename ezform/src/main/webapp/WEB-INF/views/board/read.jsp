@@ -79,6 +79,7 @@
 											<hr>
 													
 			
+											<!-- 댓글 처리 -->
 											
 			<ul>
 			<c:forEach items="${reply }" var="reply">
@@ -86,12 +87,12 @@
 					<div>
 						<p>${reply.com_name}/<fmt:formatDate value="${reply.com_regdate}" pattern="yyyy-MM-dd"/></p>
 						<p>${reply.com_content }</p>
+						<p>${vo.cm_bnum}</p>
 					</div>
 				</li>
 			</c:forEach>
 			</ul>
 			
-											<!-- 댓글 처리 -->
 											
 											<!-- 댓글 시작 -->
 			<ul>
@@ -100,6 +101,7 @@
 						<div>
 							<p>${reply.com_name} / ${reply.com_regdate}</p>
 							<p>${reply.com_content}</p>
+							<p>${vo.cm_content}</p>
 						</div>					
 					</li>
 				</c:forEach>
@@ -111,7 +113,6 @@
 		<div>
 			<form role="form" method="get" action="/test/board/read"> 
 				
-				
 				<p>
 					<label>아이디:
 					<input type="text" name="com_name"><br>댓글:
@@ -121,7 +122,7 @@
 					<textarea rows="5" cols="50" name="com_content"></textarea> <br>
 				</p>
 				<p>
-					<input type="hidden" name="com_bnum" value="${view.com_bnum}">
+					<input type="hidden" name="cm_bnum" value="${vo.cm_bnum}">
 					<button type="submit">댓글 작성</button>
 				</p>
 			</form>
