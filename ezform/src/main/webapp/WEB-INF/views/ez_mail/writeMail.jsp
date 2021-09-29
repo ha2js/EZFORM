@@ -48,9 +48,9 @@
 			return false;
 		}
 		
-		// 파일 용량 체크 (100MB 이하)
+		// 파일 용량 체크 (50MB 이하)
 		var file = document.writeMail_fr.mail_file;
-		var maxSize = 100 * 1024 * 1024;
+		var maxSize = 50 * 1024 * 1024;
 		var fileSize = 0;
 		var browser = navigator.appName;
 				
@@ -63,7 +63,7 @@
 		}
 		
 		if (fileSize > maxSize) {
-			alert("100MB 이하인 파일로 등록해 주세요");
+			alert("50MB 이하인 파일로 등록해 주세요");
 			return false;
 		}
 	}
