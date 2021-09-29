@@ -42,7 +42,7 @@
 	
 	<!-- 직원 목록 조회 -->
 	<select id="empSelect" resultType="EZ_empVO">
-		select em_email, em_name, em_dept, em_posi
+		select em_email, em_name, em_dept, em_posi, em_image
 		from ez_em
 		order by em_dept asc, em_posi asc, em_name asc, em_email asc
 	</select>
