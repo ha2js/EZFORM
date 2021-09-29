@@ -7,7 +7,7 @@ public class EZ_boardCri {
 	private String cm_name;
 	
 	public EZ_boardCri() { // 기본값은 항상 1페이지, 10개씩 
-		this.pageSize = 15;
+		this.pageSize = 10;
 		this.pageStart = 1;
 	}
 	

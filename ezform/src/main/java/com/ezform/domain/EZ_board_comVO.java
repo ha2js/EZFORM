@@ -7,7 +7,7 @@ public class EZ_board_comVO {
 	private int com_cnum;
 	private int com_bnum;
 	private String com_dept;
-	private String name;
+	private String com_name;
 	private Timestamp com_regdate;
 	private String com_content;
 	private int com_id;
@@ -30,11 +30,11 @@ public class EZ_board_comVO {
 	public void setCom_dept(String com_dept) {
 		this.com_dept = com_dept;
 	}
-	public String getName() {
-		return name;
+	public String getCom_name() {
+		return com_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCom_name(String com_name) {
+		this.com_name = com_name;
 	}
 	public Timestamp getCom_regdate() {
 		return com_regdate;
@@ -57,9 +57,11 @@ public class EZ_board_comVO {
 	
 	@Override
 	public String toString() {
-		return "EZ_board_comVO [com_cnum=" + com_cnum + ", com_bnum=" + com_bnum + ", com_dept=" + com_dept + ", name="
-				+ name + ", com_regdate=" + com_regdate + ", com_content=" + com_content + ", com_id=" + com_id + "]";
+		return "EZ_board_comVO [com_cnum=" + com_cnum + ", com_bnum=" + com_bnum + ", com_dept=" + com_dept
+				+ ", com_name=" + com_name + ", com_regdate=" + com_regdate + ", com_content=" + com_content
+				+ ", com_id=" + com_id + "]";
 	}
+	
 	
 	
 	

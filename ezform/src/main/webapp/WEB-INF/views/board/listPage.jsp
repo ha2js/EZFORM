@@ -59,33 +59,30 @@
 		
 	
 			<!-- 페이징처리 -->
-	<c:if test="${fn:length(boardList) > 0 }">
+	<%-- <c:if test="${fn:length(boardList) > 0 }"> --%>
+			<!-- 이전 -->
 		<div>
 			<ul>
-			<!-- 이전 -->
-	<c:if test="${pm.prev }">
-				<li>
-					<a href="listPage?pageStart=${pm.startPage-1}">이전</a>
-				</li>
-	</c:if>	
+		<c:if test="${pm.prev}">
+				<li><a href="listPage?pageStart=${pm.startPage-1}">이전</a></li>
+		</c:if>	
 		
 			<!-- 페이지 번호 -->
 			<c:forEach var="idx" begin="${pm.startPage }" end="${pm.endPage }">
-				<li ${pm.cri.pageStart == idx? 'class = active' : ''}>
-					<a href="listPage?pageStart=${idx }">${idx }</a>
-				</li>
+				<%-- <li ${pm.cri.pageStart == idx? 'class = active' : ''}> --%>
+				<span><a href="listPage?pageStart=${idx }">${idx }</a></span>
+				<!-- </li> -->
 			</c:forEach>			
 		
 			<!-- 다음 -->
+			
 			<c:if test="${pm.next }">
-				<li>
-					<a href="listPage?pageStart=${pm.endPage+1 }">다음</a>
-				</li>
+				<li><a href="listPage?pageStart=${pm.endPage+1 }">다음</a></li>
 			</c:if>
 	
 				</ul>
 			</div>
-	</c:if>
+	<%-- </c:if> --%>
 		
 	
 	

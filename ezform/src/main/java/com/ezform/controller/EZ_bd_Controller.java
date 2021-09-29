@@ -1,5 +1,7 @@
 package com.ezform.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.EZ_board_PageMaker;
+import com.ezform.domain.EZ_board_comVO;
 import com.ezform.service.EZ_bd_Service;
+import com.ezform.service.EZ_bdcom_Service;
 import com.ezform.test.testController;
 
 @Controller
@@ -26,9 +30,13 @@ public class EZ_bd_Controller {
 	@Inject
 	private EZ_bd_Service service;
 	
+	@Inject
+	private EZ_bdcom_Service ReplyService;
+	
 	private static final Logger logger = 
 			LoggerFactory.getLogger(testController.class);
 	
+	// *게시물 목록*
 	// http://localhost:8088/test/board/listPage
 	@RequestMapping(value= "/listPage", method= RequestMethod.GET)
 	public void listPageGET(EZ_boardCri cri,Model model) throws Exception {
@@ -100,7 +108,13 @@ public class EZ_bd_Controller {
 		// DB정보 -> 저장
 		model.addAttribute("vo", vo);
 		
+		// 댓글 조회
+		List<EZ_board_comVO> reply = null;
+		reply = ReplyService.list(cm_bnum);
+		model.addAttribute("reply", reply);
 	}
+	
+	
 	
 	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
 	@RequestMapping(value="/modify", method= {RequestMethod.GET})
