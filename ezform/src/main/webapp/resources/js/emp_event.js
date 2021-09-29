@@ -45,13 +45,4 @@
 	}
 	
 	
-	// 내선번호 생성
-	function emp_join_extension() {
-		// 내선번호 이벤트
-		var exten_length = $("#emp_exten").val().length;
-		if(exten_length == 3 || exten_length == 7) {
-			$("#emp_exten").val($("#emp_exten").val() + "-");
-		}
-
-	}
 	
