@@ -24,9 +24,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 	
 	@Override
 	public List<EZ_mailVO> mailList(String mail_id) throws Exception {
-	
-		logger.info("mailDAO : mailList() 호출");
-		
+
 		return sqlSession.selectList(namespace+".rec_mailList",mail_id);
 	}
 	
@@ -35,15 +33,13 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 		
 		// 해당 메일 주소가 있는지 체크
 		boolean check = sqlSession.selectOne(namespace + ".emailCk", em_email);
-		logger.info("mailDAO : sendEmailCk 반환 값 : "+check);
+		logger.info("mailDAO : 보내려는 메일 주소 존재 여부 : "+check);
 		
 		return check;
 	}
 
 	@Override
 	public void mailWrite(EZ_mailVO vo) throws Exception {
-		
-		logger.info("mailDAO : mailWrite() 호출");
 		
 		// db에 있는 제일 마지막에 쓴 mail_num 불러오기
 		String tmp = sqlSession.selectOne(namespace + ".mailnumCnt");
@@ -66,9 +62,7 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 
 	@Override
 	public List<EZ_empVO> empSelect() throws Exception {
-		
-		logger.info("mailDAO : empSelect() 호출");
-		
+
 		// 직원 정보 가져오기 (부서명, 직급, 이름, 메일주소)
 		
 		return sqlSession.selectList(namespace+".empSelect");
@@ -76,12 +70,9 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 
 	@Override
 	public EZ_mailVO recRead(int mail_num) throws Exception {
-		
-		logger.info("mailDAO : recRead() 호출");
-		
-		EZ_mailVO mvo = new EZ_mailVO();
-		
-		mvo = sqlSession.selectOne(namespace+".rec_read",mail_num);
+
+		EZ_mailVO mvo = sqlSession.selectOne(namespace+".rec_read",mail_num);
+
 		if (mvo.getMail_readCheck().equals("0")) { // 읽음 처리 (색상)
 			mvo.setMail_readCheck("1");
 			sqlSession.update(namespace+".rec_readCheck_update",mail_num);
@@ -92,25 +83,19 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 
 	@Override
 	public String mailName(String mailName) throws Exception {
-		
-		logger.info("mailDAO : mailName() 호출");
-		
+
 		return sqlSession.selectOne(namespace+".recAndSend",mailName);
 	}
 
 	@Override
 	public void mailDelete(int mail_num) throws Exception {
-		
-		logger.info("mailDAO : mailDelete() 호출");
-		
+	
 		sqlSession.delete(namespace+".deleteMail",mail_num);
 	}
 
 	@Override
 	public void mailReadUpdate(int mail_num) throws Exception {
-		
-		logger.info("mailDAO : mailReadUpdate() 호출");
-		
+	
 		sqlSession.update(namespace+".updateReadCk",mail_num);
 	}
 	
@@ -118,22 +103,28 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 	public void mailKeepUpdate(int mail_num) throws Exception {
 		
 		sqlSession.update(namespace+".updateKeep",mail_num);
+		
 	}
 
 	@Override
 	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception {
-		
-		logger.info("mailDAO : sendMailList() 호출");
-		
+			
 		return sqlSession.selectList(namespace + ".sendMailList", mail_email);
+		
 	}
 
 	@Override
 	public EZ_sendmailVO sendRead(int mail_num) throws Exception {
-		
-		logger.info("mailDAO : sendRead() 호출");
-		
+
 		return sqlSession.selectOne(namespace+".send_read",mail_num);
+		
+	}
+
+	@Override
+	public void mailDelete2(int mail_num) throws Exception {
+		
+		sqlSession.delete(namespace+".deleteMail2",mail_num);
+	
 	}
 
 }

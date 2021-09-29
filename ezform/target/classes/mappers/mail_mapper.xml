@@ -98,5 +98,11 @@
 		select * from ez_sendmail 
 		where mail_num = #{mail_num}
 	</select>
+	
+	<!-- 체크 목록 삭제하기 (발신)-->
+	<delete id="deleteMail2">
+		delete from ez_sendmail
+		where mail_num = #{mail_num}
+	</delete>
 
 </mapper>

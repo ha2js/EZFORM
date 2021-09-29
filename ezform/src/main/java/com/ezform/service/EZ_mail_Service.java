@@ -42,5 +42,5 @@ public interface EZ_mail_Service {
 	public EZ_sendmailVO sendRead(int mail_num) throws Exception;
 	
 	// 발신 메일 삭제
-	
+	public void mailDelete2(int mail_num) throws Exception;
 }

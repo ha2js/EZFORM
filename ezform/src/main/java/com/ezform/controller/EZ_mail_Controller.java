@@ -264,7 +264,7 @@ public class EZ_mail_Controller {
 		logger.info("delete_mail() 호출");
 		
 		for (int mail_num : delete_mail_num) {
-			// service.mailDelete(mail_num);
+			service.mailDelete2(mail_num);
 		}
 		
 		return "redirect:/ez_mail/sendMail";
