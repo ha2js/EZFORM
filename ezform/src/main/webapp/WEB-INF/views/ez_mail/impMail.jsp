@@ -85,7 +85,7 @@
          <div class="card">
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
-                  <h4 class="card-title">받은 메일함</h4>
+                  <h4 class="card-title">중요 메일함</h4>
                </div>    
             </div>
             <div class="card-body">
@@ -121,7 +121,7 @@
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a href="recRead" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a href="#" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>
