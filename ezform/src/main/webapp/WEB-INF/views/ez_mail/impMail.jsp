@@ -33,10 +33,11 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		//삭제 버튼
-		$("#delBtn").on('click', function() {
-			fr.attr("action","/test/ez_mail/deleteMail")
-			fr.submit();
+		$(".star_img").on('click', function() {
+			
+			var mail_num = $(this).attr('value');
+
+			location.href="/test/ez_mail/updateStar?keepPage=true&mail_num="+mail_num;
 		});
 	});
 </script>
@@ -50,32 +51,30 @@
                   <h4 class="card-title">중요 보관함</h4>
                </div>    
             </div>
-            <div class="card-body">
-				<div style="margin-bottom:15px;">
-					<input type="submit" class="btn btn-primary btn-sm" id="delBtn" value="삭제"/>
-				</div>    	
+            <div class="card-body"> 	
                 <div class="table-responsive">
                 <!-- data-toggle="data-table" -->
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                           <th width="5%"><input type="checkbox" id="readAllChk"/></th>
+						   <th width="5%"></th>
                            <th width="20%">보낸사람</th>
                            <th width="50%">제목</th>
                            <th width="25%">날짜</th>
                         </tr>
                      </thead>
                      <tbody>
-                     	<c:forEach var="mailList" items="${mailList }">
+                     	<c:forEach var="mailList" items="${mailKeepList }">
                      	   <tr ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                           <th>
-	                             <input type="checkbox" class="readChk" name="mail_num_cb" value="${mailList.mail_num }"/>                       
+	                           	 <img class="star_img" value="${mailList.mail_num }" src="${pageContext.request.contextPath }/resources/images/star${mailList.mail_keep == '0' ? '_off.png':'_on.png'}" 
+	                             width="18" height="18" style="margin-bottom:4px;"/>                  
 	                           </th>
 	                           <th>
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a href="#" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>

@@ -9,7 +9,7 @@
 	<select id="rec_mailList" resultType="EZ_mailVO">
 		select * from ez_mail
 		where mail_id = #{mail_id}
-		order by mail_num desc, mail_regdate desc
+		order by mail_regdate desc
 	</select>
 	
 	<!-- 현재 db에 있는 mail_num 최대 값 -->
@@ -90,7 +90,7 @@
 	<select id="sendMailList" resultType="EZ_sendmailVO">
 		select * from ez_sendmail
 		where mail_email = #{mail_email}
-		order by mail_num desc, mail_regdate desc
+		order by mail_regdate desc
 	</select>
 	
 	<!-- 발신 메일 -->
@@ -104,5 +104,12 @@
 		delete from ez_sendmail
 		where mail_num = #{mail_num}
 	</delete>
+	
+	<!-- 중요 보관함 -->
+	<select id="mailKeepList" resultType="EZ_mailVO">
+		select * from ez_mail
+		where mail_id = #{mail_id} and mail_keep = '1'
+		order by mail_regdate desc
+	</select>
 
 </mapper>

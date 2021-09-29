@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -222,11 +223,13 @@ public class EZ_mail_Controller {
 	}
 	
 	@RequestMapping(value="/updateStar", method=RequestMethod.GET)
-	public String update_star(@RequestParam("mail_num") int mail_num, Model model) throws Exception {
+	public String update_star(@RequestParam("mail_num") int mail_num, @RequestParam("keepPage") boolean keep, Model model) throws Exception {
 		
 		logger.info("update_star() 호출 ");
 		
 		service.mailKeepUpdate(mail_num);
+		
+		if (keep) return "redirect:/ez_mail/impMail";
 		
 		return "redirect:/ez_mail/recMail";
 	}
@@ -273,9 +276,14 @@ public class EZ_mail_Controller {
 	// ------------------------------중요 보관함---------------------------------------//
 	
 	@RequestMapping(value="/impMail", method=RequestMethod.GET)
-	public void impMailGET() throws Exception {
+	public void impMailGET(Model model, HttpSession session) throws Exception {
 		
 		logger.info("impMailGET() 호출");
 		
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+				
+		// 수신 메일 list
+		model.addAttribute("mailKeepList",service.mailKeepList(evo.getEm_email()));
 	}
 }

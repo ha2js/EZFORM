@@ -92,9 +92,12 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 	public void mailDelete2(int mail_num) throws Exception {
 		
 		mdao.mailDelete2(mail_num);
-		
 	}
 
-
+	@Override
+	public List<EZ_mailVO> mailKeepList(String mail_id) throws Exception {
+	
+		return mdao.mailKeepList(mail_id);
+	}
 
 }

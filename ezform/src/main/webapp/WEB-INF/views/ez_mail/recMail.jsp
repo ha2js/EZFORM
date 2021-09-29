@@ -39,22 +39,7 @@
 			
 			var mail_num = $(this).attr('value');
 
-			location.href="/test/ez_mail/updateStar?mail_num="+mail_num;
-			
-			/*
-			var star_stat = $(this).attr('src').split('/')[4].split('star_')[1];
-			
-			if(star_stat == "on.png") {
-				star_stat = "off.png";
-				location.href="/test/ez_mail/updateStar?mail_keep=0&mail_num="+mail_num;
-			} 
-			else {
-				star_stat = "on.png";
-				location.href="/test/ez_mail/updateStar?mail_keep=1&mail_num="+mail_num;
-			}
-			
-			$(this).attr('src', "${pageContext.request.contextPath }/resources/images/star_" + star_stat);
-			*/
+			location.href="/test/ez_mail/updateStar?keepPage=false&mail_num="+mail_num;
 		});
 		
 		

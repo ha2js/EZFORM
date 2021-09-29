@@ -110,21 +110,24 @@ public class EZ_mailDAOImpl implements EZ_mailDAO {
 	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception {
 			
 		return sqlSession.selectList(namespace + ".sendMailList", mail_email);
-		
 	}
 
 	@Override
 	public EZ_sendmailVO sendRead(int mail_num) throws Exception {
 
 		return sqlSession.selectOne(namespace+".send_read",mail_num);
-		
 	}
 
 	@Override
 	public void mailDelete2(int mail_num) throws Exception {
 		
 		sqlSession.delete(namespace+".deleteMail2",mail_num);
-	
+	}
+
+	@Override
+	public List<EZ_mailVO> mailKeepList(String mail_id) throws Exception {
+		
+		return sqlSession.selectList(namespace+".mailKeepList",mail_id);
 	}
 
 }
