@@ -52,8 +52,15 @@
 		
 		//삭제 버튼
 		$("#delBtn").on('click', function() {
-			fr.attr("action","/test/ez_mail/deleteMail2")
-			fr.submit();
+			var cnt = $("input[name=mail_num_cb]:checkbox:checked").length;
+			if (cnt > 0) {
+				fr.attr("action","/test/ez_mail/deleteMail2")
+				fr.submit();
+			}
+			else {
+				alert("메일을 선택해 주세요");
+				return false;
+			}
 		});
 	});
 </script>
