@@ -73,5 +73,12 @@
 		set mail_readCheck = '1'
 		where mail_num = #{mail_num}
 	</update>
+	
+	<!-- 발신 메일 -->
+	<select id="sendMailList" resultType="EZ_sendmailVO">
+		select * from ez_sendmail
+		where mail_email = #{mail_email}
+		order by mail_num desc, mail_regdate desc
+	</select>
 
 </mapper>

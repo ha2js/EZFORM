@@ -225,8 +225,16 @@ public class EZ_mail_Controller {
 	
 	// ------------------------------보낸 메일----------------------------------------//
 	@RequestMapping(value="/sendMail", method = RequestMethod.GET)
-	public void read_SendMailGET() throws Exception {
+	public void read_SendMailGET(Model model, HttpSession session) throws Exception {
+		
 		//  보낸 메일
+		logger.info("read_SendMailGET 호출");
+			
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		
+		// 발신 메일 list
+		model.addAttribute("sendmailList",service.sendMailList(evo.getEm_email()));
 	}
 	
 }

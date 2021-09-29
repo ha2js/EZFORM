@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailVO;
+import com.ezform.domain.EZ_sendmailVO;
 import com.ezform.persistence.EZ_mailDAO;
 import com.ezform.test.testController;
 
@@ -83,6 +84,14 @@ public class EZ_mail_ServiceImpl implements EZ_mail_Service {
 		logger.info("mailService : mailReadUpdate() 호출");
 		
 		mdao.mailReadUpdate(mail_num);
+	}
+
+	@Override
+	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception {
+		
+		logger.info("mailService : sendMailList() 호출");
+		
+		return mdao.sendMailList(mail_email);
 	}
 
 

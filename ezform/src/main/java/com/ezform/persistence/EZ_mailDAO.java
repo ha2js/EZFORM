@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.EZ_mailVO;
+import com.ezform.domain.EZ_sendmailVO;
 
 public interface EZ_mailDAO {
 	
@@ -30,4 +31,7 @@ public interface EZ_mailDAO {
 	
 	// 메일 읽음 처리
 	public void mailReadUpdate(int mail_num) throws Exception;
+	
+	// 발신 메일 목록 조회
+	public List<EZ_sendmailVO> sendMailList(String mail_email) throws Exception;
 }

@@ -13,14 +13,15 @@ import com.ezform.persistence.EZ_board_comDAO;
 @Service
 public class EZ_bd_com_ServiceImpl implements EZ_bd_com_Service {
 
-	@Inject
-	private EZ_board_comDAO dao;
+	/*
+	 * @Inject private EZ_board_comDAO dao;
+	 */
 
 	@Override
 	public List<EZ_board_comVO> readReply(int com_bnum) throws Exception {
 		
-		return dao.readReply(com_bnum);
-		
+		// return dao.readReply(com_bnum);
+		return null;
 	}
 
 }
