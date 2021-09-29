@@ -16,21 +16,21 @@
             <div class="card-body">
                	<div class="mb-3">
 	                <label for="exampleInputEmail1" class="form-label">받는사람</label>
-	                <p class="h6">&nbsp; ${sendName } [${recReadDetail.mail_id }]</p>
+	                <p class="h6">&nbsp; ${recName } [${sendReadDetail.mail_id }]</p>
            		</div>
 				<div class="mb-3">
 	                <label for="exampleInputEmail1" class="form-label">보낸사람</label>
-	                <p class="h6">&nbsp; ${recName } [${recReadDetail.mail_email }]</p>
+	                <p class="h6">&nbsp; ${sendName } [${sendReadDetail.mail_email }]</p>
            		</div>
            		<div class="mb-3">
 	                <label for="exampleInputEmail1" class="form-label">제목</label>
-	                <p class="h6">&nbsp; ${recReadDetail.mail_title }</p>
+	                <p class="h6">&nbsp; ${sendReadDetail.mail_title }</p>
            		</div>
            		<div class="mb-3">
                    	<label class="form-label" for="disabledCustomFile">첨부파일</label>
                    	<c:choose>
-                   		<c:when test="${recReadDetail.mail_file != null }">
-                   			<a href="filedown?fileName=${recReadDetail.mail_file }"><p>&nbsp; ${recReadDetail.mail_file }</p></a>
+                   		<c:when test="${sendReadDetail.mail_file != null }">
+                   			<a href="filedown?fileName=${sendReadDetail.mail_file }"><p>&nbsp; ${sendReadDetail.mail_file }</p></a>
                    		</c:when>
                    		<c:otherwise>
                    			<p class="h6">&nbsp; 첨부파일이 없습니다.</p>
@@ -39,7 +39,7 @@
                	</div>
                	<div class="mb-3">
                    	<label class="form-label" for="disabledCustomFile">내용</label>
-                   	<textarea class="form-control" rows="10" id="mails_content" name="mail_content" style="resize: none; background-color:white;" readonly>${recReadDetail.mail_content }</textarea>
+                   	<textarea class="form-control" rows="10" id="mails_content" name="mail_content" style="resize: none; background-color:white;" readonly>${sendReadDetail.mail_content }</textarea>
                	</div>
                	<div style="text-align:right;">
                		<button type="button" class="btn btn-primary btn-sm" onclick="location.href='recMail'">취소</button>
