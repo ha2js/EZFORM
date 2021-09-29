@@ -257,4 +257,25 @@ public class EZ_mail_Controller {
 		model.addAttribute("recName",service.mailName(smvo.getMail_id()));
 		model.addAttribute("sendName",service.mailName(smvo.getMail_email()));	
 	}
+	
+	@RequestMapping(value="/deleteMail2", method=RequestMethod.POST)
+	public String delete_mail2(@RequestParam("mail_num_cb") int[] delete_mail_num) throws Exception {
+		// 체크박스 메일 삭제 (발신자)
+		logger.info("delete_mail() 호출");
+		
+		for (int mail_num : delete_mail_num) {
+			// service.mailDelete(mail_num);
+		}
+		
+		return "redirect:/ez_mail/sendMail";
+	}
+	
+	// ------------------------------중요 보관함---------------------------------------//
+	
+	@RequestMapping(value="/impMail", method=RequestMethod.GET)
+	public void impMailGET() throws Exception {
+		
+		logger.info("impMailGET() 호출");
+		
+	}
 }

@@ -40,4 +40,7 @@ public interface EZ_mail_Service {
 	
 	// 발신 메일 읽기
 	public EZ_sendmailVO sendRead(int mail_num) throws Exception;
+	
+	// 발신 메일 삭제
+	
 }

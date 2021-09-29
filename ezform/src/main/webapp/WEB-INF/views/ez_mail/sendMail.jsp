@@ -52,7 +52,7 @@
 		
 		//삭제 버튼
 		$("#delBtn").on('click', function() {
-			fr.attr("action","/test/ez_mail/deleteMail")
+			fr.attr("action","/test/ez_mail/deleteMail2")
 			fr.submit();
 		});
 	});
