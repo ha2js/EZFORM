@@ -16,11 +16,11 @@
             <div class="card-body">
                	<div class="mb-3">
 	                <label for="exampleInputEmail1" class="form-label">받는사람</label>
-	                <p class="h6">&nbsp; ${sendName } [${recReadDetail.mail_id }]</p>
+	                <p class="h6">&nbsp; ${recName } [${recReadDetail.mail_id }]</p>
            		</div>
 				<div class="mb-3">
 	                <label for="exampleInputEmail1" class="form-label">보낸사람</label>
-	                <p class="h6">&nbsp; ${recName } [${recReadDetail.mail_email }]</p>
+	                <p class="h6">&nbsp; ${sendName } [${recReadDetail.mail_email }]</p>
            		</div>
            		<div class="mb-3">
 	                <label for="exampleInputEmail1" class="form-label">제목</label>
