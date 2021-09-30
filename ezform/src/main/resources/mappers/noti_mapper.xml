@@ -5,6 +5,11 @@
 
 <mapper namespace="com.ezform.mapper.noti_Mapper">
 	
+	<!-- 글 번호 최대값 구하기 -->
+	<select id="getMaxNum" resultType="String">
+		select max(not_num) from ez_not;
+	</select>
+	
 	<!-- 공지사항 글쓰기 -->
 	<insert id="create">
 		insert into ez_not(not_id,not_title,not_content,not_file)
@@ -12,12 +17,8 @@
 	</insert>
 	
 	<select id="listALL" resultType="EZ_noticeVO">
-		<![CDATA[
-			select * 
-			from ez_not 
-			where not_num > 0 
-			order by not_num desc, not_regdate desc
-		]]>
+		select * from ez_not
+		order by not_num desc, not_regdate desc
 	</select>
 	
 	<!-- 공지사항 글 조회 -->
@@ -44,6 +45,5 @@
 		update ez_not set not_hits=not_hits+1 
 		where not_num=#{not_num} 
 	</update>
-	
 	
 </mapper>

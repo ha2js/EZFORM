@@ -12,12 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ezform.domain.EZ_noticeVO;
 import com.ezform.persistence.EZ_noticeDAO;
+import com.ezform.test.testController;
 
 @Service
 public class EZ_noti_ServiceImpl implements EZ_noti_Service {
 	
 	private static final Logger logger = 
-			LoggerFactory.getLogger(EZ_noti_Service.class);
+			LoggerFactory.getLogger(testController.class);
 	
 	@Inject
 	private EZ_noticeDAO ndao;
@@ -76,6 +77,8 @@ public class EZ_noti_ServiceImpl implements EZ_noti_Service {
 		
 		logger.info(" S : DAO 처리 후 컨트롤러 이동 ");
 	}
+
+
 	
 	
 	

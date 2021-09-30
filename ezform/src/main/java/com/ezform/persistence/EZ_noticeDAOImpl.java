@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezform.domain.EZ_noticeVO;
+import com.ezform.test.testController;
 
 @Repository
 public class EZ_noticeDAOImpl implements EZ_noticeDAO {
@@ -17,32 +18,31 @@ public class EZ_noticeDAOImpl implements EZ_noticeDAO {
 	private SqlSession sqlSession;
 	
 	private static final Logger logger =
-			LoggerFactory.getLogger(EZ_noticeDAOImpl.class);
+			LoggerFactory.getLogger(testController.class);
 	
 	private static final String namespace = "com.ezform.mapper.noti_Mapper";
 			
 	@Override
 	public void create(EZ_noticeVO vo) throws Exception {
 		
-		logger.info(" create(EZ_noVO vo) 호출 ");
-		logger.info(" mapper 이동후 sql구문 실행 ");
+		logger.info("notDAO : create() 호출 ");
 		
-		int result = sqlSession.insert(namespace+".create",vo);
+		String tmp = sqlSession.selectOne(namespace+".getMaxNum");
+		int num = 0;
+		if (tmp != null) num = Integer.parseInt(tmp);
 		
-		logger.info("생성구문 : " + result+ "개");
+		vo.setNot_num(++num);
 		
+		sqlSession.insert(namespace+".create",vo);
+
 	}
 	
 	@Override
 	public List<EZ_noticeVO> listALL() throws Exception {
 		
-		System.out.println(" DAO : listALL() -> mapper 호출 ");
+		logger.info(" notDAO : listALL()호출 ");
 		
-		System.out.println(" DAO : mapper-sql 구문 실행 완료! ");
-		System.out.println(" DAO : 서비스로 정보전달 ");
-		
-		List<EZ_noticeVO> noticeList = sqlSession.selectList(namespace+".listALL");
-		return noticeList;
+		return sqlSession.selectList(namespace+".listALL");
 		
 	} 
 	

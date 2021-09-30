@@ -21,4 +21,5 @@ public interface EZ_noti_Service {
 	// 글 정보 삭제하기
 	public void remove(Integer not_num) throws Exception;
 	
+
 }

@@ -23,5 +23,6 @@ public interface EZ_noticeDAO {
 	
 	// 공지사항 조회수
 	public void hits(int not_num) throws Exception;
-	
+
+
 }
