@@ -18,6 +18,10 @@
 	#datatable>tbody>tr {
 		text-align : center;
 	}
+	.file_img {
+		width:25px;
+		height:25px;
+	}
 	
 </style>
 
@@ -34,16 +38,23 @@
             </div>
             <div class="card-body">
                	<div style="margin-bottom:5px;">
-					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='register';"/>
+               		<c:choose>
+						<c:when test="${admin == 'admin' }">
+							<input type="button" class="btn btn-outline-primary" value="등록" onclick="location.href='register';"/>		 	
+						</c:when>
+						<c:otherwise>
+							&nbsp;
+				 		</c:otherwise>
+				 	</c:choose>	
 				</div>  	
                 <div class="table-responsive">
                 <!-- data-toggle="data-table" -->
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr>
-                           <th width="5%">.No</th>
+                           <th width="5%">번호</th>
                            <th width="55%">제목</th>
-                           <th width="20%">작성자</th>
+                           <th width="15%">첨부파일</th>
                            <th width="20%">작성일</th>
                            <th width="10%">조회수</th>
                         </tr>
@@ -54,10 +65,19 @@
 				           	 <td>${notList.not_num }</td>
 							 <td>
 								<a href="/test/ez_notice/read?not_num=${notList.not_num }" class="num">${notList.not_title }</a>
-							
 							 </td>
-							 <td>${notList.not_id }</td>
-							 <td>${notList.not_regdate }</td>
+							 
+							 <td>
+							 	<c:choose>
+							 		<c:when test="${notList.not_file != null }">
+							 			<img class="file_img" src="${pageContext.request.contextPath }/resources/images/isFile.png"/>
+							 		</c:when>
+							 		<c:otherwise>
+							 			&nbsp;
+							 		</c:otherwise>
+							 	</c:choose>
+							 </td>
+							 <td><fmt:formatDate value="${notList.not_regdate }" pattern="yyyy-MM-dd"/></td>
 							 <td>${notList.not_hits }</td>
                            </tr>    
                      	</c:forEach>         

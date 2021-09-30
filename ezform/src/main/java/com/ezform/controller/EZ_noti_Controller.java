@@ -37,6 +37,21 @@ public class EZ_noti_Controller {
 	private static final Logger logger =
 			LoggerFactory.getLogger(testController.class);
 	
+	// 관리자가 여러 계정 존재해도 배열값만 넣어주면 제어 가능하도록 처리
+	private static int[] adminInfo = {9999};
+	
+	// 관리자인지 체크
+	static boolean adminChk(int chkAdmin) {
+		boolean isAdmin = false;
+		for (int i=0; i<adminInfo.length; i++) {
+			if (chkAdmin == adminInfo[i]) {
+				isAdmin = true;
+				break;
+			}
+		}
+		return isAdmin;
+	}
+	
 	// 공지사항 글쓰기(GET)
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
 	public String registerGET(HttpSession session) throws Exception{
@@ -44,11 +59,14 @@ public class EZ_noti_Controller {
 		
 		// 세션
 		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		if (evo == null) return "redirect:/logout";
 				
 		int chkAdmin = evo.getEm_id();
 		
 		// 관리자인지 확인
-		if (chkAdmin != 9999) return "redirect:/ez_notice/listAll";
+		boolean isAdmin = adminChk(chkAdmin);
+		
+		if (!isAdmin) return "redirect:/ez_notice/listAll";
 		else return "/ez_notice/register";
 	}
 	
@@ -62,46 +80,60 @@ public class EZ_noti_Controller {
 		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
 		
 		int chkAdmin = evo.getEm_id();
+		boolean isAdmin = adminChk(chkAdmin);
+		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		if (chkAdmin != 9999) {
+		if (!isAdmin) {
 			out.print("<script>alert('권한이 없습니다'); history.back();</script>");
 			out.flush();
 		}
-				
-		// 파일 업로드 처리
-		String not_file = null;
 		
-		MultipartFile uploadFile = vo.getUploadFile();
-		if(!uploadFile.isEmpty()) {
-			String originalFileName = uploadFile.getOriginalFilename();
-			String ext = FilenameUtils.getExtension(originalFileName);
-			UUID uuid = UUID.randomUUID();
-			not_file = uuid+"."+ext;
+		else {
+			// 파일 업로드 처리
+			String not_file = null;
+			MultipartFile uploadFile = vo.getUploadFile();
 			
-			String path = request.getSession().getServletContext().getRealPath("/"); // 절대 경로
-			path += "upload\\noticeUpload\\";
+			if(!uploadFile.isEmpty()) {
+				String originalFileName = uploadFile.getOriginalFilename();
+				String ext = FilenameUtils.getExtension(originalFileName);
+				UUID uuid = UUID.randomUUID();
+				not_file = uuid+"."+ext;
+				
+				String path = request.getSession().getServletContext().getRealPath("/"); // 절대 경로
+				path += "upload\\noticeUpload\\";
+				
+				String temp_path = path+not_file;
+				
+				logger.info("파일명 : "+not_file);
+				logger.info("path : "+temp_path);
+				uploadFile.transferTo(new File(temp_path));
+			}
 			
-			String temp_path = path+not_file;
-			
-			logger.info("파일명 : "+not_file);
-			logger.info("path : "+temp_path);
-			uploadFile.transferTo(new File(temp_path));
+			vo.setNot_id(chkAdmin);
+			vo.setNot_file(not_file);
+			service.regist(vo);
+					
+			out.print("<script>alert('등록 완료'); location.href='/test/ez_notice/listAll';</script>");
+			out.flush();
 		}
-		
-		vo.setNot_id(9999);
-		vo.setNot_file(not_file);
-		service.regist(vo);
-				
-		out.print("<script>alert('등록 완료'); location.href='/test/ez_notice/listAll';</script>");
-		out.flush();
 	}
 
 	// 공지사항 글 조회
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
-	public void listALLGET(Model model, @ModelAttribute("result") String result) throws Exception {
+	public void listALLGET(Model model, HttpSession session) throws Exception {
 		logger.info(" listALLGET() 호출");
+		
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		
+		int chkAdmin = evo.getEm_id();
+		
+		// 관리자인지 확인
+		boolean isAdmin = adminChk(chkAdmin);
+		
+		if (isAdmin) model.addAttribute("admin", "admin");
 		
 		model.addAttribute("noticeList", service.listALL());
 	}

@@ -1,6 +1,5 @@
 package com.ezform.domain;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import org.springframework.web.multipart.MultipartFile;

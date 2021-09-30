@@ -12,8 +12,8 @@
 	
 	<!-- 공지사항 글쓰기 -->
 	<insert id="create">
-		insert into ez_not(not_id,not_title,not_content,not_file)
-		values(#{not_id},#{not_title},#{not_content},#{not_file})
+		insert into ez_not
+		values(#{not_num},#{not_id},#{not_title},#{not_content},now(),#{not_file},0)
 	</insert>
 	
 	<select id="listALL" resultType="EZ_noticeVO">

@@ -2,6 +2,7 @@ package com.ezform.controller;
 
 import java.io.File;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -46,14 +47,17 @@ public class EZ_mem_Controller {
 
 	// 로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logoutGET(HttpSession session) throws Exception {
+	public void logoutGET(HttpSession session, HttpServletResponse response) throws Exception {
 		
 		System.out.println(" C : logoutGET() 실행");
 		
 		session.invalidate();
 		
-		return "redirect:./login";
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
+		out.print("<script>alert('로그아웃 되었습니다'); location.href='./login';</script>");
+		out.flush();
 	}
 	
 	
