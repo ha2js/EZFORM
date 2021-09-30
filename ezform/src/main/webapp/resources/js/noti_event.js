@@ -1,8 +1,25 @@
 /**
- * 	사원생성 이벤트처리
+ * 	공지사항 이벤트처리
  
  */
  
+	
+	$(document).ready(function() {
+		$("#noti_file").on('change', function() {
+			
+			var maxSize = 50 * 1024 * 1024; // 50MB
+			// 파일 용량 체크 (50MB 이하)
+			var fileSize = $("#noti_file")[0].files[0].size;
+			
+			if(fileSize > maxSize){
+				alert("첨부파일 사이즈는 50MB 이내로 등록 가능합니다.");
+				$("#noti_file").val("");
+				return false;
+			}
+		});
+	});
+	
+	
 	// 공지사항 유효성 검사
 	function notiWriteCk() {
 		
@@ -16,28 +33,5 @@
 			return false;
 		}
 		
-		
-		/*
-		var file = $("#noti_file").val();
-		var maxSize = 100 * 1024 * 1024;
-		var fileSize = 0;
-		var browser = navigator.appName;
-		
-		if (browser == "Microsoft Internet Explorer") {
-			var oas = new ActiveXObject("Scripting.FileSystemObject");
-			fileSize = oas.getFile(file.value).size;
-		} else {
-			fileSize = file.files[0].size;
-		}
-		
-		if (fileSize > maxSize) {
-			alert("100MB 이하인 파일로 등록해 주세요");
-			return false;
-		}
-
-		*/
 
 	}
-	
-	
-	

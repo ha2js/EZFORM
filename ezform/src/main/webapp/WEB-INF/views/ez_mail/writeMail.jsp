@@ -16,6 +16,22 @@
 				$("#mails_id").val("");
 			}
 		});
+		
+		
+		// 파일 크기 제한
+		$("#mails_file").on('change', function() {
+			
+			var maxSize = 50 * 1024 * 1024; // 50MB
+			// 파일 용량 체크 (50MB 이하)
+			var fileSize = $("#mails_file")[0].files[0].size;
+			
+			if(fileSize > maxSize){
+				alert("첨부파일 사이즈는 50MB 이내로 등록 가능합니다.");
+				$("#mails_file").val("");
+				return false;
+			}
+		});
+		
 	});
 
 	
@@ -35,20 +51,21 @@
 	
 	// 메일쓰기 유효성 검사
 	function writeCk() {
-		if (document.writeMail_fr.mail_id.value == "") {
+		if ($("#mails_id").val() == "") {
 			alert("받는 사람의 이메일을 작성해 주세요");
 			return false;
 		}
-		if (document.writeMail_fr.mail_title.value == "") {
+		if ($("#mails_title").val()  == "") {
 			alert("메일 제목을 작성해 주세요");
 			return false;
 		}
-		if (document.writeMail_fr.mail_content.value == "") {
+		if ($("#mails_content").val()  == "") {
 			alert("메일 내용을 작성해 주세요");
 			return false;
 		}
 		
-		// 파일 용량 체크 (50MB 이하)
+		
+		/* 	// 파일 용량 체크 (50MB 이하)
 		var file = document.writeMail_fr.mail_file;
 		var maxSize = 50 * 1024 * 1024;
 		var fileSize = 0;
@@ -65,7 +82,7 @@
 		if (fileSize > maxSize) {
 			alert("50MB 이하인 파일로 등록해 주세요");
 			return false;
-		}
+		} */
 	}
 </script>
 
