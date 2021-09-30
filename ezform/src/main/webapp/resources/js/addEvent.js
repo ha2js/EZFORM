@@ -9,6 +9,8 @@ var editType = $('#edit-type');
 var editColor = $('#edit-color');
 var editDesc = $('#edit-desc');
 
+var userid = ''; /*$(em_id);
+*/
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
 
@@ -40,17 +42,16 @@ var newEvent = function (start, end, eventType) {
     $('#save-event').on('click', function () {
 
         var eventData = {
-           /* _id: eventId,*/
-            title: editTitle.val(),
+/*          _id: '',
+*/          title: editTitle.val(),
             start: editStart.val(),
             end: editEnd.val(),
             description: editDesc.val(),
             type: editType.val(),
-           /* userid: '사나',*/
-            backgroundColor: editColor.val().replace('1)', ', 0.2)'),
+            userid: userid,
+            backgroundColor: editColor.val().replace('1)', '0.2)'),
             textColor: editColor.val(),
             borderColor: editColor.val(),
-            /*textColor: '#ffffff',*/
             allDay: false
         };
 
@@ -83,11 +84,11 @@ var newEvent = function (start, end, eventType) {
 
         //새로운 일정 저장
         $.ajax({
-            type: "get",
-            url: "",
-            data: {
-                //.....
-            },
+            type: "POST",
+            url: "/insertEvent",
+            data: JSON.stringify(eventData),
+            dataType : "json",
+ 	  		contentType : "application/json; charset=UTF-8",
             success: function (response) {
                 //DB연동시 중복이벤트 방지를 위한
                 $('#calendar').fullCalendar('removeEvents');

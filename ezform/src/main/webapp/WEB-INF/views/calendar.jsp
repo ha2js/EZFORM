@@ -9,15 +9,15 @@
     <title>FullCalendar Example</title>
     <link rel=" shortcut icon" href="image/favicon.ico">
 
-    <link rel="stylesheet" href="resources/vendor/css/fullcalendar.min.css" />
-    <link rel="stylesheet" href="resources/vendor/css/bootstrap.min.css">
-    <link rel="stylesheet" href='resources/vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='resources/vendor/css/bootstrap-datetimepicker.min.css' />
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendor/css/fullcalendar.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendor/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href='${pageContext.request.contextPath }/resources/vendor/css/select2.min.css' />
+    <link rel="stylesheet" href='${pageContext.request.contextPath }/resources/vendor/css/bootstrap-datetimepicker.min.css' />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="resources/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 
 </head>
 
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-allDay">하루종일</label>
-                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
+                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"/>
                             </div>
                         </div>
 
@@ -95,14 +95,14 @@
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-color">색상</label>
                                 <select class="inputModal" name="color" id="edit-color">
-                                     <option value="rgba(210, 85, 101, 1)" style="color:rgba(210, 85, 101, 1);">빨간색</option>
-                                    <option value="rgba(151, 117, 250, 1)" style="color:rgba(151, 117, 250, 1);">보라색</option>
-                                    <option value="rgba(255, 169, 77, 1)" style="color:rgba(255, 169, 77, 1);">주황색</option>
-                                    <option value="rgba(116, 192, 252, 1)" style="color:rgba(116, 192, 252, 1);">파란색</option>
-                                    <option value="rgba(240, 101, 149, 1)" style="color:rgba(240, 101, 149, 1);">핑크색</option>
-                                    <option value="rgba(99, 230, 190, 1)" style="color:rgba(99, 230, 190, 1);">연두색</option>
-                                    <option value="rgba(169, 227, 75, 1)" style="color:rgba(169, 227, 75, 1);">초록색</option>
-                                    <option value="rgba(77, 99, 140, 1)" style="color:rgba(77, 99, 140, 1);">남색</option>
+                                    <option value="rgba(206, 32, 20, 1)" style="color:rgba(206, 32, 20, 1);">빨간색</option>
+                                    <option value="rgba(133, 21, 208, 1)" style="color:rgba(133, 21, 208, 1);">보라색</option>
+                                    <option value="rgba(235, 153, 27, 1)" style="color:rgba(235, 153, 27, 1);">주황색</option>
+                                    <option value="rgba(58, 87, 232, 1)" style="color:rgba(58, 87, 232, 1);">파란색</option>
+                                    <option value="rgba(208, 21, 152, 1)" style="color:rgba(208, 21, 152, 1);">핑크색</option>
+                                    <option value="rgba(114, 208, 21, 1)" style="color:rgba(114, 208, 21, 1);">연두색</option>
+                                    <option value="rgba(21, 208, 58, 1)" style="color:rgba(21, 208, 58, 1);">초록색</option>
+                                    <option value="rgba(21, 0, 128, 1)" style="color:rgba(21, 0, 128, 1);">남색</option>
                                     <option value="rgba(73, 80, 87, 1)" style="color:rgba(73, 80, 87, 1);">검정색</option>
                                 </select>
                             </div>
@@ -170,17 +170,17 @@
     </div>
     <!-- /.container -->
 
-    <script src="resources/vendor/js/jquery.min.js"></script>
-    <script src="resources/vendor/js/bootstrap.min.js"></script>
-    <script src="resources/vendor/js/moment.min.js"></script>
-    <script src="resources/vendor/js/fullcalendar.min.js"></script>
-    <script src="resources/vendor/js/ko.js"></script>
-    <script src="resources/vendor/js/select2.min.js"></script>
-    <script src="resources/vendor/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="resources/js/main.js"></script>
-    <script src="resources/js/addEvent.js"></script>
-    <script src="resources/js/editEvent.js"></script>
-    <script src="resources/js/etcSetting.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/fullcalendar.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/ko.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/addEvent.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/editEvent.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/etcSetting.js"></script>
 </body>
 
 </html>

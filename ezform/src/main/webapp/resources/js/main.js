@@ -83,7 +83,7 @@ var calendar = $('#calendar').fullCalendar({
       }),
       content: $('<div />', {
           class: 'popoverInfoCalendar'
-        }).append('<p><strong>등록자:</strong> ' + event.username + '</p>')
+        }).append('<p><strong>번호:</strong> ' + event._id + '</p>')
         .append('<p><strong>구분:</strong> ' + event.type + '</p>')
         .append('<p><strong>시간:</strong> ' + getDisplayEventDate(event) + '</p>')
         .append('<div class="popoverDescCalendar"><strong>설명:</strong> ' + event.description + '</div>'),
@@ -139,15 +139,20 @@ var calendar = $('#calendar').fullCalendar({
     var newDates = calDateWhenResize(event);
 
     //리사이즈한 일정 업데이트
+    var resizeEventData = { 
+		_id   : event._id,
+        start : newDates.startDate,
+        end   : newDates.endDate
+    };
+        
     $.ajax({
-      type: "get",
-      url: "",
-      data: {
-        //id: event._id,
-        //....
-      },
+      type: "POST",
+      url: "/resizeEvent",
+      data: JSON.stringify(resizeEventData),
+      dataType : "json",
+ 	  contentType : "application/json; charset=UTF-8",
       success: function (response) {
-        alert('수정: ' + newDates.startDate + ' ~ ' + newDates.endDate);
+        alert('수정: ' + event._id + ' '+ newDates.startDate + ' ~ ' + newDates.endDate);
       }
     });
 
@@ -174,14 +179,20 @@ var calendar = $('#calendar').fullCalendar({
     var newDates = calDateWhenDragnDrop(event);
 
     //드롭한 일정 업데이트
+    var dndEventData = { 
+		_id   : event._id,
+        start : newDates.startDate,
+        end   : newDates.endDate
+    };
+    
     $.ajax({
-      type: "get",
-      url: "",
-      data: {
-        //...
-      },
+      type: "POST",
+      url: "/resizeEvent",
+      data: JSON.stringify(dndEventData),
+      dataType : "json",
+ 	  contentType : "application/json; charset=UTF-8",
       success: function (response) {
-        alert('수정: ' + newDates.startDate + ' ~ ' + newDates.endDate);
+        alert('수정: ' + event._id + ' '+ newDates.startDate + ' ~ ' + newDates.endDate);
       }
     });
 
@@ -338,3 +349,5 @@ function calDateWhenDragnDrop(event) {
 
   return newDates;
 }
+
+

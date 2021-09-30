@@ -1,10 +1,8 @@
 package com.ezform.domain;
 
-import java.sql.Date;
-
 public class EZ_calendarVO {
 		
-		private int cal_id;
+		private String _id;
 		private String title;
 		private String start;
 		private String end;
@@ -16,11 +14,12 @@ public class EZ_calendarVO {
 		private String borderColor;
 		private boolean allDay = false;
 		
-		public int getId() {
-			return cal_id;
+		
+		public String get_id() {
+			return _id;
 		}
-		public void setId(int cal_id) {
-			this.cal_id = cal_id;
+		public void set_id(String _id) {
+			this._id = _id;
 		}
 		public String getTitle() {
 			return title;
@@ -84,7 +83,7 @@ public class EZ_calendarVO {
 		}
 		@Override
 		public String toString() {
-			return "EZ_calendarVO [cal_id=" + cal_id + ", title=" + title + ", start=" + start + ", end=" + end
+			return "EZ_calendarVO [_id=" + _id + ", title=" + title + ", start=" + start + ", end=" + end
 					+ ", description=" + description + ", type=" + type + ", userid=" + userid + ", backgroundColor="
 					+ backgroundColor + ", textColor=" + textColor + ", borderColor=" + borderColor + ", allDay="
 					+ allDay + "]";

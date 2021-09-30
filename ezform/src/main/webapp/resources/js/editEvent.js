@@ -80,14 +80,27 @@ var editEvent = function (event, element, view) {
         event.description = editDesc.val();
 
         $("#calendar").fullCalendar('updateEvent', event);
+		
+		 var eventData = {
+			_id : event._id,
+	        title:  event.title,
+            start:  event.start,
+            end:  event.end,
+            description: event.description,
+            type: event.type,
+            backgroundColor: event.backgroundColor,
+            textColor:  event.textColor,
+            borderColor: event.borderColor,
+            allDay: event.allDay
+        };
 
         //일정 업데이트
         $.ajax({
-            type: "get",
-            url: "",
-            data: {
-                //...
-            },
+            type: "POST",
+            url: "/updateEvent",
+            data: JSON.stringify(eventData),
+            dataType : "json",
+ 	  		contentType : "application/json; charset=UTF-8",
             success: function (response) {
                 alert('수정되었습니다.')
             }
@@ -106,11 +119,9 @@ $('#deleteEvent').on('click', function () {
     //삭제시
     $.ajax({
         type: "get",
-        url: "",
-        data: {
-            //...
-        },
-        success: function (response) {
+        url: "/deleteEvent",
+        data: {_id : $(this).data('id') },
+    	success: function (response) {
             alert('삭제되었습니다.');
         }
     });

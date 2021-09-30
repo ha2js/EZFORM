@@ -28,4 +28,31 @@ public class EZ_cal_ServiceImpl implements EZ_cal_Service {
 		return cdao.selectEventList(param);
 	}
 
+	@Override
+	public void resizeEvent(EZ_calendarVO vo) throws Exception {
+		logger.info("resizeEvent(EZ_calendarVO vo) 호출");
+
+		cdao.resizeEvent(vo);
+
+	}
+
+	@Override
+	public void insertEvent(EZ_calendarVO vo) throws Exception {
+		logger.info("insertEvent(EZ_calendarVO vo) 호출");
+
+		cdao.insertEvent(vo);
+	}
+
+	@Override
+	public void updateEvent(EZ_calendarVO vo) throws Exception {
+		logger.info("updateEvent(EZ_calendarVO vo) 호출");
+
+		cdao.updateEvent(vo);
+	}
+
+	@Override
+	public void deleteEvent(int _id) throws Exception {
+		cdao.deleteEvent(_id);
+	}
+
 }
