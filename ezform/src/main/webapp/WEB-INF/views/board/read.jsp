@@ -83,13 +83,13 @@
 										<!-- 댓글 처리 -->
 		<div>	
 			<ul>
-			<c:forEach items="${reply }" var="reply">
+			<c:forEach items="${replyList }" var="replyList">
 				<li>
 					<div>
 						<%-- <p>${reply.com_bnum}</p> --%>
-						<%-- <p>${vo.cm_bnum}</p> --%>
-						<p>${reply.com_name}/<fmt:formatDate value="${reply.com_regdate}" pattern="yyyy-MM-dd hh:mm:ss"/></p>
-						<p>${reply.com_content }</p>
+						<p>${replyList.com_bnum}</p>
+						<p>${replyList.com_name}/<fmt:formatDate value="${replyList.com_regdate}" pattern="yyyy-MM-dd hh:mm:ss"/></p>
+						<p>${replyList.com_content }</p>
 						<%-- <p>${reply.com_regdate}</p> --%>
 					
 						<button type="submit" class="content">수정하기</button>
@@ -103,12 +103,11 @@
 		
 		<h3>댓글쓰기</h3>
 		<div>
-			<form role="form" method="post" action="/test/reply/write"> 
+			<form role="form" method="post" action="/test/board/read"> 
+				<p>
+					글번호:<input type="text" name="cm_bnum" value="${vo.cm_bnum }"><br>
+				</p>
 
-
-				 <p>
-					글번호:<input name="cm_bnum" value="${vo.cm_bnum}" readonly>
-				</p>  		
 				<p>
 					<label>이름:
 					<input type="text" name="cm_name" value="${vo.cm_name}"><br>
@@ -123,45 +122,7 @@
 			</form>
 		</div>
 		
-		<script type="text/javascript">
-			$(document).on('click','#btnReplySave',function()){
-				var replyContent = $('#content').val();
-				var replyReg_id = $('#reg_id').val();
-				
-				var paramData = JSON.stringify({"content":replyContent
-					,"reg_id":replyReg_id 
-					,"bid":'${boardContent.bid}'
-				});
-
-			
-				var headers = {"Content-Type"  :"application/json"}
-							, "X-HTTP-Method-Override": "POST"
-							
-				$.ajax({
-					url:"#(saveReplyURL)"
-				,   headers: headers
-				,    data  : paramData
-				,    type = 'POST' 
-				,   dataType='text'
-				, success: finction(result){
-					showReplyList();
-					
-					$('#content').val('');
-					$('#reg_id').val('');
-				}
-				,error: function(error){
-					console.log("에러:"+error);
-				}
-				
-				
-			
 		
-				
-				});
-			
-				
-		
-		</script>
 	
 
 </body>

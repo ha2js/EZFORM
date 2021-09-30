@@ -4,13 +4,13 @@ import java.sql.Timestamp;
 
 public class EZ_board_comVO {
 	
-	private int com_cnum;
-	private int com_bnum;
-	private String com_dept;
-	private String com_name;
-	private Timestamp com_regdate;
-	private String com_content;
-	private int com_id;
+	private int com_cnum;			//댓글번호
+	private int com_bnum;			//게시글번호
+	private String com_dept;		//부서명
+	private String com_name;		//이름
+	private Timestamp com_regdate;	//날짜
+	private String com_content;		//내용
+	private int com_id;				//아이디
 	
 	public int getCom_cnum() {
 		return com_cnum;

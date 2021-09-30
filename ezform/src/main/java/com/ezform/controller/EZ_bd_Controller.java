@@ -109,12 +109,9 @@ public class EZ_bd_Controller {
 		model.addAttribute("vo", vo);
 		
 		// 댓글 조회
-		List<EZ_board_comVO> reply = null;
-		reply = ReplyService.list(cm_bnum);
-		model.addAttribute("reply", reply);
+		List<EZ_board_comVO> replyList = ReplyService.list(cm_bnum);
+		model.addAttribute("replyList", replyList);
 	}
-	
-	
 	
 	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
 	@RequestMapping(value="/modify", method= {RequestMethod.GET})
@@ -153,5 +150,19 @@ public class EZ_bd_Controller {
 	
 	}
 	
+		// 댓글 작성
+		@RequestMapping(value= "/replyWrite", method= RequestMethod.POST)
+		public String replyWritePOST(EZ_board_comVO vo,Model model) throws Exception{
+			
+			logger.info("replyWrite(EZ_board_comVO vo 호출");
+			
+			logger.info(vo+"");
+			ReplyService.write(vo);
+			
+			return "redirect:/board/read?com_bnum=" + vo.getCom_bnum();
+			
+			
+		}
+		
 	
 }

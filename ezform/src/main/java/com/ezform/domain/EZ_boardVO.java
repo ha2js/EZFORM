@@ -5,16 +5,16 @@ import java.sql.Timestamp;
 
 public class EZ_boardVO {
 	
-	private int cm_bnum;
-	private int cm_id;
-	private String cm_title;
-	private String cm_dname;
-	private String cm_name;
-	private Timestamp cm_regdate;
-	private String cm_content;
-	private int cm_hits;
-	private int cm_like;
-	private String cm_file;
+	private int cm_bnum;			//글번호
+	private int cm_id;				//아이디
+	private String cm_title;		//주제
+	private String cm_dname;		//부서명
+	private String cm_name;			//이름
+	private Timestamp cm_regdate;	//날짜
+	private String cm_content;		//내용
+	private int cm_hits;			//조회수
+	private int cm_like;			//좋아요
+	private String cm_file;			//파일
 	
 	public int getCm_bnum() {
 		return cm_bnum;
