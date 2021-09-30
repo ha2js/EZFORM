@@ -27,6 +27,7 @@
 			<!-- <th>첨부파일</th> -->
 			</tr>
 			</tbody>
+			
 		
 
 		<c:choose>
@@ -53,6 +54,7 @@
 			</td>
 		</tr>
 	</c:forEach>
+		
 	</table>
 	
 	

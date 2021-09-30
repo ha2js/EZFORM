@@ -78,57 +78,91 @@
 			
 											<hr>
 													
-			
-											<!-- 댓글 처리 -->
-											
+
+	
+										<!-- 댓글 처리 -->
+		<div>	
 			<ul>
 			<c:forEach items="${reply }" var="reply">
 				<li>
 					<div>
-						<p>${reply.com_name}/<fmt:formatDate value="${reply.com_regdate}" pattern="yyyy-MM-dd"/></p>
+						<%-- <p>${reply.com_bnum}</p> --%>
+						<%-- <p>${vo.cm_bnum}</p> --%>
+						<p>${reply.com_name}/<fmt:formatDate value="${reply.com_regdate}" pattern="yyyy-MM-dd hh:mm:ss"/></p>
 						<p>${reply.com_content }</p>
-						<p>${vo.cm_bnum}</p>
+						<%-- <p>${reply.com_regdate}</p> --%>
+					
+						<button type="submit" class="content">수정하기</button>
+						<button type="submit" class="reg_id">삭제하기</button>
+					
 					</div>
 				</li>
 			</c:forEach>
 			</ul>
-			
-											
-											<!-- 댓글 시작 -->
-			<ul>
-				<c:forEach items="${reply}" var="reply">
-					<li>
-						<div>
-							<p>${reply.com_name} / ${reply.com_regdate}</p>
-							<p>${reply.com_content}</p>
-							<p>${vo.cm_content}</p>
-						</div>					
-					</li>
-				</c:forEach>
-			
-			</ul>
-											
-												
+			</div>									
+		
 		<h3>댓글쓰기</h3>
 		<div>
-			<form role="form" method="get" action="/test/board/read"> 
-				
+			<form role="form" method="post" action="/test/reply/write"> 
+
+
+				 <p>
+					글번호:<input name="cm_bnum" value="${vo.cm_bnum}" readonly>
+				</p>  		
 				<p>
-					<label>아이디:
-					<input type="text" name="com_name"><br>댓글:
+					<label>이름:
+					<input type="text" name="cm_name" value="${vo.cm_name}"><br>
 					</label> 
 				</p>
 				<p>
-					<textarea rows="5" cols="50" name="com_content"></textarea> <br>
+					댓글:<textarea rows="5" cols="50" name="cm_content"></textarea><br>
 				</p>
-				<p>
-					<input type="hidden" name="cm_bnum" value="${vo.cm_bnum}">
+				<p>				
 					<button type="submit">댓글 작성</button>
 				</p>
 			</form>
 		</div>
+		
+		<script type="text/javascript">
+			$(document).on('click','#btnReplySave',function()){
+				var replyContent = $('#content').val();
+				var replyReg_id = $('#reg_id').val();
+				
+				var paramData = JSON.stringify({"content":replyContent
+					,"reg_id":replyReg_id 
+					,"bid":'${boardContent.bid}'
+				});
+
+			
+				var headers = {"Content-Type"  :"application/json"}
+							, "X-HTTP-Method-Override": "POST"
+							
+				$.ajax({
+					url:"#(saveReplyURL)"
+				,   headers: headers
+				,    data  : paramData
+				,    type = 'POST' 
+				,   dataType='text'
+				, success: finction(result){
+					showReplyList();
+					
+					$('#content').val('');
+					$('#reg_id').val('');
+				}
+				,error: function(error){
+					console.log("에러:"+error);
+				}
+				
+				
+			
+		
+				
+				});
+			
+				
+		
+		</script>
 	
-    
 
 </body>
 </html>
