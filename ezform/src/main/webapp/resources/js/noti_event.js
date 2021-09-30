@@ -17,6 +17,31 @@
 				return false;
 			}
 		});
+		
+		
+		//form태그 정보 가져오기
+			var fr = $("form[role='form']");
+		
+		
+			//수정하기
+			$("#not_modify").click(function(){				
+				fr.attr("action","/test/ez_notice/modify");
+				
+				fr.attr("method","get");
+				
+				fr.submit();
+			});
+			
+			//삭제하기
+			$("#not_remove").click(function(){
+				fr.attr("action","/test/ez_notice/remove");
+				fr.submit();
+			});
+		
+			//목록으로
+			$("#not_listAll").click(function(){
+				location.href = "/test/ez_notice/listAll";
+			});
 	});
 	
 	

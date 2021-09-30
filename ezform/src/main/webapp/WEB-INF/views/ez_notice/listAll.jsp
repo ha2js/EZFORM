@@ -12,20 +12,13 @@
 		margin-left:25px;
 		margin-right:25px;	
 	}
-	
-	.star_img {
-		cursor:pointer;
-	}
-	
 	#datatable>thead>tr {
 		text-align : center;
 	}
 	#datatable>tbody>tr {
 		text-align : center;
-		color : blue;
 	}
 	
-​
 </style>
 
 
@@ -60,7 +53,8 @@
                      	   <tr>
 				           	 <td>${notList.not_num }</td>
 							 <td>
-								<a href="/ez_notice/read?not_num=${notList.not_num }" class="num">${notList.not_title }</a>
+								<a href="/test/ez_notice/read?not_num=${notList.not_num }" class="num">${notList.not_title }</a>
+							
 							 </td>
 							 <td>${notList.not_id }</td>
 							 <td>${notList.not_regdate }</td>
