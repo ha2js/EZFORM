@@ -95,7 +95,7 @@
             		</div>
             		<div class="mb-3">
                     	<label class="form-label" for="disabledCustomFile">첨부파일</label>
-                    	 <input type="file" class="form-control form-control-sm" id="mails_file" name="uploadFile">
+                    	<input type="file" class="form-control form-control-sm" id="mails_file" name="uploadFile">
                 	</div>
                 	<div class="mb-3">
                     	<label class="form-label" for="disabledCustomFile">내용</label>
