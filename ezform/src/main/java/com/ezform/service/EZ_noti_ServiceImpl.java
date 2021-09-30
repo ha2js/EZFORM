@@ -26,20 +26,15 @@ public class EZ_noti_ServiceImpl implements EZ_noti_Service {
 	@Override
 	public void regist(EZ_noticeVO vo) throws Exception {
 		
-		logger.info(" regist(EZ_noticeVO vo) 호출 -> DAO : create(EZ_noticeVO vo) 호출 ");
+		logger.info("notService : regist() 호출 ");
 		
 		ndao.create(vo);
-		
-		logger.info("글쓰기 완료 -> 컨트롤러 페이지로 이동");
-		
 	}
 	
 	@Override
 	public List<EZ_noticeVO> listALL() throws Exception {
 		
-		System.out.println(" S : listALL() 호출 -> DAO : listAll 호출 ");
-		
-		System.out.println(" S : DAO 처리완료! 정보 저장 후 컨트롤러 이동 ");
+		logger.info("notService : listALL() 호출");
 		
 		return ndao.listALL();
 	}
@@ -48,38 +43,26 @@ public class EZ_noti_ServiceImpl implements EZ_noti_Service {
 	@Override
 	public EZ_noticeVO read(int not_num) throws Exception {
 		
-		System.out.println(" S : read(int not_num) 호출 -> DAO : read(int not_num) 호출 "+not_num);
+		logger.info(" notService : read() 호출");
 		
 		ndao.hits(not_num);
 		
-		EZ_noticeVO vo = ndao.read(not_num);
-		
-		System.out.println("@@@@ S : DAO 처리 후 컨트롤러로 이동 @@@@"+vo.getNot_hits());
-		
-		return vo;
+		return ndao.read(not_num);
 	}
 	
 	@Override
 	public void modify(EZ_noticeVO vo) throws Exception {
-		System.out.println(" S : modify(EZ_noticeVO vo) 호출 - DAO: modify(EZ_noticeVO vo) 호출 "+vo);
+		logger.info("notService : modify() 호출");
 		
 		ndao.modify(vo);
-		
-		System.out.println(" S : DAO 처리 후 컨트롤러로 이동 ");
-		
 	}
 	
 	@Override
 	public void remove(Integer not_num) throws Exception {
-		logger.info(" S : remove(Integer not_num) 호출 -> DAO : delete(int not_num) 호출 "+not_num);
+		logger.info("notService : remove() 호출");
 		
 		ndao.delete(not_num);
-		
-		logger.info(" S : DAO 처리 후 컨트롤러 이동 ");
 	}
 
 
-	
-	
-	
 }

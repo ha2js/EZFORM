@@ -49,7 +49,7 @@ public class EZ_noticeDAOImpl implements EZ_noticeDAO {
 	@Override
 	public EZ_noticeVO read(int not_num) throws Exception {
 		
-		logger.info(" read(not_num) 호출 - mapper 이동 해당 sql 실행 ");
+		logger.info(" notDAO : read() 호출");
 		
 		EZ_noticeVO vo = sqlSession.selectOne(namespace+".read",not_num);
 		
@@ -59,37 +59,27 @@ public class EZ_noticeDAOImpl implements EZ_noticeDAO {
 	@Override
 	public void modify(EZ_noticeVO vo) throws Exception {
 		
-		logger.info(" modify(vo) 호출 ");
+		logger.info(" notDAO : modify() 호출 ");
 		
 		// mapper 구분 호출
-		int result = sqlSession.update(namespace+".modify",vo);
-		
-		logger.info("글 정보 수정완료!"+result);
-		
-		
-		
+		sqlSession.update(namespace+".modify",vo);
+	
 	}
 	
 	@Override
 	public void delete(Integer not_num) throws Exception {
 		
-		logger.info(" delete(not_num) 호출 ");
+		logger.info(" notDAO : delete() 호출 ");
 		
-		int result = sqlSession.delete(namespace+".delete",not_num);
-		
-		logger.info(" 공지사항 글 삭제 성공 ");
-		
+		sqlSession.delete(namespace+".delete",not_num);
 	}
 	
 	@Override
 	public void hits(int not_num) throws Exception {
 		
-		logger.info(" @@ 조회수 증가 mapper호출@@@ ");
+		logger.info(" notDAO : hits() 호출");
 		
 		sqlSession.update(namespace+".hits",not_num);
-		
-		logger.info(" @@@@@ 조회수 증가 성공 @@@@@ ");
-		
 	}
 	
 	

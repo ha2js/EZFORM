@@ -37,8 +37,7 @@ public class EZ_noti_Controller {
 	private static final Logger logger =
 			LoggerFactory.getLogger(testController.class);
 	
-	//공지사항 글쓰기(GET)
-	//http://localhost:8088/test/ez_notice/register
+	// 공지사항 글쓰기(GET)
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
 	public String registerGET(HttpSession session) throws Exception{
 		logger.info("registerGET() 호출");
@@ -53,7 +52,7 @@ public class EZ_noti_Controller {
 		else return "/ez_notice/register";
 	}
 	
-	//공지사항 글쓰기(POST)
+	// 공지사항 글쓰기(POST)
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public void registerPOST(EZ_noticeVO vo, Model model, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws Exception{
 		
