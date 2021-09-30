@@ -24,7 +24,7 @@ import com.ezform.service.EZ_noti_Service;
 
 
 @Controller
-@RequestMapping("/notice/*")
+@RequestMapping("/ez_notice/*")
 public class EZ_noti_Controller {
 	
 	@Inject
