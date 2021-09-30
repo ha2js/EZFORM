@@ -5,13 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
 </head>
 <body>
 	<h1>공지사항 글확인</h1>
 	<div>
 		<section>
-			<form role="form" action="" method="post">
+			<form role="form" action="" method="post">  
 				<!-- 글 번호 저장 -->
 				<input type="hidden" name="not_num" value="${vo.not_num }" >
 			</form>
@@ -28,10 +29,10 @@
 				<label>내용</label>
 				<textarea rows="30" cols="50" readonly >${vo.not_content }</textarea>
 			</div>
-			<!-- <div>
+			<div>
 				<label>파일</label>
-				<input>
-			</div> -->
+				<input type="file" name="not_file" value="${vo.not_file }" readonly>
+			</div>
 			
 			<div>
 				<button type="submit" class="modify">수정하기</button>
@@ -46,8 +47,6 @@
 			
 			//form태그 정보 가져오기
 			var fr = $("form[role='form']");
-			var not_id = ${vo.not_id}
-			var id = $("[name='not_id']");
 			
 			
 				//수정하기

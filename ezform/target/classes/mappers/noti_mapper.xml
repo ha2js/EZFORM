@@ -7,7 +7,7 @@
 	
 	<!-- 공지사항 글쓰기 -->
 	<insert id="create">
-		insert into ez_not(not_id,not_title,not_content,not_file)
+		insert into ez_not(not_id,not_title,not_content,not_file) 
 		values(#{not_id},#{not_title},#{not_content},#{not_file})
 	</insert>
 	
@@ -44,6 +44,18 @@
 		update ez_not set not_hits=not_hits+1 
 		where not_num=#{not_num} 
 	</update>
+	
+	<!-- not_num 숫자 처리 -->
+	<update id="num" parameterType="int">
+		update ez_not set not_num
+	</update>
+	
+	<!-- 페이징 처리 -->
+	<select id="listCri" resultType="EZ_noticeVO">
+		select * from ez_not 
+		order by not_num desc, not_regdate desc 
+		limit #{pageStart},#{pageSize}
+	</select>
 	
 	
 </mapper>
