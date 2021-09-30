@@ -40,7 +40,7 @@ public class EZ_noti_Controller {
 	//공지사항 글쓰기(GET)
 	//http://localhost:8088/test/ez_notice/register
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
-	public void registerGET(HttpSession session, HttpServletResponse response) throws Exception{
+	public String registerGET(HttpSession session) throws Exception{
 		logger.info("registerGET() 호출");
 		
 		// 세션
@@ -48,13 +48,9 @@ public class EZ_noti_Controller {
 				
 		int chkAdmin = evo.getEm_id();
 		
-		if (chkAdmin != 9999) {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			out.print("<script>alert('권한이 없습니다'); history.back();</script>");
-			out.flush();
-		}
+		// 관리자인지 확인
+		if (chkAdmin != 9999) return "redirect:/ez_notice/listAll";
+		else return "/ez_notice/register";
 	}
 	
 	//공지사항 글쓰기(POST)
