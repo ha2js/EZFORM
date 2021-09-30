@@ -21,6 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ezform.domain.EZ_noticeVO;
 import com.ezform.service.EZ_noti_Service;
 
+
+
 @Controller
 @RequestMapping("/notice/*")
 public class EZ_noti_Controller {

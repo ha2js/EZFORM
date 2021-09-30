@@ -290,7 +290,7 @@
 					
 					<!---------------------------------- 사이드메뉴 : 공지사항 ---------------------------------------------->
 					<li class="nav-item">
-						<a class="nav-link " href="./dashboard/table/table-data.html"> 
+						<a class="nav-link " href="/test/notice/listAll"> 
 							<i class="icon"> 
                             	<svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             		<path opacity="0.4" d="M16.34 1.99976H7.67C4.28 1.99976 2 4.37976 2 7.91976V16.0898C2 19.6198 4.28 21.9998 7.67 21.9998H16.34C19.73 21.9998 22 19.6198 22 16.0898V7.91976C22 4.37976 19.73 1.99976 16.34 1.99976Z" fill="currentColor"></path>
