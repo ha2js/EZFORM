@@ -24,7 +24,8 @@
 		
 		
 			//수정하기
-			$("#not_modify").click(function(){				
+			$("#not_modify").click(function(){			
+				
 				fr.attr("action","/test/ez_notice/modify");
 				
 				fr.attr("method","get");
