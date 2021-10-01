@@ -62,9 +62,15 @@
 	                        <tr>
 	                           <td style="text-align:right;">
 	                              <div class="mb-3">
-	                              	<input type="submit" id="not_modify" value="수정하기"/>
-									<input type="submit" id="not_remove" value="삭제하기"/>
-									<input type="button" id="not_listAll" value="목록으로"/>
+	                                <c:choose>
+										<c:when test="${admin == 'admin' }">
+											<input type="submit" class="btn btn-primary btn-sm"  id="not_modify" value="수정하기"/>
+											<input type="submit" class="btn btn-primary btn-sm"  id="not_remove" value="삭제하기"/>		 	
+										</c:when>
+										<c:otherwise>
+											<input type="button" class="btn btn-primary btn-sm"  id="not_listAll" value="목록으로"/>
+								 		</c:otherwise>
+								 	</c:choose>	
 	                              </div>
 	                           </td>  
 	                        </tr>
