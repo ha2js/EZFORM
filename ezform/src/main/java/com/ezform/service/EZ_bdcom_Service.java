@@ -14,7 +14,7 @@ public interface EZ_bdcom_Service {
 	
 	// 댓글 작성
 	public void write(EZ_board_comVO vo) throws Exception;
-	
+
 	// 댓글 수정
 	public void modify(EZ_board_comVO vo) throws Exception;
 	

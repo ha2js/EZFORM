@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,54 +77,42 @@
 		});
 	</script>
 			
-											<hr>
-													
-
+	<hr>
+	<!-- 댓글 작성 -->
+	<div>
+		<form role="form" method="post" action="/test/comment/add"> 
+			<p>
+				<textarea rows="5" cols="50" name="com_content" placeholder="댓글을 남겨주세요"></textarea><br>
+			</p>
+			<input type="hidden" name="com_bnum" value="${vo.cm_bnum }"/>
+			<p>				
+				<button type="submit">등록</button>
+			</p>
+		</form>
+	</div>								
 	
-										<!-- 댓글 처리 -->
-		<div>	
-			<ul>
-			<c:forEach items="${replyList }" var="replyList">
-				<li>
-					<div>
-						<%-- <p>${reply.com_bnum}</p> --%>
-						<p>${replyList.com_bnum}</p>
-						<p>${replyList.com_name}/<fmt:formatDate value="${replyList.com_regdate}" pattern="yyyy-MM-dd hh:mm:ss"/></p>
-						<p>${replyList.com_content }</p>
-						<%-- <p>${reply.com_regdate}</p> --%>
-					
-						<button type="submit" class="content">수정하기</button>
-						<button type="submit" class="reg_id">삭제하기</button>
-					
-					</div>
-				</li>
-			</c:forEach>
-			</ul>
-			</div>									
-		
-		<h3>댓글쓰기</h3>
-		<div>
-			<form role="form" method="post" action="/test/board/read"> 
-				<p>
-					글번호:<input type="text" name="cm_bnum" value="${vo.cm_bnum }"><br>
-				</p>
-
-				<p>
-					<label>이름:
-					<input type="text" name="cm_name" value="${vo.cm_name}"><br>
-					</label> 
-				</p>
-				<p>
-					댓글:<textarea rows="5" cols="50" name="cm_content"></textarea><br>
-				</p>
-				<p>				
-					<button type="submit">댓글 작성</button>
-				</p>
-			</form>
-		</div>
-		
-		
-	
-
+	<!-- 댓글 처리 -->
+	<div>	
+		<table>
+			<c:choose>
+				<c:when test="${replyList == null or fn:length(replyList) == 0 }">
+					<tr>
+						<td>등록된 댓글이 없습니다</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${replyList }" var="replyList">
+						<tr>
+							<td>${replyList.com_dept }</td>
+							<td>${replyList.com_name }</td>
+							<td><fmt:formatDate value="${replyList.com_regdate}" pattern="yy-MM-dd hh:mm"/></td>
+							<td>삭제버튼 (로그인 한 본인에 한해)</td>
+							<td>${replyList.com_content }</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</table>
+	</div>									
 </body>
 </html>

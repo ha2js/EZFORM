@@ -26,14 +26,12 @@ public class EZ_bdcom_ServiceImpl implements EZ_bdcom_Service {
 	@Override
 	public List<EZ_board_comVO> list(int com_bnum) throws Exception {
 		return dao.list(com_bnum);
-		
 	}
 	
 	// 댓글 작성
 	@Override
 	public void write(EZ_board_comVO vo) throws Exception {
 		dao.write(vo);
-		logger.info(""+vo);
 	}
 
 	// 댓글 수정
@@ -49,13 +47,8 @@ public class EZ_bdcom_ServiceImpl implements EZ_bdcom_Service {
 		dao.delete(vo);
 		logger.info(""+vo);
 	}
-	
-	
-	
+
+
 	  
-		
-	  
-	  
-	  
-	  }
+}
 	 

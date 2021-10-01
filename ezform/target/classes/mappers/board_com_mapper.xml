@@ -7,32 +7,37 @@
 
 	<!-- 댓글 조회 -->
 	<select id="replyList" parameterType="int" resultType="com.ezform.domain.EZ_board_comVO">
-	select 
-	com_cnum, com_bnum, com_content, com_name, com_regdate 
+	select *
 	from ez_com 
 	where com_bnum =#{com_bnum}
 	</select>
 
-	<!-- 댓글 작성  -->
+	<!-- 댓글 번호 최대값 -->
+	<select id="maxNum" resultType="String">
+		select max(com_cnum)
+		from ez_com;
+	</select>
+	
 	<insert id="replyWrite" parameterType="com.ezform.domain.EZ_board_comVO">
-	insert into ez_com(com_bnum ,com_name ,com_content ,com_regdate) 
-	value(#{com_bnum}, #{com_name}, #{com_content}, #{com_regdate})
+		insert into ez_com values(
+		#{com_cnum}, #{com_bnum}, #{com_dept}, #{com_name}, now(), #{com_content}, #{com_id}
+		)
 	</insert>
-
+	
 	<!-- 댓글 수정 -->
 	<update id="replyModify" parameterType="com.ezform.domain.EZ_board_comVO">
-	update ez_com set 
-	com_name = #{com_name}, 
-	com_content = #{com_content} 
-	where com_cnum = #{com_cnum} 
-	and com_bnum = #{com_bnum}
+		update ez_com set 
+		com_name = #{com_name}, 
+		com_content = #{com_content} 
+		where com_cnum = #{com_cnum} 
+		and com_bnum = #{com_bnum}
 	</update>
 	
 	<!-- 댓글 삭제 -->
 	<delete id="replyDelete" parameterType="com.ezform.domain.EZ_board_comVO">
-	delete from ez_com 
-	where com_cnum = #{com_cnum}
-	and com_bnum = ${com_bnum}
+		delete from ez_com 
+		where com_cnum = #{com_cnum}
+		and com_bnum = #{com_bnum}
 	</delete>
 
 	

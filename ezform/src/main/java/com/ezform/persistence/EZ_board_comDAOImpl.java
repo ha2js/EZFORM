@@ -15,46 +15,47 @@ import com.ezform.test.testController;
 
 @Repository
 public class EZ_board_comDAOImpl implements EZ_board_comDAO {
-	
+
 	@Inject
-	private static final Logger logger = 
-						LoggerFactory.getLogger(testController.class);
-	
-	
+	private static final Logger logger = LoggerFactory.getLogger(testController.class);
+
 	@Inject
-	private SqlSession sql;
-	
+	private SqlSession sqlSession;
+
 	private static String namespace = "com.ezform.mapper.board_com_Mapper";
-	
+
 	// 댓글 조회
 	@Override
 	public List<EZ_board_comVO> list(int com_bnum) throws Exception {
-		return sql.selectList(namespace + ".replyList", com_bnum);
+		return sqlSession.selectList(namespace + ".replyList", com_bnum);
 	}
-	
+
 	// 댓글 작성
 	@Override
 	public void write(EZ_board_comVO vo) throws Exception {
-		sql.insert(namespace + ".replyWrite",vo);
-		logger.info(vo+"");
+		
+		String tmp = sqlSession.selectOne(namespace+".maxNum");
+		logger.info("tmp : "+tmp);
+		int num = 0;
+		if (tmp != null) num = Integer.parseInt(tmp);
+		
+		vo.setCom_cnum(++num);
+		
+		sqlSession.insert(namespace + ".replyWrite", vo);
 	}
 
 	// 댓글 수정
 	@Override
 	public void modify(EZ_board_comVO vo) throws Exception {
-		sql.update(namespace + ".replyModify",vo);
-		logger.info(vo+"");
+		// sqlSession.update(namespace + ".replyModify", vo);
+		logger.info(vo + "");
 	}
 
 	// 댓글 삭제
 	@Override
 	public void delete(EZ_board_comVO vo) throws Exception {
-		sql.delete(namespace + ".replyDelete",vo);
-		logger.info(vo+"");
+		// sqlSession.delete(namespace + ".replyDelete", vo);
+		logger.info(vo + "");
 	}
-
-
-
-
 
 }
