@@ -30,7 +30,7 @@
 	
 	<!-- 게시판 글 수정 -->
 	<update id="modify">
-		update ez_not set not_num=#{not_num},not_id=#{not_id},not_title=#{not_title},not_content=#{not_content} 
+		update ez_not set not_title=#{not_title}, not_content=#{not_content}, not_file=#{not_file} 
 		where not_num=#{not_num}
 	</update>
 	

@@ -46,6 +46,7 @@
 	                                 <label class="form-label">내용</label>
 	                                 <textarea class="form-control" rows="10" id="noti_content" name="not_content" style="resize: none;">${nvo.not_content }</textarea>
 	                              </div>
+	                              <input type="hidden" name="not_num" value="${nvo.not_num }"/>
 	                           </th>
 	                        </tr>   
 	                        <tr>
