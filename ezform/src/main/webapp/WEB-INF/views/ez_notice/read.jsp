@@ -34,6 +34,7 @@
 	                     <tbody>
 	                        <tr>
 	                           <th>
+	                        	  <input type="hidden" name="not_num" value="${vo.not_num }"/>
 	                           	  <div class="mb-3">
 	                                <label class="form-label">작성자</label>
 	                                <p class="h6">${vo.not_id }</p>
@@ -62,7 +63,7 @@
 	                        <tr>
 	                           <td style="text-align:right;">
 	                              <div class="mb-3">
-	                                <c:choose>
+	                           	  	<c:choose>
 										<c:when test="${admin == 'admin' }">
 											<input type="submit" class="btn btn-primary btn-sm"  id="not_modify" value="수정하기"/>
 											<input type="submit" class="btn btn-primary btn-sm"  id="not_remove" value="삭제하기"/>		 	
@@ -70,7 +71,7 @@
 										<c:otherwise>
 											<input type="button" class="btn btn-primary btn-sm"  id="not_listAll" value="목록으로"/>
 								 		</c:otherwise>
-								 	</c:choose>	
+								 	</c:choose>
 	                              </div>
 	                           </td>  
 	                        </tr>
