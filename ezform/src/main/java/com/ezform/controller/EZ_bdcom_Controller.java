@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezform.domain.EZ_board_comVO;
 import com.ezform.domain.EZ_empVO;
@@ -37,5 +38,10 @@ public class EZ_bdcom_Controller {
 		service.write(cvo);
 		
 		return "redirect:/board/read?cm_bnum="+cvo.getCom_bnum();
+	}
+	
+	public void removeGET(@RequestParam("com_cnum") int com_cnum) throws Exception {
+		logger.info("removeGET() 호출 "+com_cnum);
+		
 	}
 }

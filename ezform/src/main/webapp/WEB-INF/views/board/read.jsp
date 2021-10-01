@@ -106,7 +106,18 @@
 							<td>${replyList.com_dept }</td>
 							<td>${replyList.com_name }</td>
 							<td><fmt:formatDate value="${replyList.com_regdate}" pattern="yy-MM-dd hh:mm"/></td>
-							<td>삭제버튼 (로그인 한 본인에 한해)</td>
+							<!-- 임시로 아무 버튼 -> 나중에 프론트랑 합친 뒤 수정 -->
+							<td>
+							<!-- 댓글 작성자 본인인지 체크 -->
+								<c:choose>
+									<c:when test="${isWriter eq replyList.com_id }">
+										<button onclick="location.href='/test/comment/remove?com_cnum=${replyList.com_cnum}'">x</button>
+									</c:when>
+									<c:otherwise>
+										&nbsp;
+									</c:otherwise>
+								</c:choose>
+							</td>
 							<td>${replyList.com_content }</td>
 						</tr>
 					</c:forEach>

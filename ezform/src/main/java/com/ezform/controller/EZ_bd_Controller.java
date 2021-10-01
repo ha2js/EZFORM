@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.domain.EZ_board_comVO;
+import com.ezform.domain.EZ_empVO;
 import com.ezform.service.EZ_bd_Service;
 import com.ezform.service.EZ_bdcom_Service;
 import com.ezform.test.testController;
@@ -96,7 +98,7 @@ public class EZ_bd_Controller {
 	//http://localhost:8088/test/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value ="/read",method = RequestMethod.GET)
-	public void readGET(@RequestParam("cm_bnum")int cm_bnum,Model model) throws Exception{
+	public void readGET(@RequestParam("cm_bnum")int cm_bnum,Model model, HttpSession session) throws Exception{
 		logger.info("readGET() 호출");
 	
 		// 전달된 정보저장
@@ -109,8 +111,13 @@ public class EZ_bd_Controller {
 		model.addAttribute("vo", vo);
 		
 		// 댓글 조회
-		List<EZ_board_comVO> replyList = ReplyService.list(cm_bnum);
-		model.addAttribute("replyList", replyList);
+		model.addAttribute("replyList", ReplyService.list(cm_bnum));
+		
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		
+		// read에서 댓글 작성자 본인만 삭제 버튼 뜨게하기 위해
+		model.addAttribute("isWriter", evo.getEm_id());
 	}
 	
 	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
