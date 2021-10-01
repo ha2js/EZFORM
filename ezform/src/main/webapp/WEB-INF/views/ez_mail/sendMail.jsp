@@ -33,7 +33,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		// 읽음체크 이벤트
+		// 체크 이벤트
 		$("#readAllChk").change(function(){
 		   if($("input[id=readAllChk]:checkbox").is(":checked") == false){
 		     $("input[class=readChk]:checkbox").prop("checked", false);
@@ -96,7 +96,7 @@
 	                             <input type="checkbox" class="readChk" name="mail_num_cb" value="${sendmailList.mail_num }"/>                       
 	                           </th>
 	                           <th>
-	                             ${sendmailList.mail_email }
+	                             ${sendmailList.mail_id }
 	                           </th>
 	                           <th>
 		                           <a href="/test/ez_mail/sendRead?mail_num=${sendmailList.mail_num }">
