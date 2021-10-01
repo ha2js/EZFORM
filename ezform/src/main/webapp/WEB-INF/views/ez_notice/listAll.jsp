@@ -51,7 +51,7 @@
                 <!-- data-toggle="data-table" -->
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
-                        <tr>
+                        <tr class="table-primary">
                            <th width="5%">번호</th>
                            <th width="55%">제목</th>
                            <th width="15%">첨부파일</th>
