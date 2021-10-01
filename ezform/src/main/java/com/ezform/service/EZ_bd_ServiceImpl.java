@@ -57,14 +57,16 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		logger.info(" S : DAO 처리후 컨트롤러로 이동");
 	}
 
+
 	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
-		System.out.println(" S : modify(EZ_boardVO vo) 호출 - DAO:modify(EZ_boardVO vo)호출 "+vo);
+		logger.info("modify(EZ_boardVO) 호출");
 		
 		bdao.modify(vo);
 		
-		System.out.println(" S : DAO 처리 후 컨트롤러로 이동 ");
+		logger.info("정보수정완료 -> 컨트롤러");
 	}
+	
 
 	@Override
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
@@ -81,7 +83,7 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		
 		return bdao.listPageCnt(cm_name);
 	}
-	
+
 	
 	
 	

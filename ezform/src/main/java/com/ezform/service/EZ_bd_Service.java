@@ -16,9 +16,9 @@ public interface EZ_bd_Service {
 	//글 정보 삭제
 	public void remove(Integer cm_bnum) throws  Exception;
 
-	//게시판 글 수정(제목,이름,내용)
+	//글 수정
 	public void modify(EZ_boardVO vo) throws Exception;
-
+	
 	// 글 목록 조회(Cri)	
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
 
