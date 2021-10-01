@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `ez_work`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ez_work` (
-  `work_id` int(11) NOT NULL,
+  `em_id` int(11) NOT NULL,
   `work_regdate` timestamp NULL DEFAULT NULL,
   `work_clock` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`work_id`),
-  CONSTRAINT `FK_ez_em_TO_ez_work_1` FOREIGN KEY (`work_id`) REFERENCES `ez_em` (`em_id`)
+  PRIMARY KEY (`em_id`),
+  CONSTRAINT `FK_ez_em_TO_ez_work_1` FOREIGN KEY (`em_id`) REFERENCES `ez_em` (`em_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-14 11:29:28
+-- Dump completed on 2021-10-01 17:22:51
