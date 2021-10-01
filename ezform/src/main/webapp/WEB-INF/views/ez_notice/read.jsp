@@ -35,10 +35,6 @@
 	                        <tr>
 	                           <th>
 	                        	  <input type="hidden" name="not_num" value="${vo.not_num }"/>
-	                           	  <div class="mb-3">
-	                                <label class="form-label">작성자</label>
-	                                <p class="h6">${vo.not_id }</p>
-								  </div>
 	                              <div class="mb-3">
 	                                <label class="form-label">제목</label>
 									<p class="h6">${vo.not_title }</p>
@@ -47,7 +43,7 @@
 	                                 <label class="form-label">첨부파일</label>
 	                                 <c:choose>
 				                   		<c:when test="${vo.not_file != null }">
-				                   			<a href="filedown?fileName=${vo.not_file }"><p>vo.not_file</p></a>
+				                   			<a href="filedown?fileName=${vo.not_file }"><p>${vo.not_file }</p></a>
 				                   		</c:when>
 				                   		<c:otherwise>
 				                   			<p class="h6">첨부파일이 없습니다.</p>
