@@ -5,28 +5,121 @@
 
 <mapper namespace="com.ezform.mapper.emp_Mapper">
 
-	<!-- insert --> <!-- 최초 아이디 부여시, 비밀번호 1로 설정해서 부여 -->
-<!-- 	<insert id="joinEmp">
-		insert into ez_em (em_id,em_email,em_pw,em_name,em_dept,em_posi,em_regdate,em_extension,em_image) 
-		values (#{em_id},#{em_email},#{em_pw},#{em_name},#{em_dept},#{em_posi},now(),#{em_extension},#{em_image})
-	</insert> -->
+	<!--회원가입(입사)  -->
+	<insert id="insertEmp">
+		insert into ez_em (em_id, em_pw, em_name, em_email, em_extension, em_dept, em_posi) 
+		values(#{em_id},#{em_pw},#{em_name},#{em_email},#{em_extension},#{em_dept},#{em_posi})
+	</insert>
 	
-	<!-- 수정 --> <!-- @@@@@정보 수정시 필요한 내역이 추가로 필요? -->
+	<!--정보조회 1명-->
+	<select id="getEmp" resultType="com.ezform.domain.EZ_empVO">
+	    select * from ez_em
+	    where em_id = #{em_id}
+	</select>
+	  
+	<!-- 정보업데이트 -->
 	<update id="updateEmp">
-		update 테이블명 set pass=#{pass},dept=#{dept},rank={rank},phone=#{phone} 
-		where id=#{id} 
+		update ez_em set em_name=#{em_name}, em_email=#{em_email}, em_extension=#{em_extension}, 
+		em_dept=#{em_dept}, em_posi=#{em_posi} 
+		where em_id=#{em_id} and em_pw=#{em_pw}
 	</update>
 	
-	<!-- 삭제 -->
-	<delete id="deleteEmp">
-		delete from 테이블명 
-		where id=#{id} and name=#{name}
-	</delete>
+	<!-- 정보업데이트 -->
+	<update id="modifyEmp">
+		update ez_em set em_name=#{em_name}, em_email=#{em_email}, em_extension=#{em_extension}, 
+		em_dept=#{em_dept}, em_posi=#{em_posi} 
+		where em_id=#{em_id} and em_pw=#{em_pw}
+	</update>
 	
-	<!-- 조회 -->
-	<select id="empList" resultType="com.ezform.domain.EZ_empVO">
-		select * from 테이블명
-		where id != #{id}
+	<!-- 직원삭제 (퇴사)-->
+	<delete id="deleteEmp">
+	  	delete from ez_em 
+	  	where em_id=#{em_id} and em_pw=#{em_pw}
+	</delete>
+	  
+	<!-- 기존근태 삭제(퇴사)-->
+	<delete id="deleteWork">
+	  	delete from ez_work 
+	  	where em_id=#{em_id}
+	</delete>
+	  
+	<!-- 로그인체크 -->
+	<select id="login" resultType="com.ezform.domain.EZ_empVO">
+	  	select * from ez_em 
+	  	where em_id=#{em_id} and em_pw=#{em_pw}  	<!--#{}는 보안에 강하다  -->
 	</select>
+	  
+	<!--   전체회원목록조회 결과는 vo들이 담긴 List지만 resultType은 VO로 한다(이유: DAO메소드 참조) -->
+	<!-- <select id="empList" resultType="com.ezform.domain.EZ_empVO">
+		select * from ez_em
+		where em_id != #{em_id}
+	</select> -->
+		
+	<!-- <resultMap type="com.ezform.domain.EZ_empVO" id="empMap">
+		<id column="em_id" property="em_id" />
+		<result column="em_name" property="em_name" />
+		<result column="em_pw" property="em_pw" />
+		<result column="em_email" property="em_email" />
+		<result column="em_posi" property="em_posi" />
+		<result column="em_dept" property="em_dept" />
+		<result column="em_extension" property="em_extension" />
+		<result column="em_regdate" property="em_regdate" />
+	
+		<association javaType="com.ezform.domain.EZ_workVO" property="ez_workVO">
+			<id column="em_id" property="em_id"/>
+			<result column="work_regdate" property="work_regdate"/>
+			<result column="work_status" property="work_status"/>
+		</association>
+     </resultMap>
+ 
+	<select id="empList"  resultMap="empMap">   -->
+
+	<select id="empList"  resultType="com.ezform.domain.EZ_empVO">
+		select * 
+		from ez_em  
+		order by em_id desc
+	</select> 
+	
+	<!--근태입력 처리 -->
+	<insert id="wstatusEmp">
+		insert into ez_work(em_id,work_status) 
+		values(#{em_id},#{work_status})
+	</insert>
+	
+	<!--근태리스트 -->
+	<resultMap type="com.ezform.domain.EZ_empVO" id="workMap">
+		<id column="em_id" property="em_id" />
+		<result column="em_name" property="em_name" />
+		
+		<association javaType="com.ezform.domain.EZ_workVO" property="ez_workVO">
+			<id column="em_id" property="em_id"/>
+			<result column="work_regdate" property="work_regdate"/>
+			<result column="work_status" property="work_status"/>
+		</association>
+	</resultMap>
+	 
+	<select id="workStatusList"  resultMap="workMap">
+	select em_name, work_regdate, work_status 
+	from ez_em join (select *
+					from ez_work
+					where (em_id, work_regdate) 
+						in (select em_id, max(work_regdate)
+							from ez_work 
+							group by em_id)						
+					group by em_id) ew
+	using (em_id)
+	order by work_regdate desc
+	</select> 
+
 
 </mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

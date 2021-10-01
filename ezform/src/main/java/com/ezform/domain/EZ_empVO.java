@@ -1,5 +1,6 @@
 package com.ezform.domain;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class EZ_empVO {
@@ -14,6 +15,7 @@ public class EZ_empVO {
 	private String em_extension;
 	private String em_image;
 	
+	private EZ_workVO ez_workVO;
 	
 	public int getEm_id() {
 		return em_id;
@@ -69,12 +71,18 @@ public class EZ_empVO {
 	public void setEm_image(String em_image) {
 		this.em_image = em_image;
 	}
+	public EZ_workVO getEz_workVO() {
+		return ez_workVO;
+	}
+	public void setEz_workVO(EZ_workVO ez_workVO) {
+		this.ez_workVO = ez_workVO;
+	}
 	
 	@Override
 	public String toString() {
 		return "EZ_empVO [em_id=" + em_id + ", em_email=" + em_email + ", em_pw=" + em_pw + ", em_name=" + em_name
 				+ ", em_dept=" + em_dept + ", em_posi=" + em_posi + ", em_regdate=" + em_regdate + ", em_extension="
-				+ em_extension + ", em_image=" + em_image + "]";
+				+ em_extension + ", em_image=" + em_image + ", ez_workVO=" + ez_workVO + "]";
 	}
 		
 
