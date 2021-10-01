@@ -64,10 +64,8 @@
 											<input type="submit" class="btn btn-primary btn-sm"  id="not_modify" value="수정하기"/>
 											<input type="submit" class="btn btn-primary btn-sm"  id="not_remove" value="삭제하기"/>		 	
 										</c:when>
-										<c:otherwise>
-											<input type="button" class="btn btn-primary btn-sm"  id="not_listAll" value="목록으로"/>
-								 		</c:otherwise>
 								 	</c:choose>
+								 	<input type="button" class="btn btn-primary btn-sm"  id="not_listAll" value="목록으로"/>
 	                              </div>
 	                           </td>  
 	                        </tr>
