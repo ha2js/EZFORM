@@ -35,8 +35,12 @@
 			
 			//삭제하기
 			$("#not_remove").click(function(){
-				fr.attr("action","/test/ez_notice/remove");
-				fr.submit();
+				
+				if (!confirm("삭제 하시겠습니까?")) return false;
+				else {
+					fr.attr("action","/test/ez_notice/remove");
+					fr.submit();
+				}
 			});
 		
 			//목록으로

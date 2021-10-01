@@ -285,15 +285,30 @@ public class EZ_noti_Controller {
 	
 	// 공지사항 글 삭제하기
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String removePOST(Integer not_num) throws Exception{
+	public void removePOST(EZ_noticeVO vo, HttpServletResponse response, HttpSession session) throws Exception{
 		
 		logger.info(" deletePOST() 호출 ");
 		
-		service.remove(not_num);
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+				
+		int chkAdmin = evo.getEm_id();
+		boolean isAdmin = adminChk(chkAdmin);
 		
-		logger.info(" 서비스 처리(삭제) 완료! ");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
-		return "redirect:/ez_notice/listAll";
+		if (!isAdmin) {
+			out.print("<script>alert('권한이 없습니다'); history.back();</script>");
+			out.flush();
+		}
+		else {
+			int not_num = vo.getNot_num();
+			service.remove(not_num);
+			
+			out.print("<script>alert('삭제 완료'); location.href='/test/ez_notice/listAll';</script>");
+		}
+	
 	}
 	
 }

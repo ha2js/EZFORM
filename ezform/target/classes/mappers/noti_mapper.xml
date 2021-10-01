@@ -46,4 +46,14 @@
 		where not_num=#{not_num} 
 	</update>
 	
+	<!-- 게시글 번호 수정 -->
+	<update id="update_num">
+	<![CDATA[
+		update ez_not 
+		set not_num = not_num - 1 
+		where not_num > #{not_num} and 
+		not_num <= (select tmp.cnt from (select count(*) as cnt from ez_not where not_num > #{not_num}) tmp) + #{not_num}
+		]]>
+	</update>
+	
 </mapper>

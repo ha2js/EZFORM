@@ -72,6 +72,7 @@ public class EZ_noticeDAOImpl implements EZ_noticeDAO {
 		logger.info(" notDAO : delete() 호출 ");
 		
 		sqlSession.delete(namespace+".delete",not_num);
+		sqlSession.update(namespace+".update_num",not_num);
 	}
 	
 	@Override
