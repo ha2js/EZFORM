@@ -4,6 +4,7 @@
 <%@ include file="../include/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="${pageContext.request.contextPath }/resources/js/emp_event.js"></script>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
   <div>
@@ -20,7 +21,7 @@
                   <table id="user-list-table" class="table table-striped" >
 					 <tbody>                     
 						<tr class="ligth" style="padding-left : 10px;">
-						<form action="./update" method="post">          
+						<form action="./update" method="post" onsubmit="return emp_join_avail();">          
 						   <div class="col-sm-6">
                               <div id="imageEmp" style="width:120px; height:160px; border:1px solid #eee;">
                               	<img src="${pageContext.request.contextPath }/resources/upload/mem_Image/${empvo.em_image}" width='120' height='160' alt="profile-pic" onerror="this.src='${pageContext.request.contextPath }/resources/images/silhouette.png'">
@@ -30,25 +31,31 @@
                            <div class="col-sm-6">
                               <div class="form-group">
                                  <label for="full-name" class="form-label">사원ID</label>
-                                 <input type="text" name="em_id" class="form-control" id="full-name"  placeholder=" " value="${empvo.getEm_id()}" readonly>
+                                 <input type="text" name="em_id" class="form-control" id="emp_id" value="${empvo.getEm_id()}" readonly>
+                              </div>
+                           </div>
+                           <div class="col-sm-6">
+                              <div class="form-group">
+                                 <label for="full-name" class="form-label">패스워드</label>
+                                 <input type="text" name="em_pw" class="form-control" id="emp_pw"  value="${empvo.getEm_pw()}" readonly>
                               </div>
                            </div>
                            <div class="col-sm-6">
                               <div class="form-group">
                                  <label for="last-name" class="form-label">이름</label>
-                                 <input type="text" name="em_name" class="form-control" id="last-name" placeholder=" " value="${empvo.em_name }">
+                                 <input type="text" name="em_name" class="form-control" id="emp_name"  value="${empvo.em_name }">
                               </div>
                            </div>
                            <div class="col-sm-6">
                               <div class="form-group">
                                  <label for="email" class="form-label">Email</label>
-                                 <input type="email" name="em_email" class="form-control" id="email" placeholder=" " value="${empvo.em_email }">
+                                 <input type="email" name="em_email" class="form-control" id="emp_email" value="${empvo.em_email }">
                               </div>
                            </div>
                            <div class="col-sm-6">
                               <div class="form-group">
                                  <label for="phone" class="form-label">내선번호</label>
-                                 <input type="text" name="em_extension" class="form-control" id="phone" placeholder=" " value="${empvo.em_extension }">
+                                 <input type="text" name="em_extension" class="form-control" id="emp_exten" value="${empvo.em_extension }" maxlength="10" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                               </div>
                            </div>
                            <div class="col-sm-6">
