@@ -25,6 +25,8 @@ public interface EZ_bd_Service {
 	// 페이징
 	public int listPageCnt(String cm_name) throws Exception;
 
+	//수정하기때 그냥 read를 불러오면 조회수가 2씩 올라감 그래서 이거 사용 
+	public EZ_boardVO read1(int cm_bnum) throws Exception;
 
 
 }

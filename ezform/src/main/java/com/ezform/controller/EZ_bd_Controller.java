@@ -125,7 +125,7 @@ public class EZ_bd_Controller {
 	public void modifyGET(int cm_bnum, Model model) throws Exception{
 		logger.info("modify(GET)호출");
 		logger.info("수정할 글번호 :" +cm_bnum);
-		model.addAttribute("vo", service.read(cm_bnum));
+		model.addAttribute("vo", service.read1(cm_bnum));
 		
 	}
 	

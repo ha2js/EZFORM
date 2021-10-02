@@ -46,6 +46,19 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		System.out.println(" ----- S : DAO 처리 후 컨트롤러로 이동 -----"+vo.getCm_hits());
 		return vo;
 	}
+	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Override
+	public EZ_boardVO read1(int cm_bnum) throws Exception {
+		
+		System.out.println(" S : read(int cm_bnum) 호출 -> DAO : read(int cm_bnum) 호출"+cm_bnum);
+		
+		EZ_boardVO vo = bdao.read(cm_bnum);
+		
+		System.out.println(" ----- S : DAO 처리 후 컨트롤러로 이동 -----"+vo.getCm_hits());
+		return vo;
+	}
+	
 
 
 	@Override
