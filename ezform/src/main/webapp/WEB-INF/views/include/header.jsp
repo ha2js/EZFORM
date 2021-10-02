@@ -52,6 +52,16 @@
 		
 	</script>
 
+	<%
+	Integer em_id = 0;
+
+	if(session.getAttribute("em_id") != null) {
+		em_id = (Integer)session.getAttribute("em_id");
+	}
+	
+	
+	%>
+	
 	
 </head>
 <body class="  ">
@@ -68,22 +78,9 @@
 		<div
 			class="sidebar-header d-flex align-items-center justify-content-start">
 			<a href="/test/main" class="navbar-brand"> <!--Logo start-->
-				<svg width="30" class="" viewBox="0 0 30 30" fill="none"
-					xmlns="http://www.w3.org/2000/svg">
-                    <rect x="-0.757324" y="19.2427" width="28"
-						height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)"
-						fill="currentColor" />
-                    <rect x="7.72803" y="27.728" width="28" height="4"
-						rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor" />
-                    <rect x="10.5366" y="16.3945" width="16" height="4"
-						rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor" />
-                    <rect x="10.5562" y="-0.556152" width="28"
-						height="4" rx="2" transform="rotate(45 10.5562 -0.556152)"
-						fill="currentColor" />
-                </svg> <!--logo End-->
+                <img src="${pageContext.request.contextPath }/resources/images/logo_ezform.svg"/>
 				<h4 class="logo-title">EZFORM</h4>
 			</a>
-
 			<div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
 				<i class="icon"> <svg width="20" height="20" viewBox="0 0 24 24"
 						fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -156,9 +153,10 @@
 					
 					<!---------------------------------- 사이드메뉴 : 출근정보 ---------------------------------------------->
 					
-					<!---------------------------------- 사이드메뉴 : 사원목록 ---------------------------------------------->
+					<!---------------------------------- 사이드메뉴 : 사원목록(관리자 권한) ---------------------------------------------->
+					<% if(em_id == 9999){ %>
 					<li class="nav-item">
-						<a class="nav-link " href="./dashboard/table/table-data.html"> 
+						<a class="nav-link " href="/test/ez_emp/list"> 
 							<i class="icon"> 
                             	<svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             		<path d="M11.9488 14.54C8.49884 14.54 5.58789 15.1038 5.58789 17.2795C5.58789 19.4562 8.51765 20.0001 11.9488 20.0001C15.3988 20.0001 18.3098 19.4364 18.3098 17.2606C18.3098 15.084 15.38 14.54 11.9488 14.54Z" fill="currentColor"></path>
@@ -172,7 +170,8 @@
 							<span class="item-name">사원목록</span>
 						</a>
 					</li>
-					
+					<%} %>
+
 					<!---------------------------------- 사이드메뉴 : 사원목록 ---------------------------------------------->
 					
 					<!---------------------------------- 사이드메뉴 : 메일 ---------------------------------------------->
@@ -466,12 +465,8 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<%
-									Integer em_id = 0;
+
 									String menu_name = "";
-									
-									if(session.getAttribute("em_id") != null) {
-										em_id = (Integer)session.getAttribute("em_id");
-									}
 									
 									// 권한의 따른 메뉴변경
 									if(em_id == 9999) {

@@ -25,12 +25,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.service.EZ_mem_Service;
+import com.ezform.service.EZ_emp_Service;
 
 @Controller
 public class EZ_mem_Controller {
 
 	@Inject
-	EZ_mem_Service mem_service;
+	private EZ_mem_Service mem_service;
+	@Inject
+	private EZ_emp_Service emp_service;
 
 	private static final Logger logger = LoggerFactory.getLogger(EZ_mem_Controller.class);
 
@@ -99,6 +102,7 @@ public class EZ_mem_Controller {
 			// 회원정보 세션처리
 			session.setAttribute("resultVO", resultVO);
 			session.setAttribute("em_id", resultVO.getEm_id());
+		
 		}
 
 		return "redirect:./main";
