@@ -3,7 +3,7 @@
 
 	<%@ include file="../include/header.jsp"%>
 	<!-- emp event -->
-	<script src="${pageContext.request.contextPath }/resources/js/emp_event.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/ezform_js/emp_event.js"></script>
 	<script type="text/javascript">
 	
 	// 세션 제어

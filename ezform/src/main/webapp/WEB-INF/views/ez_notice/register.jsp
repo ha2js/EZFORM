@@ -5,7 +5,7 @@
 <%@ include file="../include/header.jsp" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<script src="${pageContext.request.contextPath }/resources/js/noti_event.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/ezform_js/noti_event.js"></script>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
    <div class="row">
