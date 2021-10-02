@@ -5,5 +5,111 @@
 
 <mapper namespace="com.ezform.mapper.mail_Mapper">
 
+	<!-- 수신 메일 -->
+	<select id="rec_mailList" resultType="EZ_mailVO">
+		select * from ez_mail
+		where mail_id = #{mail_id}
+		order by mail_regdate desc
+	</select>
+	
+	<!-- 현재 db에 있는 mail_num 최대 값 -->
+	<select id="mailnumCnt" resultType="String">
+		select max(mail_num) from ez_mail
+	</select>
+	
+	<!-- 현재 db에 있는 mail_num 최대 값 -->
+	<select id="sendmailnumCnt" resultType="String">
+		select max(mail_num) from ez_sendmail
+	</select>
+	
+	<!-- 메일 쓰기 - 해당 이메일 주소가 존재하는지 체크  -->
+	<select id="emailCk" resultType="Boolean">
+		select count(*) from ez_em
+		where em_email = #{em_email}
+	</select>
+	
+	<!-- 메일 쓰기 -->
+	<insert id="mailWrite">
+		insert into ez_mail
+		values(#{mail_num}, #{mail_id}, #{mail_email}, '0', now(), #{mail_title}, #{mail_content}, #{mail_file}, '0')
+	</insert>
+	
+	<!-- 메일 쓰기 - sendmail 테이블도 추가 -->
+	<insert id="mailWriteCopy">
+		insert into ez_sendmail
+		values(${mail_num}, #{mail_id}, #{mail_email}, now(), #{mail_title}, #{mail_content}, #{mail_file})
+	</insert>
+	
+	<!-- 직원 목록 조회 -->
+	<select id="empSelect" resultType="EZ_empVO">
+		select em_email, em_name, em_dept, em_posi, em_image
+		from ez_em
+		order by em_dept asc, em_posi asc, em_name asc, em_email asc
+	</select>
+	
+	<!-- 메일 읽기 -->
+	<select id="rec_read" resultType="EZ_mailVO">
+		select * from ez_mail 
+		where mail_num = #{mail_num}
+	</select>
+	
+	<!-- 수신자가 해당 읽음 처리 -->
+	<update id="rec_readCheck_update">
+		update ez_mail
+		set mail_readCheck = '1'
+		where mail_num = #{mail_num}
+	</update>
+	
+	<!-- 수신자 발신자 이름 가져오기 -->
+	<select id="recAndSend" resultType="String">
+		select em_name from ez_em
+		where em_email = #{mail}
+	</select>
+	
+	<!-- 체크 목록 삭제하기 -->
+	<delete id="deleteMail">
+		delete from ez_mail
+		where mail_num = #{mail_num}
+	</delete>
+	
+	<!-- 체크 목록 읽음 처리 -->
+	<update id="updateReadCk">
+		update ez_mail
+		set mail_readCheck = '1'
+		where mail_num = #{mail_num}
+	</update>
+	
+	<!-- 중요 보관함 처리 -->
+	<update id="updateKeep">
+		update ez_mail
+		set mail_keep = if(mail_keep = '1','0','1')
+		where mail_num = #{mail_num}
+	</update>
+	
+	<!-- 발신 메일 -->
+	<select id="sendMailList" resultType="EZ_sendmailVO">
+		select * from ez_sendmail
+		where mail_email = #{mail_email}
+		order by mail_regdate desc
+	</select>
+	
+	<!-- 발신 메일 -->
+	<select id="send_read" resultType="EZ_sendmailVO">
+		select * from ez_sendmail 
+		where mail_num = #{mail_num}
+	</select>
+	
+	<!-- 체크 목록 삭제하기 (발신)-->
+	<delete id="deleteMail2">
+		delete from ez_sendmail
+		where mail_num = #{mail_num}
+	</delete>
+	
+	<!-- 중요 보관함 -->
+	<select id="mailKeepList" resultType="EZ_mailVO">
+		select * from ez_mail
+		where mail_id = #{mail_id} and mail_keep = '1'
+		order by mail_regdate desc
+	</select>
 
 </mapper>

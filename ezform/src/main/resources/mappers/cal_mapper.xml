@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezform.mapper.cal_Mapper">
+
+	<select id="selectEventList" resultType="EZ_calendarVO">
+		SELECT *
+		FROM ez_cal
+	</select>
+	
+	<insert id="insertEvent" parameterType="EZ_calendarVO" 
+			useGeneratedKeys="true" keyProperty="_id">    
+        insert into ez_cal (
+        	title, start, end, description, type, userid, 
+        	backgroundColor, textColor, borderColor, allDay 
+        	) values (
+        	#{title},#{start},#{end},#{description},#{type}, 
+        	#{userid},#{backgroundColor},#{textColor},#{borderColor},#{allDay}) 
+    </insert> 
+
+	<update id="resizeEvent">
+		update ez_cal 
+		set start=#{start}, end=#{end}   
+		where _id=#{_id} 
+	</update>
+	
+	<update id="updateEvent">
+		update ez_cal 
+		set title=#{title}, start=#{start}, end=#{end}, description=#{description}, 
+			type=#{type}, backgroundColor=#{backgroundColor}, 
+			textColor=#{textColor}, borderColor=#{borderColor}, allDay=#{allDay} 
+		where _id=#{_id} 
+	</update>
+
+	<delete id="deleteEvent">
+		delete from ez_cal  
+		where _id=#{id} 
+	</delete>
+</mapper>

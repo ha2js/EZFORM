@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testform.mapper.mem_Mapper">
+
+	<!-- 직원아이디 생성 -->
+	<!-- 
+	<select id="count" resultType="int">
+		select count(*)
+		from ez_em
+	</select>
+	 -->
+	 
+	<!-- 사원ID 중복체크 --> 
+	<select id="checkID" resultType="EZ_empVO">
+		select * from ez_em
+		where em_id = #{em_id}
+	</select> 
+	
+	<!-- 로그인 : ID 존재여부 -->
+	<select id ="loginIncludeID" resultType="EZ_empVO">
+		select * from ez_em
+		where em_email = #{em_email}
+	</select>
+	
+	<!-- 로그인 확인 -->
+	<select id ="loginEmp" resultType="EZ_empVO">
+		select * from ez_em
+		where em_email = #{em_email} and em_pw = #{em_pw}
+	</select>
+	
+	<!-- 회원정보 -->
+	<select id ="infoEmp" resultType="EZ_empVO">
+		select * from ez_em
+		where em_id = #{em_id}
+	</select>
+	
+	<!-- 회원리스트 -->
+	<select id ="listEmp" resultType="EZ_empVO">
+		select * from ez_em
+		where em_id != 9999
+	</select>
+	
+	
+	<!-- 회원가입 --> 
+	<insert id="joinEmp">
+		insert into ez_em (em_id,em_email,em_pw,em_name,em_dept,em_posi,em_regdate,em_extension,em_image) 
+		values (#{em_id},#{em_email},#{em_pw},#{em_name},#{em_dept},#{em_posi},now(),#{em_extension},#{em_image})
+	</insert>
+
+	<!-- 회원 수정 -->
+	<update id="updateEmp">
+		update ez_em set em_name=#{em_name},em_dept=#{em_dept},em_posi=#{em_posi},em_extension=#{em_extension},em_regdate=now(),em_image=#{em_image}
+	    where em_id=#{em_id} and em_pw=#{em_pw}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteEmp">
+		delete from ez_em
+		where em_id = #{em_id} and em_pw = #{em_pw}
+	</delete>
+
+</mapper>

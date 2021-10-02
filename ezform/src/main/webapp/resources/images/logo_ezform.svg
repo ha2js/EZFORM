@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <clipPath id="clip-logo_ezform">
+      <rect width="30" height="30"/>
+    </clipPath>
+  </defs>
+  <g id="logo_ezform" clip-path="url(#clip-logo_ezform)">
+    <path id="합치기_3" data-name="합치기 3" d="M-24.835-38v-2.417L-22.951-43H-35V-64h13.972v3.5H-30.7v5h5.876V-58H-9.066v2.363L-19.425-41.31H-8.835V-38ZM-30.7-46.476H-21v.8l6.553-8.986h-7.988V-52.1H-30.7Z" transform="translate(37 66)" fill="#3a57e8" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+  </g>
+</svg>

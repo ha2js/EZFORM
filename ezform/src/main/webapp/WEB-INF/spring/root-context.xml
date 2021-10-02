@@ -6,13 +6,66 @@
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<!-- 디비연결 정보 처리객체(bean) -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		
+		<!-- <property name="driverClassName"
+				  value="com.mysql.cj.jdbc.Driver"/> -->
+		
+		<property name="driverClassName"
+				  value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		
+		
+		<property name="url" 
+				  value="jdbc:log4jdbc:mysql://localhost:3306/ezformdb?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
+		
+		<property name="username" value="root"/>
+		
+		<property name="password" value="1234"/>
+
+	</bean>
+	<!-- 디비연결 정보 처리객체(bean) -->
+	
+	<!-- sqlSessionFactory 객체 : 디비연결, mybatis설정, mapper설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+	
+		<property name="mapperLocations" value="classpath:mappers/**/*mapper.xml"></property>
+	
+	</bean>
+	<!-- sqlSessionFactory 객체 : 디비연결, mybatis설정, mapper설정 -->
+	
+	<!-- sqlSession 객체 : DB연결, 자원해제 -->
+	<bean id="sqlSession" 
+		  class="org.mybatis.spring.SqlSessionTemplate"
+		  destroy-method="clearCache">
+		
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory">
+		</constructor-arg>  
+		
+	</bean>
+	
+	<!-- MultipartResolver 설정 : 파일 업로드 -->
+    <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean>
+	
+	<!-- sqlSession 객체 : DB연결, 자원해제 -->
+		
+	<context:component-scan base-package="com.ezform.persistence"></context:component-scan>
+	<context:component-scan base-package="com.ezform.service"></context:component-scan>
 		
 </beans>

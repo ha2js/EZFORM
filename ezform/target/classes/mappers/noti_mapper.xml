@@ -4,6 +4,56 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezform.mapper.noti_Mapper">
-
-
+	
+	<!-- 글 번호 최대값 구하기 -->
+	<select id="getMaxNum" resultType="String">
+		select max(not_num) from ez_not;
+	</select>
+	
+	<!-- 공지사항 글쓰기 -->
+	<insert id="create">
+		insert into ez_not
+		values(#{not_num},#{not_id},#{not_title},#{not_content},now(),#{not_file},0)
+	</insert>
+	
+	<select id="listALL" resultType="EZ_noticeVO">
+		select * from ez_not
+		order by not_num desc, not_regdate desc
+	</select>
+	
+	<!-- 공지사항 글 조회 -->
+	<select id="read" resultType="EZ_noticeVO">
+		select * 
+		from ez_not 
+		where not_num = #{not_num}
+	</select>
+	
+	<!-- 게시판 글 수정 -->
+	<update id="modify">
+		update ez_not set not_title=#{not_title}, not_content=#{not_content}, not_file=#{not_file} 
+		where not_num=#{not_num}
+	</update>
+	
+	<!-- 게시판 글 삭제 -->
+	<delete id="delete">
+		delete from ez_not 
+		where not_num = #{not_num}
+	</delete>
+	
+	<!-- 조회수 수정 -->
+	<update id="hits" parameterType="int">
+		update ez_not set not_hits=not_hits+1 
+		where not_num=#{not_num} 
+	</update>
+	
+	<!-- 게시글 번호 수정 -->
+	<update id="update_num">
+	<![CDATA[
+		update ez_not 
+		set not_num = not_num - 1 
+		where not_num > #{not_num} and 
+		not_num <= (select tmp.cnt from (select count(*) as cnt from ez_not where not_num > #{not_num}) tmp) + #{not_num}
+		]]>
+	</update>
+	
 </mapper>

@@ -3,19 +3,38 @@ package com.ezform.persistence;
 import java.util.List;
 
 import com.ezform.domain.EZ_empVO;
+import com.ezform.domain.EZ_workVO;
+
 
 public interface EZ_empDAO {
 	
-	// 직원 등록하기
-	public void insertEmp(EZ_empVO vo);
+	//가입 
+	public void joinEmp(EZ_empVO vo);
 	
-	// 직원 정보 수정하기
+	//회원정보 조회
+	public EZ_empVO getEmp(int em_id);
+	
+	//회원정보 수정(update)
 	public void updateEmp(EZ_empVO updateVO);
-	
-	// 직원 삭제하기
-	public void deleteEmp(String id, String name);
-	
-	// 직원 조회하기(관리자/직원)
-	public List getEmpList(String id);
 
+	//회원정보 삭제
+	public void deleteEmp(Integer em_id, String pass);
+	
+	//기존근태 삭제(퇴사)
+	public void deleteWork(Integer em_id);
+
+	//login체크
+	public EZ_empVO loginCK(EZ_empVO vo);
+	
+	//회원정보 수정 (modify)
+	public int modify(EZ_empVO uvo);
+	
+	//전체목록조회(List)
+	public List getEmpList(int em_id);
+	
+	//	근태체크
+	public void wstatusEmp(EZ_workVO wvo);
+	
+	//	근태리스트
+	public List wstatusListEmp();
 }

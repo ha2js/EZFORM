@@ -19,15 +19,13 @@ public class testController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 
-
-	
-	//http://localhost:8088/test/main
-	// 탬플릿1 맵핑
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String testMethod2() throws Exception {
-		logger.info("테스트 메소드 실행!");
-		
-		return "index";
-	}
-	
+	/*
+	 * 
+	 * //http://localhost:8088/test/main // 탬플릿1 맵핑
+	 * 
+	 * @RequestMapping(value = "/main", method = RequestMethod.GET) public String
+	 * testMethod2() throws Exception { logger.info("테스트 메소드 실행!");
+	 * 
+	 * return "index"; }
+	 */
 }
