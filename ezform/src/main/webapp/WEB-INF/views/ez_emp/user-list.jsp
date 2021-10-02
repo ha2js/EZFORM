@@ -8,8 +8,7 @@
 
 <script>
 	function sel_delete(em_id, em_pw){
-		alert(em_id + "-" + em_pw);
-		
+
 		var fr = $("form[role='form']");
 	
 		$("#fr").append(
@@ -35,7 +34,7 @@
             <div class="card-body px-0">
                <div class="table-responsive">
                <form role="form" id="fr" action="/test/ez_emp/delete" method="post"> 
-                  <table id="user-list-table" class="table table-striped" data-toggle="data-table">
+                  <table id="user-list-table" class="table table-striped">
                      <thead>
                         <tr class="ligth">  
                            <th></th>                  
