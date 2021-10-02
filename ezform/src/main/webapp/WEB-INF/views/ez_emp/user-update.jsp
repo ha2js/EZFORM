@@ -26,7 +26,7 @@
                               	<img src="${pageContext.request.contextPath }/resources/upload/mem_Image/${empvo.em_image}" width='120' height='160' alt="profile-pic" onerror="this.src='${pageContext.request.contextPath }/resources/images/silhouette.png'">
                               </div>
                            </div>
-						       
+						   <br>    
                            <div class="col-sm-6">
                               <div class="form-group">
                                  <label for="full-name" class="form-label">사원ID</label>
