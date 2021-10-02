@@ -11,7 +11,7 @@
 <body>
 <%-- <%@ include file="../include/header.jsp" %> --%>
 	<h1> 게시판 글쓰기 </h1>
-		<form role="form" action="/test/board/register" method="post">
+		<form role="form" action="./register" method="post" enctype="multipart/form-data">
 		
 		 <!-- <div>
 			<label>이름</label>
@@ -29,7 +29,8 @@
 		</div>		
 
 		<div>
-			<input type="file" name="cm_file">
+			<label>첨부파일</label>
+			<input type="file" id="cm_file" name="uploadFile" >
 		</div>
 
 		<div>

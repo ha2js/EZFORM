@@ -47,7 +47,7 @@
 			<td>${vo.cm_content}</td>
 			<td>${vo.cm_name}</td>
 			<td>
-				<fmt:formatDate pattern="yy-MM-dd hh:mm:ss" value="${vo.cm_regdate}"/>
+				<fmt:formatDate pattern="yy-MM-dd" value="${vo.cm_regdate}"/>
 			</td>
 			<td style="width:40px">
 			<span>${vo.cm_hits}</span>

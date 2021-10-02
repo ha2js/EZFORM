@@ -12,8 +12,9 @@
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-		insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits) 
-		values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},#{cm_hits})
+		insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits,cm_file,cm_regdate) 
+		values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},0,#{cm_file},now())
+	
 	</insert>
 
 	<!-- 게시판 글조회 -->

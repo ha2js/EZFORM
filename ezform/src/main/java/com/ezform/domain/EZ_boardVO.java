@@ -3,6 +3,8 @@ package com.ezform.domain;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EZ_boardVO {
 	
 	private int cm_bnum;			//글번호
@@ -15,6 +17,7 @@ public class EZ_boardVO {
 	private int cm_hits;			//조회수
 	private int cm_like;			//좋아요
 	private String cm_file;			//파일
+	private MultipartFile uploadFile;
 	
 	public int getCm_bnum() {
 		return cm_bnum;
@@ -76,13 +79,20 @@ public class EZ_boardVO {
 	public void setCm_file(String cm_file) {
 		this.cm_file = cm_file;
 	}
-	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	@Override
 	public String toString() {
 		return "EZ_boardVO [cm_bnum=" + cm_bnum + ", cm_id=" + cm_id + ", cm_title=" + cm_title + ", cm_dname="
 				+ cm_dname + ", cm_name=" + cm_name + ", cm_regdate=" + cm_regdate + ", cm_content=" + cm_content
-				+ ", cm_hits=" + cm_hits + ", cm_like=" + cm_like + ", cm_file=" + cm_file + "]";
+				+ ", cm_hits=" + cm_hits + ", cm_like=" + cm_like + ", cm_file=" + cm_file + ", uploadFile="
+				+ uploadFile + "]";
 	}
+	
 	
 		
 	

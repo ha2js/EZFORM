@@ -13,34 +13,46 @@
     <h3> 게시판 본문페이지 </h3>
 	<div>
 		<section>
-			<form role="form" action="" method="post">
+			<form role="form" action="" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
-			</form>
+			
 		
-			<div>
-				<label>아이디</label>
-				<input type="text" name="cm_id" value="${vo.cm_id}" readonly>
-			</div>
-		
-			<div>
-				<label>이름</label>
-				<input type="text" name="cm_name" value="${vo.cm_name}" readonly>
-			</div>
-
-			<div>
-				<label>제목</label>
-				<input type="text" name="cm_title" value="${vo.cm_title}" readonly>
-			</div>
-
-			<div>
-				<label>내용</label>
-				<textarea rows="30" cols="50" readonly>${vo.cm_content }</textarea>
-			</div>
-		<div>
-			<button type="submit" class="modify">수정하기</button>
-			<button type="submit" class="remove">삭제하기</button>
-			<button type="submit" class="listPage">목록으로</button>
-		</div>	
+				<div>
+					<label>아이디</label>
+					<input type="text" name="cm_id" value="${vo.cm_id}" readonly>
+				</div>
+			
+				<div>
+					<label>이름</label>
+					<input type="text" name="cm_name" value="${vo.cm_name}" readonly>
+				</div>
+	
+				<div>
+					<label>제목</label>
+					<input type="text" name="cm_title" value="${vo.cm_title}" readonly>
+				</div>
+	
+				<div>
+					<label>내용</label>
+					<textarea rows="30" cols="50" readonly>${vo.cm_content }</textarea>
+				</div>
+				<div>
+					<label>첨부파일</label>
+					<c:choose>
+						<c:when test="${vo.cm_file != null }">
+							<a href="filedown?fileName=${vo.cm_file }"><p>${vo.cm_file }</p></a>
+						</c:when>
+						<c:otherwise>
+							<p>첨부파일이 없습니다.</p>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<div>
+					<button type="submit" class="modify">수정하기</button>
+					<button type="submit" class="remove">삭제하기</button>
+					<button type="submit" class="listPage">목록으로</button>
+				</div>
+			</form>	
 		</section>
 		
 	</div>    
