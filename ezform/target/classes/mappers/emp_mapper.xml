@@ -32,8 +32,8 @@
 
   <!-- 직원삭제 (퇴사)-->
   <delete id="deleteEmp">
-  	delete from ez_em 
-  	where em_id=#{em_id} and em_pw=#{em_pw}
+  	delete from ez_em
+	where em_id = #{em_id} and em_pw = #{em_pw}
   </delete>
   
   <!-- 기존근태 삭제(퇴사)-->

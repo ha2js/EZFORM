@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,8 +50,6 @@ public class EZ_emp_Controller {
 	//정보수정 처리
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String empUpdatePOST(EZ_empVO uvo) throws Exception{
-		
-		System.out.println("11");
 		
 		logger.info("empUpdatePOST() 호출 $$$");
 		
