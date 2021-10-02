@@ -7,16 +7,16 @@
 	
 	<!-- db 최대값  -->
 	<select id="boardnumCnt" resultType="String">
-	select max(cm_bnum) from ez_cm
+		select max(cm_bnum) from ez_cm
 	</select>
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-	insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits) 
-	values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},#{cm_hits})
+		insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits) 
+		values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},#{cm_hits})
 	</insert>
 
-	<!-- 게시판 글조회(특정글) -->
+	<!-- 게시판 글조회 -->
 	<select id="read" resultType="com.ezform.domain.EZ_boardVO">
 		select cm_bnum,	
 			   cm_title, 
@@ -27,23 +27,23 @@
 			   where cm_bnum = #{cm_bnum}
 	</select>
 
-	<!-- 게시판 글수정(글제목,이름,내용) -->
+	<!-- 게시판 글수정 -->
 	<update id="modify">
-	update ez_cm set cm_bnum=#{cm_bnum},cm_title=#{cm_title}, cm_content=#{cm_content} ,cm_name=#{cm_name} 
-	where cm_bnum = #{cm_bnum} 
+		update ez_cm set cm_title=#{cm_title}, cm_content={cm_content} 
+		where cm_bnum = #{cm_bnum}
 	</update>
 
 	<!-- 게시판 글삭제 -->
 	<delete id="delete">
-	delete from ez_cm 
-	where cm_bnum = #{cm_bnum}
+		delete from ez_cm 
+		where cm_bnum = #{cm_bnum}
 	</delete>
 
  	<!-- 페이징 처리 list -->
  	<select id="listCri" resultType="EZ_boardVO">
-	select * from ez_cm 
-	order by cm_bnum desc, cm_regdate desc 
-	limit #{page},#{pageSize}
+		select * from ez_cm 
+		order by cm_bnum desc, cm_regdate desc 
+		limit #{page},#{pageSize}
  	</select>
  
   	<!-- 페이징 테스트 -->
@@ -54,7 +54,7 @@
  	
  	<!-- 게시판 조회수 -->
 	<update id="hits" parameterType="int">
-	update ez_cm set cm_hits=cm_hits+1 
-	where cm_bnum=#{cm_bnum}
+		update ez_cm set cm_hits=cm_hits+1 
+		where cm_bnum=#{cm_bnum}
 	</update>
  </mapper>

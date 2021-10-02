@@ -62,12 +62,12 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	}
 
 	@Override
-	public void modify(EZ_boardVO vo) throws Exception {
-		logger.info(" modify(EZ_boardVO vo)호출 - 정보수정");
+	public void modify(EZ_boardVO vo) throws Exception{
+		logger.info("modify(EZboardVO vo)호출- 정보수정");
 		
-		int result = sqlSession.update(namespace+".modify",vo);
-	
-		logger.info("정보수정 완료"+result);
+		sqlSession.update(namespace+".modify", vo);
+		
+		logger.info("정보수정완료->서비스");
 	}
 
 

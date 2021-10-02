@@ -16,15 +16,17 @@ public interface EZ_bd_Service {
 	//글 정보 삭제
 	public void remove(Integer cm_bnum) throws  Exception;
 
-	//게시판 글 수정(제목,이름,내용)
+	//글 수정
 	public void modify(EZ_boardVO vo) throws Exception;
-
+	
 	// 글 목록 조회(Cri)	
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
 
 	// 페이징
 	public int listPageCnt(String cm_name) throws Exception;
 
+	//수정하기때 그냥 read를 불러오면 조회수가 2씩 올라감 그래서 이거 사용 
+	public EZ_boardVO read1(int cm_bnum) throws Exception;
 
 
 }

@@ -120,27 +120,22 @@ public class EZ_bd_Controller {
 		model.addAttribute("isWriter", evo.getEm_id());
 	}
 	
-	// 글수정 GET - DB에서 가져온 정보를 화면에 출력
-	@RequestMapping(value="/modify", method= {RequestMethod.GET})
-	public void modifyGET(int cm_bnum, Model model) throws Exception {
-		logger.info("modifyGET() 호출");
-		logger.info("수정할 글 번호 : "+cm_bnum);
-		
-		model.addAttribute("vo", service.read(cm_bnum));
+	// *글수정 GET
+	@RequestMapping(value = "/modify",method= RequestMethod.GET)
+	public void modifyGET(int cm_bnum, Model model) throws Exception{
+		logger.info("modify(GET)호출");
+		logger.info("수정할 글번호 :" +cm_bnum);
+		model.addAttribute("vo", service.read1(cm_bnum));
 		
 	}
 	
-	// * 글수정 POST (modify) *
+	// * 글수정(POST)
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String modifyPOST(EZ_boardVO vo,RedirectAttributes rttr) throws Exception{
-		logger.info("modifyPOST(EZ_boardVO vo) 호출");
-	
-		// 서비스
+	public String modifyPOST(EZ_boardVO vo) throws Exception{
+		logger.info("modifyPOST(EZ_boardVO 호출");
 		service.modify(vo);
-	
-		logger.info("수정처리 완료!");
-		// 페이지 이동
-		return "redirect:/board/listPage";
+		logger.info("서비스 처리 완료! 페이지 이동");
+		return "redirect:/test/board/listPage";
 		
 	}
 
