@@ -51,6 +51,18 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	}
 	
 	@Override
+	public EZ_boardVO read1(int cm_bnum) throws Exception {
+		
+		logger.info(" read(bno) 호출 - mapper이동 후 해당 sql구문 실행 ");
+		
+		EZ_boardVO vo = sqlSession.selectOne(namespace+".read1",cm_bnum);
+		
+		logger.info(vo+"");
+		
+		return vo;
+	}
+	
+	@Override
 	public void delete(Integer cm_bnum) throws Exception {
 		
 		logger.info(" delete - mapper이동 후 해당 sql구문 실행  ");
@@ -69,8 +81,25 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		logger.info("정보수정완료->서비스");
 	}
+	
+	@Override
+	public int like(EZ_boardVO vo) throws Exception {
+		
+		int result = sqlSession.update(namespace+".like",vo);
+		
+		return result;
+	}
+	
+	@Override
+	public int unlike(EZ_boardVO vo) throws Exception {
+		
+		int result = sqlSession.update(namespace+".unlike",vo);
+		
+		return result;
+		
+	}
 
-
+	
 	@Override
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
 		logger.info("boardDAO : listCri() 호출");
@@ -93,8 +122,8 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		sqlSession.update(namespace+".hits",cm_bnum);
 		
 		logger.info(" -----조회수 증가처리 완료 ------");
-		
-		
-		
-	}	
+			
+	}
+	
+	
 }

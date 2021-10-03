@@ -12,7 +12,10 @@ public interface EZ_boardDAO {
 	
 	// 게시판 조회 (특정글)
 	public EZ_boardVO read(int cm_bnum) throws Exception;
-
+	
+	// 게시판 조회 
+	public EZ_boardVO read1(int cm_bnum) throws Exception;
+	
 	// 게시판 글 삭제(제목,내용)
 	public void delete(Integer cm_bnum) throws Exception;
 	
@@ -27,4 +30,12 @@ public interface EZ_boardDAO {
 	
 	// 글 조회수
 	public void hits(int cm_bnum) throws Exception;
+	
+	//좋아요
+	public int like(EZ_boardVO vo) throws Exception;
+	
+	//좋아요 취소
+	public int unlike(EZ_boardVO vo) throws Exception;
+	
+	
 }

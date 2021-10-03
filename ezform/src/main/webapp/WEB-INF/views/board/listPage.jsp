@@ -52,7 +52,7 @@
 			<td style="width:40px">
 				<span>${vo.cm_hits}</span>
 			</td>
-			<td>${vo.cm_lick }</td>
+			<td>${vo.cm_like }</td>
 		</tr>
 	</c:forEach>
 		

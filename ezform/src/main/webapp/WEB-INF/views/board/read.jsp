@@ -51,7 +51,11 @@
 					<button type="submit" class="modify">수정하기</button>
 					<button type="submit" class="remove">삭제하기</button>
 					<button type="submit" class="listPage">목록으로</button>
+					<button type="button" class="like" name="like">좋아요</button>
 				</div>
+				
+				
+				
 			</form>	
 		</section>
 		
@@ -64,6 +68,7 @@
 			var fr = $("form[role='form']");
 			var name = $("[name='cm_name']");
 			
+			
 			//수정하기
 			$('.modify').click(function(){
 				fr.attr("action","/test/board/modify");
@@ -72,6 +77,20 @@
 				/* prompt("수정완료"); */
 				fr.submit();
 			});
+			  
+			$(".like").click(function(){
+				
+				
+				
+					alert("좋아요");
+					/* like=like+1 */
+					fr.attr("action","/test/board/like");
+					fr.attr("method","get");
+					fr.submit();
+				
+				
+			});
+			 
 			
 			//삭제하기
 			$(".remove").click(function(){
@@ -86,6 +105,8 @@
 				
 			});
 			
+			
+			
 		});
 		
 		function remove_chk(data1, data2) {
@@ -94,6 +115,9 @@
 				location.href="/test/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
 			}
 		}
+		
+		
+			
 	</script>
 			
 	<hr>

@@ -53,7 +53,7 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		
 		System.out.println(" S : read(int cm_bnum) 호출 -> DAO : read(int cm_bnum) 호출"+cm_bnum);
 		
-		EZ_boardVO vo = bdao.read(cm_bnum);
+		EZ_boardVO vo = bdao.read1(cm_bnum);
 		
 		System.out.println(" ----- S : DAO 처리 후 컨트롤러로 이동 -----"+vo.getCm_hits());
 		return vo;
@@ -70,6 +70,9 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		logger.info(" S : DAO 처리후 컨트롤러로 이동");
 	}
 
+	
+	
+	
 
 	@Override
 	public void modify(EZ_boardVO vo) throws Exception {
@@ -77,6 +80,22 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		
 		bdao.modify(vo);
 
+	}
+	
+	@Override
+	public int like(EZ_boardVO vo) throws Exception {
+		
+		
+		
+		return bdao.like(vo);
+	}
+	
+	@Override
+	public int unlike(EZ_boardVO vo) throws Exception {
+
+		
+		return bdao.unlike(vo);
+		
 	}
 	
 

@@ -12,9 +12,8 @@
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-		insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits,cm_file,cm_regdate) 
-		values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},0,#{cm_file},now())
-	
+		insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits,cm_file,cm_regdate,like) 
+		values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},0,#{cm_file},now(),0)	
 	</insert>
 
 	<!-- 게시판 글조회 -->
@@ -25,17 +24,29 @@
 			   cm_content,
 			   cm_hits, 
 			   cm_file,
-			   cm_like  
+			   cm_like 
+			   from ez_cm
+			   where cm_bnum = #{cm_bnum}
+	</select>
+	
+	<!-- 게시판 글조회1 -->
+	<select id="read1">
+		select cm_bnum,	
+			   cm_title, 
+			   cm_name, 
+			   cm_content, 
+			   cm_file,
+			   cm_like 
 			   from ez_cm
 			   where cm_bnum = #{cm_bnum}
 	</select>
 
 	<!-- 게시판 글수정 -->
 	<update id="modify">
-		update ez_cm set cm_title=#{cm_title}, cm_content=#{cm_content}, cm_file=#{cm_file} 
+		update ez_cm set cm_title=#{cm_title}, cm_content=#{cm_content}, cm_file=#{cm_file}, like=#{like}  
 		where cm_bnum=#{cm_bnum}
 	</update>
-
+	
 	<!-- 게시판 글삭제 -->
 	<delete id="delete">
 		delete from ez_cm 
@@ -60,4 +71,18 @@
 		update ez_cm set cm_hits=cm_hits+1 
 		where cm_bnum=#{cm_bnum}
 	</update>
+	
+	<!-- 좋아요 -->
+	<update id="like" parameterType="int">
+		update ez_cm set cm_like=cm_like+1 
+		where cm_bnum=#{cm_bnum}
+	</update>
+	
+	<!-- 좋아요 취소 -->
+	<update id="unlike" parameterType="int">
+		update ez_cm set cm_like=cm_like-1 
+		where cm_bnum=#{cm_bnum}
+	</update>
+	
+
  </mapper>
