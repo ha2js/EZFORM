@@ -231,11 +231,36 @@ public class EZ_bd_Controller {
 	
 	// * 글수정(POST)
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String modifyPOST(EZ_boardVO vo) throws Exception{
+	public void modifyPOST(EZ_boardVO vo, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception{
 		logger.info("modifyPOST(EZ_boardVO 호출");
+		
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		
+		response.setContentType("text/html; charset=utf-8");
+		
+		String cm_file = null;
+		MultipartFile uploadFile = vo.getUploadFile();
+		
+		if(!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);
+			UUID uuid = UUID.randomUUID();
+			cm_file = uuid+"."+ext;
+			
+			String path = request.getSession().getServletContext().getRealPath("/"); // 절대 경로
+			path += "upload\\boardUpload\\";
+			
+			String temp_path = path+cm_file;
+			
+			logger.info("파일명 : "+cm_file);
+			logger.info("path : "+temp_path);
+			uploadFile.transferTo(new File(temp_path));
+		}
+		vo.setCm_file(cm_file);
 		service.modify(vo);
+		
 		logger.info("서비스 처리 완료! 페이지 이동");
-		return "redirect:/test/board/listPage";
 		
 	}
 

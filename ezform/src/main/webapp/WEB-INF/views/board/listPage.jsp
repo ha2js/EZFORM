@@ -18,13 +18,13 @@
 		<table border="1">		
 			<tbody>
 			<tr>
-			<th style="width:10px"> 글번호 </th>
-			<th> 제목 </th>
-			<th> 내용 </th>
-			<th> 이름 </th>
-			<th> 날짜 </th>
-			<th style="width:40px"> 조회수 </th>
-			<!-- <th>첨부파일</th> -->
+				<th style="width:10px"> 글번호 </th>
+				<th> 제목 </th>
+				<th> 내용 </th>
+				<th> 이름 </th>
+				<th> 날짜 </th>
+				<th style="width:40px"> 조회수 </th>
+				<th> 좋아요 </th>
 			</tr>
 			</tbody>
 			
@@ -50,8 +50,9 @@
 				<fmt:formatDate pattern="yy-MM-dd" value="${vo.cm_regdate}"/>
 			</td>
 			<td style="width:40px">
-			<span>${vo.cm_hits}</span>
+				<span>${vo.cm_hits}</span>
 			</td>
+			<td>${vo.cm_lick }</td>
 		</tr>
 	</c:forEach>
 		

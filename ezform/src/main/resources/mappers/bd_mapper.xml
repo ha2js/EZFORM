@@ -23,15 +23,17 @@
 			   cm_title, 
 			   cm_name, 
 			   cm_content,
-			   cm_hits   
+			   cm_hits, 
+			   cm_file,
+			   cm_like  
 			   from ez_cm
 			   where cm_bnum = #{cm_bnum}
 	</select>
 
 	<!-- 게시판 글수정 -->
 	<update id="modify">
-		update ez_cm set cm_title=#{cm_title}, cm_content={cm_content} 
-		where cm_bnum = #{cm_bnum}
+		update ez_cm set cm_title=#{cm_title}, cm_content=#{cm_content}, cm_file=#{cm_file} 
+		where cm_bnum=#{cm_bnum}
 	</update>
 
 	<!-- 게시판 글삭제 -->

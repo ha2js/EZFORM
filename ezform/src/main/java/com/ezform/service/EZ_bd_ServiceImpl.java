@@ -76,8 +76,7 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		logger.info("modify(EZ_boardVO) 호출");
 		
 		bdao.modify(vo);
-		
-		logger.info("정보수정완료 -> 컨트롤러");
+
 	}
 	
 

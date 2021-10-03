@@ -15,10 +15,10 @@
 	<h2> 게시판 글 수정 페이지 </h2>
 
 	
-	<form role="form" action="/test/board/listPage" method="get">
+	<form action="./listPage" method="get" enctype="multipart/form-data">
 		<div>
 			<label>글번호</label>
-			<input type="text" name="cm_bnum" placeholder="글번호" value="${vo.cm_bnum}">
+			<input type="text" name="cm_bnum" placeholder="글번호" value="${vo.cm_bnum}" readonly>
 		</div>
 	
 		<div>
@@ -35,40 +35,24 @@
 			<label>내용</label>
 			<textarea rows="30" cols="50" >${vo.cm_content }</textarea>
 		</div>
-	
+		
 		<div>
-			<input type="submit" class="modify" value="수정하기"></input>
-			<input type="submit" class="remove" value="목록으로"></input>
+			<label>첨부파일</label>
+			 <c:choose>
+	             <c:when test="${vo.cm_file != null }">
+	            	 <p>${vo.cm_file }</p>
+	            	 <input type="file" name="uploadFile">
+	             </c:when>
+	             <c:otherwise>
+	             	<input type="file" name="uploadFile">
+	             </c:otherwise>
+             </c:choose>
 		</div>
 	
-	
-	<script type="text/javascript">
-		$(document).ready(function(){
-			
-			// form태그 정보가져오기
-			var fr = $("form[role='form']");
-			var name = $("[name='cm_name']");
-			
-			//수정하기
-			$('.modify').click(function(){
-				fr.attr("action","/test/board/modify");
-				fr.attr("method","get");
-				alert("수정완료");
-				fr.submit();
-			});
-
-			//목록으로
-			$(".listPage").click(function(){
-				location.href="listPage";
-				
-			});
-			
-			
-			
-		});
-	</script>
-	
-	
+		<div>
+			<input type="submit" class="modify" value="수정" />
+			<input type="button" class="remove" value="취소" onclick="location.href='read?cm_bnum=${vo.cm_bnum }';" />
+		</div>
 	</form>
 	
 </body>
