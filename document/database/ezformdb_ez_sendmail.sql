@@ -32,7 +32,7 @@ CREATE TABLE `ez_sendmail` (
   `mail_file` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`mail_num`),
   KEY `FK_ez_em_TO_ez_mail_2_idx` (`mail_email`),
-  CONSTRAINT `FK_ez_em_TO_ez_mail_2` FOREIGN KEY (`mail_email`) REFERENCES `ez_em` (`em_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_ez_em_TO_ez_mail_2` FOREIGN KEY (`mail_email`) REFERENCES `ez_em` (`em_email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-28 16:37:55
+-- Dump completed on 2021-10-03 14:00:03

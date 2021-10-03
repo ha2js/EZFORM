@@ -32,7 +32,7 @@ CREATE TABLE `ez_not` (
   `not_hits` int(11) DEFAULT NULL,
   PRIMARY KEY (`not_num`),
   KEY `FK_ez_em_TO_ez_not_1` (`not_id`),
-  CONSTRAINT `FK_ez_em_TO_ez_not_1` FOREIGN KEY (`not_id`) REFERENCES `ez_em` (`em_id`)
+  CONSTRAINT `FK_ez_em_TO_ez_not_1` FOREIGN KEY (`not_id`) REFERENCES `ez_em` (`em_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-14 11:29:28
+-- Dump completed on 2021-10-03 14:00:04

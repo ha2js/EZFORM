@@ -31,9 +31,9 @@ CREATE TABLE `ez_com` (
   `com_content` varchar(1000) DEFAULT NULL,
   `com_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`com_cnum`),
-  KEY `FK_ez_cm_TO_ez_com_1` (`com_bnum`),
   KEY `FK_ez_em_TO_ez_com_1` (`com_id`),
-  CONSTRAINT `FK_ez_cm_TO_ez_com_1` FOREIGN KEY (`com_bnum`) REFERENCES `ez_cm` (`cm_bnum`),
+  KEY `FK_ez_cm_TO_ez_com_1` (`com_bnum`),
+  CONSTRAINT `FK_ez_cm_TO_ez_com_1` FOREIGN KEY (`com_bnum`) REFERENCES `ez_cm` (`cm_bnum`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_ez_em_TO_ez_com_1` FOREIGN KEY (`com_id`) REFERENCES `ez_em` (`em_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-14 11:29:28
+-- Dump completed on 2021-10-03 14:00:04
