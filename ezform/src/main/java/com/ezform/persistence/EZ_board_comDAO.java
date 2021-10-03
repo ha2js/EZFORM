@@ -11,10 +11,7 @@ public interface EZ_board_comDAO {
 	
 	// 댓글 작성
 	public void write(EZ_board_comVO vo) throws Exception; 
-	
-	// 댓글 수정
-	public void modify(EZ_board_comVO vo) throws Exception;
-	
+
 	// 댓글 삭제
-	public void delete(EZ_board_comVO vo) throws Exception;
+	public void delete(int com_cnum) throws Exception;
 }

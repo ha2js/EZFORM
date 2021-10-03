@@ -40,8 +40,12 @@ public class EZ_bdcom_Controller {
 		return "redirect:/board/read?cm_bnum="+cvo.getCom_bnum();
 	}
 	
-	public void removeGET(@RequestParam("com_cnum") int com_cnum) throws Exception {
+	@RequestMapping(value="/remove", method=RequestMethod.GET)
+	public String removeGET(@RequestParam("com_cnum") int com_cnum, @RequestParam("com_bnum") int com_bnum) throws Exception {
 		logger.info("removeGET() 호출 "+com_cnum);
 		
+		service.delete(com_cnum);
+		
+		return "redirect:/board/read?cm_bnum="+com_bnum;
 	}
 }

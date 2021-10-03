@@ -44,18 +44,10 @@ public class EZ_board_comDAOImpl implements EZ_board_comDAO {
 		sqlSession.insert(namespace + ".replyWrite", vo);
 	}
 
-	// 댓글 수정
-	@Override
-	public void modify(EZ_board_comVO vo) throws Exception {
-		// sqlSession.update(namespace + ".replyModify", vo);
-		logger.info(vo + "");
-	}
-
 	// 댓글 삭제
 	@Override
-	public void delete(EZ_board_comVO vo) throws Exception {
-		// sqlSession.delete(namespace + ".replyDelete", vo);
-		logger.info(vo + "");
+	public void delete(int com_cnum) throws Exception {
+		sqlSession.delete(namespace+".replyDelete",com_cnum);
 	}
 
 }

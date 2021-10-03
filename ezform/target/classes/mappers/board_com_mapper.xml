@@ -34,10 +34,9 @@
 	</update>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="replyDelete" parameterType="com.ezform.domain.EZ_board_comVO">
+	<delete id="replyDelete">
 		delete from ez_com 
 		where com_cnum = #{com_cnum}
-		and com_bnum = #{com_bnum}
 	</delete>
 
 	

@@ -34,18 +34,10 @@ public class EZ_bdcom_ServiceImpl implements EZ_bdcom_Service {
 		dao.write(vo);
 	}
 
-	// 댓글 수정
-	@Override
-	public void modify(EZ_board_comVO vo) throws Exception {
-		dao.modify(vo);
-		logger.info(""+vo);
-	}
-
 	// 댓글 삭제
 	@Override
-	public void delete(EZ_board_comVO vo) throws Exception {
-		dao.delete(vo);
-		logger.info(""+vo);
+	public void delete(int com_cnum) throws Exception {
+		dao.delete(com_cnum);
 	}
 
 

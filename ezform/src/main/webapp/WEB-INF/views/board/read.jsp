@@ -88,11 +88,10 @@
 			
 		});
 		
-		function remove_chk(data) {
-			alert(data);
+		function remove_chk(data1, data2) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
-				location.href="/test/comment/remove?com_cnum="+data;
+				location.href="/test/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
 			}
 		}
 	</script>
