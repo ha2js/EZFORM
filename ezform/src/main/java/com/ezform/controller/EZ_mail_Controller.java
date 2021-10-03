@@ -210,6 +210,7 @@ public class EZ_mail_Controller {
 		return "redirect:/ez_mail/recMail";
 	}
 	
+	
 	@RequestMapping(value="/readUpdate", method=RequestMethod.POST)
 	public String update_readCk(@RequestParam("mail_num_cb") int[] update_read_num) throws Exception {
 		// 체크박스 메일 읽음 처리

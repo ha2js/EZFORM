@@ -16,22 +16,29 @@ public interface EZ_emp_Service {
 	// 직원 정보 삭제
 	public void deleteEmp(EZ_empVO dvo);
 	
-	// 기존근태 삭제(퇴사)
+	//기존근태 삭제(퇴사)
 	public void deleteWork(Integer em_id);
 	
-	// 직원 1명 조회
+	// 직원 1명조회
 	public EZ_empVO getEmp(int em_id);
 	
-	// 직원 전체 목록 조회
+	// 직원 전체목록
 	public List<EZ_empVO> getEmpList(int em_id);
 	
-	// 로그인 체크
+	//로그인체크
 	public EZ_empVO loginCheck(EZ_empVO vo);
-		
-	// 근태 체크
+	
+	//근태체크
 	public void wstatusEmp(EZ_workVO wvo);
 
-	// 근태 List
+	//근태List
 	public List<EZ_empVO> wstatusListEmp();
-
+	
+	
+	
+	
+	
+	
+	
+	
 }
