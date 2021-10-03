@@ -87,6 +87,14 @@
 			});
 			
 		});
+		
+		function remove_chk(data) {
+			alert(data);
+			if (!confirm("삭제 하시겠습니까?")) return false;
+			else {
+				location.href="/test/comment/remove?com_cnum="+data;
+			}
+		}
 	</script>
 			
 	<hr>
@@ -123,7 +131,7 @@
 							<!-- 댓글 작성자 본인인지 체크 -->
 								<c:choose>
 									<c:when test="${isWriter eq replyList.com_id }">
-										<button onclick="location.href='/test/comment/remove?com_cnum=${replyList.com_cnum}'">x</button>
+										<button onclick="remove_chk(${replyList.com_cnum})">x</button>
 									</c:when>
 									<c:otherwise>
 										&nbsp;
