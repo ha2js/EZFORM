@@ -9,8 +9,8 @@ var editType = $('#edit-type');
 var editColor = $('#edit-color');
 var editDesc = $('#edit-desc');
 
-var userid = ''; /*$(em_id);
-*/
+var userid = $('#em_id');
+
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
 
@@ -48,7 +48,7 @@ var newEvent = function (start, end, eventType) {
             end: editEnd.val(),
             description: editDesc.val(),
             type: editType.val(),
-            userid: userid,
+            userid: userid.val(),
             backgroundColor: editColor.val().replace('1)', '0.2)'),
             textColor: editColor.val(),
             borderColor: editColor.val(),
@@ -85,7 +85,7 @@ var newEvent = function (start, end, eventType) {
         //새로운 일정 저장
         $.ajax({
             type: "POST",
-            url: "/insertEvent",
+            url: "/test/calendar/insertEvent",
             data: JSON.stringify(eventData),
             dataType : "json",
  	  		contentType : "application/json; charset=UTF-8",

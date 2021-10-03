@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ezform.domain.EZ_CalendarParam;
 import com.ezform.domain.EZ_calendarVO;
 import com.ezform.service.EZ_cal_Service;
 
 @Controller
+@RequestMapping("/calendar/*")
 public class EZ_cal_Controller {
 
 	private static final Logger logger = LoggerFactory.getLogger(EZ_cal_Controller.class);
@@ -26,18 +26,17 @@ public class EZ_cal_Controller {
 	@Autowired
 	private EZ_cal_Service service;
 
-	// http://localhost:8088/calendar
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	// http://localhost:8088/test/calendar/
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public void calendarGET() throws Exception {
 		logger.info(" C : calendarGET() 실행 ");
 	}
-
+	
 	@RequestMapping(value = "/selectEventList", method = RequestMethod.GET)
 	@ResponseBody
-	public List<EZ_calendarVO> selectEventList(EZ_CalendarParam param) throws Exception {
-		logger.info("selectEventList(EZ_CalendarParam param) 호출");
-
-		return service.selectEventList(param);
+	public List<EZ_calendarVO> selectEventList(@RequestParam int userid) throws Exception {
+		logger.info("selectEventList(int userid) 호출");
+		return service.selectEventList(userid);
 	}
 	
 	@ResponseBody
@@ -68,6 +67,6 @@ public class EZ_cal_Controller {
 	@RequestMapping(value = "/deleteEvent", method = RequestMethod.GET)
 	public String deleteEvent(@RequestParam int _id) throws Exception {
 		service.deleteEvent(_id);
-		return "redirect:/calendar";
+		return "redirect:/calendar/";
 	}
 }

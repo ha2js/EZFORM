@@ -1,6 +1,8 @@
 var draggedEventIsAllDay;
 var activeInactiveWeekends = true;
 
+var userid = $('#em_id');
+
 var calendar = $('#calendar').fullCalendar({
 
  /** ******************
@@ -22,7 +24,7 @@ var calendar = $('#calendar').fullCalendar({
                               },
   eventLimitClick           : 'week', //popover
   navLinks                  : true,
-  defaultDate               : moment('2019-05'), //실제 사용시 현재 날짜로 수정
+  defaultDate               : moment().format('YYYY-MM-DD'), //실제 사용시 현재 날짜로 수정
   timeFormat                : 'HH:mm',
   defaultTimedEventDuration : '01:00:00',
   editable                  : true,
@@ -105,15 +107,17 @@ var calendar = $('#calendar').fullCalendar({
    *  일정 받아옴 
    * ************** */
   events: function (start, end, timezone, callback) {
+	
     $.ajax({
       type: "get",
-      url: "/selectEventList",
+      url: "/test/calendar/selectEventList",
+      data: {// 화면이 바뀌면 Date 객체인 start, end 가 들어옴
+            userid: userid.val(),
+            startDate : moment(start).format('YYYY-MM-DD'),
+     	    endDate   : moment(end).format('YYYY-MM-DD')
+        },
       dataType: "json",
-      data: {
-        // 화면이 바뀌면 Date 객체인 start, end 가 들어옴
-        startDate : moment(start).format('YYYY-MM-DD'),
-        endDate   : moment(end).format('YYYY-MM-DD')
-      },
+     /* contentType : "application/json; charset=UTF-8",*/
       success: function (response) {
         var fixedDate = response.map(function (array) {
           if (array.allDay && array.start !== array.end) {
@@ -147,7 +151,7 @@ var calendar = $('#calendar').fullCalendar({
         
     $.ajax({
       type: "POST",
-      url: "/resizeEvent",
+      url: "/test/calendar/resizeEvent",
       data: JSON.stringify(resizeEventData),
       dataType : "json",
  	  contentType : "application/json; charset=UTF-8",
@@ -187,7 +191,7 @@ var calendar = $('#calendar').fullCalendar({
     
     $.ajax({
       type: "POST",
-      url: "/resizeEvent",
+      url: "/test/calendar/resizeEvent",
       data: JSON.stringify(dndEventData),
       dataType : "json",
  	  contentType : "application/json; charset=UTF-8",
@@ -246,6 +250,8 @@ var calendar = $('#calendar').fullCalendar({
       $contextMenu.removeClass("contextOpened");
       $contextMenu.hide();
     });
+    
+   
 
     $('body').on('click', function () {
       $contextMenu.removeClass("contextOpened");

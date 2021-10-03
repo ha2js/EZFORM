@@ -5,9 +5,10 @@
 
 <mapper namespace="com.ezform.mapper.cal_Mapper">
 
-	<select id="selectEventList" resultType="EZ_calendarVO">
-		SELECT *
-		FROM ez_cal
+	<select id="selectEventList" resultType="EZ_calendarVO"> 
+		SELECT * 
+		FROM ez_cal 
+		where userid=#{userid} 
 	</select>
 	
 	<insert id="insertEvent" parameterType="EZ_calendarVO" 

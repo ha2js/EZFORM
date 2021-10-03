@@ -21,11 +21,11 @@ public class EZ_cal_ServiceImpl implements EZ_cal_Service {
 	private EZ_calDAO cdao;
 
 	@Override
-	public List<EZ_calendarVO> selectEventList(EZ_CalendarParam param) throws Exception {
+	public List<EZ_calendarVO> selectEventList(int userid) throws Exception {
 
-		logger.info("selectEventList(EZ_CalendarParam param) 호출");
+		logger.info("selectEventList(int userid) 호출");
 
-		return cdao.selectEventList(param);
+		return cdao.selectEventList(userid);
 	}
 
 	@Override

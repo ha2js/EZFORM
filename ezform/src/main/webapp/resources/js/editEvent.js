@@ -97,7 +97,7 @@ var editEvent = function (event, element, view) {
         //일정 업데이트
         $.ajax({
             type: "POST",
-            url: "/updateEvent",
+            url: "/test/calendar/updateEvent",
             data: JSON.stringify(eventData),
             dataType : "json",
  	  		contentType : "application/json; charset=UTF-8",
@@ -119,7 +119,7 @@ $('#deleteEvent').on('click', function () {
     //삭제시
     $.ajax({
         type: "get",
-        url: "/deleteEvent",
+        url: "/test/calendar/deleteEvent",
         data: {_id : $(this).data('id') },
     	success: function (response) {
             alert('삭제되었습니다.');

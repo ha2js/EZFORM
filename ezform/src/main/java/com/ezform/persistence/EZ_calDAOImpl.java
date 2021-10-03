@@ -23,9 +23,9 @@ public class EZ_calDAOImpl implements EZ_calDAO {
 	private static final String namespace = "com.ezform.mapper.cal_Mapper";
 
 	@Override
-	public List<EZ_calendarVO> selectEventList(EZ_CalendarParam param) throws Exception {
-		logger.info("EZ_calDAO : selectEventList(EZ_CalendarParam param) 호출");
-		return sqlSession.selectList(namespace+".selectEventList", param);
+	public List<EZ_calendarVO> selectEventList(int userid) throws Exception {
+		logger.info("EZ_calDAO : selectEventList(int userid) 호출");
+		return sqlSession.selectList(namespace+".selectEventList", userid);
 	}
 
 	@Override

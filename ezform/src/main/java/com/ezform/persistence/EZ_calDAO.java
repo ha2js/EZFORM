@@ -7,7 +7,7 @@ import com.ezform.domain.EZ_calendarVO;
 
 public interface EZ_calDAO {
 
-	public List<EZ_calendarVO> selectEventList(EZ_CalendarParam param) throws Exception;
+	public List<EZ_calendarVO> selectEventList(int userid) throws Exception;
 
 	public void resizeEvent(EZ_calendarVO vo) throws Exception;
 

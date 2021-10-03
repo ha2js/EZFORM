@@ -40,12 +40,28 @@
 	<!-- app JavaScript -->
 	<script src="${pageContext.request.contextPath }/resources/js/app.js"></script>
 	<!-- Fullcalender Javascript -->
-	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/core/main.js'></script>
+<%-- 	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/core/main.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/daygrid/main.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/timegrid/main.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/list/main.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/vendor/fullcalendar/interaction/main.js'></script>
 	<script src='${pageContext.request.contextPath }/resources/vendor/moment.min.js'></script>
-	<script src='${pageContext.request.contextPath }/resources/js/calender.js'></script>
+	<script src='${pageContext.request.contextPath }/resources/js/calender.js'></script> --%>
+	
+	<!-- FullCalendar 2 -->
+	<script src="${pageContext.request.contextPath }/resources/vendor/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/fullcalendar.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/ko.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/vendor/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/addEvent.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/editEvent.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/etcSetting.js"></script>
+    
+    <!-- clock -->
+    <script src="${pageContext.request.contextPath }/resources/js/clock.js"></script>
 </body>
 </html>
