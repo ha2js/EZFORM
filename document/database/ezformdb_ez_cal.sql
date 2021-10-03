@@ -31,7 +31,7 @@ CREATE TABLE `ez_cal` (
   `cal_ck` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`cal_cnum`),
   KEY `FK_ez_em_TO_ez_cal_1` (`cal_id`),
-  CONSTRAINT `FK_ez_em_TO_ez_cal_1` FOREIGN KEY (`cal_id`) REFERENCES `ez_em` (`em_id`)
+  CONSTRAINT `FK_ez_em_TO_ez_cal_1` FOREIGN KEY (`cal_id`) REFERENCES `ez_em` (`em_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-14 11:29:27
+-- Dump completed on 2021-10-03 14:00:04
