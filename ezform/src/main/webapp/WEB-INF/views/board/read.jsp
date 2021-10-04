@@ -1,3 +1,4 @@
+<%@page import="com.ezform.domain.EZ_boardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,112 +9,86 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script></head>
-<body>
-    <h3> 게시판 본문페이지 </h3>
-	<div>
-		<section>
-			<form role="form" action="" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
-			
-				<div>
-					<label>이름</label>
-					<input type="text" name="cm_name" value="${vo.cm_name}" readonly>
-				</div>
-	
-				<div>
-					<label>제목</label>
-					<input type="text" name="cm_title" value="${vo.cm_title}" readonly>
-				</div>
-	
-				<div>
-					<label>내용</label>
-					<textarea rows="30" cols="50" readonly>${vo.cm_content }</textarea>
-				</div>
-				<div>
-					<label>첨부파일</label>
-					<c:choose>
-						<c:when test="${vo.cm_file != null }">
-							<a href="filedown?fileName=${vo.cm_file }"><p>${vo.cm_file }</p></a>
-						</c:when>
-						<c:otherwise>
-							<p>첨부파일이 없습니다.</p>
-						</c:otherwise>
-					</c:choose>
-				</div>
-				<div>
-					<button type="submit" class="modify">수정하기</button>
-					<button type="submit" class="remove">삭제하기</button>
-					<button type="submit" class="listPage">목록으로</button>
-					<button type="button" class="like" name="like">좋아요</button>
-				</div>
-				
-				
-				
-			</form>	
-		</section>
-		
-	</div>    
-	
+<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			
 			// form태그 정보가져오기
 			var fr = $("form[role='form']");
-			var name = $("[name='cm_name']");
-			
-			
-			//수정하기
-			$('.modify').click(function(){
-				fr.attr("action","/test/board/modify");
-				fr.attr("method","get");
-				
-				/* prompt("수정완료"); */
-				fr.submit();
-			});
 			  
 			$(".like").click(function(){
 				
-				
-				
-					alert("좋아요");
-					/* like=like+1 */
-					fr.attr("action","/test/board/like");
-					fr.attr("method","get");
-					fr.submit();
-				
-				
-			});
-			 
-			
-			//삭제하기
-			$(".remove").click(function(){
-				fr.attr("action","/test/board/remove");
-				alert("삭제완료");
+				alert("좋아요");
+				/* like=like+1 */
+				fr.attr("action","/test/board/like");
+				fr.attr("method","get");
 				fr.submit();
 			});
-
-			//목록으로
-			$(".listPage").click(function(){
-				location.href="listPage";
-				
-			});
-			
 			
 			
 		});
 		
-		function remove_chk(data1, data2) {
+		function remove_bdchk(data) {
+			if (!confirm("삭제 하시겠습니까?")) return false;
+			else {
+				location.href="/test/board/remove?cm_bnum="+data;
+			}
+		}	
+	
+		function remove_comchk(data1, data2) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
 				location.href="/test/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
 			}
-		}
-		
-		
-			
+		}	
 	</script>
-			
+
+</head>
+<body>
+    <h3> 게시판 본문페이지 </h3>
+	<div>
+		<section>
+			<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
+			<div>
+				<label>부서명</label>
+				<input type="text" value="${vo.cm_dname }" readonly>
+			</div>
+			<div>
+				<label>이름</label>
+				<input type="text" value="${vo.cm_name}" readonly>
+			</div>
+
+			<div>
+				<label>제목</label>
+				<input type="text" value="${vo.cm_title}" readonly>
+			</div>
+
+			<div>
+				<label>내용</label>
+				<c:if test="${vo.cm_file != null }">
+					<div>
+						이미지
+						<img src=""/>
+						<br>
+						
+					</div>
+				</c:if>
+				<textarea rows="30" cols="50" readonly>${vo.cm_content }</textarea>
+			</div>
+			<div>
+				<c:choose>
+					<c:when test="${vo.cm_id eq isWriter}">
+						<button type="submit" class="modify" onclick="location.href='/test/board/modify?cm_bnum=${vo.cm_bnum}'">수정하기</button>
+						<button type="submit" class="remove" onclick="remove_bdchk(${vo.cm_bnum})">삭제하기</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="like" name="like">👍🏻</button>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</section>
+		
+	</div>    
+
 	<hr>
 	<!-- 댓글 작성 -->
 	<div>
@@ -148,7 +123,7 @@
 							<!-- 댓글 작성자 본인인지 체크 -->
 								<c:choose>
 									<c:when test="${isWriter eq replyList.com_id }">
-										<button onclick="remove_chk(${replyList.com_cnum})">x</button>
+										<button onclick="remove_comchk(${replyList.com_cnum},${replyList.com_bnum })">x</button>
 									</c:when>
 									<c:otherwise>
 										&nbsp;

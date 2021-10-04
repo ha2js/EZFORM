@@ -307,6 +307,7 @@ public class EZ_noti_Controller {
 			service.remove(not_num);
 			
 			out.print("<script>alert('삭제 완료'); location.href='/test/ez_notice/listAll';</script>");
+			out.flush();
 		}
 	
 	}

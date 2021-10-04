@@ -18,33 +18,14 @@
 
 	<!-- 게시판 글조회 -->
 	<select id="read" resultType="com.ezform.domain.EZ_boardVO">
-		select cm_bnum,	
-			   cm_title, 
-			   cm_name, 
-			   cm_content,
-			   cm_hits, 
-			   cm_file,
-			   cm_like 
-			   from ez_cm
-			   where cm_bnum = #{cm_bnum}
+		select * from ez_cm
+		where cm_bnum = #{cm_bnum}
 	</select>
 	
-	<!-- 게시판 글조회1 -->
-	<select id="read1">
-		select cm_bnum,	
-			   cm_title, 
-			   cm_name, 
-			   cm_content, 
-			   cm_file,
-			   cm_like 
-			   from ez_cm
-			   where cm_bnum = #{cm_bnum}
-	</select>
-
 	<!-- 게시판 글수정 -->
 	<update id="modify">
-		update ez_cm set cm_title=#{cm_title}, cm_content=#{cm_content}, cm_file=#{cm_file}, like=#{like}  
-		where cm_bnum=#{cm_bnum}
+		update ez_cm set cm_title = #{cm_title}, cm_content = #{cm_content}, cm_file = #{cm_file}, cm_regdate = now()
+		where cm_bnum = #{cm_bnum}
 	</update>
 	
 	<!-- 게시판 글삭제 -->
@@ -52,6 +33,16 @@
 		delete from ez_cm 
 		where cm_bnum = #{cm_bnum}
 	</delete>
+	
+	<!-- 게시글 번호 수정 -->
+	<update id="update_num">
+	<![CDATA[
+		update ez_cm
+		set cm_bnum = cm_bnum - 1
+		where cm_bnum > #{cm_bnum} and
+		cm_bnum <= (select tmp.cnt from (select count(*) as cnt from ez_cm where cm_bnum > #{cm_bnum}) tmp) + #{cm_bnum}
+	]]>
+	</update>
 
  	<!-- 페이징 처리 list -->
  	<select id="listCri" resultType="EZ_boardVO">
@@ -66,7 +57,7 @@
  	</select> 
  	
  	<!-- 게시판 조회수 -->
-	<update id="hits" parameterType="int">
+	<update id="hits">
 		update ez_cm set cm_hits=cm_hits+1 
 		where cm_bnum=#{cm_bnum}
 	</update>

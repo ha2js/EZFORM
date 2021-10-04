@@ -18,20 +18,23 @@
 			alert("내용을 입력하세요");
 			return false;
 		}
-		var fileVal = $("#cm_file").val();
-		fileVal = fileVal.slice(fileVal.indexOf(".")+1).toLowerCase();
-
-		if (fileVal != "jpg" && fileVal != "png" && fileVal != "jpeg" && fileVal != "gif") {
-			alert("확장자를 확인해 주세요 (jpg, jpeg, png, gif 가능)");
-			return false;
-		}
 		
-		var maxSize = 10 * 1024 * 1024;
-		var fileSize = $("#cm_file")[0].files[0].size;
-		
-		if (fileSize > maxSize) {
-			alert("10MB 미만인 이미지만 등록 가능합니다");
-			return false;
+		if (document.regFr.cm_file.value != "") {
+			var fileVal = $("#cm_file").val();
+			fileVal = fileVal.slice(fileVal.indexOf(".")+1).toLowerCase();
+	
+			if (fileVal != "jpg" && fileVal != "png" && fileVal != "jpeg" && fileVal != "gif") {
+				alert("확장자를 확인해 주세요 (jpg, jpeg, png, gif 가능)");
+				return false;
+			}
+			
+			var maxSize = 10 * 1024 * 1024;
+			var fileSize = $("#cm_file")[0].files[0].size;
+			
+			if (fileSize > maxSize) {
+				alert("10MB 미만인 이미지만 등록 가능합니다");
+				return false;
+			}
 		}
 	} 
 </script>

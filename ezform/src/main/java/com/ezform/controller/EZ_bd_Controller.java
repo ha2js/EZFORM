@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +37,7 @@ import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.domain.EZ_board_comVO;
 import com.ezform.domain.EZ_empVO;
+import com.ezform.domain.ImageFile;
 import com.ezform.service.EZ_bd_Service;
 import com.ezform.service.EZ_bdcom_Service;
 import com.ezform.test.testController;
@@ -132,42 +135,48 @@ public class EZ_bd_Controller {
 		
 		logger.info("readGET() 호출");
 		
+		// 세션
+		EZ_empVO evo = (EZ_empVO) session.getAttribute("resultVO");
+		
 		// 서비스 객체
-		EZ_boardVO vo = service.read(cm_bnum);
+		EZ_boardVO vo = service.read_hit(cm_bnum);
 
 		// DB정보 -> 저장
 		model.addAttribute("vo", vo);
 
 		// 댓글 조회
 		model.addAttribute("replyList", ReplyService.list(cm_bnum));
-
-		// 세션
-		/* EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO"); */
-
-		// read에서 댓글 작성자 본인만 삭제 버튼 뜨게하기 위해
-		/* model.addAttribute("isWriter", evo.getEm_id()); */
+		
+		// 작성자 본인인지 확인 (삭제 버튼 처리)
+		model.addAttribute("isWriter",evo.getEm_id());
 	}
 
 	// *글수정 GET
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void modifyGET(int cm_bnum, Model model) throws Exception {
-		logger.info("modify(GET)호출");
-		logger.info("수정할 글번호 :" + cm_bnum);
-		model.addAttribute("vo", service.read1(cm_bnum));
-
+	public void modifyGET(@RequestParam("cm_bnum") int cm_bnum, Model model, HttpSession session) throws Exception {
+		
+		logger.info("modifyGET() 호출");
+		
+		model.addAttribute("vo", service.read_nohits(cm_bnum));
 	}
 
 	// * 글수정(POST)
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public void modifyPOST(EZ_boardVO vo, HttpSession session, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
-		logger.info("modifyPOST(EZ_boardVO 호출");
+		logger.info("modifyPOST() 호출");
 
 		// 세션
 		EZ_empVO evo = (EZ_empVO) session.getAttribute("resultVO");
-
+		
 		response.setContentType("text/html; charset=utf-8");
-
+		PrintWriter out = response.getWriter();
+		
+		if (evo == null) {
+			out.print("<script>location.href='/test/logout';</script>");
+			out.flush();
+		}
+		
 		String cm_file = null;
 		MultipartFile uploadFile = vo.getUploadFile();
 
@@ -186,11 +195,37 @@ public class EZ_bd_Controller {
 			logger.info("path : " + temp_path);
 			uploadFile.transferTo(new File(temp_path));
 		}
+		
 		vo.setCm_file(cm_file);
 		service.modify(vo);
+		
+		out.print("<script>alert('수정 완료'); location.href='/test/board/listPage';</script>");
+		out.flush();
+	}
+	
+	// 이미지 출력
+	@RequestMapping("/attachImage")
+	public void attachImage(String cm_file, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		byte[] imageData = cm_file.getBytes("utf-8");
+		response.setContentType("image/jpeg");
+		response.getOutputStream().write(imageData);
+		
+	}
+	
+	// * 글삭제 (remove) *
+	@RequestMapping(value = "/remove", method = RequestMethod.GET)
+	public void removeGET(@RequestParam("cm_bnum") int cm_bnum, HttpServletResponse response) throws Exception {
+		logger.info("removeGET() 호출");
 
-		logger.info("서비스 처리 완료! 페이지 이동");
+		// 서비스
+		service.remove(cm_bnum);
 
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		out.print("<script>alert('삭제 완료'); location.href='/test/board/listPage';</script>");
+		out.flush();
 	}
 
 	@RequestMapping(value = "/like", method = RequestMethod.GET)
@@ -211,18 +246,7 @@ public class EZ_bd_Controller {
 		return "redirect:/board/read?cm_bnum=${cm_bnum}";
 	}
 
-	// * 글삭제 (remove) *
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String removePOST(Integer cm_bnum) throws Exception {
-		logger.info("removePOST(Integer cm_bnum) 호출");
 
-		// 서비스
-		service.remove(cm_bnum);
-
-		// 페이지 이동
-		return "redirect:/board/listPage";
-
-	}
 	 
 
 }
