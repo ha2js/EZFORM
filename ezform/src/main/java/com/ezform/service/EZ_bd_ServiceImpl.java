@@ -29,7 +29,6 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	@Override
 	public void create(EZ_boardVO vo) throws Exception {
 		
-		logger.info("boardService : regist() 호출");
 		bdao.create(vo);
 	}
 
@@ -108,11 +107,9 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	}
 
 	@Override
-	public int listPageCnt(String cm_name) throws Exception {
+	public int listPageCnt() throws Exception {
 		
-		logger.info("listPageCnt(String cm_name) 호출");
-		
-		return bdao.listPageCnt(cm_name);
+		return bdao.listPageCnt();
 	}
 
 	

@@ -26,7 +26,7 @@ public interface EZ_bd_Service {
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
 
 	// 페이징
-	public int listPageCnt(String cm_name) throws Exception;
+	public int listPageCnt() throws Exception;
 
 	
 

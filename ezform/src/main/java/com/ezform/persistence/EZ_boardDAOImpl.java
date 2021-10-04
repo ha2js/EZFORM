@@ -25,11 +25,8 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	@Override
 	public void create(EZ_boardVO vo) throws Exception {
 		
-		logger.info(" create(EZ_boardVO vo) 호출 ");
-		logger.info(" mapper 이동 후 해당 SQL 구문을 실행! ");
-		
 		String tmp = sqlSession.selectOne(namespace+".boardnumCnt");
-		int result= 0;
+		int result = 0;
 		if (tmp != null) result = Integer.parseInt(tmp);
 		vo.setCm_bnum(++result);
 		
@@ -107,11 +104,11 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	}
 
 	@Override
-	public int listPageCnt(String cm_name) throws Exception {
+	public int listPageCnt() throws Exception {
 		
 		logger.info("listPageCnt(String cm_name) 호출");
 		
-		int tmp = sqlSession.selectOne(namespace + ".listPageCnt",cm_name);
+		int tmp = sqlSession.selectOne(namespace + ".listPageCnt");
 		
 		return tmp;
 	}

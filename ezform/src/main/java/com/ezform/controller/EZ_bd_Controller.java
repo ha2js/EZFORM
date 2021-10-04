@@ -52,50 +52,49 @@ public class EZ_bd_Controller {
 
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 
-	// *게시물 목록*
-	// http://localhost:8088/test/board/listPage
+	// 목록
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
 	public void listPageGET(EZ_boardCri cri, Model model) throws Exception {
 
-		// Criteria 객체정보 저장(pageStart/pageSize)
 		logger.info("listPageGET() 호출");
-
-		// 임시값 테스트
-		String cm_name = "admin";
-		cri.setCm_name(cm_name);
 
 		// list
 		model.addAttribute("boardList", service.listCri(cri));
 
-		int cm_name_cnt = service.listPageCnt(cm_name);
-
 		// 페이징처리 정보생성(하단부)
 		EZ_board_PageMaker pm = new EZ_board_PageMaker();
 		pm.setCri(cri);
-		pm.setTotalCount(cm_name_cnt); // 이 부분 150에서 현재 cm 테이블에 있는 데이터 개수를 불러오는 동작으로 바꾸셔야 돼요
+		pm.setTotalCount(service.listPageCnt());
 
 		model.addAttribute("pm", pm);
 	}
 
 	// * 글쓰기 *
-
-	// http://localhost:8088/test/board/register
-	// http://localhost:8088/test/board/listPage
-	// 글쓰기 (GET)
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET() throws Exception {
 		logger.info("registerGET() 호출");
 	}
 
-	// 글쓰기 (POST)
-
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(EZ_boardVO vo, Model model, HttpServletResponse response, HttpServletRequest request,
+	public void registerPOST(EZ_boardVO vo, Model model, HttpServletResponse response, HttpServletRequest request,
 			HttpSession session) throws Exception {
+		
 		logger.info("registerPOST() 호출");
-		logger.info(vo + "");
 
-		String cm_name = "admin";
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		// 세션
+		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
+		if (evo == null) {
+			out.print("<script>location.href='/test/logout';</script>");
+			out.flush();
+		}
+		
+		// 사원번호, 부서명, 이름
+		vo.setCm_id(evo.getEm_id());
+		vo.setCm_dname(evo.getEm_dept());
+		vo.setCm_name(evo.getEm_name());
 
 		String cm_file = null;
 		MultipartFile uploadFile = vo.getUploadFile();
@@ -117,91 +116,22 @@ public class EZ_bd_Controller {
 			uploadFile.transferTo(new File(temp_path));
 
 		}
-
-		vo.setCm_name(cm_name);
 		vo.setCm_file(cm_file);
 
 		// 서비스 객체를 주입 -> 동작 호출
 		service.create(vo);
 
-		// 페이지 이동
-		return "redirect:/board/listPage";
-	}
-
-	@RequestMapping(value = "/filedown", method = RequestMethod.GET)
-	public void board_fileDown(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// 파일 다운로드
-		logger.info("board_fileDown() 호출");
-
-		String fileName = request.getParameter("fileName");
-		String realFileName = "";
-
-		logger.info("파일명 : " + fileName);
-
-		try {
-			String browser = request.getHeader("User-Agent");
-
-			// 파일 인코딩
-			if (browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")) {
-				fileName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
-			} else {
-				fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
-			}
-
-		} catch (UnsupportedEncodingException ex) {
-			logger.info("UnsupportedEncodingException");
-		}
-		// 절대경로
-		String path = request.getSession().getServletContext().getRealPath("/");
-		path += "upload\\boardUpload\\";
-
-		realFileName = path + fileName;
-
-		logger.info("절대 경로 : " + realFileName);
-
-		File tmpFile = new File(realFileName);
-
-		if (!tmpFile.exists()) {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-
-			out.flush();
-		}
-
-		// 파일명 지정
-		response.setContentType("application/octer-stream");
-		response.setHeader("Content-Transfer-Encoding", "binary");
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-
-		try {
-			OutputStream os = response.getOutputStream();
-			FileInputStream fis = new FileInputStream(realFileName);
-
-			int Ncnt = 0;
-			byte[] bytes = new byte[512];
-
-			while ((Ncnt = fis.read(bytes)) != -1) {
-				os.write(bytes, 0, Ncnt);
-			}
-
-			fis.close();
-			os.close();
-
-		} catch (Exception e) {
-			logger.info("FileNotFoundException : " + e);
-		}
-
+		out.print("<script>alert('등록 완료'); location.href='/test/board/listPage';</script>");
+		out.flush();
 	}
 
 	// http://localhost:8088/test/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void readGET(@RequestParam("cm_bnum") int cm_bnum, Model model, HttpSession session) throws Exception {
+		
 		logger.info("readGET() 호출");
-
-		// 전달된 정보저장
-		logger.info(" 전달된 정보(cm_bum) : " + cm_bnum);
-
+		
 		// 서비스 객체
 		EZ_boardVO vo = service.read(cm_bnum);
 

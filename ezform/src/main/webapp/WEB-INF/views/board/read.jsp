@@ -16,12 +16,6 @@
 			<form role="form" action="" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
 			
-		
-				<div>
-					<label>아이디</label>
-					<input type="text" name="cm_id" value="${vo.cm_id}" readonly>
-				</div>
-			
 				<div>
 					<label>이름</label>
 					<input type="text" name="cm_name" value="${vo.cm_name}" readonly>

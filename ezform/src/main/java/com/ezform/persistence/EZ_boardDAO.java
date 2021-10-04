@@ -26,7 +26,7 @@ public interface EZ_boardDAO {
 	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
 	
 	// 페이징 테스트
-	public int listPageCnt(String cm_name) throws Exception;
+	public int listPageCnt() throws Exception;
 	
 	// 글 조회수
 	public void hits(int cm_bnum) throws Exception;

@@ -12,8 +12,8 @@
 
 	<!-- 게시판 글쓰기 -->
 	<insert id="create">
-		insert into ez_cm(cm_id,cm_bnum,cm_title,cm_content,cm_name,cm_hits,cm_file,cm_regdate,like) 
-		values(#{cm_id},#{cm_bnum},#{cm_title},#{cm_content},#{cm_name},0,#{cm_file},now(),0)	
+		insert into ez_cm values (#{cm_bnum}, #{cm_id}, #{cm_title}, #{cm_dname}, 
+		#{cm_name}, now(), #{cm_content}, 0, 0, #{cm_file})
 	</insert>
 
 	<!-- 게시판 글조회 -->
@@ -62,8 +62,7 @@
  
   	<!-- 페이징 테스트 -->
  	<select id="listPageCnt" resultType="int">
- 		select count(*) from ez_cm 
- 		where cm_name=#{cm_name} 
+ 		select count(*) from ez_cm
  	</select> 
  	
  	<!-- 게시판 조회수 -->
