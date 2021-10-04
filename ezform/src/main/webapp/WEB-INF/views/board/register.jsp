@@ -6,21 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript">
+
 	function reg_chk() {
-		if (document.regFr.cm_title == "") {
+		if (document.regFr.cm_title.value == "") {
 			alert("제목을 입력하세요");
 			return false;
 		}
-		if (document.regFr.cm_content == "") {
+		if (document.regFr.cm_content.value == "") {
 			alert("내용을 입력하세요");
 			return false;
 		}
-		
 		var fileVal = $("#cm_file").val();
 		fileVal = fileVal.slice(fileVal.indexOf(".")+1).toLowerCase();
-		
+
 		if (fileVal != "jpg" && fileVal != "png" && fileVal != "jpeg" && fileVal != "gif") {
 			alert("확장자를 확인해 주세요 (jpg, jpeg, png, gif 가능)");
 			return false;
@@ -39,7 +39,7 @@
 <body>
 <%-- <%@ include file="../include/header.jsp" %> --%>
 	<h1> 게시판 글쓰기 </h1>
-	<form role="form" name="regFr" action="/test/board/register" method="post" enctype="multipart/form-data" onsubmit="return reg_chk()">
+	<form role="form" name="regFr" action="/test/board/register" method="post" enctype="multipart/form-data" onsubmit="return reg_chk();">
 		
 		<div>	
 			<label> 제목 </label>
