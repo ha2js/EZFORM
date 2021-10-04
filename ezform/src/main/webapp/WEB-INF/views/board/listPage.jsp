@@ -16,51 +16,42 @@
 	<h2><a href="/test/board/register">글쓰기</a></h2>
 
 		<table border="1">		
-			<tbody>
+			<thead>
 			<tr>
-				<th style="width:10px"> 글번호 </th>
+				<th style="width:10px"> No </th>
 				<th> 제목 </th>
-				<th> 내용 </th>
-				<th> 이름 </th>
-				<th> 날짜 </th>
+				<th> 글쓴이 </th>
+				<th> 작성시간 </th>
 				<th style="width:40px"> 조회수 </th>
-				<th> 좋아요 </th>
 			</tr>
-			</tbody>
+			</thead>
 			
-		
-
-		<c:choose>
-			<c:when test="${boardList == null or fn:length(boardList) == 0 }">
-				<tr>
-					<th colspan="4"> 등록된 게시글이 없습니다. </th>
-				</tr>
-			</c:when>
-		</c:choose>
+			<c:choose>
+				<c:when test="${boardList == null or fn:length(boardList) == 0 }">
+					<tr>
+						<th colspan="4"> 등록된 게시글이 없습니다. </th>
+					</tr>
+				</c:when>
+			</c:choose>
 	
-	<c:forEach var="vo" items="${boardList}">
-		<tr>
-			<td>${vo.cm_bnum}</td>
-			<td>
-				<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
-			</td>
-			<td>${vo.cm_content}</td>
-			<td>${vo.cm_name}</td>
-			<td>
-				<fmt:formatDate pattern="yy-MM-dd" value="${vo.cm_regdate}"/>
-			</td>
-			<td style="width:40px">
-				<span>${vo.cm_hits}</span>
-			</td>
-			<td>${vo.cm_like }</td>
-		</tr>
-	</c:forEach>
+			<c:forEach var="vo" items="${boardList}">
+				<tr>
+					<td>${vo.cm_bnum}</td>
+					<td>
+						<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
+					</td>
+					<td>${vo.cm_name}</td>
+					<td>
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${vo.cm_regdate}"/>
+					</td>
+					<td style="width:40px">
+						<span>${vo.cm_hits}</span>
+					</td>
+				</tr>
+			</c:forEach>
 		
 	</table>
-	
-	
-		
-	
+
 			<!-- 페이징처리 -->
 	<%-- <c:if test="${fn:length(boardList) > 0 }"> --%>
 			<!-- 이전 -->

@@ -81,7 +81,7 @@
 						<button type="submit" class="remove" onclick="remove_bdchk(${vo.cm_bnum})">삭제하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="like" name="like">👍🏻</button>
+						<button type="button" class="like" name="like">👍🏻 ${vo.cm_like }</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
