@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.ezform.domain.EZ_CalendarParam;
 import com.ezform.domain.EZ_calendarVO;
 import com.ezform.persistence.EZ_calDAO;
 

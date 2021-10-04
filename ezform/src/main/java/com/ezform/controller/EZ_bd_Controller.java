@@ -293,19 +293,6 @@ public class EZ_bd_Controller {
 		return "redirect:/board/listPage";
 
 	}
-
-	 // 댓글 작성	 
-	 @RequestMapping(value= "/replyWrite", method= RequestMethod.POST) public
-	 String replyWritePOST(EZ_board_comVO vo,Model model) throws Exception{
-	 
-	 logger.info("replyWrite(EZ_board_comVO vo 호출");
-	 
-	 logger.info(vo+""); ReplyService.write(vo);
-	 
-	 return "redirect:/board/read?com_bnum=" + vo.getCom_bnum();
-	 
-	 
-	 }
 	 
 
 }
