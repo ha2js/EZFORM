@@ -37,7 +37,7 @@ public class EZ_bdcom_Controller {
 		
 		service.write(cvo);
 		
-		return "redirect:/board/read?cm_bnum="+cvo.getCom_bnum();
+		return "redirect:/board/read?nohit=true&cm_bnum="+cvo.getCom_bnum();
 	}
 	
 	@RequestMapping(value="/remove", method=RequestMethod.GET)

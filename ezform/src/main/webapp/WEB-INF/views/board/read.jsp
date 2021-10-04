@@ -11,22 +11,7 @@
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath }/resources/js/jQuery-2.1.4.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			// form태그 정보가져오기
-			var fr = $("form[role='form']");
-			  
-			$(".like").click(function(){
-				
-				alert("좋아요");
-				/* like=like+1 */
-				fr.attr("action","/test/board/like");
-				fr.attr("method","get");
-				fr.submit();
-			});
-			
-			
-		});
-		
+
 		function remove_bdchk(data) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
@@ -40,6 +25,7 @@
 				location.href="/test/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
 			}
 		}	
+		
 	</script>
 
 </head>
@@ -81,7 +67,7 @@
 						<button type="submit" class="remove" onclick="remove_bdchk(${vo.cm_bnum})">삭제하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="like" name="like">👍🏻 ${vo.cm_like }</button>
+						<button type="button" class="like" name="like" onclick="location.href='/test/board/like?cm_bnum=${vo.cm_bnum}';">👍🏻 ${vo.cm_like }</button>
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -70,22 +70,4 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		bdao.remove(cm_bnum);
 	}
 
-
-	
-	@Override
-	public int like(EZ_boardVO vo) throws Exception {
-		
-		
-		
-		return bdao.like(vo);
-	}
-	
-	@Override
-	public int unlike(EZ_boardVO vo) throws Exception {
-
-		
-		return bdao.unlike(vo);
-		
-	}
-	
 }

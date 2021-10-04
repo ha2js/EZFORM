@@ -37,7 +37,6 @@ import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.domain.EZ_board_comVO;
 import com.ezform.domain.EZ_empVO;
-import com.ezform.domain.ImageFile;
 import com.ezform.service.EZ_bd_Service;
 import com.ezform.service.EZ_bdcom_Service;
 import com.ezform.test.testController;
@@ -131,18 +130,19 @@ public class EZ_bd_Controller {
 	// http://localhost:8088/test/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public void readGET(@RequestParam("cm_bnum") int cm_bnum, Model model, HttpSession session) throws Exception {
+	public void readGET(@RequestParam("cm_bnum") int cm_bnum, @RequestParam("nohit") String hit_chk, Model model, HttpSession session) throws Exception {
 		
 		logger.info("readGET() 호출");
 		
 		// 세션
 		EZ_empVO evo = (EZ_empVO) session.getAttribute("resultVO");
 		
-		// 서비스 객체
-		EZ_boardVO vo = service.read_hit(cm_bnum);
-
 		// DB정보 -> 저장
-		model.addAttribute("vo", vo);
+		if (hit_chk == null) 
+			model.addAttribute("vo", service.read_hit(cm_bnum));
+		else
+			model.addAttribute("vo",service.read_nohits(cm_bnum));
+		
 
 		// 댓글 조회
 		model.addAttribute("replyList", ReplyService.list(cm_bnum));
@@ -229,24 +229,13 @@ public class EZ_bd_Controller {
 	}
 
 	@RequestMapping(value = "/like", method = RequestMethod.GET)
-	public String like(@RequestParam("cm_bnum") int cm_bnum, EZ_boardVO vo, Model model) throws Exception {
+	public String like(@RequestParam("cm_bnum") int cm_bnum, HttpSession session) throws Exception {
 
-		logger.info(cm_bnum + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		// 세션
+		EZ_empVO evo = (EZ_empVO) session.getAttribute("resultVO");
+		
+		// 서비스 구현하기
 
-		/* service.like(vo); */
-
-		return "redirect:/board/read?cm_bnum=${cm_bnum}";
+		return "redirect:/board/read?nohit=true&cm_bnum="+cm_bnum;
 	}
-
-	@RequestMapping(value = "/unlike", method = RequestMethod.POST)
-	public String unlike(@RequestParam("cm_bnum") int cm_bnum, EZ_boardVO vo, Model model) throws Exception {
-
-		service.unlike(vo);
-
-		return "redirect:/board/read?cm_bnum=${cm_bnum}";
-	}
-
-
-	 
-
 }

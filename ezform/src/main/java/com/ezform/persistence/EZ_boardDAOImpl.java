@@ -79,28 +79,4 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		sqlSession.update(namespace+".update_num",cm_bnum);
 	}
 
-	@Override
-	public int like(EZ_boardVO vo) throws Exception {
-		
-		int result = sqlSession.update(namespace+".like",vo);
-		
-		return result;
-	}
-	
-	@Override
-	public int unlike(EZ_boardVO vo) throws Exception {
-		
-		int result = sqlSession.update(namespace+".unlike",vo);
-		
-		return result;
-		
-	}
-
-
-
-
-
-
-	
-	
 }

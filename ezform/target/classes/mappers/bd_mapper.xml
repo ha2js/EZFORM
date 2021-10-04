@@ -4,6 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ezform.mapper.bd_Mapper">
+
+ 	<!-- 페이징 처리 list -->
+ 	<select id="listCri" resultType="EZ_boardVO">
+		select * from ez_cm 
+		order by cm_bnum desc, cm_regdate desc 
+		limit #{page},#{pageSize}
+ 	</select>
+ 	
+  	<!-- 전체 데이터 개수 (페이징 처리 연산 필요) -->
+ 	<select id="listPageCnt" resultType="int">
+ 		select count(*) from ez_cm
+ 	</select> 
 	
 	<!-- db 최대값  -->
 	<select id="boardnumCnt" resultType="String">
@@ -21,6 +33,12 @@
 		select * from ez_cm
 		where cm_bnum = #{cm_bnum}
 	</select>
+	
+	 <!-- 게시판 조회수 -->
+	<update id="hits">
+		update ez_cm set cm_hits=cm_hits+1 
+		where cm_bnum=#{cm_bnum}
+	</update>
 	
 	<!-- 게시판 글수정 -->
 	<update id="modify">
@@ -44,35 +62,5 @@
 	]]>
 	</update>
 
- 	<!-- 페이징 처리 list -->
- 	<select id="listCri" resultType="EZ_boardVO">
-		select * from ez_cm 
-		order by cm_bnum desc, cm_regdate desc 
-		limit #{page},#{pageSize}
- 	</select>
- 
-  	<!-- 페이징 테스트 -->
- 	<select id="listPageCnt" resultType="int">
- 		select count(*) from ez_cm
- 	</select> 
- 	
- 	<!-- 게시판 조회수 -->
-	<update id="hits">
-		update ez_cm set cm_hits=cm_hits+1 
-		where cm_bnum=#{cm_bnum}
-	</update>
 	
-	<!-- 좋아요 -->
-	<update id="like" parameterType="int">
-		update ez_cm set cm_like=cm_like+1 
-		where cm_bnum=#{cm_bnum}
-	</update>
-	
-	<!-- 좋아요 취소 -->
-	<update id="unlike" parameterType="int">
-		update ez_cm set cm_like=cm_like-1 
-		where cm_bnum=#{cm_bnum}
-	</update>
-	
-
  </mapper>
