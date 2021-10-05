@@ -104,8 +104,7 @@
 							</c:choose>
                            	  <hr>
                            	  <div class="mb-3" > 
-							    
-								    <form role="form" method="post" action="/test/comment/add">
+								 <form role="form" method="post" action="/test/comment/add">
 								    <div class="d-flex align-items-center">
 									    <p>
 										   <textarea class="form-control" rows="3" cols="155" name="com_content" placeholder="댓글을 남겨주세요" style="resize: none;"></textarea>
@@ -114,12 +113,11 @@
 										<p>				
 										   <button type="submit" class="btn btn-primary btn-sm" style="margin : 55px 0 0 10px;">등록</button>
 										</p>
-										</div>
-									</form>
-								
+								   </div>
+								</form>	
 							  </div>
 							  <!-- 댓글 처리 -->
-						      <div class="mb-3">	
+						      <div class="mb-3" style="height:270px; OVERFLOW-Y:auto;">	
 							  	<table class="table table-striped">
 								   <c:choose>
 								      <c:when test="${replyList == null or fn:length(replyList) == 0 }">
