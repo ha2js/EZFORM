@@ -38,6 +38,18 @@
 			});
 		
 			
+			// 좋아요 누르기 이벤트
+			$("#cmLikeImg").on('click', function() {
+				
+				if($(this).attr('src') == '${pageContext.request.contextPath }/resources/images/unlike.png') {
+					$(this).attr('src', '${pageContext.request.contextPath }/resources/images/like.png');
+				} else {
+					$(this).attr('src', '${pageContext.request.contextPath }/resources/images/unlike.png');
+				}
+				
+			
+			});
+			
 		});
 	
 
@@ -84,10 +96,13 @@
 	                                  <label class="form-label">부서명</label>
 									  <p class="h6">${vo.cm_dname }</p>
 								    </div>
-									<div class="mb-3 mb-xl-4">
+									<div class="mb-3 col-xl-7">
 		                              <label class="form-label">이름</label>
 								      <p class="h6">${vo.cm_name}</p>
-									</div> 
+									</div>
+									<div class="mb-3" style="margin-left:80px;">
+		                              <img id="cmLikeImg" src="${pageContext.request.contextPath }/resources/images/unlike.png" style="cursor:pointer;"/>
+									</div>
 	                        	  </div>  	 
 	                              <div class="mb-3">
 	                                <label class="form-label">제목</label>
