@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.domain.ez_cm_likeVO;
 
 public interface EZ_boardDAO {
 	
@@ -28,4 +29,6 @@ public interface EZ_boardDAO {
 	// 글 정보 삭제
 	public void remove(Integer cm_bnum) throws  Exception;
 	
+	// 좋아요 처리
+	public void like(ez_cm_likeVO clvo) throws Exception;
 }

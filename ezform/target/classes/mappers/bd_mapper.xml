@@ -61,6 +61,14 @@
 		cm_bnum <= (select tmp.cnt from (select count(*) as cnt from ez_cm where cm_bnum > #{cm_bnum}) tmp) + #{cm_bnum}
 	]]>
 	</update>
+	
+	<select id="likechk1" resultType="int">
+		select count(like_bnum) from ez_cm_like
+		where like_bnum = #{like_bnum}
+	</select>
+	
+	
+	
 
 	
  </mapper>

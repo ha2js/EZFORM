@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.domain.ez_cm_likeVO;
 import com.ezform.test.testController;
 
 @Repository
@@ -79,6 +80,12 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		
 		// 게시글 번호 업데이트
 		sqlSession.update(namespace+".update_num",cm_bnum);
+	}
+
+	@Override
+	public void like(ez_cm_likeVO clvo) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

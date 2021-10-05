@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
+import com.ezform.domain.ez_cm_likeVO;
 import com.ezform.persistence.EZ_boardDAO;
 import com.ezform.test.testController;
 
@@ -30,7 +31,6 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 		
 		return bdao.listCri(cri);
 	}
-	
 	@Override
 	public int listPageCnt() throws Exception {
 		
@@ -68,6 +68,12 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	public void remove(Integer cm_bnum) throws Exception {
 		
 		bdao.remove(cm_bnum);
+	}
+
+	@Override
+	public void like(ez_cm_likeVO clvo) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -37,6 +37,7 @@ import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.domain.EZ_board_comVO;
 import com.ezform.domain.EZ_empVO;
+import com.ezform.domain.ez_cm_likeVO;
 import com.ezform.service.EZ_bd_Service;
 import com.ezform.service.EZ_bdcom_Service;
 import com.ezform.test.testController;
@@ -130,7 +131,7 @@ public class EZ_bd_Controller {
 	// http://localhost:8088/test/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public void readGET(@RequestParam("cm_bnum") int cm_bnum, @RequestParam("nohit") String hit_chk, Model model, HttpSession session) throws Exception {
+	public void readGET(@RequestParam("cm_bnum") int cm_bnum, @RequestParam(value = "nohit", required = false) String hit_chk, Model model, HttpSession session) throws Exception {
 		
 		logger.info("readGET() 호출");
 		
@@ -234,7 +235,13 @@ public class EZ_bd_Controller {
 		// 세션
 		EZ_empVO evo = (EZ_empVO) session.getAttribute("resultVO");
 		
+		ez_cm_likeVO clvo = new ez_cm_likeVO();
+		
+		clvo.setLike_bnum(cm_bnum);
+		clvo.setLike_id(evo.getEm_id());
+		
 		// 서비스 구현하기
+		
 
 		return "redirect:/board/read?nohit=true&cm_bnum="+cm_bnum;
 	}
