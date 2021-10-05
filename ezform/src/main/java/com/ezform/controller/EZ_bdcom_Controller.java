@@ -39,7 +39,7 @@ public class EZ_bdcom_Controller {
 		
 		return "redirect:/board/read?nohit=true&cm_bnum="+cvo.getCom_bnum();
 	}
-	
+
 	@RequestMapping(value="/remove", method=RequestMethod.GET)
 	public String removeGET(@RequestParam("com_cnum") int com_cnum, @RequestParam("com_bnum") int com_bnum) throws Exception {
 		logger.info("removeGET() 호출 "+com_cnum);

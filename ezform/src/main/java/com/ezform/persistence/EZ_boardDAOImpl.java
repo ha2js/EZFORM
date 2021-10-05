@@ -48,8 +48,7 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 		int result = 0;
 		if (tmp != null) result = Integer.parseInt(tmp);
 		vo.setCm_bnum(++result);
-		
-		logger.info("작성하려는 게시글 정보 : "+vo);
+
 		
 		sqlSession.insert(namespace + ".create",vo);
 	}

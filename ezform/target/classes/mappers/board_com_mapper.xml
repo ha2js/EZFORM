@@ -7,9 +7,10 @@
 
 	<!-- 댓글 조회 -->
 	<select id="replyList" parameterType="int" resultType="com.ezform.domain.EZ_board_comVO">
-	select *
-	from ez_com 
-	where com_bnum =#{com_bnum}
+		select *
+		from ez_com 
+		where com_bnum =#{com_bnum}
+		order by com_bnum desc, com_regdate desc
 	</select>
 
 	<!-- 댓글 번호 최대값 -->
