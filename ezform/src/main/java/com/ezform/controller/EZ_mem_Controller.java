@@ -25,7 +25,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ezform.domain.EZ_empVO;
 import com.ezform.service.EZ_mem_Service;
-import com.ezform.service.EZ_emp_Service;
+import com.ezform.service.EZ_noti_Service;
+import com.ezform.service.EZ_bd_Service;
 
 @Controller
 public class EZ_mem_Controller {
@@ -33,17 +34,24 @@ public class EZ_mem_Controller {
 	@Inject
 	private EZ_mem_Service mem_service;
 	@Inject
-	private EZ_emp_Service emp_service;
+	private EZ_noti_Service noti_service;
+	@Inject
+	private EZ_bd_Service bd_service;
 
 	private static final Logger logger = LoggerFactory.getLogger(EZ_mem_Controller.class);
 
 	// http://localhost:8088/testView/main
 	// 메인페이지
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String mainPageGET() throws Exception {
+	public String mainPageGET(Model model) throws Exception {
 
 		System.out.println(" C : 메인페이지 이동(get)!");
-
+		
+		// 커뮤니티 리스트
+		model.addAttribute("boardList", bd_service.listCri());
+		// 공지사항 리스트
+		model.addAttribute("notiList", noti_service.listALL());
+		
 		return "index";
 	}
 	

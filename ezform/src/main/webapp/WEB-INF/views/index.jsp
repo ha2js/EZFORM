@@ -3,6 +3,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="include/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
 	<div class="row">
@@ -49,46 +51,37 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table id="datatable" class="table table-striped"
-									data-toggle="data-table">
+								<table id="datatable" class="table table-striped">
 									<thead>
 										<tr>
-											<th>Name</th>
-											<th>Position</th>
-											<th>Office</th>
-											<th>Age</th>
-											<th>Start date</th>
-											<th>Salary</th>
+											<th colspan="2">제목</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>61</td>
-											<td>2011/04/25</td>
-											<td>$320,800</td>
-										</tr>
-										<tr>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>63</td>
-											<td>2011/07/25</td>
-											<td>$170,750</td>
-										</tr>
+										<c:choose>
+											<c:when test="${boardList == null or fn:length(boardList) == 0}">
+												<tr>
+													<td><p>등록된 커뮤니티가 없습니다.</p></td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach begin="0" end="2" items="${boardList }" var="bd">
+													<tr>
+														<td width="80%;">
+															<a href="read?cm_bnum=${bd.cm_bnum}">
+																${bd.cm_title }
+															</a>
+														</td>
+														<td>
+															<div>
+																<fmt:formatDate pattern="yyyy-MM-dd" value="${bd.cm_regdate}"/>
+															</div>
+														</td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>	
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Name</th>
-											<th>Position</th>
-											<th>Office</th>
-											<th>Age</th>
-											<th>Start date</th>
-											<th>Salary</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>
@@ -106,46 +99,37 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table id="datatable" class="table table-striped"
-									data-toggle="data-table">
+								<table id="datatable" class="table table-striped">
 									<thead>
 										<tr>
-											<th>Name</th>
-											<th>Position</th>
-											<th>Office</th>
-											<th>Age</th>
-											<th>Start date</th>
-											<th>Salary</th>
+											<th colspan="2">제목</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>61</td>
-											<td>2011/04/25</td>
-											<td>$320,800</td>
-										</tr>
-										<tr>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>63</td>
-											<td>2011/07/25</td>
-											<td>$170,750</td>
-										</tr>
+										<c:choose>
+											<c:when test="${notiList == null or fn:length(notiList) == 0}">
+												<tr>
+													<td><p>등록된 공지사항이 없습니다.</p></td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach begin="0" end="2" items="${notiList }" var="noti">
+													<tr>
+														<td width="80%;">
+															<a href="/test/ez_notice/read?not_num=${noti.not_num }" class="num">
+																${noti.not_title }
+															</a>
+														</td>
+														<td>
+															<div>
+																<fmt:formatDate pattern="yyyy-MM-dd" value="${noti.not_regdate}"/>
+															</div>	
+														</td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>	
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Name</th>
-											<th>Position</th>
-											<th>Office</th>
-											<th>Age</th>
-											<th>Start date</th>
-											<th>Salary</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>
