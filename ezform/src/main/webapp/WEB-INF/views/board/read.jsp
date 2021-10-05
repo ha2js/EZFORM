@@ -8,21 +8,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 	<script type="text/javascript">
-	
-		$(document).ready(function() {
-
-			// 좋아요 누르기 이벤트
-			$("#cmLikeImg").on('click', function() {
-				
-				if($(this).attr('src') == '${pageContext.request.contextPath }/resources/images/unlike.png') {
-					$(this).attr('src', '${pageContext.request.contextPath }/resources/images/like.png');
-				} else {
-					$(this).attr('src', '${pageContext.request.contextPath }/resources/images/unlike.png');
-				}
-			});
-			
-		});
-		
 		function remove_bdchk(data) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
@@ -76,9 +61,7 @@
 	                              <label class="form-label">이름</label>
 							      <p class="h6">${vo.cm_name}</p>
 								</div>
-								<div class="mb-3" style="margin-left:80px;">
-	                              <img id="cmLikeImg" src="${pageContext.request.contextPath }/resources/images/unlike.png" style="cursor:pointer;"/>
-								</div>
+
                         	  </div>  	 
                               <div class="mb-3">
                                 <label class="form-label">제목</label>
@@ -113,7 +96,9 @@
 								</c:when>
 								<c:otherwise>
 									<div class="mb-3" style="text-align:center;">
-										<button type="button" class="btn btn-primary btn-sm" name="like" onclick="location.href='/test/board/like?cm_bnum=${vo.cm_bnum}';">👍${vo.cm_like }</button>
+										<button type="button" class="btn btn-primary btn-sm" name="like" onclick="location.href='/test/board/like?cm_bnum=${vo.cm_bnum}';">
+											<span style="font-size:17px; margin-right:5px; color:rgb(255,255,255);">👍🏻</span> ${vo.cm_like }
+										</button>
 									</div>
 								</c:otherwise>
 							</c:choose>
@@ -139,7 +124,7 @@
 								   <c:choose>
 								      <c:when test="${replyList == null or fn:length(replyList) == 0 }">
 										<tr>
-											<td>등록된 댓글이 없습니다</td>
+											<td style="text-align:center">등록된 댓글이 없습니다</td>
 										</tr>
 									  </c:when>
 									  <c:otherwise>
@@ -151,29 +136,28 @@
 												<td style="width:60%; height:50px;">
 													<pre style="font-family:arial;">${replyList.com_content }</pre>
 												</td>
-												<!-- 임시로 아무 버튼 -> 나중에 프론트랑 합친 뒤 수정 -->
-												<td style="width:30%;">
+												<td style="width:35%; text-align:right;"><fmt:formatDate value="${replyList.com_regdate}" pattern="yy-MM-dd HH:mm"/></td>
+												<td style="width:5%;">
 												<!-- 댓글 작성자 본인인지 체크 -->
-													<c:choose>
-														<c:when test="${isWriter eq replyList.com_id }">
-															<a href="javascript:remove_comchk(${replyList.com_cnum},${replyList.com_bnum });">
-																<svg width="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<path fill-rule="evenodd" clip-rule="evenodd" d="M7.67 1.99927H16.34C19.73 1.99927 22 4.37927 22 7.91927V16.0903C22 19.6203 19.73 21.9993 16.34 21.9993H7.67C4.28 21.9993 2 19.6203 2 16.0903V7.91927C2 4.37927 4.28 1.99927 7.67 1.99927ZM15.01 14.9993C15.35 14.6603 15.35 14.1103 15.01 13.7703L13.23 11.9903L15.01 10.2093C15.35 9.87027 15.35 9.31027 15.01 8.97027C14.67 8.62927 14.12 8.62927 13.77 8.97027L12 10.7493L10.22 8.97027C9.87 8.62927 9.32 8.62927 8.98 8.97027C8.64 9.31027 8.64 9.87027 8.98 10.2093L10.76 11.9903L8.98 13.7603C8.64 14.1103 8.64 14.6603 8.98 14.9993C9.15 15.1693 9.38 15.2603 9.6 15.2603C9.83 15.2603 10.05 15.1693 10.22 14.9993L12 13.2303L13.78 14.9993C13.95 15.1803 14.17 15.2603 14.39 15.2603C14.62 15.2603 14.84 15.1693 15.01 14.9993Z" fill="currentColor"></path>
-																</svg>
-															</a>                        
-														</c:when>
-														<c:otherwise>
-															&nbsp;
-														</c:otherwise>
-													</c:choose>
+												<c:choose>
+													<c:when test="${isWriter eq replyList.com_id }">
+														<a href="javascript:remove_comchk(${replyList.com_cnum},${replyList.com_bnum });">
+															<svg width="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path fill-rule="evenodd" clip-rule="evenodd" d="M7.67 1.99927H16.34C19.73 1.99927 22 4.37927 22 7.91927V16.0903C22 19.6203 19.73 21.9993 16.34 21.9993H7.67C4.28 21.9993 2 19.6203 2 16.0903V7.91927C2 4.37927 4.28 1.99927 7.67 1.99927ZM15.01 14.9993C15.35 14.6603 15.35 14.1103 15.01 13.7703L13.23 11.9903L15.01 10.2093C15.35 9.87027 15.35 9.31027 15.01 8.97027C14.67 8.62927 14.12 8.62927 13.77 8.97027L12 10.7493L10.22 8.97027C9.87 8.62927 9.32 8.62927 8.98 8.97027C8.64 9.31027 8.64 9.87027 8.98 10.2093L10.76 11.9903L8.98 13.7603C8.64 14.1103 8.64 14.6603 8.98 14.9993C9.15 15.1693 9.38 15.2603 9.6 15.2603C9.83 15.2603 10.05 15.1693 10.22 14.9993L12 13.2303L13.78 14.9993C13.95 15.1803 14.17 15.2603 14.39 15.2603C14.62 15.2603 14.84 15.1693 15.01 14.9993Z" fill="currentColor"></path>
+															</svg>
+														</a>                        
+													</c:when>
+													<c:otherwise>
+														&nbsp;
+													</c:otherwise>
+												</c:choose>
 												</td>
-												<td style="width:10%; text-align:right;"><fmt:formatDate value="${replyList.com_regdate}" pattern="yy-MM-dd HH:mm"/></td>
 											</tr>
 										  </c:forEach>
 									    </c:otherwise>
 								    </c:choose>
 							     </table>
-							  </div>										  
+							  </div>						  
                            </th>
                         </tr>   
                      </tbody>
