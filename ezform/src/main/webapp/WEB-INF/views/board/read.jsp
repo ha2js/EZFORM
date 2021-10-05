@@ -8,14 +8,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 	<script type="text/javascript">
-
-		function remove_bdchk(data) {
-			if (!confirm("삭제 하시겠습니까?")) return false;
-			else {
-				location.href="/test/board/remove?cm_bnum="+data;
-			}
-		}	
 	
+		$(document).ready(function() {
+			//form태그 정보 가져오기
+			var fr = $("form[role='form']");
+		
+		
+			//수정하기
+			$("#bd_modify").click(function(){			
+				
+				fr.attr("action","/test/board/modify?cm_bnum=${vo.cm_bnum}");
+				
+				fr.attr("method","get");
+				
+				fr.submit();
+			});
+			
+			//삭제하기
+			$("#bd_remove").click(function(){
+				
+				if (!confirm("삭제 하시겠습니까?")) return false;
+				else {
+					fr.attr("action", "/test/board/remove?cm_bnum=${vo.cm_bnum}");
+					
+					fr.attr("method","get");
+					
+					fr.submit();
+				}
+			});
+		
+			
+		});
+	
+
 		function remove_comchk(data1, data2) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
@@ -54,14 +79,16 @@
 	                        <tr>
 	                           <th>
 	                        	  <input type="hidden" name="cm_bnum" value="${vo.cm_bnum }">
-	                        	  <div class="mb-3">
-	                                <label class="form-label">부서명</label>
-									<p class="h6">${vo.cm_dname }</p>
-								  </div>
-								  <div class="mb-3">
-	                                <label class="form-label">이름</label>
-									<p class="h6">${vo.cm_name}</p>
-								  </div>
+	                        	  <div class="d-flex align-items-center">
+	                        	 	<div class="mb-3 col-xl-4">
+	                                  <label class="form-label">부서명</label>
+									  <p class="h6">${vo.cm_dname }</p>
+								    </div>
+									<div class="mb-3 mb-xl-4">
+		                              <label class="form-label">이름</label>
+								      <p class="h6">${vo.cm_name}</p>
+									</div> 
+	                        	  </div>  	 
 	                              <div class="mb-3">
 	                                <label class="form-label">제목</label>
 									<p class="h6">${vo.cm_title}</p>
@@ -85,8 +112,8 @@
 	                              <div class="mb-3" style="text-align:right;">
 							   	 	<c:choose>
 										<c:when test="${vo.cm_id eq isWriter}">
-											<button type="submit" class="btn btn-primary btn-sm" onclick="location.href='/test/board/modify?cm_bnum=${vo.cm_bnum}'">수정하기</button>
-											<button type="submit" class="btn btn-primary btn-sm" onclick="remove_bdchk(${vo.cm_bnum})">삭제하기</button>
+											<button type="submit" class="btn btn-primary btn-sm" id="bd_modify">수정하기</button>
+											<button type="submit" class="btn btn-primary btn-sm" id="bd_remove">삭제하기</button>
 										</c:when>
 										<c:otherwise>
 											<button type="button" class="btn btn-primary btn-sm" name="like" onclick="location.href='/test/board/like?cm_bnum=${vo.cm_bnum}';">👍🏻 ${vo.cm_like }</button>
@@ -95,19 +122,20 @@
 	                           	  </div>
 	                           	  <hr>
 	                           	  <div class="mb-3" > 
-									<form role="form" method="post" action="/test/comment/add"> 
-										<p>
-											<textarea class="form-control" rows="5" cols="50" name="com_content" placeholder="댓글을 남겨주세요" style="resize: none;"></textarea>
+									<form action="/test/comment/add" method="post">
+									    <div class="d-flex align-items-center">
+									    <p>
+										   <textarea class="form-control" rows="3" cols="155" name="com_content" placeholder="댓글을 남겨주세요" style="resize: none;"></textarea>
 										</p>
 										<input type="hidden" name="com_bnum" value="${vo.cm_bnum }"/>
 										<p>				
-											<button type="submit" class="btn btn-primary btn-sm">등록</button>
+										   <button type="submit" class="btn btn-primary btn-sm" style="margin : 55px 0 0 10px;">등록</button>
 										</p>
 									</form>
 								  </div>
 								  <!-- 댓글 처리 -->
-							      <div class="mb-3" style="border : 1px solid black;" >	
-								  	<table>
+							      <div class="mb-3">	
+								  	<table class="form-control">
 									   <c:choose>
 									      <c:when test="${replyList == null or fn:length(replyList) == 0 }">
 											<tr>
