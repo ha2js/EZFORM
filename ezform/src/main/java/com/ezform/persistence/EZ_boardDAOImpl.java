@@ -2,6 +2,8 @@ package com.ezform.persistence;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,7 @@ import com.ezform.test.testController;
 @Repository
 public class EZ_boardDAOImpl implements EZ_boardDAO {
 	
-	@Autowired
+	@Inject
 	private SqlSession sqlSession;
 	
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
