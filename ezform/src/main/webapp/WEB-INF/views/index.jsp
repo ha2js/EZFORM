@@ -54,7 +54,10 @@
 								<table id="datatable" class="table table-striped">
 									<thead>
 										<tr>
-											<th colspan="2">제목</th>
+											<th>제목</th>
+											<th style="text-align:right; font-size:12px;">
+												<a href="/test/board/listPage" style="color:rgb(130,130,130)">더보기</a>
+											</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -102,7 +105,10 @@
 								<table id="datatable" class="table table-striped">
 									<thead>
 										<tr>
-											<th colspan="2">제목</th>
+											<th>제목</th>
+											<th style="text-align:right; font-size:12px;">
+												<a href="/test/ez_notice/listAll" style="color:rgb(130,130,130)">더보기</a>
+											</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -144,7 +150,7 @@
 					<div class="card">
 						<div class="card-body d-flex justify-content-around text-center" style="padding: 24px 24px 0 24px;">
 							<div
-								style="color: #666; font-size: 40px; text-align: center;"
+								style="color: #666; font-size: 35px; text-align: center;"
 								id="clock">
 							</div>
 						</div>

@@ -116,7 +116,7 @@ if (session.getAttribute("em_id") != null) {
 						class="nav-link static-item disabled" href="#" tabindex="-1">
 							<span class="default-icon">Home</span> <span class="mini-icon">-</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link "
 						aria-current="page" href="/test/main"> <i class="icon"><svg
 									width="20" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
