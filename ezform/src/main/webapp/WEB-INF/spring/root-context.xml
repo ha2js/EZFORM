@@ -18,15 +18,15 @@
 	<!-- 디비연결 정보 처리객체(bean) -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		
-		<!-- <property name="driverClassName"
-				  value="com.mysql.cj.jdbc.Driver"/> -->
+		 <property name="driverClassName"
+				  value="com.mysql.cj.jdbc.Driver"/> 
 		
-		<property name="driverClassName"
-				  value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		<!-- <property name="driverClassName"
+				  value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/> -->
 		
 		
 		<property name="url" 
-				  value="jdbc:log4jdbc:mysql://localhost:3306/ezformdb?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
+				  value="jdbc:mysql://localhost:3306/ezformdb?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
 		
 		<property name="username" value="root"/>
 		
