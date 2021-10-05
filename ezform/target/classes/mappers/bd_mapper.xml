@@ -62,13 +62,40 @@
 	]]>
 	</update>
 	
+	<!-- 좋아요 체크 -->
 	<select id="likechk1" resultType="int">
-		select count(like_bnum) from ez_cm_like
-		where like_bnum = #{like_bnum}
+		select count(like_id) from ez_cm_like
+		where like_bnum = #{like_bnum} and like_id = #{like_id}
 	</select>
 	
+	<!-- 해당 사원의 좋아요 컬럼 추가 -->
+	<insert id="insert_likeInfo">
+		insert into ez_cm_like 
+		values (#{like_bnum}, #{like_id}, '1')
+	</insert>
 	
+	<select id="islike" resultType="String">
+		select like_check from ez_cm_like
+		where like_bnum = #{like_bnum} and like_id = #{like_id}
+	</select>
 	
-
+	<!-- 좋아요 +1 -->
+	<update id="like_plus">
+		update ez_cm set cm_like = cm_like + 1
+		where cm_bnum = #{like_bnum}
+	</update>
+	
+	<!-- 좋아요 -1 -->
+	<update id="like_minus">
+		update ez_cm set cm_like = cm_like - 1
+		where cm_bnum = #{like_bnum}
+	</update>
+	
+	<!-- 좋아요 연산 처리 후 like_likechk 변경 -->
+	<update id="likechk_update">
+		update ez_cm_like 
+		set like_check = if(like_check = '1','0','1')
+		where like_bnum = #{like_bnum} and like_id = #{like_id}
+	</update>
 	
  </mapper>

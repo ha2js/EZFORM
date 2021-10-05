@@ -72,8 +72,7 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 
 	@Override
 	public void like(ez_cm_likeVO clvo) throws Exception {
-		// TODO Auto-generated method stub
-		
+		bdao.like(clvo);		
 	}
 
 }

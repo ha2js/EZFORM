@@ -241,7 +241,7 @@ public class EZ_bd_Controller {
 		clvo.setLike_id(evo.getEm_id());
 		
 		// 서비스 구현하기
-		
+		service.like(clvo);
 
 		return "redirect:/board/read?nohit=true&cm_bnum="+cm_bnum;
 	}

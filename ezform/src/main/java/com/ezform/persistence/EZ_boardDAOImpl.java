@@ -83,7 +83,27 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 
 	@Override
 	public void like(ez_cm_likeVO clvo) throws Exception {
-		// TODO Auto-generated method stub
+		
+		int likechk = sqlSession.selectOne(namespace+".likechk1",clvo);
+			
+		if (likechk > 0) { // 좋아요 한 적이 있다
+			String isLike = sqlSession.selectOne(namespace+".islike",clvo);
+			
+			// 좋아요 되어있다 -> 좋아요 취소
+			if (isLike.equals("1")) 
+				sqlSession.update(namespace+".like_minus",clvo.getLike_bnum());
+			
+			// 좋아요 안되어있다 -> 좋아요
+			else 
+				sqlSession.update(namespace+".like_plus",clvo.getLike_bnum());
+			
+			// like_check update
+			sqlSession.update(namespace+".likechk_update",clvo);	
+		}
+		else { // 없다		
+			sqlSession.insert(namespace+".insert_likeInfo",clvo);
+			sqlSession.update(namespace+".like_plus",clvo.getLike_bnum());
+		}
 		
 	}
 
