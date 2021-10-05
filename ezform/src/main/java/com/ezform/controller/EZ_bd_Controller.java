@@ -251,4 +251,10 @@ public class EZ_bd_Controller {
 		
 		return null;
 	 }
+	
+	@RequestMapping("/viewImg")
+	public void viewImg(@RequestParam("imgName") String imgName, Model model) throws Exception {
+		
+		model.addAttribute("imgName",imgName);
+	}
 }

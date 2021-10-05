@@ -20,7 +20,13 @@
 			else {
 				location.href="/test/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
 			}
-		}	
+		}
+		function img_view(image) {
+			// 새 창으로 이미지 띄우기
+			var url = "/test/board/viewImg?imgName="+image;
+
+			window.open(url,"_blank","width=350, height=350");
+		}
 		
 	</script>
 
@@ -69,13 +75,13 @@
 							  </div>	
 							  <!-- 이미지 형태로 수정해보기 -- 안되면 다운로드 형태로 -->
                               <div class="mb-3">
-                                 <label class="form-label">첨부파일</label>
+                                 <label class="form-label">이미지 보기</label>
                                  <c:choose>
 			                   		<c:when test="${vo.cm_file != null }">
-			                   			<a href="filedown?fileName=${vo.cm_file }"><p>${vo.cm_file }</p></a>
+			                   			<a href="javascript:img_view('${vo.cm_file }');"><p>${vo.cm_file }</p></a>
 			                   		</c:when>
 			                   		<c:otherwise>
-			                   			<p class="h6">첨부파일이 없습니다.</p>
+			                   			<p class="h6">이미지 없음</p>
 			                   		</c:otherwise>
 			                   	 </c:choose>
                               </div>
