@@ -34,7 +34,7 @@
             <div class="card-body px-0">
                <div class="table-responsive">
                <form role="form" id="fr" action="/test/ez_emp/delete" method="post"> 
-                  <table id="user-list-table" class="table table-striped">
+                  <table id="user-list-table" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr class="ligth">  
                            <th></th>                  
