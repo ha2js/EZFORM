@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.ez_cm_likeVO;
 import com.ezform.test.testController;
@@ -26,9 +25,9 @@ public class EZ_boardDAOImpl implements EZ_boardDAO {
 	private static final String namespace = "com.ezform.mapper.bd_Mapper";
 	
 	@Override
-	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
+	public List<EZ_boardVO> listCri() throws Exception {
 		
-		return sqlSession.selectList(namespace+".listCri",cri);
+		return sqlSession.selectList(namespace+".listCri");
 	}
 	
 	@Override

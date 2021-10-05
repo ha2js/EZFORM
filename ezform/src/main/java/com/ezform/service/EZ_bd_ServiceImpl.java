@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.ez_cm_likeVO;
 import com.ezform.persistence.EZ_boardDAO;
@@ -27,9 +26,9 @@ public class EZ_bd_ServiceImpl implements EZ_bd_Service {
 	
 	
 	@Override
-	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception {
+	public List<EZ_boardVO> listCri() throws Exception {
 		
-		return bdao.listCri(cri);
+		return bdao.listCri();
 	}
 	@Override
 	public int listPageCnt() throws Exception {

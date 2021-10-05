@@ -2,14 +2,13 @@ package com.ezform.service;
 
 import java.util.List;
 
-import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
 import com.ezform.domain.ez_cm_likeVO;
 
 public interface EZ_bd_Service {
 
 	// 글 목록 조회(Cri)	
-	public List<EZ_boardVO> listCri(EZ_boardCri cri) throws Exception;
+	public List<EZ_boardVO> listCri() throws Exception;
 	
 	// 페이징
 	public int listPageCnt() throws Exception;

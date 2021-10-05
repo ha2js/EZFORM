@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,9 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ezform.domain.EZ_boardCri;
 import com.ezform.domain.EZ_boardVO;
-import com.ezform.domain.EZ_board_PageMaker;
 import com.ezform.domain.EZ_board_comVO;
 import com.ezform.domain.EZ_empVO;
 import com.ezform.domain.ez_cm_likeVO;
@@ -57,19 +56,12 @@ public class EZ_bd_Controller {
 
 	// 목록
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
-	public void listPageGET(EZ_boardCri cri, Model model) throws Exception {
+	public void listPageGET(Model model) throws Exception {
 
 		logger.info("listPageGET() 호출");
 
 		// list
-		model.addAttribute("boardList", service.listCri(cri));
-
-		// 페이징처리 정보생성(하단부)
-		EZ_board_PageMaker pm = new EZ_board_PageMaker();
-		pm.setCri(cri);
-		pm.setTotalCount(service.listPageCnt());
-
-		model.addAttribute("pm", pm);
+		model.addAttribute("boardList", service.listCri());
 	}
 
 	// * 글쓰기 *
@@ -204,16 +196,7 @@ public class EZ_bd_Controller {
 		out.flush();
 	}
 	
-	// 이미지 출력
-	@RequestMapping("/attachImage")
-	public void attachImage(String cm_file, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		byte[] imageData = cm_file.getBytes("utf-8");
-		response.setContentType("image/jpeg");
-		response.getOutputStream().write(imageData);
-		
-	}
-	
+
 	// * 글삭제 (remove) *
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
 	public void removeGET(@RequestParam("cm_bnum") int cm_bnum, HttpServletResponse response) throws Exception {
@@ -245,4 +228,27 @@ public class EZ_bd_Controller {
 
 		return "redirect:/board/read?nohit=true&cm_bnum="+cm_bnum;
 	}
+	
+	@RequestMapping("/userpic")
+	 public String listAttach(HttpSession session,HttpServletResponse response, HttpServletRequest request, @RequestParam("imgName") String imgName) throws Exception {
+		
+		response.setContentType("image/gif");
+		ServletOutputStream bout = response.getOutputStream();
+		
+		String imgPath = request.getSession().getServletContext().getRealPath("/");
+		imgPath += "upload\\boardUpload\\";
+		imgPath += imgName;
+	
+		// String exts = {".jpg",".png",".jpeg",".gif"};
+		
+		FileInputStream f = new FileInputStream(imgPath);
+		
+		int len;
+		byte[] buffer = new byte[10];
+		
+		while ((len = f.read(buffer)) != -1)
+			bout.write(buffer,0,len);
+		
+		return null;
+	 }
 }
