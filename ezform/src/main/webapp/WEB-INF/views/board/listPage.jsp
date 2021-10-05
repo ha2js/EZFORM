@@ -1,85 +1,77 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="${pageContext.request.contextPath }/resources/js/jQuery/jQuery-2.1.4.min.js"></script>
-</head>
-<body>
-	<h1> 게시판 전체 목록 </h1>
-	<h2><a href="/test/board/register">글쓰기</a></h2>
+    
+<%@ include file="../include/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-		<table border="1">		
-			<thead>
-			<tr>
-				<th style="width:10px"> No </th>
-				<th> 제목 </th>
-				<th> 글쓴이 </th>
-				<th> 작성시간 </th>
-				<th style="width:40px"> 조회수 </th>
-			</tr>
-			</thead>
-			
-			<c:choose>
-				<c:when test="${boardList == null or fn:length(boardList) == 0 }">
-					<tr>
-						<th colspan="4"> 등록된 게시글이 없습니다. </th>
-					</tr>
-				</c:when>
-			</c:choose>
+<style type="text/css">
+	span {
+		margin-left:25px;
+		margin-right:25px;	
+	}
+	#datatable>thead>tr {
+		text-align : center;
+	}
+	#datatable>tbody>tr {
+		text-align : center;
+	}
+	.file_img {
+		width:25px;
+		height:25px;
+	}
 	
-			<c:forEach var="vo" items="${boardList}">
-				<tr>
-					<td>${vo.cm_bnum}</td>
-					<td>
-						<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
-					</td>
-					<td>${vo.cm_name}</td>
-					<td>
-						<fmt:formatDate pattern="yyyy-MM-dd" value="${vo.cm_regdate}"/>
-					</td>
-					<td style="width:40px">
-						<span>${vo.cm_hits}</span>
-					</td>
-				</tr>
-			</c:forEach>
-		
-	</table>
+</style>
 
-			<!-- 페이징처리 -->
-	<%-- <c:if test="${fn:length(boardList) > 0 }"> --%>
-			<!-- 이전 -->
-		<div>
-			<ul>
-		<c:if test="${pm.prev}">
-				<li><a href="listPage?pageStart=${pm.startPage-1}">이전</a></li>
-		</c:if>	
-		
-			<!-- 페이지 번호 -->
-			<c:forEach var="idx" begin="${pm.startPage }" end="${pm.endPage }">
-				<%-- <li ${pm.cri.pageStart == idx? 'class = active' : ''}> --%>
-				<span><a href="listPage?pageStart=${idx }">${idx }</a></span>
-				<!-- </li> -->
-			</c:forEach>			
-		
-			<!-- 다음 -->
-			
-			<c:if test="${pm.next }">
-				<li><a href="listPage?pageStart=${pm.endPage+1 }">다음</a></li>
-			</c:if>
-	
-				</ul>
-			</div>
-	<%-- </c:if> --%>
-		
-	
-	
 
-</body>
-</html>
+
+<div class="conatiner-fluid content-inner mt-n5 py-0">
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card">
+            <div class="card-header d-flex justify-content-between">
+               <div class="header-title">
+                  <h4 class="card-title">커뮤니티</h4>
+               </div>    
+            </div>
+            <div class="card-body">
+               	<div style="margin-bottom:5px;">
+					<input type="button" class="btn btn-outline-primary" value="글쓰기" onclick="location.href='register';"/>		 
+				</div>  
+                <div class="table-responsive">
+                <!-- data-toggle="data-table" -->
+                  <table id="datatable" class="table table-striped" data-toggle="data-table">
+                     <thead>
+                        <tr class="table-primary">
+                           <th width="5%">No</th>
+                           <th width="55%">제목</th>
+                           <th width="15%">글쓴이</th>
+                           <th width="20%">작성시간</th>
+                           <th width="10%">조회수</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     	<c:forEach var="vo" items="${boardList}">
+                     	   <tr>
+				           	 <td>${vo.cm_bnum}</td>
+							 <td>
+								<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
+							 </td>	 
+							 <td>${vo.cm_name}</td>
+							 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.cm_regdate}"/></td>
+							 <td>${vo.cm_hits}</td>
+                           </tr>    
+                     	</c:forEach>         
+                     </tbody>
+                     
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+	
+<%@ include file="../include/footer.jsp" %>
