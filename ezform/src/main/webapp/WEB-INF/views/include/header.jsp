@@ -47,16 +47,16 @@
 	var sessionID = "${resultVO.em_id}";
 
 	if (sessionID == "" && result == "") {
-		location.href = "/test/login";
+		location.href = "/ezform/login";
 	}
 
 	// 로그인 처리
 	if (result == -2) {
 		alert("이메일이 존재하지 않습니다");
-		location.href = "/test/login";
+		location.href = "/ezform/login";
 	} else if (result == -1) {
 		alert("패스워드가 틀립니다. 다시 입력해주세요.");
-		location.href = "/test/login";
+		location.href = "/ezform/login";
 	} else if (result == 1) {
 
 	} else {
@@ -155,7 +155,7 @@ if (session.getAttribute("em_id") != null) {
 	<aside class="sidebar sidebar-default navs-rounded-all ">
 		<div
 			class="sidebar-header d-flex align-items-center justify-content-start">
-			<a href="/test/main" class="navbar-brand"> <!--Logo start--> <img
+			<a href="/ezform/main" class="navbar-brand"> <!--Logo start--> <img
 				src="${pageContext.request.contextPath }/resources/images/logo_ezform.svg" />
 				<h4 class="logo-title">EZFORM</h4>
 			</a>
@@ -185,7 +185,7 @@ if (session.getAttribute("em_id") != null) {
 							<span class="default-icon">Home</span> <span class="mini-icon">-</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link "
-						aria-current="page" href="/test/main"> <i class="icon"><svg
+						aria-current="page" href="/ezform/main"> <i class="icon"><svg
 									width="20" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -243,7 +243,7 @@ if (session.getAttribute("em_id") != null) {
 					if (em_id == 9999) {
 					%>
 					<li class="nav-item"><a class="nav-link "
-						href="/test/ez_emp/list"> <i class="icon"> <svg width="20"
+						href="/ezform/ez_emp/list"> <i class="icon"> <svg width="20"
 									viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
                             		<path
@@ -298,7 +298,7 @@ if (session.getAttribute("em_id") != null) {
 							data-bs-parent="#sidebar">
 							
 							<li class="nav-item"><a class="nav-link "
-								href="/test/ez_mail/writeMail"> <i class="icon"> <svg
+								href="/ezform/ez_mail/writeMail"> <i class="icon"> <svg
 											xmlns="http://www.w3.org/2000/svg" width="10"
 											viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -310,7 +310,7 @@ if (session.getAttribute("em_id") != null) {
 										</span>
 							</a></li>
 							<li class="nav-item"><a class="nav-link "
-								href="/test/ez_mail/recMail"> <i class="icon"> <svg
+								href="/ezform/ez_mail/recMail"> <i class="icon"> <svg
 											xmlns="http://www.w3.org/2000/svg" width="10"
 											viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -322,7 +322,7 @@ if (session.getAttribute("em_id") != null) {
 										메일함</span>
 							</a></li>
 							<li class="nav-item"><a class="nav-link "
-								href="/test/ez_mail/sendMail"> <i class="icon"> <svg
+								href="/ezform/ez_mail/sendMail"> <i class="icon"> <svg
 											xmlns="http://www.w3.org/2000/svg" width="10"
 											viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -334,7 +334,7 @@ if (session.getAttribute("em_id") != null) {
 										메일함</span>
 							</a></li>
 							<li class="nav-item"><a class="nav-link "
-								href="/test/ez_mail/impMail"> <i class="icon"> <svg
+								href="/ezform/ez_mail/impMail"> <i class="icon"> <svg
 											xmlns="http://www.w3.org/2000/svg" width="10"
 											viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -353,7 +353,7 @@ if (session.getAttribute("em_id") != null) {
 					<!---------------------------------- 사이드메뉴 : 캘린더 게시판 ------------------------------------->
 
 					<li class="nav-item"><a class="nav-link "
-						href="/test/calendar/"> <i class="icon"> <svg width="20"
+						href="/ezform/calendar/"> <i class="icon"> <svg width="20"
 									viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
                                 	<path fill-rule="evenodd"
@@ -386,7 +386,7 @@ if (session.getAttribute("em_id") != null) {
 
 					<!---------------------------------- 사이드메뉴 : 커뮤니티 게시판 ----------------------------------->
 					<li class="nav-item"><a class="nav-link"
-						href="/test/board/listPage"> <i class="icon"> <svg
+						href="/ezform/board/listPage"> <i class="icon"> <svg
 									width="20" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">                                
                                		<path opacity="0.4"
@@ -406,7 +406,7 @@ if (session.getAttribute("em_id") != null) {
 
 					<!---------------------------------- 사이드메뉴 : 공지사항 ---------------------------------------------->
 					<li class="nav-item"><a class="nav-link "
-						href="/test/ez_notice/listAll"> <i class="icon"> <svg
+						href="/ezform/ez_notice/listAll"> <i class="icon"> <svg
 									width="20" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
                             		<path opacity="0.4"
@@ -537,9 +537,9 @@ if (session.getAttribute("em_id") != null) {
 									}
 									%>
 
-									<li><a class="dropdown-item" href="/test/infoMember"><%=menu_name%></a></li>
+									<li><a class="dropdown-item" href="/ezform/infoMember"><%=menu_name%></a></li>
 									<li><hr class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="/test/logout">로그아웃</a></li>
+									<li><a class="dropdown-item" href="/ezform/logout">로그아웃</a></li>
 								</ul></li>
 
 							<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->

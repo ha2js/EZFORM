@@ -119,7 +119,7 @@ public class EZ_noti_Controller {
 			vo.setNot_file(not_file);
 			service.regist(vo);
 					
-			out.print("<script>alert('등록 완료'); location.href='/test/ez_notice/listAll';</script>");
+			out.print("<script>alert('등록 완료'); location.href='/ezform/ez_notice/listAll';</script>");
 			out.flush();
 		}
 	}
@@ -199,7 +199,7 @@ public class EZ_noti_Controller {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script>alert('다운로드 오류! 관리자에게 문의하세요'); location.href='/test/ez_notice/listAll';</script>");
+			out.println("<script>alert('다운로드 오류! 관리자에게 문의하세요'); location.href='/ezform/ez_notice/listAll';</script>");
 			out.flush();
 		}
 			
@@ -277,7 +277,7 @@ public class EZ_noti_Controller {
 			vo.setNot_file(not_file);
 			service.modify(vo);
 			
-			out.println("<script>alert('수정 완료'); location.href='/test/ez_notice/listAll';</script>");
+			out.println("<script>alert('수정 완료'); location.href='/ezform/ez_notice/listAll';</script>");
 			out.flush();
 		}
 		
@@ -306,7 +306,7 @@ public class EZ_noti_Controller {
 			int not_num = vo.getNot_num();
 			service.remove(not_num);
 			
-			out.print("<script>alert('삭제 완료'); location.href='/test/ez_notice/listAll';</script>");
+			out.print("<script>alert('삭제 완료'); location.href='/ezform/ez_notice/listAll';</script>");
 			out.flush();
 		}
 	

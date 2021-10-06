@@ -26,11 +26,11 @@
 		
 		
 		<property name="url" 
-				  value="jdbc:mysql://localhost:3306/ezformdb?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
+				  value="jdbc:mysql://localhost:3306/itwillbs10?useSSL=false&amp;serverTimezone=Asia/Seoul"/>
 		
-		<property name="username" value="root"/>
+		<property name="username" value="itwillbs10"/>
 		
-		<property name="password" value="1234"/>
+		<property name="password" value="itwillbs8030909"/>
 
 	</bean>
 	<!-- 디비연결 정보 처리객체(bean) -->

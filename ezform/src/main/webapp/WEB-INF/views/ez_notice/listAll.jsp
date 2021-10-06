@@ -66,7 +66,7 @@
                      	     <td style="display:none"></td>
 				           	 <td>${notList.not_num }</td>
 							 <td>
-								<a href="/test/ez_notice/read?not_num=${notList.not_num }" class="num">${notList.not_title }</a>
+								<a href="/ezform/ez_notice/read?not_num=${notList.not_num }" class="num">${notList.not_title }</a>
 							 </td>
 							 
 							 <td>

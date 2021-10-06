@@ -11,19 +11,19 @@
 		function remove_bdchk(data) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
-				location.href="/test/board/remove?cm_bnum="+data;
+				location.href="/ezform/board/remove?cm_bnum="+data;
 			}
 		}
 
 		function remove_comchk(data1, data2) {
 			if (!confirm("삭제 하시겠습니까?")) return false;
 			else {
-				location.href="/test/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
+				location.href="/ezform/comment/remove?com_cnum="+data1+"&com_bnum="+data2;
 			}
 		}
 		function img_view(image) {
 			// 새 창으로 이미지 띄우기
-			var url = "/test/board/viewImg?imgName="+image;
+			var url = "/ezform/board/viewImg?imgName="+image;
 
 			window.open(url,"_blank","width=350, height=350");
 		}
@@ -96,13 +96,13 @@
 					   	 	<c:choose>
 								<c:when test="${vo.cm_id eq isWriter}">
 									<div class="mb-3" style="text-align:right;">
-										<button type="submit" class="btn btn-primary btn-sm" id="bd_modify" onclick="location.href='/test/board/modify?cm_bnum=${vo.cm_bnum}'">수정하기</button>
+										<button type="submit" class="btn btn-primary btn-sm" id="bd_modify" onclick="location.href='/ezform/board/modify?cm_bnum=${vo.cm_bnum}'">수정하기</button>
 										<button type="submit" class="btn btn-primary btn-sm" id="bd_remove" onclick="remove_bdchk(${vo.cm_bnum})">삭제하기</button>
 									</div>
 								</c:when>
 								<c:otherwise>
 									<div class="mb-3" style="text-align:center;">
-										<button type="button" class="btn btn-primary btn-sm" name="like" onclick="location.href='/test/board/like?cm_bnum=${vo.cm_bnum}';">
+										<button type="button" class="btn btn-primary btn-sm" name="like" onclick="location.href='/ezform/board/like?cm_bnum=${vo.cm_bnum}';">
 											<span style="font-size:17px; margin-right:5px; color:rgb(255,255,255);">👍🏻</span> ${vo.cm_like }
 										</button>
 									</div>
@@ -110,7 +110,7 @@
 							</c:choose>
                            	  <hr>
                            	  <div class="mb-3" > 
-								 <form role="form" method="post" action="/test/comment/add">
+								 <form role="form" method="post" action="/ezform/comment/add">
 								    <div class="d-flex align-items-center">
 									    <p>
 										   <textarea class="form-control" rows="3" cols="155" name="com_content" placeholder="댓글을 남겨주세요" style="resize: none;"></textarea>

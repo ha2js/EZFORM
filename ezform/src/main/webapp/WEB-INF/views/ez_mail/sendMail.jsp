@@ -54,7 +54,7 @@
 		$("#delBtn").on('click', function() {
 			var cnt = $("input[name=mail_num_cb]:checkbox:checked").length;
 			if (cnt > 0) {
-				fr.attr("action","/test/ez_mail/deleteMail2")
+				fr.attr("action","/ezform/ez_mail/deleteMail2")
 				fr.submit();
 			}
 			else {
@@ -99,7 +99,7 @@
 	                             ${sendmailList.mail_id }
 	                           </th>
 	                           <th>
-		                           <a href="/test/ez_mail/sendRead?mail_num=${sendmailList.mail_num }">
+		                           <a href="/ezform/ez_mail/sendRead?mail_num=${sendmailList.mail_num }">
 		                             ${sendmailList.mail_title }
 		                           </a>
 	                           </th>

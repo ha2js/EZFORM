@@ -42,7 +42,7 @@
 <body>
 	<h2> 게시판 글 수정 페이지 </h2>
 	
-	<form action="/test/board/modify" name="regFr" method="post" enctype="multipart/form-data" onsubmit="return reg_chk();">
+	<form action="/ezform/board/modify" name="regFr" method="post" enctype="multipart/form-data" onsubmit="return reg_chk();">
 		<input type="hidden" name="cm_bnum" value="${vo.cm_bnum }"/>
 		<div>
 			<label>제목</label>

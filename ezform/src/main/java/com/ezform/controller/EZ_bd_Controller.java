@@ -82,7 +82,7 @@ public class EZ_bd_Controller {
 		// 세션
 		EZ_empVO evo = (EZ_empVO)session.getAttribute("resultVO");
 		if (evo == null) {
-			out.print("<script>location.href='/test/logout';</script>");
+			out.print("<script>location.href='/ezform/logout';</script>");
 			out.flush();
 		}
 		
@@ -116,11 +116,11 @@ public class EZ_bd_Controller {
 		// 서비스 객체를 주입 -> 동작 호출
 		service.create(vo);
 
-		out.print("<script>alert('등록 완료'); location.href='/test/board/listPage';</script>");
+		out.print("<script>alert('등록 완료'); location.href='/ezform/board/listPage';</script>");
 		out.flush();
 	}
 
-	// http://localhost:8088/test/board/read
+	// http://localhost:8088/ezform/board/read
 	// * 글읽기(read) *
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void readGET(@RequestParam("cm_bnum") int cm_bnum, @RequestParam(value = "nohit", required = false) String hit_chk, Model model, HttpSession session) throws Exception {
@@ -166,7 +166,7 @@ public class EZ_bd_Controller {
 		PrintWriter out = response.getWriter();
 		
 		if (evo == null) {
-			out.print("<script>location.href='/test/logout';</script>");
+			out.print("<script>location.href='/ezform/logout';</script>");
 			out.flush();
 		}
 		
@@ -192,7 +192,7 @@ public class EZ_bd_Controller {
 		vo.setCm_file(cm_file);
 		service.modify(vo);
 		
-		out.print("<script>alert('수정 완료'); location.href='/test/board/listPage';</script>");
+		out.print("<script>alert('수정 완료'); location.href='/ezform/board/listPage';</script>");
 		out.flush();
 	}
 	
@@ -208,7 +208,7 @@ public class EZ_bd_Controller {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 
-		out.print("<script>alert('삭제 완료'); location.href='/test/board/listPage';</script>");
+		out.print("<script>alert('삭제 완료'); location.href='/ezform/board/listPage';</script>");
 		out.flush();
 	}
 

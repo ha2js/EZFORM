@@ -57,7 +57,7 @@
 										<tr>
 											<th>제목</th>
 											<th style="text-align:right; font-size:12px;">
-												<a href="/test/board/listPage" style="color:rgb(130,130,130)">더보기</a>
+												<a href="/ezform/board/listPage" style="color:rgb(130,130,130)">더보기</a>
 											</th>
 										</tr>
 									</thead>
@@ -108,7 +108,7 @@
 										<tr>
 											<th>제목</th>
 											<th style="text-align:right; font-size:12px;">
-												<a href="/test/ez_notice/listAll" style="color:rgb(130,130,130)">더보기</a>
+												<a href="/ezform/ez_notice/listAll" style="color:rgb(130,130,130)">더보기</a>
 											</th>
 										</tr>
 									</thead>
@@ -123,7 +123,7 @@
 												<c:forEach begin="0" end="2" items="${notiList }" var="noti">
 													<tr>
 														<td width="80%;">
-															<a href="/test/ez_notice/read?not_num=${noti.not_num }" class="num">
+															<a href="/ezform/ez_notice/read?not_num=${noti.not_num }" class="num">
 																${noti.not_title }
 															</a>
 														</td>

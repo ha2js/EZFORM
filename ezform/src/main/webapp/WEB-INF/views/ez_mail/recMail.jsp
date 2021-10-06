@@ -39,7 +39,7 @@
 			
 			var mail_num = $(this).attr('value');
 
-			location.href="/test/ez_mail/updateStar?keepPage=false&mail_num="+mail_num;
+			location.href="/ezform/ez_mail/updateStar?keepPage=false&mail_num="+mail_num;
 		});
 		
 		
@@ -64,7 +64,7 @@
 		$("#readBtn").on('click', function() {
 			var cnt = $("input[name=mail_num_cb]:checkbox:checked").length;
 			if (cnt > 0) {
-				fr.attr("action","/test/ez_mail/readUpdate")
+				fr.attr("action","/ezform/ez_mail/readUpdate")
 				fr.submit();
 			}
 			else {
@@ -77,7 +77,7 @@
 		$("#delBtn").on('click', function() {
 			var cnt = $("input[name=mail_num_cb]:checkbox:checked").length;
 			if (cnt > 0) {
-				fr.attr("action","/test/ez_mail/deleteMail")
+				fr.attr("action","/ezform/ez_mail/deleteMail")
 				fr.submit();
 			}
 			else {
@@ -131,7 +131,7 @@
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a href="/ezform/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>

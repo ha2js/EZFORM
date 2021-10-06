@@ -40,7 +40,7 @@ public class EZ_mail_Controller {
 	
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
 	
-	// http://localhost:8088/test/ez_mail/recMail
+	// http://localhost:8088/ezform/ez_mail/recMail
 	@RequestMapping(value="/recMail", method = RequestMethod.GET)
 	public void read_RecMailGET(Model model, HttpSession session) throws Exception {
 		//  받은 메일
@@ -103,7 +103,7 @@ public class EZ_mail_Controller {
 		PrintWriter out = response.getWriter();
 		
 		if (!check) {
-			out.print("<script>alert('해당 이메일 주소가 존재하지 않습니다'); location.href='/test/ez_mail/writeMail'</script>");
+			out.print("<script>alert('해당 이메일 주소가 존재하지 않습니다'); location.href='/ezform/ez_mail/writeMail'</script>");
 			out.flush();
 		}
 		else {
@@ -133,7 +133,7 @@ public class EZ_mail_Controller {
 			service.mailWrite(vo);
 			
 			// alert
-			out.println("<script>alert('전송 완료'); location.href='/test/ez_mail/recMail'</script>");
+			out.println("<script>alert('전송 완료'); location.href='/ezform/ez_mail/recMail'</script>");
 			out.flush();
 		}
 	}

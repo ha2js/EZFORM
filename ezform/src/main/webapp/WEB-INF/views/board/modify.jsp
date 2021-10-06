@@ -17,7 +17,7 @@
 			//수정하기
 			$("#modify").click(function(){			
 				
-				fr.attr("action","/test/board/modify");
+				fr.attr("action","/ezform/board/modify");
 				
 				fr.attr("method","post");
 				

@@ -41,7 +41,7 @@
 		var event = window.event;
 		var x = event.screenX;
 		var y = event.screenY;
-		var url = "/test/ez_mail/emp_select"
+		var url = "/ezform/ez_mail/emp_select"
 		
 		// width/height 값 디자인 하시다가 원하시는 값으로 변경하셔도 됩니다 
 		window.open(url,"_blank","width=800, height=500,left="+x+",top="+y);

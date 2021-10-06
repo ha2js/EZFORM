@@ -37,7 +37,7 @@
 			
 			var mail_num = $(this).attr('value');
 
-			location.href="/test/ez_mail/updateStar?keepPage=true&mail_num="+mail_num;
+			location.href="/ezform/ez_mail/updateStar?keepPage=true&mail_num="+mail_num;
 		});
 	});
 </script>
@@ -74,7 +74,7 @@
 	                             ${mailList.mail_email }
 	                           </th>
 	                           <th>
-	                           	 <a href="/test/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
+	                           	 <a href="/ezform/ez_mail/recRead?mail_num=${mailList.mail_num }" ${mailList.mail_readCheck == '1' ? 'style=color:rgb(0,0,0)':''}>
 	                             	${mailList.mail_title }
 	                             </a>
 	                           </th>
