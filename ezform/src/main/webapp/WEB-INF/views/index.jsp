@@ -216,7 +216,7 @@
 										<h6>${wslist.em_name }</h6>
 										<p class="mb-0">
 											
-											<fmt:formatDate value="${wslist.ez_workVO.work_regdate }" pattern="yyyy-MM-dd HH:MM:ss"/>
+											<fmt:formatDate value="${wslist.ez_workVO.work_regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</p>
 									</div> 
 								   <div class="iq-media-group iq-media-group-1">
