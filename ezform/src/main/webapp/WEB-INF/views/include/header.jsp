@@ -62,6 +62,65 @@
 	} else {
 
 	}
+	
+	/*  날씨API   <!--kimhae  1842943    busan 1838524   Changwon 1846326  seoul 1835848--> */	  
+	 $(function(){
+	  
+	 	$('#selectbox').val('부산').trigger('change');
+	 	var loc = '1838524';
+	 	var wUrl= 'http://api.openweathermap.org/data/2.5/weather?id='+loc+'&appid=085c0f05d0cb357483203f661b5d9cf4&units=metric';
+	 	
+	 	$.getJSON(wUrl, 
+			  function(result){
+		   // data로 할일	  
+				   $('.loc').html(result.name);
+//		 		   $('.clowtemp').html((result.main.temp_min).toFixed(0));
+//		 		   $('.chightemp').html((result.main.temp_max).toFixed(0));
+				   var wiconUrl = '<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon+
+				   					'.png" alt="'+result.weather[0].description +'">'
+				   $('.wicon').html(wiconUrl);
+				   $('.ctemp').html((result.main.temp).toFixed(0));
+				   $('.feels_like').html((result.main.feels_like).toFixed(0));		   
+				   $('.chumi').html(result.main.humidity);
+				   $('.wSpeed').html((result.wind.speed).toFixed(1));   
+		});
+	 	
+	 
+		$('#selectbox').change(function(){
+			if($('#selectbox option:selected').val() == '부산'){
+		//		alert($('#selectbox option:selected').val());
+				var loc = '1838524';
+			}else if($('#selectbox option:selected').val() == '김해'){
+				var loc = '1842943';
+			}else if($('#selectbox option:selected').val() == '창원'){
+				var loc = '1846326';
+			}else if($('#selectbox option:selected').val() == '서울'){
+				var loc = '1835848';
+			}	
+		 	var wUrl= 'http://api.openweathermap.org/data/2.5/weather?id='+loc+'&appid=085c0f05d0cb357483203f661b5d9cf4&units=metric';
+	 
+	 	
+		 	$.getJSON(wUrl, 
+				  function(result){
+			   // data로 할일
+			  
+			   $('.loc').html(result.name);
+//	 		   $('.clowtemp').html((result.main.temp_min).toFixed(0));
+//	 		   $('.chightemp').html((result.main.temp_max).toFixed(0));
+			   var wiconUrl = '<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon+
+			   					'.png" alt="'+result.weather[0].description +'">'
+			   $('.wicon').html(wiconUrl);
+			   $('.ctemp').html((result.main.temp).toFixed(0));
+			   $('.feels_like').html((result.main.feels_like).toFixed(0));		   
+			   $('.chumi').html(result.main.humidity);
+			   $('.wSpeed').html((result.wind.speed).toFixed(1));
+			   
+			});
+		});
+	 	
+	 });	
+		/* 날씨API------------------------------------------------------ */
+
 </script>
 
 <%
@@ -146,7 +205,7 @@ if (session.getAttribute("em_id") != null) {
 							<span class="default-icon">Company</span> <span class="mini-icon">-</span>
 					</a></li>
 
-					<!---------------------------------- 사이드메뉴 : 출근정보 ---------------------------------------------->
+					<!---------------------------------- 사이드메뉴 : 출근정보 
 					<li class="nav-item"><a class="nav-link "
 						href="./dashboard/table/table-data.html"> <i class="icon">
 								<svg width="20" viewBox="0 0 24 24" fill="none"
@@ -168,7 +227,7 @@ if (session.getAttribute("em_id") != null) {
 						</i> <span class="item-name">출퇴근</span>
 					</a></li>
 
-					<!---------------------------------- 사이드메뉴 : 출근정보 ---------------------------------------------->
+					사이드메뉴 : 출근정보 ---------------------------------------------->
 
 					<!---------------------------------- 사이드메뉴 : 사원목록(관리자 권한) ---------------------------------------------->
 					<%
@@ -407,6 +466,40 @@ if (session.getAttribute("em_id") != null) {
                 </svg>
 						</span> <input type="search" class="form-control" placeholder="Search...">
 					</div>
+<!--날씨API >>> ------------------------------------------------>					
+					<div id="openweather">
+						<p>
+							<table>
+								<tr>
+									<th>
+										<h4>현재날씨</h4>
+									</th>
+									<th id="loca">지역</th>
+									<th>날씨</th>
+									<th>현재온도</th>
+									<th>체감온도</th>
+									<th>습도%</th>
+									<th>풍속m/s</th>
+								</tr>
+								<tr>
+									<td><select id="selectbox">
+										<option>부산</option>
+										<option>서울</option>
+										<option>김해</option>
+										<option>창원</option>
+										</select>
+									</td>
+									<td class="loc"></td>
+									<td class="wicon"></td>
+									<td class="ctemp"></td>
+									<td class="feels_like"></td>
+									<td class="chumi"></td>
+									<td class="wSpeed"></td>
+								</tr>
+							</table>
+						</p>
+					</div>
+<!--<<< 날씨API -------------------------------------------- -->										
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"

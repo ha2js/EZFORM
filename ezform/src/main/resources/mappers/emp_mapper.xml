@@ -36,7 +36,7 @@
 	where em_id = #{em_id} and em_pw = #{em_pw}
   </delete>
   
-  <!-- 기존근태 삭제(퇴사)-->
+  <!-- 근태사항 삭제(퇴사직원)-->
   <delete id="deleteWork">
   	delete from ez_work 
   	where em_id=#{em_id}
@@ -88,7 +88,9 @@ order by em_id desc
 <!--근태리스트 -->
 <resultMap type="com.ezform.domain.EZ_empVO" id="workMap">
 		<id column="em_id" property="em_id" />
+		<result column="em_id" property="em_id" />
 		<result column="em_name" property="em_name" />
+		<result column="em_image" property="em_image" />
 	
 		<association javaType="com.ezform.domain.EZ_workVO" property="ez_workVO">
 			<id column="em_id" property="em_id"/>
@@ -98,7 +100,7 @@ order by em_id desc
 </resultMap>
  
 <select id="workStatusList"  resultMap="workMap">
-select em_name,work_regdate,work_status from ez_em join (select *
+select em_name,work_regdate,work_status,em_image from ez_em join (select *
 									from ez_work
 									where (em_id,work_regdate) in (
 											select em_id, max(work_regdate)

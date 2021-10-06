@@ -27,6 +27,7 @@ import com.ezform.domain.EZ_empVO;
 import com.ezform.service.EZ_mem_Service;
 import com.ezform.service.EZ_noti_Service;
 import com.ezform.service.EZ_bd_Service;
+import com.ezform.service.EZ_emp_Service;
 
 @Controller
 public class EZ_mem_Controller {
@@ -37,6 +38,8 @@ public class EZ_mem_Controller {
 	private EZ_noti_Service noti_service;
 	@Inject
 	private EZ_bd_Service bd_service;
+	@Inject
+	private EZ_emp_Service emp_service;
 
 	private static final Logger logger = LoggerFactory.getLogger(EZ_mem_Controller.class);
 
@@ -51,6 +54,11 @@ public class EZ_mem_Controller {
 		model.addAttribute("boardList", bd_service.listCri());
 		// 공지사항 리스트
 		model.addAttribute("notiList", noti_service.listALL());
+		// 근태 리스트
+		model.addAttribute("wslist", emp_service.wstatusListEmp());
+		logger.info("근태 리스트 : "+emp_service.wstatusListEmp());
+		
+		
 		
 		return "index";
 	}
