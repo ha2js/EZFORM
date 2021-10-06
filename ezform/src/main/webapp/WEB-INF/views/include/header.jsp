@@ -510,7 +510,7 @@ if (session.getAttribute("em_id") != null) {
 							<!--<<< 날씨API -------------------------------------------- -->
 							</li>
 							<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->
-							<li class="nav-item dropdown" ><a
+							<li class="nav-item dropdown" style="margin-top:7px;"><a
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false"> <img
