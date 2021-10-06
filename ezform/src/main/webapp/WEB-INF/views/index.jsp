@@ -173,17 +173,21 @@
 <!------------------------------vvv--- 근태 영역 ----vvv--------------------->
 						<div class="card-header">
 							<div class="header-title">
-								<h4 class="card-title">근태입력</h4>
+								<h4 class="card-title" style="text-align:center;">근태입력</h4>
 							</div>
 						</div>
 						<div class="card-body">							
-							<div class="d-grid grid-cols-2 gap">
+							<div class="text-center">
 							   <form action="./ez_emp/wstatus" method="post">
-								    <input type="radio" name="work_status" value="출근">출근<br>
-								    <input type="radio" name="work_status" value="퇴근">퇴근<br>
-								    <input type="radio" name="work_status" value="외근">외근<br>
-								    <input type="radio" name="work_status" value="휴가">휴가<br>
-									<button  class="btn btn-outline-success rounded-pill d-inline-block">근태전송</button>
+							    
+							   		<select name="work_status" class="form-select">
+							   			<option value="출근">출근</option>
+							   			<option value="퇴근">퇴근</option>
+							   			<option value="외근">외근</option>
+							   			<option value="휴가">휴가</option>
+							   		</select>
+									<button class="btn btn-outline-success rounded-pill d-inline-block" style="margin-top:15px;">확인</button>
+									
 							   </form>
 							</div>
 						</div>
