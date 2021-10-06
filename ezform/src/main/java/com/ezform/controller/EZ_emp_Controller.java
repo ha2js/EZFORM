@@ -18,7 +18,7 @@ import com.ezform.domain.EZ_workVO;
 import com.ezform.service.EZ_emp_Service;
 
 @Controller
-@RequestMapping("/ez_emp/*")
+@RequestMapping("/ez_emp/*") 
 public class EZ_emp_Controller {
 
 	private static final Logger logger =
