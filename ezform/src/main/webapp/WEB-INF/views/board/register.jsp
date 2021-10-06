@@ -17,8 +17,9 @@
 			return false;
 		}
 		
-		if (document.regFr.cm_file.value != "") {
-			var fileVal = $("#cm_file").val();
+		if (document.regFr.uploadFile.value != "") {
+			alert("10MB 미만인 이미지만 등록 가능합니다");
+			var fileVal = $("#com_file").val();
 			fileVal = fileVal.slice(fileVal.indexOf(".")+1).toLowerCase();
 	
 			if (fileVal != "jpg" && fileVal != "png" && fileVal != "jpeg" && fileVal != "gif") {
@@ -27,7 +28,7 @@
 			}
 			
 			var maxSize = 10 * 1024 * 1024;
-			var fileSize = $("#cm_file")[0].files[0].size;
+			var fileSize = $("#com_file")[0].files[0].size;
 			
 			if (fileSize > maxSize) {
 				alert("10MB 미만인 이미지만 등록 가능합니다");
