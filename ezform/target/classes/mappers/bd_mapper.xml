@@ -8,7 +8,7 @@
  	<!-- 페이징 처리 list -->
  	<select id="listCri" resultType="EZ_boardVO">
 		select * from ez_cm 
-		
+		order by cm_bnum desc, cm_regdate desc
  	</select>
  	
   	<!-- 전체 데이터 개수 (페이징 처리 연산 필요) -->
