@@ -76,7 +76,7 @@
 				   $('.loc').html(result.name);
 //		 		   $('.clowtemp').html((result.main.temp_min).toFixed(0));
 //		 		   $('.chightemp').html((result.main.temp_max).toFixed(0));
-				   var wiconUrl = '<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon+
+				   var wiconUrl = '<img width="30" height="30" src="http://openweathermap.org/img/wn/'+result.weather[0].icon+
 				   					'.png" alt="'+result.weather[0].description +'">'
 				   $('.wicon').html(wiconUrl);
 				   $('.ctemp').html((result.main.temp).toFixed(0));
@@ -107,7 +107,7 @@
 			   $('.loc').html(result.name);
 //	 		   $('.clowtemp').html((result.main.temp_min).toFixed(0));
 //	 		   $('.chightemp').html((result.main.temp_max).toFixed(0));
-			   var wiconUrl = '<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon+
+			   var wiconUrl = '<img width="30" height="30" src="http://openweathermap.org/img/wn/'+result.weather[0].icon+
 			   					'.png" alt="'+result.weather[0].description +'">'
 			   $('.wicon').html(wiconUrl);
 			   $('.ctemp').html((result.main.temp).toFixed(0));
@@ -461,44 +461,7 @@ if (session.getAttribute("em_id") != null) {
 									d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
                 </svg>
 						</i>
-					</div>
-
-<!--날씨API >>> ------------------------------------------------>					
-					<div id="openweather">
-						<p>
-							<table class="weatherApi">
-								<tr>
-									<th rowspan="2" style="width:130px; font-size:18px;">
-										현재날씨
-									</th>
-									<th id="loca">지역</th>
-									<th>날씨</th>
-									<th>현재온도</th>
-									<th>체감온도</th>
-									<th>습도%</th>
-									<th>풍속m/s</th>
-									<th rowspan="2">
-										<select id="selectbox" class="form-select">
-											<option>부산</option>
-											<option>서울</option>
-											<option>김해</option>
-											<option>창원</option>
-										</select>
-									</th>
-								</tr>
-								<tr>
-									
-									<td class="loc"></td>
-									<td class="wicon"></td>
-									<td class="ctemp"></td>
-									<td class="feels_like"></td>
-									<td class="chumi"></td>
-									<td class="wSpeed"></td>
-								</tr>
-							</table>
-						</p>
-					</div>
-<!--<<< 날씨API -------------------------------------------- -->										
+					</div>										
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -511,8 +474,42 @@ if (session.getAttribute("em_id") != null) {
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto  navbar-list mb-2 mb-lg-0">
+							<li class="nav-item dropdown" >
+							<!--<<< 날씨API -------------------------------------------- -->	
+							  <div id="openweather">
+								<table class="weatherApi" style="width:800px; margin-right:400px;">
+									<thead>
+										<tr>
+											<td rowspan="2" style="width:130px;">현재날씨</td>
+											<td>지역</td>
+											<td>날씨</td>
+											<td>현재온도</td>
+											<td>체감온도</td>
+											<td>습도%</td>
+											<td>풍속m/s</td>
+											<td rowspan="2" style="width:130px;"> 
+												<select id="selectbox" class="form-select">
+													<option>부산</option>
+													<option>서울</option>
+													<option>김해</option>
+													<option>창원</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="loc" style="width:130px;"></td>
+											<td class="wicon" style="width:130px;"></td>
+											<td class="ctemp" style="width:130px;"></td>
+											<td class="feels_like" style="width:130px;"></td>
+											<td class="chumi" style="width:130px;"></td>
+											<td class="wSpeed"style="width:130px;"></td>					
+										</tr>
+									</thead>
+								</table>
+							  </div>	
+							<!--<<< 날씨API -------------------------------------------- -->
+							</li>
 							<!-- ----------------------------------------------------- 로그인/회원정보/로그아웃 영역 ------------------------------------------------- -->
-
 							<li class="nav-item dropdown" ><a
 								class="nav-link py-0 d-flex align-items-center" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
