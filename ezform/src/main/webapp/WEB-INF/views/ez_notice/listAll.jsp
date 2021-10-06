@@ -49,9 +49,10 @@
 				</div>  	
                 <div class="table-responsive">
                 <!-- data-toggle="data-table" -->
-                  <table id="datatable" class="table table-striped" data-toggle="data-table">
+                  <table id="datatable" class="table table-striped" data-toggle="data-table" style="width:1520px;">
                      <thead>
                         <tr class="table-primary">
+                           <th style="display:none"></th>
                            <th width="5%">번호</th>
                            <th width="55%">제목</th>
                            <th width="15%">첨부파일</th>
@@ -62,6 +63,7 @@
                      <tbody>
                      	<c:forEach var="notList" items="${noticeList}">
                      	   <tr>
+                     	     <td style="display:none"></td>
 				           	 <td>${notList.not_num }</td>
 							 <td>
 								<a href="/test/ez_notice/read?not_num=${notList.not_num }" class="num">${notList.not_title }</a>
@@ -77,7 +79,7 @@
 							 		</c:otherwise>
 							 	</c:choose>
 							 </td>
-							 <td><fmt:formatDate value="${notList.not_regdate }" pattern="yyyy-MM-dd"/></td>
+							 <td><fmt:formatDate value="${notList.not_regdate }" pattern="yyyy-MM-dd hh:mm"/></td>
 							 <td>${notList.not_hits }</td>
                            </tr>    
                      	</c:forEach>         

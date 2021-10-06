@@ -42,9 +42,10 @@
 				</div>  
                 <div class="table-responsive">
                 <!-- data-toggle="data-table" -->
-                  <table id="datatable" class="table table-striped" data-toggle="data-table">
+                  <table id="datatable" class="table table-striped" data-toggle="data-table" style="width:1520px;">
                      <thead>
                         <tr class="table-primary">
+                           <th style="display:none"></th>
                            <th width="5%">No</th>
                            <th width="55%">제목</th>
                            <th width="15%">글쓴이</th>
@@ -55,12 +56,13 @@
                      <tbody>
                      	<c:forEach var="vo" items="${boardList}">
                      	   <tr>
+                     	   	 <td style="display:none"></td>
 				           	 <td>${vo.cm_bnum}</td>
 							 <td>
 								<a href="read?cm_bnum=${vo.cm_bnum}">${vo.cm_title}</a>
 							 </td>	 
 							 <td>${vo.cm_name}</td>
-							 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.cm_regdate}"/></td>
+							 <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${vo.cm_regdate}"/></td>
 							 <td>${vo.cm_hits}</td>
                            </tr>    
                      	</c:forEach>         
