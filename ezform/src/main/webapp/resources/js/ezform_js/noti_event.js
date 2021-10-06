@@ -26,7 +26,7 @@
 			//수정하기
 			$("#not_modify").click(function(){			
 				
-				fr.attr("action","/test/ez_notice/modify");
+				fr.attr("action","/ezform/ez_notice/modify");
 				
 				fr.attr("method","get");
 				
@@ -38,14 +38,14 @@
 				
 				if (!confirm("삭제 하시겠습니까?")) return false;
 				else {
-					fr.attr("action","/test/ez_notice/remove");
+					fr.attr("action","/ezform/ez_notice/remove");
 					fr.submit();
 				}
 			});
 		
 			//목록으로
 			$("#not_listAll").click(function(){
-				location.href = "/test/ez_notice/listAll";
+				location.href = "/ezform/ez_notice/listAll";
 			});
 	});
 	

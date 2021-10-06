@@ -85,7 +85,7 @@ var newEvent = function (start, end, eventType) {
         //새로운 일정 저장
         $.ajax({
             type: "POST",
-            url: "/test/calendar/insertEvent",
+            url: "/ezform/calendar/insertEvent",
             data: JSON.stringify(eventData),
             dataType : "json",
  	  		contentType : "application/json; charset=UTF-8",

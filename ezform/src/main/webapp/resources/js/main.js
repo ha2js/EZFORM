@@ -85,8 +85,7 @@ var calendar = $('#calendar').fullCalendar({
       }),
       content: $('<div />', {
           class: 'popoverInfoCalendar'
-        }).append('<p><strong>번호:</strong> ' + event._id + '</p>')
-        .append('<p><strong>구분:</strong> ' + event.type + '</p>')
+        }).append('<p><strong>구분:</strong> ' + event.type + '</p>')
         .append('<p><strong>시간:</strong> ' + getDisplayEventDate(event) + '</p>')
         .append('<div class="popoverDescCalendar"><strong>설명:</strong> ' + event.description + '</div>'),
       delay: {
@@ -110,7 +109,7 @@ var calendar = $('#calendar').fullCalendar({
 	
     $.ajax({
       type: "get",
-      url: "/test/calendar/selectEventList",
+      url: "/ezform/calendar/selectEventList",
       data: {// 화면이 바뀌면 Date 객체인 start, end 가 들어옴
             userid: userid.val(),
             startDate : moment(start).format('YYYY-MM-DD'),
@@ -151,7 +150,7 @@ var calendar = $('#calendar').fullCalendar({
         
     $.ajax({
       type: "POST",
-      url: "/test/calendar/resizeEvent",
+      url: "/ezform/calendar/resizeEvent",
       data: JSON.stringify(resizeEventData),
       dataType : "json",
  	  contentType : "application/json; charset=UTF-8",
@@ -191,7 +190,7 @@ var calendar = $('#calendar').fullCalendar({
     
     $.ajax({
       type: "POST",
-      url: "/test/calendar/resizeEvent",
+      url: "/ezform/calendar/resizeEvent",
       data: JSON.stringify(dndEventData),
       dataType : "json",
  	  contentType : "application/json; charset=UTF-8",
