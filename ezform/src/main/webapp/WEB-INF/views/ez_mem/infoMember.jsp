@@ -10,14 +10,14 @@
 			if(result.equals("0")) {
 				%>
 				<script>
-					alert("회원수정이 실패하셨습니다. 비밀번호를 제대로 다시 입력해주세요.");
+					alert("사원수정이 실패하셨습니다. 비밀번호를 제대로 다시 입력해주세요.");
 					location.href = "./updateMember";
 				</script>
 				<%
 			} else {
 				%>
 				<script>
-					alert("회원수정 완료");
+					alert("사원수정 완료");
 					location.href = "./infoMember";
 				</script>
 				<%
@@ -65,7 +65,7 @@
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      <div class="header-title">
-                        <h4 class="card-title">회원정보</h4>
+                        <h4 class="card-title">사원정보</h4>
                      </div>
                   </div>
                   <div class="card-body">
