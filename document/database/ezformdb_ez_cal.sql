@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ezformdb
 -- ------------------------------------------------------
@@ -36,9 +36,18 @@ CREATE TABLE `ez_cal` (
   `allDay` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`_id`),
   KEY `FK_ez_em_TO_ez_cal_1_idx` (`userid`),
-  CONSTRAINT `FK_ez_em_TO_ez_cal_1` FOREIGN KEY (`userid`) REFERENCES `ez_em` (`em_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_ez_em_TO_ez_cal_1` FOREIGN KEY (`userid`) REFERENCES `ez_em` (`em_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ez_cal`
+--
+
+LOCK TABLES `ez_cal` WRITE;
+/*!40000 ALTER TABLE `ez_cal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ez_cal` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -49,4 +58,4 @@ CREATE TABLE `ez_cal` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-04  0:29:13
+-- Dump completed on 2021-10-06 12:43:09

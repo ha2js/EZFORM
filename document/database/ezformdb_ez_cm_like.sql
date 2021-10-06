@@ -29,7 +29,7 @@ CREATE TABLE `ez_cm_like` (
   KEY `FK_ez_em_TO_ez_like_1_idx` (`like_id`),
   KEY `FK_ez_cm_TO_ez_like_2_idx` (`like_bnum`),
   CONSTRAINT `FK_ez_cm_TO_ez_like_2` FOREIGN KEY (`like_bnum`) REFERENCES `ez_cm` (`cm_bnum`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_ez_em_TO_ez_like_1` FOREIGN KEY (`like_id`) REFERENCES `ez_em` (`em_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_ez_em_TO_ez_like_1` FOREIGN KEY (`like_id`) REFERENCES `ez_em` (`em_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-04 21:49:05
+-- Dump completed on 2021-10-06 12:43:10
