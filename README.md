@@ -6,8 +6,6 @@
 ### 기술 스택
 * Spring
 * JavaScript
-* HTML
-* CSS
 * jQuery
 * JSTL
 * Bootstrap5.0
