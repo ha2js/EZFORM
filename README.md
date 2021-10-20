@@ -18,3 +18,4 @@
 - [프로젝트 PPT](document/ppt/ezform.pdf)
 - [화면설계](document/화면구성/README.md)
 - [DB설계](document/database/erd.pdf)
+- [URL](http://itwillbs10.cafe24.com/ezform/login "ID:admin@ezform.com PW:admin")
