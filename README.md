@@ -8,6 +8,7 @@
 * JavaScript
 * jQuery
 * JSTL
+* Ajax
 * Bootstrap 5.0
 * MySQL 5.7.34
     
